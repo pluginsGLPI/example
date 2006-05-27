@@ -89,7 +89,8 @@ function plugin_item_update_example($parm){
 	if (isset($parm["type"]))
 	switch ($parm["type"]){
 		case COMPUTER_TYPE :
-			$_SESSION["MESSAGE_AFTER_REDIRECT"]="Update Computer Hook";
+			if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
+			$_SESSION["MESSAGE_AFTER_REDIRECT"].="Update Computer Hook";
 			return true;
 			break;
 	}
@@ -102,7 +103,8 @@ function plugin_item_add_example($parm){
 	if (isset($parm["type"]))
 	switch ($parm["type"]){
 		case COMPUTER_TYPE :
-			$_SESSION["MESSAGE_AFTER_REDIRECT"]="Add Computer Hook";
+			if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
+			$_SESSION["MESSAGE_AFTER_REDIRECT"].="Add Computer Hook";
 			return true;
 			break;
 	}
@@ -115,7 +117,8 @@ function plugin_item_delete_example($parm){
 	if (isset($parm["type"]))
 	switch ($parm["type"]){
 		case COMPUTER_TYPE :
-			$_SESSION["MESSAGE_AFTER_REDIRECT"]="Delete Computer Hook";
+			if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
+			$_SESSION["MESSAGE_AFTER_REDIRECT"].="Delete Computer Hook";
 			return true;
 			break;
 	}
@@ -128,7 +131,8 @@ function plugin_item_purge_example($parm){
 	if (isset($parm["type"]))
 	switch ($parm["type"]){
 		case COMPUTER_TYPE :
-			$_SESSION["MESSAGE_AFTER_REDIRECT"]="Purge Computer Hook";
+			if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
+			$_SESSION["MESSAGE_AFTER_REDIRECT"].="Purge Computer Hook";
 			return true;
 			break;
 	}
@@ -141,7 +145,8 @@ function plugin_item_restore_example($parm){
 	if (isset($parm["type"]))
 	switch ($parm["type"]){
 		case COMPUTER_TYPE :
-			$_SESSION["MESSAGE_AFTER_REDIRECT"]="Restore Computer Hook";
+			if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
+			$_SESSION["MESSAGE_AFTER_REDIRECT"].="Restore Computer Hook";
 			return true;
 			break;
 	}
@@ -161,7 +166,7 @@ function plugin_get_headings_example($type,$withtemplate){
 						1 => "Test PLugin",
 					);
 			break;
-		case TRACKING_TYPE :
+		case ENTERPRISE_TYPE :
 			return array(
 					1 => "Test PLugin",
 					2 => "Test PLugin 2",
@@ -182,7 +187,7 @@ function plugin_headings_actions_example($type){
 				);
 			
 			break;
-		case TRACKING_TYPE :
+		case ENTERPRISE_TYPE :
 			return array(
 					1 => "plugin_headings_example",
 					2 => "plugin_headings_example",
