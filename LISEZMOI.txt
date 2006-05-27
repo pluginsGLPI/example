@@ -1,10 +1,9 @@
 /*
- * @version $Id: LISEZMOI.txt 3046 2006-04-02 14:44:48Z moyo $
  ----------------------------------------------------------------------
  GLPI - Gestionnaire Libre de Parc Informatique
  Copyright (C) 2003-2006 by the INDEPNET Development Team.
  
- http://indepnet.net/   http://glpi.indepnet.org
+ http://indepnet.net/   http://glpi-project.org
  ----------------------------------------------------------------------
 
  LICENSE
@@ -119,7 +118,7 @@ Vous devez connaître les données de votre connexion MySQL (fournies par l'admini
 --- Récupérer GLPI
 
 GLPI est disponible en téléchargement par le Web à l'adresse :
--  http://glpi.indepnet.org rubrique téléchargement.
+-  http://glpi-project.org rubrique téléchargement.
 
 Choisissez la version qui vous intéresse, décompactez l'archive sur votre ordinateur dans un répertoire 
 de votre choix, puis transférez le contenu de ce répertoire sur le serveur Web.
@@ -251,7 +250,7 @@ et le message d'erreur que vous obtenez.
 II) Récupération et installation des fichiers.
 
 1)Téléchargez le tarball de la dernière version  disponible dans la rubrique téléchargement du site du 
-projet glpi (http://glpi.indepnet.org).
+projet glpi (http://glpi-project.org).
 
 2)Décompressez la nouvelle archive de GLPI, à la place de l'ancienne.
 
