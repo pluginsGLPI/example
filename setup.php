@@ -1,31 +1,31 @@
 <?php
 /*
- ----------------------------------------------------------------------
- GLPI - Gestionnaire Libre de Parc Informatique
- Copyright (C) 2003-2006 by the INDEPNET Development Team.
- 
- http://indepnet.net/   http://glpi-project.org
- ----------------------------------------------------------------------
+   ----------------------------------------------------------------------
+   GLPI - Gestionnaire Libre de Parc Informatique
+   Copyright (C) 2003-2006 by the INDEPNET Development Team.
 
- LICENSE
+   http://indepnet.net/   http://glpi-project.org
+   ----------------------------------------------------------------------
 
-	This file is part of GLPI.
+   LICENSE
 
-    GLPI is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+   This file is part of GLPI.
 
-    GLPI is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+   GLPI is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
 
-    You should have received a copy of the GNU General Public License
-    along with GLPI; if not, write to the Free Software
-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- ------------------------------------------------------------------------
-*/
+   GLPI is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with GLPI; if not, write to the Free Software
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+   ------------------------------------------------------------------------
+ */
 
 // ----------------------------------------------------------------------
 // Original Author of file:
@@ -37,14 +37,14 @@
 
 // Init the hooks of the plugins -Needed
 function plugin_init_example() {
-        global $plugin_hooks;
-	
+	global $plugin_hooks;
+
 	// Display a menu entry ?
 	$plugin_hooks['menu_entry']['example'] = true;
 	// Setup/Update functions
 	$plugin_hooks['setup']['example'] = "plugin_setup_example";
 	// Config function
-        $plugin_hooks['config']['example'] = 'plugin_config_example';
+	$plugin_hooks['config']['example'] = 'plugin_config_example';
 	// Config page
 	$plugin_hooks['config_page']['example'] = 'config.php';
 	// Item action event // See config.php for defined ITEM_TYPE
@@ -65,7 +65,7 @@ function plugin_init_example() {
 // Get the name and the version of the plugin - Needed
 function plugin_version_example(){
 	return array( 'name'    => 'Plugin Example',
-                      'version' => '0.0.1');
+			'version' => '0.0.1');
 }
 
 // Get config of the plugin
@@ -86,13 +86,13 @@ function plugin_config_form_example(){
 function plugin_item_update_example($parm){
 
 	if (isset($parm["type"]))
-	switch ($parm["type"]){
-		case COMPUTER_TYPE :
-			if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
-			$_SESSION["MESSAGE_AFTER_REDIRECT"].="Update Computer Hook";
-			return true;
-			break;
-	}
+		switch ($parm["type"]){
+			case COMPUTER_TYPE :
+				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
+				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Update Computer Hook";
+				return true;
+				break;
+		}
 	return false;
 }
 
@@ -100,13 +100,13 @@ function plugin_item_update_example($parm){
 function plugin_item_add_example($parm){
 
 	if (isset($parm["type"]))
-	switch ($parm["type"]){
-		case COMPUTER_TYPE :
-			if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
-			$_SESSION["MESSAGE_AFTER_REDIRECT"].="Add Computer Hook";
-			return true;
-			break;
-	}
+		switch ($parm["type"]){
+			case COMPUTER_TYPE :
+				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
+				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Add Computer Hook";
+				return true;
+				break;
+		}
 	return false;
 }
 
@@ -114,13 +114,13 @@ function plugin_item_add_example($parm){
 function plugin_item_delete_example($parm){
 
 	if (isset($parm["type"]))
-	switch ($parm["type"]){
-		case COMPUTER_TYPE :
-			if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
-			$_SESSION["MESSAGE_AFTER_REDIRECT"].="Delete Computer Hook";
-			return true;
-			break;
-	}
+		switch ($parm["type"]){
+			case COMPUTER_TYPE :
+				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
+				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Delete Computer Hook";
+				return true;
+				break;
+		}
 	return false;
 }
 
@@ -128,13 +128,13 @@ function plugin_item_delete_example($parm){
 function plugin_item_purge_example($parm){
 
 	if (isset($parm["type"]))
-	switch ($parm["type"]){
-		case COMPUTER_TYPE :
-			if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
-			$_SESSION["MESSAGE_AFTER_REDIRECT"].="Purge Computer Hook";
-			return true;
-			break;
-	}
+		switch ($parm["type"]){
+			case COMPUTER_TYPE :
+				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
+				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Purge Computer Hook";
+				return true;
+				break;
+		}
 	return false;
 }
 
@@ -142,13 +142,13 @@ function plugin_item_purge_example($parm){
 function plugin_item_restore_example($parm){
 
 	if (isset($parm["type"]))
-	switch ($parm["type"]){
-		case COMPUTER_TYPE :
-			if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
-			$_SESSION["MESSAGE_AFTER_REDIRECT"].="Restore Computer Hook";
-			return true;
-			break;
-	}
+		switch ($parm["type"]){
+			case COMPUTER_TYPE :
+				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
+				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Restore Computer Hook";
+				return true;
+				break;
+		}
 	return false;
 }
 
@@ -163,13 +163,13 @@ function plugin_get_headings_example($type,$withtemplate){
 			else 
 				return array(
 						1 => "Test PLugin",
-					);
+					    );
 			break;
 		case ENTERPRISE_TYPE :
 			return array(
 					1 => "Test PLugin",
 					2 => "Test PLugin 2",
-				);
+				    );
 			break;
 
 	}
@@ -178,20 +178,20 @@ function plugin_get_headings_example($type,$withtemplate){
 
 // Define headings actions added by the plugin	 
 function plugin_headings_actions_example($type){
-	
+
 	switch ($type){
 		case COMPUTER_TYPE :
 			return array(
 					1 => "plugin_headings_example",
-				);
-			
+				    );
+
 			break;
 		case ENTERPRISE_TYPE :
 			return array(
 					1 => "plugin_headings_example",
 					2 => "plugin_headings_example",
-				);
-			
+				    );
+
 			break;
 
 	}
@@ -210,7 +210,7 @@ function plugin_headings_example($type,$ID,$withtemplate=0){
 // Hook to be launch on central
 function plugin_central_action_example(){
 	global $langexample;
-	
+
 	echo "<div align='center'>";
 	echo "Plugin central action ".$langexample["test"];
 	echo "</div>";
