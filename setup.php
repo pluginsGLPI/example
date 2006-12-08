@@ -37,27 +37,27 @@
 
 // Init the hooks of the plugins -Needed
 function plugin_init_example() {
-	global $plugin_hooks;
+	global $PLUGIN_HOOKS;
 
 	// Display a menu entry ?
-	$plugin_hooks['menu_entry']['example'] = true;
+	$PLUGIN_HOOKS['menu_entry']['example'] = true;
 	// Setup/Update functions
-	$plugin_hooks['setup']['example'] = "plugin_setup_example";
+	$PLUGIN_HOOKS['setup']['example'] = "plugin_setup_example";
 	// Config function
-	$plugin_hooks['config']['example'] = 'plugin_config_example';
+	$PLUGIN_HOOKS['config']['example'] = 'plugin_config_example';
 	// Config page
-	$plugin_hooks['config_page']['example'] = 'config.php';
+	$PLUGIN_HOOKS['config_page']['example'] = 'config.php';
 	// Item action event // See config.php for defined ITEM_TYPE
-	$plugin_hooks['item_update']['example'] = 'plugin_item_update_example';
-	$plugin_hooks['item_add']['example'] = 'plugin_item_add_example';
-	$plugin_hooks['item_delete']['example'] = 'plugin_item_delete_example';
-	$plugin_hooks['item_purge']['example'] = 'plugin_item_purge_example';
-	$plugin_hooks['item_restore']['example'] = 'plugin_item_restore_example';
+	$PLUGIN_HOOKS['item_update']['example'] = 'plugin_item_update_example';
+	$PLUGIN_HOOKS['item_add']['example'] = 'plugin_item_add_example';
+	$PLUGIN_HOOKS['item_delete']['example'] = 'plugin_item_delete_example';
+	$PLUGIN_HOOKS['item_purge']['example'] = 'plugin_item_purge_example';
+	$PLUGIN_HOOKS['item_restore']['example'] = 'plugin_item_restore_example';
 	// Onglets management
-	$plugin_hooks['headings']['example'] = 'plugin_get_headings_example';
-	$plugin_hooks['headings_action']['example'] = 'plugin_headings_actions_example';
+	$PLUGIN_HOOKS['headings']['example'] = 'plugin_get_headings_example';
+	$PLUGIN_HOOKS['headings_action']['example'] = 'plugin_headings_actions_example';
 	// Display on central page
-	$plugin_hooks['central_action']['example'] = 'plugin_central_action_example';
+	$PLUGIN_HOOKS['central_action']['example'] = 'plugin_central_action_example';
 
 }
 
@@ -70,9 +70,9 @@ function plugin_version_example(){
 
 // Get config of the plugin
 function plugin_config_example(){
-	global $cfg_glpi_plugins;
+	global $CFG_GLPI_PLUGINS;
 
-	$cfg_glpi_plugins["example"]["test"]="test";
+	$CFG_GLPI_PLUGINS["example"]["test"]="test";
 }
 
 // Config form od the plugin
@@ -209,10 +209,10 @@ function plugin_headings_example($type,$ID,$withtemplate=0){
 
 // Hook to be launch on central
 function plugin_central_action_example(){
-	global $langexample;
+	global $LANGEXAMPLE;
 
 	echo "<div align='center'>";
-	echo "Plugin central action ".$langexample["test"];
+	echo "Plugin central action ".$LANGEXAMPLE["test"];
 	echo "</div>";
 }
 

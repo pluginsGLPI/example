@@ -34,5 +34,5 @@
 // ----------------------------------------------------------------------
 
 
-$langexample["test"]="test french";
+$LANGEXAMPLE["test"]="test french";
 ?>

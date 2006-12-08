@@ -33,5 +33,5 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
-$langexample["test"]="test english";
+$LANGEXAMPLE["test"]="test english";
 ?>

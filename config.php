@@ -36,12 +36,12 @@
 //header("Location:../../central.php");
 
 // Entry menu case
-include ("_relpos.php");
-include ($phproot."/glpi/includes.php");
+define('GLPI_ROOT', '../..'); 
+include (GLPI_ROOT . "/inc/includes.php"); 
 
-checkauthentication("admin");
+checkRight("config","w");
 
-commonHeader("TITRE",$_SERVER["PHP_SELF"]);
+commonHeader("TITRE",$_SERVER['PHP_SELF']);
 
 echo "This is the plugin config page";
 
