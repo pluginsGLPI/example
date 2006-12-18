@@ -58,7 +58,8 @@ function plugin_init_example() {
 	$PLUGIN_HOOKS['headings_action']['example'] = 'plugin_headings_actions_example';
 	// Display on central page
 	$PLUGIN_HOOKS['central_action']['example'] = 'plugin_central_action_example';
-
+	// Cron action
+	$plugin_hooks['cron']['example'] = DAY_TIMESTAMP;
 }
 
 
@@ -216,4 +217,8 @@ function plugin_central_action_example(){
 	echo "</div>";
 }
 
+// Cron function : name= cron_plugin_PLUGINNAME
+function cron_plugin_example(){
+	echo "tttt";
+}
 ?>
