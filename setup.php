@@ -59,7 +59,7 @@ function plugin_init_example() {
 	// Display on central page
 	$PLUGIN_HOOKS['central_action']['example'] = 'plugin_central_action_example';
 	// Cron action
-	$plugin_hooks['cron']['example'] = DAY_TIMESTAMP;
+	$PLUGIN_HOOKS['cron']['example'] = DAY_TIMESTAMP;
 }
 
 
