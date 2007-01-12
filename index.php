@@ -39,7 +39,7 @@
 define('GLPI_ROOT', '../..'); 
 include (GLPI_ROOT . "/inc/includes.php"); 
 
-commonHeader("TITRE",$_SERVER['PHP_SELF']);
+commonHeader("TITRE",$_SERVER['PHP_SELF'],"plugins");
 
 echo "This is the plugin index file";
 

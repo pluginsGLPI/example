@@ -41,7 +41,7 @@ include (GLPI_ROOT . "/inc/includes.php");
 
 checkRight("config","w");
 
-commonHeader("TITRE",$_SERVER['PHP_SELF']);
+commonHeader("TITRE",$_SERVER['PHP_SELF'],"plugins");
 
 echo "This is the plugin config page";
 
