@@ -41,6 +41,7 @@ function plugin_init_example() {
 
 	// Display a menu entry ?
 	$PLUGIN_HOOKS['menu_entry']['example'] = true;
+	$PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
 	// Setup/Update functions
 	$PLUGIN_HOOKS['setup']['example'] = "plugin_setup_example";
 	// Config function
@@ -60,6 +61,8 @@ function plugin_init_example() {
 	$PLUGIN_HOOKS['central_action']['example'] = 'plugin_central_action_example';
 	// Cron action
 	$PLUGIN_HOOKS['cron']['example'] = DAY_TIMESTAMP;
+	//redirect
+	$PLUGIN_HOOKS['redirect_page']['example']="example.form.php";
 }
 
 

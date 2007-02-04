@@ -39,7 +39,11 @@
 define('GLPI_ROOT', '../..'); 
 include (GLPI_ROOT . "/inc/includes.php"); 
 
-commonHeader("TITRE",$_SERVER['PHP_SELF'],"plugins");
+if ($_SESSION["glpiactiveprofile"]["interface"] == "central")
+		commonHeader("TITRE", $_SERVER['PHP_SELF'],"plugins");
+	else
+		helpHeader("TITRE", $_SERVER['PHP_SELF']);
+
 
 echo "This is the plugin index file";
 
