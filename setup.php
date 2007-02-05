@@ -61,7 +61,7 @@ function plugin_init_example() {
 	$PLUGIN_HOOKS['central_action']['example'] = 'plugin_central_action_example';
 	// Cron action
 	$PLUGIN_HOOKS['cron']['example'] = DAY_TIMESTAMP;
-	//redirect
+	//redirect appel http://localhost/glpi/index.php?redirect=plugin_example_2 (ID 2 du form)
 	$PLUGIN_HOOKS['redirect_page']['example']="example.form.php";
 }
 
