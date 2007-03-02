@@ -40,7 +40,7 @@ define('GLPI_ROOT', '../..');
 include (GLPI_ROOT . "/inc/includes.php"); 
 
 if ($_SESSION["glpiactiveprofile"]["interface"] == "central")
-		commonHeader("TITRE", $_SERVER['PHP_SELF'],"plugins");
+		commonHeader("TITRE", $_SERVER['PHP_SELF'],"plugins","example");
 	else
 		helpHeader("TITRE", $_SERVER['PHP_SELF']);
 
