@@ -37,13 +37,14 @@
 
 // Init the hooks of the plugins -Needed
 function plugin_init_example() {
-	global $PLUGIN_HOOKS;
+	global $PLUGIN_HOOKS,$LANGEXAMPLE,$CFG_GLPI;
 
 	// Display a menu entry ?
 	$PLUGIN_HOOKS['menu_entry']['example'] = true;
 	$PLUGIN_HOOKS['submenu_entry']['example']['add'] = 'index.php';
-	$PLUGIN_HOOKS['submenu_entry']['example']['search'] = 'index.php';
-	$PLUGIN_HOOKS['submenu_entry']['example']['Specific Link'] = 'index.php';
+	$PLUGIN_HOOKS['submenu_entry']['example']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANGEXAMPLE["test"]."' alt='".$LANGEXAMPLE["test"]."'>"] = 'index.php';
+	$PLUGIN_HOOKS['submenu_entry']['example'][$LANGEXAMPLE["test"]] = 'index.php';
+
 	$PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
 	// Setup/Update functions
 	$PLUGIN_HOOKS['setup']['example'] = "plugin_setup_example";
