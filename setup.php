@@ -67,6 +67,11 @@ function plugin_init_example() {
 	$PLUGIN_HOOKS['cron']['example'] = DAY_TIMESTAMP;
 	//redirect appel http://localhost/glpi/index.php?redirect=plugin_example_2 (ID 2 du form)
 	$PLUGIN_HOOKS['redirect_page']['example']="example.form.php";
+	//function to populate planning
+	$PLUGIN_HOOKS['planning_populate']['example']="plugin_planning_populate_example";
+	//function to populate planning
+	$PLUGIN_HOOKS['display_planning']['example']="plugin_display_planning_example";
+
 }
 
 
@@ -158,6 +163,28 @@ function plugin_item_restore_example($parm){
 				break;
 		}
 	return false;
+}
+
+// Parm contains begin, end and who
+// Create data to be displayed in the planning of $parm["who"] between $parm["begin"] and $parm["end"] 
+function plugin_planning_populate_example($parm){
+
+	// Add items in the items fields of the parm array
+	// Items need to have an unique index beginning by the begin date of the item to display
+	// needed to be correcly displayed
+	$parm["items"][$parm["begin"]."$$$"."plugin_example1"]["plugin"]="example";
+	$parm["items"][$parm["begin"]."$$$"."plugin_example1"]["begin"]=$parm["begin"];
+	$parm["items"][$parm["begin"]."$$$"."plugin_example1"]["end"]=$parm["begin"];
+	$parm["items"][$parm["begin"]."$$$"."plugin_example1"]["name"]="test planning example 1 ";
+
+	return $parm;
+}
+
+// Display the planning item
+function plugin_display_planning_example($parm){
+
+	// Add items in the items fields of the parm array
+	echo "--".$parm["name"]."--";
 }
 
 // Define headings added by the plugin
