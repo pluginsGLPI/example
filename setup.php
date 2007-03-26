@@ -172,9 +172,10 @@ function plugin_planning_populate_example($parm){
 	// Add items in the items fields of the parm array
 	// Items need to have an unique index beginning by the begin date of the item to display
 	// needed to be correcly displayed
+
 	$parm["items"][$parm["begin"]."$$$"."plugin_example1"]["plugin"]="example";
 	$parm["items"][$parm["begin"]."$$$"."plugin_example1"]["begin"]=$parm["begin"];
-	$parm["items"][$parm["begin"]."$$$"."plugin_example1"]["end"]=$parm["begin"];
+	$parm["items"][$parm["begin"]."$$$"."plugin_example1"]["end"]="2007-03-28 12:33:00";
 	$parm["items"][$parm["begin"]."$$$"."plugin_example1"]["name"]="test planning example 1 ";
 
 	return $parm;
@@ -182,7 +183,7 @@ function plugin_planning_populate_example($parm){
 
 // Display the planning item
 function plugin_display_planning_example($parm){
-
+	// $parm["type"] say begin end in or from type
 	// Add items in the items fields of the parm array
 	echo "--".$parm["name"]."--";
 }
