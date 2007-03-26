@@ -173,9 +173,12 @@ function plugin_planning_populate_example($parm){
 	// Items need to have an unique index beginning by the begin date of the item to display
 	// needed to be correcly displayed
 
+	list($date,$time)=split(" ",$parm["begin"]);
+	$end=$date." 13:33:00";
+
 	$parm["items"][$parm["begin"]."$$$"."plugin_example1"]["plugin"]="example";
 	$parm["items"][$parm["begin"]."$$$"."plugin_example1"]["begin"]=$parm["begin"];
-	$parm["items"][$parm["begin"]."$$$"."plugin_example1"]["end"]="2007-03-28 12:33:00";
+	$parm["items"][$parm["begin"]."$$$"."plugin_example1"]["end"]=$end;
 	$parm["items"][$parm["begin"]."$$$"."plugin_example1"]["name"]="test planning example 1 ";
 
 	return $parm;
@@ -185,7 +188,21 @@ function plugin_planning_populate_example($parm){
 function plugin_display_planning_example($parm){
 	// $parm["type"] say begin end in or from type
 	// Add items in the items fields of the parm array
-	echo "--".$parm["name"]."--";
+	global $LANG;
+	switch ($parm["type"]){
+		case "in":
+			echo date("H:i",strtotime($parm["begin"]))." -> ".date("H:i",strtotime($parm["end"])).": ";
+			break;
+		case "from":
+			break;
+		case "begin";
+			echo $LANG["planning"][19]." ".date("H:i",strtotime($parm["begin"])).": ";
+			break;
+		case "end";
+			echo $LANG["planning"][20]." ".date("H:i",strtotime($parm["end"])).": ";
+			break;
+	}
+	echo $parm["name"];
 }
 
 // Define headings added by the plugin
