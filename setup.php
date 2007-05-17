@@ -46,23 +46,23 @@ function plugin_init_example() {
 	$PLUGIN_HOOKS['submenu_entry']['example'][$LANGEXAMPLE["test"]] = 'index.php';
 
 	$PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
-	// Setup/Update functions
-	$PLUGIN_HOOKS['setup']['example'] = "plugin_setup_example";
-	// Config function
-	$PLUGIN_HOOKS['config']['example'] = 'plugin_config_example';
+
 	// Config page
 	$PLUGIN_HOOKS['config_page']['example'] = 'config.php';
+
+	// Onglets management
+	$PLUGIN_HOOKS['headings']['example'] = 'plugin_get_headings_example';
+	$PLUGIN_HOOKS['headings_action']['example'] = 'plugin_headings_actions_example';
+	// Display on central page
+	$PLUGIN_HOOKS['central_action']['example'] = 'plugin_central_action_example';
+
 	// Item action event // See config.php for defined ITEM_TYPE
 	$PLUGIN_HOOKS['item_update']['example'] = 'plugin_item_update_example';
 	$PLUGIN_HOOKS['item_add']['example'] = 'plugin_item_add_example';
 	$PLUGIN_HOOKS['item_delete']['example'] = 'plugin_item_delete_example';
 	$PLUGIN_HOOKS['item_purge']['example'] = 'plugin_item_purge_example';
 	$PLUGIN_HOOKS['item_restore']['example'] = 'plugin_item_restore_example';
-	// Onglets management
-	$PLUGIN_HOOKS['headings']['example'] = 'plugin_get_headings_example';
-	$PLUGIN_HOOKS['headings_action']['example'] = 'plugin_headings_actions_example';
-	// Display on central page
-	$PLUGIN_HOOKS['central_action']['example'] = 'plugin_central_action_example';
+
 	// Cron action
 	$PLUGIN_HOOKS['cron']['example'] = DAY_TIMESTAMP;
 	//redirect appel http://localhost/glpi/index.php?redirect=plugin_example_2 (ID 2 du form)
@@ -79,20 +79,6 @@ function plugin_init_example() {
 function plugin_version_example(){
 	return array( 'name'    => 'Plugin Example',
 			'version' => '0.0.1');
-}
-
-// Get config of the plugin
-function plugin_config_example(){
-	global $CFG_GLPI_PLUGINS;
-
-	$CFG_GLPI_PLUGINS["example"]["test"]="test";
-}
-
-// Config form od the plugin
-function plugin_config_form_example(){
-
-	echo "This is the form config of the plugin";
-
 }
 
 // Hook done on update item case
