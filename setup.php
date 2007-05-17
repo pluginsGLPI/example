@@ -72,6 +72,9 @@ function plugin_init_example() {
 	//function to populate planning
 	$PLUGIN_HOOKS['display_planning']['example']="plugin_display_planning_example";
 
+	// Add specific files to add to the header : javascript or css
+	$PLUGIN_HOOKS['add_javascript']['example']="example.js";
+	$PLUGIN_HOOKS['add_css']['example']="example.css";
 }
 
 
