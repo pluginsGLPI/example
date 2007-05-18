@@ -37,11 +37,11 @@
 
 // Init the hooks of the plugins -Needed
 function plugin_init_example() {
-	global $PLUGIN_HOOKS,$LANGEXAMPLE,$CFG_GLPI;
+	global $PLUGIN_HOOKS,$LANGEXAMPLE,$LANG,$CFG_GLPI;
 
 	// Display a menu entry ?
 	$PLUGIN_HOOKS['menu_entry']['example'] = true;
-	$PLUGIN_HOOKS['submenu_entry']['example']['add'] = 'index.php';
+	$PLUGIN_HOOKS['submenu_entry']['example']['add'] = 'example.form.php';
 	$PLUGIN_HOOKS['submenu_entry']['example']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANGEXAMPLE["test"]."' alt='".$LANGEXAMPLE["test"]."'>"] = 'index.php';
 	$PLUGIN_HOOKS['submenu_entry']['example'][$LANGEXAMPLE["test"]] = 'index.php';
 
@@ -76,9 +76,8 @@ function plugin_init_example() {
 	$PLUGIN_HOOKS['add_javascript']['example']="example.js";
 	$PLUGIN_HOOKS['add_css']['example']="example.css";
 
-	// Define Dropdown tables to be manage in GLPI :
-	$PLUGIN_HOOKS['dropdown']['example']=array("glpi_dropdown_plugin_example"=>"Plugin Example Dropdown");
-	$PLUGIN_HOOKS['database_relations']['example']=array("glpi_dropdown_plugin_example"=>array("glpi_plugin_example"=>"FK_dropdown"));
+	// Params : plugin name - string type - number - tabke - form page
+	pluginNewType('example',"PLUGIN_EXAMPLE_TYPE",1001,"glpi_plugin_example","example.form.php");
 
 }
 
@@ -88,6 +87,116 @@ function plugin_version_example(){
 	return array( 'name'    => 'Plugin Example',
 			'version' => '0.0.1');
 }
+// Define dropdown relations
+function plugin_example_getDatabaseRelations(){
+	// 
+	return array("glpi_dropdown_plugin_example"=>array("glpi_plugin_example"=>"FK_dropdown"));
+}
+
+// Define Dropdown tables to be manage in GLPI :
+function plugin_example_getDropdown(){
+	// Table => Name
+	return array("glpi_dropdown_plugin_example"=>"Plugin Example Dropdown");
+}
+
+////// SEARCH FUNCTIONS ///////(){
+
+// Define search option for types of the plugins
+function plugin_example_getSearchOption(){
+	global $LANGEXAMPLE;
+	$sopt=array();
+
+	$sopt[PLUGIN_EXAMPLE_TYPE]['common']="Header Needed";
+	$sopt[PLUGIN_EXAMPLE_TYPE][1]['table']='glpi_plugin_example';
+	$sopt[PLUGIN_EXAMPLE_TYPE][1]['field']='name';
+	$sopt[PLUGIN_EXAMPLE_TYPE][1]['linkfield']='name';
+	$sopt[PLUGIN_EXAMPLE_TYPE][1]['name']=$LANGEXAMPLE["name"];
+
+	$sopt[PLUGIN_EXAMPLE_TYPE][2]['table']='glpi_dropdown_plugin_example';
+	$sopt[PLUGIN_EXAMPLE_TYPE][2]['field']='name';
+	$sopt[PLUGIN_EXAMPLE_TYPE][2]['linkfield']='FK_dropdown';
+	$sopt[PLUGIN_EXAMPLE_TYPE][2]['name']='Dropdown';
+	
+	return $sopt;
+}
+
+function plugin_example_addLeftJoin($type,$ref_table,$new_table,$linkfield){
+	switch ($new_table){
+		case "glpi_droprodown_plugin_example" :
+			// Standard LEFT JOIN for the example but use it for specific jointures
+			return " LEFT JOIN $new_table AS ON ($rt.$linkfield = $nt.ID) ";
+			break;
+	}
+	return "";
+}
+
+function plugin_example_giveItem($type,$field,$data,$num,$linkfield=""){
+	global $CFG_GLPI, $INFOFORM_PAGES;
+
+	switch ($field){
+		case "glpi_plugin_example.name" :
+			$out= "<a href=\"".$CFG_GLPI["root_doc"]."/".$INFOFORM_PAGES[$type]."?ID=".$data['ID']."\">";
+			$out.= $data["ITEM_$num"];
+			if ($CFG_GLPI["view_ID"]||empty($data["ITEM_$num"])) $out.= " (".$data["ID"].")";
+			$out.= "</a>";
+			return $out;
+			break;
+	}
+	return "";
+}
+
+function plugin_example_addWhere($link,$nott,$type,$ID,$val){
+	global $SEARCH_OPTION;
+
+	$table=$SEARCH_OPTION[$type][$ID]["table"];
+	$field=$SEARCH_OPTION[$type][$ID]["field"];
+	
+	$SEARCH=makeTextSearch($val,$nott);
+
+	switch ($table.".".$field){
+		case "glpi_plugin_example.name" :
+			// Standard Where clause for the example but use it for specific jointures
+			$ADD="";	
+			if ($nott&&$val!="NULL") {
+				$ADD=" OR $table.$field IS NULL";
+			}
+			
+			return $link." ($table.$field $SEARCH ".$ADD." ) ";
+			break;
+	}
+	return "";
+}
+
+function plugin_example_addSelect($type,$ID,$num){
+	global $SEARCH_OPTION;
+
+	$table=$SEARCH_OPTION[$type][$ID]["table"];
+	$field=$SEARCH_OPTION[$type][$ID]["field"];
+
+	switch ($table.".".$field){
+		case "glpi_plugin_example.name" :
+			// Standard Select clause for the example but use it for specific selection
+			return $table.".".$field." AS ITEM_$num, ";
+			break;
+	}
+	return "";
+}
+
+function plugin_example_addOrderBy($type,$ID,$order,$key=0){
+	global $SEARCH_OPTION;
+
+	$table=$SEARCH_OPTION[$type][$ID]["table"];
+	$field=$SEARCH_OPTION[$type][$ID]["field"];
+
+	switch ($table.".".$field){
+		case "glpi_plugin_example.name" :
+			// Standard Order By clause for the example but use it for specific selection
+			return " ORDER BY $table.$field $order ";
+			break;
+	}
+	return "";
+}
+//////////////////////////////
 
 // Hook done on update item case
 function plugin_item_update_example($parm){

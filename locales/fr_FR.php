@@ -35,4 +35,5 @@
 
 
 $LANGEXAMPLE["test"]="test french";
+$LANGEXAMPLE["name"]="Nom";
 ?>

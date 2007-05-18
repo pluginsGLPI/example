@@ -32,23 +32,30 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
-// Non menu entry case
-//header("Location:../../central.php");
+$NEEDED_ITEMS=array("search");
 
-// Entry menu case
 define('GLPI_ROOT', '../..'); 
 include (GLPI_ROOT . "/inc/includes.php"); 
 
-if ($_SESSION["glpiactiveprofile"]["interface"] == "central")
-		commonHeader("TITRE", $_SERVER['PHP_SELF'],"plugins","example");
-	else
-		helpHeader("TITRE", $_SERVER['PHP_SELF']);
+if ($_SESSION["glpiactiveprofile"]["interface"] == "central"){
+	commonHeader("TITRE", $_SERVER['PHP_SELF'],"plugins","example");
+} else {
+	helpHeader("TITRE", $_SERVER['PHP_SELF']);
+}
 
+$NEEDED_ITEMS=array("search","printer","contract","infocom");
 
-echo "This is the plugin index file";
+checkRight("computer","r");
 
-echo "Example of dropdown (need to create glpi_dropdown_plugin_example table) ";
-dropdownValue('glpi_dropdown_plugin_example','myname',0);
+commonHeader($LANG["title"][8],$_SERVER['PHP_SELF'],"plugin","example");
+
+manageGetValuesInSearch(PLUGIN_EXAMPLE_TYPE);
+
+searchForm(PLUGIN_EXAMPLE_TYPE,$_SERVER['PHP_SELF'],$_GET["field"],$_GET["contains"],$_GET["sort"],$_GET["deleted"],$_GET["link"],$_GET["distinct"],$_GET["link2"],$_GET["contains2"],$_GET["field2"],$_GET["type2"]);
+
+showList(PLUGIN_EXAMPLE_TYPE,$_SERVER['PHP_SELF'],$_GET["field"],$_GET["contains"],$_GET["sort"],$_GET["order"],$_GET["start"],$_GET["deleted"],$_GET["link"],$_GET["distinct"],$_GET["link2"],$_GET["contains2"],$_GET["field2"],$_GET["type2"]);
+
+commonFooter();
 
 commonFooter();
 ?>
