@@ -45,15 +45,11 @@ if ($_SESSION["glpiactiveprofile"]["interface"] == "central"){
 
 checkRight("computer","r");
 
-commonHeader($LANG["title"][8],$_SERVER['PHP_SELF'],"plugin","example");
-
 manageGetValuesInSearch(PLUGIN_EXAMPLE_TYPE);
 
 searchForm(PLUGIN_EXAMPLE_TYPE,$_SERVER['PHP_SELF'],$_GET["field"],$_GET["contains"],$_GET["sort"],$_GET["deleted"],$_GET["link"],$_GET["distinct"],$_GET["link2"],$_GET["contains2"],$_GET["field2"],$_GET["type2"]);
 
 showList(PLUGIN_EXAMPLE_TYPE,$_SERVER['PHP_SELF'],$_GET["field"],$_GET["contains"],$_GET["sort"],$_GET["order"],$_GET["start"],$_GET["deleted"],$_GET["link"],$_GET["distinct"],$_GET["link2"],$_GET["contains2"],$_GET["field2"],$_GET["type2"]);
-
-commonFooter();
 
 commonFooter();
 ?>

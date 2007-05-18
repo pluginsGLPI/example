@@ -125,9 +125,9 @@ function plugin_example_getSearchOption(){
 
 function plugin_example_addLeftJoin($type,$ref_table,$new_table,$linkfield){
 	switch ($new_table){
-		case "glpi_droprodown_plugin_example" :
+		case "glpi_dropdown_plugin_example" :
 			// Standard LEFT JOIN for the example but use it for specific jointures
-			return " LEFT JOIN $new_table AS ON ($rt.$linkfield = $nt.ID) ";
+			return " LEFT JOIN $new_table ON ($ref_table.$linkfield = $new_table.ID) ";
 			break;
 	}
 	return "";
