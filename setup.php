@@ -75,6 +75,11 @@ function plugin_init_example() {
 	// Add specific files to add to the header : javascript or css
 	$PLUGIN_HOOKS['add_javascript']['example']="example.js";
 	$PLUGIN_HOOKS['add_css']['example']="example.css";
+
+	// Define Dropdown tables to be manage in GLPI :
+	$PLUGIN_HOOKS['dropdown']['example']=array("glpi_dropdown_plugin_example"=>"Plugin Example Dropdown");
+	$PLUGIN_HOOKS['database_relations']['example']=array("glpi_dropdown_plugin_example"=>array("glpi_plugin_example","FK_dropdown"));
+
 }
 
 

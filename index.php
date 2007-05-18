@@ -47,6 +47,9 @@ if ($_SESSION["glpiactiveprofile"]["interface"] == "central")
 
 echo "This is the plugin index file";
 
+echo "Example of dropdown (need to create glpi_dropdown_plugin_example table) ";
+dropdownValue('glpi_dropdown_plugin_example','myname',0);
+
 commonFooter();
 ?>
 
