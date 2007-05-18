@@ -122,17 +122,6 @@ function plugin_example_getSearchOption(){
 	return $sopt;
 }
 
-
-function plugin_example_addLeftJoin($type,$ref_table,$new_table,$linkfield){
-	switch ($new_table){
-		case "glpi_dropdown_plugin_example" :
-			// Standard LEFT JOIN for the example but use it for specific jointures
-			return " LEFT JOIN $new_table ON ($ref_table.$linkfield = $new_table.ID) ";
-			break;
-	}
-	return "";
-}
-
 function plugin_example_giveItem($type,$field,$data,$num,$linkfield=""){
 	global $CFG_GLPI, $INFOFORM_PAGES;
 
@@ -148,6 +137,19 @@ function plugin_example_giveItem($type,$field,$data,$num,$linkfield=""){
 	return "";
 }
 
+function plugin_example_addLeftJoin($type,$ref_table,$new_table,$linkfield){
+
+	// Example of standard LEFT JOIN  clause but use it ONLY for specific LEFT JOIN
+	// No need of the function if you do not have specific cases
+	switch ($new_table){
+		case "glpi_dropdown_plugin_example" :
+			return " LEFT JOIN $new_table ON ($ref_table.$linkfield = $new_table.ID) ";
+			break;
+	}
+	return "";
+}
+
+
 function plugin_example_addWhere($link,$nott,$type,$ID,$val){
 	global $SEARCH_OPTION;
 
@@ -156,17 +158,17 @@ function plugin_example_addWhere($link,$nott,$type,$ID,$val){
 	
 	$SEARCH=makeTextSearch($val,$nott);
 
-	switch ($table.".".$field){
-		case "glpi_plugin_example.name" :
-			// Standard Where clause for the example but use it for specific jointures
-			$ADD="";	
-			if ($nott&&$val!="NULL") {
-				$ADD=" OR $table.$field IS NULL";
-			}
-			
-			return $link." ($table.$field $SEARCH ".$ADD." ) ";
-			break;
-	}
+	// Example of standard Where clause but use it ONLY for specific Where
+	// No need of the function if you do not have specific cases
+//	switch ($table.".".$field){
+//		case "glpi_plugin_example.name" :
+//			$ADD="";	
+//			if ($nott&&$val!="NULL") {
+//				$ADD=" OR $table.$field IS NULL";
+//			}
+//			return $link." ($table.$field $SEARCH ".$ADD." ) ";
+//			break;
+//	}
 	return "";
 }
 
@@ -176,12 +178,13 @@ function plugin_example_addSelect($type,$ID,$num){
 	$table=$SEARCH_OPTION[$type][$ID]["table"];
 	$field=$SEARCH_OPTION[$type][$ID]["field"];
 
-	switch ($table.".".$field){
-		case "glpi_plugin_example.name" :
-			// Standard Select clause for the example but use it for specific selection
-			return $table.".".$field." AS ITEM_$num, ";
-			break;
-	}
+// Example of standard Select clause but use it ONLY for specific Select
+// No need of the function if you do not have specific cases
+//	switch ($table.".".$field){
+//		case "glpi_plugin_example.name" :
+//			return $table.".".$field." AS ITEM_$num, ";
+//			break;
+//	}
 	return "";
 }
 
@@ -191,12 +194,13 @@ function plugin_example_addOrderBy($type,$ID,$order,$key=0){
 	$table=$SEARCH_OPTION[$type][$ID]["table"];
 	$field=$SEARCH_OPTION[$type][$ID]["field"];
 
-	switch ($table.".".$field){
-		case "glpi_plugin_example.name" :
-			// Standard Order By clause for the example but use it for specific selection
-			return " ORDER BY $table.$field $order ";
-			break;
-	}
+// Example of standard OrderBy clause but use it ONLY for specific order by
+// No need of the function if you do not have specific cases
+//	switch ($table.".".$field){
+//		case "glpi_plugin_example.name" :
+//			return " ORDER BY $table.$field $order ";
+//			break;
+//	}
 	return "";
 }
 //////////////////////////////
