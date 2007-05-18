@@ -78,7 +78,7 @@ function plugin_init_example() {
 
 	// Define Dropdown tables to be manage in GLPI :
 	$PLUGIN_HOOKS['dropdown']['example']=array("glpi_dropdown_plugin_example"=>"Plugin Example Dropdown");
-	$PLUGIN_HOOKS['database_relations']['example']=array("glpi_dropdown_plugin_example"=>array("glpi_plugin_example","FK_dropdown"));
+	$PLUGIN_HOOKS['database_relations']['example']=array("glpi_dropdown_plugin_example"=>array("glpi_plugin_example"=>"FK_dropdown"));
 
 }
 
