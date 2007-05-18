@@ -106,7 +106,9 @@ function plugin_example_getSearchOption(){
 	global $LANGEXAMPLE;
 	$sopt=array();
 
+	// Part header
 	$sopt[PLUGIN_EXAMPLE_TYPE]['common']="Header Needed";
+
 	$sopt[PLUGIN_EXAMPLE_TYPE][1]['table']='glpi_plugin_example';
 	$sopt[PLUGIN_EXAMPLE_TYPE][1]['field']='name';
 	$sopt[PLUGIN_EXAMPLE_TYPE][1]['linkfield']='name';
@@ -119,6 +121,7 @@ function plugin_example_getSearchOption(){
 	
 	return $sopt;
 }
+
 
 function plugin_example_addLeftJoin($type,$ref_table,$new_table,$linkfield){
 	switch ($new_table){

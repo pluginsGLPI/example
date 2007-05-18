@@ -43,8 +43,6 @@ if ($_SESSION["glpiactiveprofile"]["interface"] == "central"){
 	helpHeader("TITRE", $_SERVER['PHP_SELF']);
 }
 
-$NEEDED_ITEMS=array("search","printer","contract","infocom");
-
 checkRight("computer","r");
 
 commonHeader($LANG["title"][8],$_SERVER['PHP_SELF'],"plugin","example");
