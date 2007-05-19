@@ -81,6 +81,7 @@ function plugin_init_example() {
 
 }
 
+// Class of the defined type
 class pluginExample extends CommonDBTM {
 	function pluginExample () {
 		$this->table="glpi_plugin_example";
@@ -232,6 +233,7 @@ function plugin_example_addOrderBy($type,$ID,$order,$key=0){
 //////////////////////////////
 ////// SPECIFIC MODIF MASSIVE FUNCTIONS ///////
 
+// Define actions : 
 function plugin_example_MassiveActions($type){
 	global $LANG;
 	switch ($type){
@@ -247,6 +249,7 @@ function plugin_example_MassiveActions($type){
 	return array();
 }
 
+// How to display specific actions ?
 function plugin_example_MassiveActionsDisplay($type,$action){
 	global $LANG;
 	switch ($type){
@@ -262,6 +265,7 @@ function plugin_example_MassiveActionsDisplay($type,$action){
 	return "";
 }
 
+// How to process specific actions ?
 function plugin_example_MassiveActionsProcess($data){
 	global $LANG;
 
@@ -283,7 +287,7 @@ function plugin_example_MassiveActionsProcess($data){
 		break;
 	}
 }
-
+// How to display specific update fields ?
 function plugin_example_MassiveActionsFieldsDisplay($type,$table,$field,$linkfield){
 	global $LINK_ID_TABLE;
 	if ($table==$LINK_ID_TABLE[$type]){
