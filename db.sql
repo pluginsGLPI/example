@@ -1,6 +1,7 @@
 CREATE TABLE `glpi_plugin_example` (
   `ID` int(11) NOT NULL auto_increment,
   `name` varchar(255) collate utf8_unicode_ci default NULL,
+  `serial` varchar(255) collate utf8_unicode_ci NOT NULL,
   `FK_dropdown` int(11) NOT NULL default '0',
   `deleted` smallint(6) NOT NULL default '0',
   `is_template` smallint(6) NOT NULL default '0',

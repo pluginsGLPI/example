@@ -94,12 +94,6 @@ function plugin_version_example(){
 	return array( 'name'    => 'Plugin Example',
 			'version' => '0.0.1');
 }
-// Define dropdown relations
-function plugin_example_getDatabaseRelations(){
-	// 
-	return array("glpi_dropdown_plugin_example"=>array("glpi_plugin_example"=>"FK_dropdown"));
-}
-
 
 // Define rights for the plugin types
 function plugin_example_haveTypeRight($type,$right){
@@ -112,6 +106,13 @@ function plugin_example_haveTypeRight($type,$right){
 			break;
 	}
 }
+
+// Define dropdown relations
+function plugin_example_getDatabaseRelations(){
+	// 
+	return array("glpi_dropdown_plugin_example"=>array("glpi_plugin_example"=>"FK_dropdown"));
+}
+
 
 // Define Dropdown tables to be manage in GLPI :
 function plugin_example_getDropdown(){
@@ -138,6 +139,11 @@ function plugin_example_getSearchOption(){
 	$sopt[PLUGIN_EXAMPLE_TYPE][2]['field']='name';
 	$sopt[PLUGIN_EXAMPLE_TYPE][2]['linkfield']='FK_dropdown';
 	$sopt[PLUGIN_EXAMPLE_TYPE][2]['name']='Dropdown';
+
+	$sopt[PLUGIN_EXAMPLE_TYPE][3]['table']='glpi_plugin_example';
+	$sopt[PLUGIN_EXAMPLE_TYPE][3]['field']='serial';
+	$sopt[PLUGIN_EXAMPLE_TYPE][3]['linkfield']='serial';
+	$sopt[PLUGIN_EXAMPLE_TYPE][3]['name']='Serial';
 	
 	return $sopt;
 }
@@ -223,6 +229,91 @@ function plugin_example_addOrderBy($type,$ID,$order,$key=0){
 //	}
 	return "";
 }
+//////////////////////////////
+////// SPECIFIC MODIF MASSIVE FUNCTIONS ///////
+
+function plugin_example_MassiveActions($type){
+	global $LANG;
+	switch ($type){
+		case PLUGIN_EXAMPLE_TYPE:
+			return array(
+				// GLPI core one
+				"add_document"=>$LANG["document"][16],
+				// Specific one
+				"do_nothing"=>'Do Nothing - just for fun'
+				);
+		break;
+	}
+	return array();
+}
+
+function plugin_example_MassiveActionsDisplay($type,$action){
+	global $LANG;
+	switch ($type){
+		case PLUGIN_EXAMPLE_TYPE:
+			switch ($action){
+				// No case for add_document : use GLPI core one
+				case "do_nothing":
+					echo "&nbsp;<input type=\"submit\" name=\"massiveaction\" class=\"submit\" value=\"".$LANG["buttons"][2]."\" >&nbsp;but do nothing :)";
+				break;
+			}
+		break;
+	}
+	return "";
+}
+
+function plugin_example_MassiveActionsProcess($data){
+	global $LANG;
+
+	switch ($data['action']){
+		case 'do_nothing':
+			if ($data['device_type']==PLUGIN_EXAMPLE_TYPE){
+				print_r($data);
+				$ci =new CommonItem();
+				$_SESSION["MESSAGE_AFTER_REDIRECT"].= "Right it is the type I want...<br>";
+				$_SESSION["MESSAGE_AFTER_REDIRECT"].= "But... I say I will do nothing for :<br>";
+				foreach ($data['item'] as $key => $val){
+					if ($val==1) {
+						if ($ci->getFromDB($data["device_type"],$key)){
+							$_SESSION["MESSAGE_AFTER_REDIRECT"].= "- ".$ci->getField("name")."<br>";
+						}
+					}
+				}
+			}
+		break;
+	}
+}
+
+function plugin_example_MassiveActionsFieldsDisplay($type,$table,$field,$linkfield){
+	global $LINK_ID_TABLE;
+	if ($table==$LINK_ID_TABLE[$type]){
+		// Table fields
+		switch ($table.".".$field){
+			case 'glpi_plugin_example.serial':
+				echo "Not really specific - Just for example&nbsp;";
+				autocompletionTextField($linkfield,$table,$field);
+				// dropdownYesNo($linkfield);
+				// Need to return true if specific display
+				return true;
+			break;
+		}
+
+	} else {
+		// Linked Fields
+		switch ($table.".".$field){
+			case "glpi_dropdown_plugin_example.name" :
+				echo "Not really specific - Just for example&nbsp;";
+				dropdown($table,$linkfield,1,$_SESSION["glpiactive_entity"]);
+				//dropdownUsers($linkfield,0,"own_ticket",0,1,$_SESSION["glpiactive_entity"]);
+ 				// Need to return true if specific display
+				return true;
+				break;
+		}
+	}
+	// Need to return false on non display item
+	return false;
+}
+
 //////////////////////////////
 
 // Hook done on update item case
