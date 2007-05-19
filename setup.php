@@ -76,9 +76,17 @@ function plugin_init_example() {
 	$PLUGIN_HOOKS['add_javascript']['example']="example.js";
 	$PLUGIN_HOOKS['add_css']['example']="example.css";
 
-	// Params : plugin name - string type - number - tabke - form page
-	pluginNewType('example',"PLUGIN_EXAMPLE_TYPE",1001,"glpi_plugin_example","example.form.php");
+	// Params : plugin name - string type - ID - class - table - form page
+	pluginNewType('example',"PLUGIN_EXAMPLE_TYPE",1001,"pluginExample","glpi_plugin_example","example.form.php");
+
 }
+
+class pluginExample extends CommonDBTM {
+	function pluginExample () {
+		$this->table="glpi_plugin_example";
+		$this->type=PLUGIN_EXAMPLE_TYPE;
+	}
+};
 
 
 // Get the name and the version of the plugin - Needed
@@ -395,4 +403,6 @@ function plugin_central_action_example(){
 function cron_plugin_example(){
 	echo "tttt";
 }
+
+
 ?>
