@@ -78,7 +78,6 @@ function plugin_init_example() {
 
 	// Params : plugin name - string type - number - tabke - form page
 	pluginNewType('example',"PLUGIN_EXAMPLE_TYPE",1001,"glpi_plugin_example","example.form.php");
-
 }
 
 
@@ -91,6 +90,19 @@ function plugin_version_example(){
 function plugin_example_getDatabaseRelations(){
 	// 
 	return array("glpi_dropdown_plugin_example"=>array("glpi_plugin_example"=>"FK_dropdown"));
+}
+
+
+// Define rights for the plugin types
+function plugin_example_haveTypeRight($type,$right){
+	switch ($type){
+		case PLUGIN_EXAMPLE_TYPE :
+			// 1 - All rights for all users
+			// return true;
+			// 2 - Similarity right : same right of computer
+			return haveRight("computer",$right);
+			break;
+	}
 }
 
 // Define Dropdown tables to be manage in GLPI :
