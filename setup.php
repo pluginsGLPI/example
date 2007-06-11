@@ -391,7 +391,7 @@ function plugin_item_restore_example($parm){
 }
 
 // Parm contains begin, end and who
-// Create data to be displayed in the planning of $parm["who"] between $parm["begin"] and $parm["end"] 
+// Create data to be displayed in the planning of $parm["who"] or $parm["who_group"] between $parm["begin"] and $parm["end"] 
 function plugin_planning_populate_example($parm){
 
 	// Add items in the items fields of the parm array
