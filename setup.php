@@ -56,7 +56,7 @@ function plugin_init_example() {
 	// Display on central page
 	$PLUGIN_HOOKS['central_action']['example'] = 'plugin_central_action_example';
 
-	// Item action event // See config.php for defined ITEM_TYPE
+	// Item action event // See define.php for defined ITEM_TYPE
 	$PLUGIN_HOOKS['item_update']['example'] = 'plugin_item_update_example';
 	$PLUGIN_HOOKS['item_add']['example'] = 'plugin_item_add_example';
 	$PLUGIN_HOOKS['item_delete']['example'] = 'plugin_item_delete_example';
