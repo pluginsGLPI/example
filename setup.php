@@ -50,6 +50,14 @@ function plugin_init_example() {
 	// Config page
 	$PLUGIN_HOOKS['config_page']['example'] = 'config.php';
 
+	// Init session
+	//$PLUGIN_HOOKS['init_session']['example'] = 'plugin_init_session_example';
+	// Change profile
+	//$PLUGIN_HOOKS['change_profile']['example'] = 'plugin_change_profile_example';
+	// Change entity
+	//$PLUGIN_HOOKS['change_entity']['example'] = 'plugin_change_entity_example';
+	
+
 	// Onglets management
 	$PLUGIN_HOOKS['headings']['example'] = 'plugin_get_headings_example';
 	$PLUGIN_HOOKS['headings_action']['example'] = 'plugin_headings_actions_example';
@@ -57,11 +65,22 @@ function plugin_init_example() {
 	$PLUGIN_HOOKS['central_action']['example'] = 'plugin_central_action_example';
 
 	// Item action event // See define.php for defined ITEM_TYPE
+	$PLUGIN_HOOKS['pre_item_update']['example'] = 'plugin_pre_item_update_example';
 	$PLUGIN_HOOKS['item_update']['example'] = 'plugin_item_update_example';
+	
+	$PLUGIN_HOOKS['pre_item_add']['example'] = 'plugin_pre_item_add_example';
 	$PLUGIN_HOOKS['item_add']['example'] = 'plugin_item_add_example';
+	
+	$PLUGIN_HOOKS['pre_item_delete']['example'] = 'plugin_pre_item_delete_example';
 	$PLUGIN_HOOKS['item_delete']['example'] = 'plugin_item_delete_example';
+	
+	$PLUGIN_HOOKS['pre_item_purge']['example'] = 'plugin_pre_item_purge_example';
 	$PLUGIN_HOOKS['item_purge']['example'] = 'plugin_item_purge_example';
+	
+	$PLUGIN_HOOKS['pre_item_restore']['example'] = 'plugin_pre_item_restore_example';
 	$PLUGIN_HOOKS['item_restore']['example'] = 'plugin_item_restore_example';
+	
+	$PLUGIN_HOOKS['item_transfer']['example'] = 'plugin_item_transfer_example';
 
 	// Cron action
 	$PLUGIN_HOOKS['cron']['example'] = DAY_TIMESTAMP;
@@ -76,6 +95,13 @@ function plugin_init_example() {
 	$PLUGIN_HOOKS['add_javascript']['example']="example.js";
 	$PLUGIN_HOOKS['add_css']['example']="example.css";
 
+	// Retrieve others datas from LDAP
+	//$PLUGIN_HOOKS['retrieve_more_data_from_ldap']['example']="plugin_retrieve_more_data_from_ldap_example";
+	
+	// Reports
+	$PLUGIN_HOOKS['reports']['example'] = array('report.php'=>'New Report', 'report.php?other'=>'New Report 2',);
+	
+	
 	// Params : plugin name - string type - ID - class - table - form page
 	pluginNewType('example',"PLUGIN_EXAMPLE_TYPE",1001,"pluginExample","glpi_plugin_example","example.form.php");
 
@@ -320,6 +346,20 @@ function plugin_example_MassiveActionsFieldsDisplay($type,$table,$field,$linkfie
 
 //////////////////////////////
 
+// Hook done on before update item case
+function plugin_pre_item_update_example($input){
+	if (isset($input["_item_type_"]))
+		switch ($input["_item_type_"]){
+			case COMPUTER_TYPE :
+				// Manipulate data if needed 
+				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
+				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Pre Update Computer Hook";
+				break;
+		}
+	return $input;
+}
+
+
 // Hook done on update item case
 function plugin_item_update_example($parm){
 
@@ -332,6 +372,19 @@ function plugin_item_update_example($parm){
 				break;
 		}
 	return false;
+}
+
+// Hook done on before add item case
+function plugin_pre_item_add_example($input){
+	if (isset($input["_item_type_"]))
+		switch ($input["_item_type_"]){
+			case COMPUTER_TYPE :
+				// Manipulate data if needed 
+				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
+				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Pre Add Computer Hook";
+				break;
+		}
+	return $input;
 }
 
 // Hook done on add item case
@@ -348,6 +401,18 @@ function plugin_item_add_example($parm){
 	return false;
 }
 
+// Hook done on before delete item case
+function plugin_pre_item_delete_example($input){
+	if (isset($input["_item_type_"]))
+		switch ($input["_item_type_"]){
+			case COMPUTER_TYPE :
+				// Manipulate data if needed 
+				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
+				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Pre Delete Computer Hook";
+				break;
+		}
+	return $input;
+}
 // Hook done on delete item case
 function plugin_item_delete_example($parm){
 
@@ -362,6 +427,18 @@ function plugin_item_delete_example($parm){
 	return false;
 }
 
+// Hook done on before purge item case
+function plugin_pre_item_purge_example($input){
+	if (isset($input["_item_type_"]))
+		switch ($input["_item_type_"]){
+			case COMPUTER_TYPE :
+				// Manipulate data if needed 
+				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
+				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Pre Purge Computer Hook";
+				break;
+		}
+	return $input;
+}
 // Hook done on purge item case
 function plugin_item_purge_example($parm){
 
@@ -376,6 +453,18 @@ function plugin_item_purge_example($parm){
 	return false;
 }
 
+// Hook done on before restore item case
+function plugin_pre_item_restore_example($input){
+	if (isset($input["_item_type_"]))
+		switch ($input["_item_type_"]){
+			case COMPUTER_TYPE :
+				// Manipulate data if needed 
+				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
+				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Pre Restore Computer Hook";
+				break;
+		}
+	return $input;
+}
 // Hook done on restore item case
 function plugin_item_restore_example($parm){
 
@@ -387,6 +476,14 @@ function plugin_item_restore_example($parm){
 				return true;
 				break;
 		}
+	return false;
+}
+
+// Hook done on restore item case
+function plugin_item_transfer_example($parm){
+	
+	$_SESSION["MESSAGE_AFTER_REDIRECT"].="Transfer Computer Hook ".$parm['type']." ".$parm['ID']." -> ".$parm['newID'];
+	
 	return false;
 }
 
