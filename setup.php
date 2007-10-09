@@ -151,7 +151,7 @@ function plugin_example_getDropdown(){
 
 // Define search option for types of the plugins
 function plugin_example_getSearchOption(){
-	global $LANGEXAMPLE;
+	global $LANGEXAMPLE,$LANG;
 	$sopt=array();
 
 	// Part header
@@ -171,6 +171,11 @@ function plugin_example_getSearchOption(){
 	$sopt[PLUGIN_EXAMPLE_TYPE][3]['field']='serial';
 	$sopt[PLUGIN_EXAMPLE_TYPE][3]['linkfield']='serial';
 	$sopt[PLUGIN_EXAMPLE_TYPE][3]['name']='Serial';
+	
+	$sopt[PLUGIN_EXAMPLE_TYPE][30]['table']='glpi_plugin_example';
+	$sopt[PLUGIN_EXAMPLE_TYPE][30]['field']='ID';
+	$sopt[PLUGIN_EXAMPLE_TYPE][30]['linkfield']='ID';
+	$sopt[PLUGIN_EXAMPLE_TYPE][30]['name']=$LANG["common"][2];
 	
 	return $sopt;
 }
