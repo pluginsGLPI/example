@@ -84,10 +84,13 @@ function plugin_init_example() {
 
 	// Cron action
 	$PLUGIN_HOOKS['cron']['example'] = DAY_TIMESTAMP;
+
 	//redirect appel http://localhost/glpi/index.php?redirect=plugin_example_2 (ID 2 du form)
 	$PLUGIN_HOOKS['redirect_page']['example']="example.form.php";
+
 	//function to populate planning
 	$PLUGIN_HOOKS['planning_populate']['example']="plugin_planning_populate_example";
+
 	//function to populate planning
 	$PLUGIN_HOOKS['display_planning']['example']="plugin_display_planning_example";
 
