@@ -44,6 +44,7 @@ function plugin_init_example() {
 	$PLUGIN_HOOKS['submenu_entry']['example']['add'] = 'example.form.php';
 	$PLUGIN_HOOKS['submenu_entry']['example']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANGEXAMPLE["test"]."' alt='".$LANGEXAMPLE["test"]."'>"] = 'index.php';
 	$PLUGIN_HOOKS['submenu_entry']['example'][$LANGEXAMPLE["test"]] = 'index.php';
+	$PLUGIN_HOOKS['submenu_entry']['example']['config'] = 'index.php';
 
 	$PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
 
