@@ -91,6 +91,9 @@ function plugin_init_example() {
 	//function to populate planning
 	$PLUGIN_HOOKS['display_planning']['example']="plugin_display_planning_example";
 
+	// Massive Action definition
+	$PLUGIN_HOOKS['use_massive_action']['example']=1;
+
 	// Add specific files to add to the header : javascript or css
 	$PLUGIN_HOOKS['add_javascript']['example']="example.js";
 	$PLUGIN_HOOKS['add_css']['example']="example.css";
@@ -268,7 +271,13 @@ function plugin_example_addOrderBy($type,$ID,$order,$key=0){
 function plugin_example_MassiveActions($type){
 	global $LANG;
 	switch ($type){
-		case PLUGIN_EXAMPLE_TYPE:
+		// New action for core type : name = plugin_PLUGINNAME_actionname
+		case COMPUTER_TYPE :
+			return array(
+				"plugin_example_DoIt"=>"plugin_example_DoIt",
+			);
+			break;
+		case PLUGIN_EXAMPLE_TYPE :
 			return array(
 				// GLPI core one
 				"add_document"=>$LANG["document"][16],
@@ -284,6 +293,13 @@ function plugin_example_MassiveActions($type){
 function plugin_example_MassiveActionsDisplay($type,$action){
 	global $LANG;
 	switch ($type){
+		case COMPUTER_TYPE:
+			switch ($action){
+				case "plugin_example_DoIt":
+				echo "&nbsp;<input type=\"submit\" name=\"massiveaction\" class=\"submit\" value=\"".$LANG["buttons"][2]."\" >&nbsp;but do nothing :)";
+				break;
+			}
+			break;
 		case PLUGIN_EXAMPLE_TYPE:
 			switch ($action){
 				// No case for add_document : use GLPI core one
@@ -299,11 +315,25 @@ function plugin_example_MassiveActionsDisplay($type,$action){
 // How to process specific actions ?
 function plugin_example_MassiveActionsProcess($data){
 	global $LANG;
+	if (!isset($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"]="";
 
 	switch ($data['action']){
+		case 'plugin_example_DoIt':
+			if ($data['device_type']==COMPUTER_TYPE){
+				$ci =new CommonItem();
+				$_SESSION["MESSAGE_AFTER_REDIRECT"].= "Right it is the type I want...<br>";
+				$_SESSION["MESSAGE_AFTER_REDIRECT"].= "But... I say I will do nothing for :<br>";
+				foreach ($data['item'] as $key => $val){
+					if ($val==1) {
+						if ($ci->getFromDB($data["device_type"],$key)){
+						$_SESSION["MESSAGE_AFTER_REDIRECT"].= "- ".$ci->getField("name")."<br>";
+						}
+					}
+				}
+			}
+			break;
 		case 'do_nothing':
 			if ($data['device_type']==PLUGIN_EXAMPLE_TYPE){
-				print_r($data);
 				$ci =new CommonItem();
 				$_SESSION["MESSAGE_AFTER_REDIRECT"].= "Right it is the type I want...<br>";
 				$_SESSION["MESSAGE_AFTER_REDIRECT"].= "But... I say I will do nothing for :<br>";
