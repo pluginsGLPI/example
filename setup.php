@@ -181,7 +181,7 @@ function plugin_example_getSearchOption(){
 	
 	$sopt[PLUGIN_EXAMPLE_TYPE][30]['table']='glpi_plugin_example';
 	$sopt[PLUGIN_EXAMPLE_TYPE][30]['field']='ID';
-	$sopt[PLUGIN_EXAMPLE_TYPE][30]['linkfield']='ID';
+	$sopt[PLUGIN_EXAMPLE_TYPE][30]['linkfield']='';
 	$sopt[PLUGIN_EXAMPLE_TYPE][30]['name']=$LANG["common"][2];
 	
 	return $sopt;
