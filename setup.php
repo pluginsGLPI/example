@@ -125,8 +125,11 @@ class pluginExample extends CommonDBTM {
 
 // Get the name and the version of the plugin - Needed
 function plugin_version_example(){
-	return array( 'name'    => 'Plugin Example',
-			'version' => '0.0.1');
+	return array( 
+		'name'    => 'Plugin Example',
+		'minGlpiVersion' => '0.71', // Optional but recommended
+		'maxGlpiVersion' => '0.71', // Optional
+		'version' => '0.0.1');
 }
 
 // Define rights for the plugin types
