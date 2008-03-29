@@ -649,14 +649,14 @@ function plugin_user_preferences_example($parm){
 
 	echo "<form action='Where to post form'>";
 	echo "<table class='tab_cadre' width='100%'>";
-		echo "<tr><th colspan='2'>".$data['name'];
+		echo "<tr><th colspan='3'>".$data['name'];
 		echo " - ".$data['version'];
 		echo "</th></tr>";
 
 		echo "<tr class='tab_bg_1'><td>Name of the pref";
-		echo "</td><td>Input to set the pref</td></tr>";
+		echo "</td><td>Input to set the pref</td>";
 
-		echo "<tr  class='tab_bg_2'><td colspan='2'><input class='submit' type='submit' name='submit' value='submit'></td>";
+		echo "<td><input class='submit' type='submit' name='submit' value='submit'></td>";
 		echo "</tr>";
 
 	echo "</table>";
