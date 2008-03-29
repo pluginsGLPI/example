@@ -95,6 +95,9 @@ function plugin_init_example() {
 	//function to populate planning
 	$PLUGIN_HOOKS['display_planning']['example']="plugin_display_planning_example";
 
+	//function to populate planning
+	$PLUGIN_HOOKS['user_preferences']['example']="plugin_user_preferences_example";
+
 	// Massive Action definition
 	$PLUGIN_HOOKS['use_massive_action']['example']=1;
 
@@ -638,5 +641,26 @@ function cron_plugin_example(){
 	echo "tttt";
 }
 
+// Show user preferences
+function plugin_user_preferences_example($parm){
+	// Complete form display
+
+	$data=plugin_version_example();
+
+	echo "<form action='Where to post form'>";
+	echo "<table class='tab_cadre' width='100%'>";
+		echo "<tr><th colspan='2'>".$data['name'];
+		echo " - ".$data['version'];
+		echo "</th></tr>";
+
+		echo "<tr class='tab_bg_1'><td>Name of the pref";
+		echo "</td><td>Input to set the pref</td></tr>";
+
+		echo "<tr  class='tab_bg_2'><td colspan='2'><input type='submit' name='submit' value='submit'></td>";
+		echo "</tr>";
+
+	echo "</table>";
+	echo "</form>";
+}
 
 ?>
