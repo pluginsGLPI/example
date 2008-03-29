@@ -656,7 +656,7 @@ function plugin_user_preferences_example($parm){
 		echo "<tr class='tab_bg_1'><td>Name of the pref";
 		echo "</td><td>Input to set the pref</td></tr>";
 
-		echo "<tr  class='tab_bg_2'><td colspan='2'><input type='submit' name='submit' value='submit'></td>";
+		echo "<tr  class='tab_bg_2'><td colspan='2'><input class='submit' type='submit' name='submit' value='submit'></td>";
 		echo "</tr>";
 
 	echo "</table>";
