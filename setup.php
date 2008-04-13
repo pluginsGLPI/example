@@ -92,10 +92,10 @@ function plugin_init_example() {
 	//function to populate planning
 	$PLUGIN_HOOKS['planning_populate']['example']="plugin_planning_populate_example";
 
-	//function to populate planning
+	//function to display planning items
 	$PLUGIN_HOOKS['display_planning']['example']="plugin_display_planning_example";
 
-	//function to populate planning
+	//function to populate user preferences
 	$PLUGIN_HOOKS['user_preferences']['example']="plugin_user_preferences_example";
 
 	// Massive Action definition
@@ -661,6 +661,18 @@ function plugin_user_preferences_example($parm){
 
 	echo "</table>";
 	echo "</form>";
+}
+
+// Do special actions for dynamic report
+function plugin_example_dynamicReport($parm){
+	if ($parm["item_type"]==PLUGIN_EXAMPLE_TYPE){
+		// Do all what you want for export depending on $parm 
+		echo "Personalized export for type ".$parm["display_type"];
+		// Return true if personalized display is done
+		return true;
+	}
+	// Return false if no specific display is done, then use standard display
+	return false;
 }
 
 ?>
