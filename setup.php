@@ -668,10 +668,28 @@ function plugin_example_dynamicReport($parm){
 	if ($parm["item_type"]==PLUGIN_EXAMPLE_TYPE){
 		// Do all what you want for export depending on $parm 
 		echo "Personalized export for type ".$parm["display_type"];
+		echo 'with additional datas : <br>';
+		echo "Single data : add1 <br>";
+		print $parm['add1'].'<br>';
+		echo "Array data : add2 <br>";
+		printCleanArray($parm['add2']);
 		// Return true if personalized display is done
 		return true;
 	}
 	// Return false if no specific display is done, then use standard display
+	return false;
+}
+
+// Add parameters to printPager in search system
+function plugin_example_addParamFordynamicReport($device_type){
+	if ($device_type==PLUGIN_EXAMPLE_TYPE){
+		// Return array data containing all params to add : may be single data or array data
+		// Search config are available from session variable
+		return array(
+			'add1' => $_SESSION['glpisearch'][$device_type]['order'],
+			'add2' => array('tutu'=>'Second Add','Other Data'));
+	}
+	// Return false or a non array data if not needed
 	return false;
 }
 
