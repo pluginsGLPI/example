@@ -112,8 +112,8 @@ function plugin_init_example() {
 	$PLUGIN_HOOKS['reports']['example'] = array('report.php'=>'New Report', 'report.php?other'=>'New Report 2',);
 	
 	
-	// Params : plugin name - string type - ID - class - table - form page
-	pluginNewType('example',"PLUGIN_EXAMPLE_TYPE",1001,"pluginExample","glpi_plugin_example","example.form.php");
+	// Params : plugin name - string type - ID - class - table - form page - Type name
+	pluginNewType('example',"PLUGIN_EXAMPLE_TYPE",1001,"pluginExample","glpi_plugin_example","example.form.php","Example Type");
 
 }
 
