@@ -325,18 +325,18 @@ function plugin_example_MassiveActionsDisplay($type,$action){
 // How to process specific actions ?
 function plugin_example_MassiveActionsProcess($data){
 	global $LANG;
-	if (!isset($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"]="";
+
 
 	switch ($data['action']){
 		case 'plugin_example_DoIt':
 			if ($data['device_type']==COMPUTER_TYPE){
 				$ci =new CommonItem();
-				$_SESSION["MESSAGE_AFTER_REDIRECT"].= "Right it is the type I want...<br>";
-				$_SESSION["MESSAGE_AFTER_REDIRECT"].= "But... I say I will do nothing for :<br>";
+				addMessageAfterRedirect("Right it is the type I want...");
+				addMessageAfterRedirect("But... I say I will do nothing for :");
 				foreach ($data['item'] as $key => $val){
 					if ($val==1) {
 						if ($ci->getFromDB($data["device_type"],$key)){
-						$_SESSION["MESSAGE_AFTER_REDIRECT"].= "- ".$ci->getField("name")."<br>";
+						addMessageAfterRedirect("- ".$ci->getField("name"));
 						}
 					}
 				}
@@ -345,12 +345,12 @@ function plugin_example_MassiveActionsProcess($data){
 		case 'do_nothing':
 			if ($data['device_type']==PLUGIN_EXAMPLE_TYPE){
 				$ci =new CommonItem();
-				$_SESSION["MESSAGE_AFTER_REDIRECT"].= "Right it is the type I want...<br>";
-				$_SESSION["MESSAGE_AFTER_REDIRECT"].= "But... I say I will do nothing for :<br>";
+				addMessageAfterRedirect("Right it is the type I want...");
+				addMessageAfterRedirect("But... I say I will do nothing for :");
 				foreach ($data['item'] as $key => $val){
 					if ($val==1) {
 						if ($ci->getFromDB($data["device_type"],$key)){
-							$_SESSION["MESSAGE_AFTER_REDIRECT"].= "- ".$ci->getField("name")."<br>";
+							addMessageAfterRedirect("- ".$ci->getField("name"));
 						}
 					}
 				}
@@ -397,8 +397,7 @@ function plugin_pre_item_update_example($input){
 		switch ($input["_item_type_"]){
 			case COMPUTER_TYPE :
 				// Manipulate data if needed 
-				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
-				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Pre Update Computer Hook";
+				addMessageAfterRedirect("Pre Update Computer Hook",true);
 				break;
 		}
 	return $input;
@@ -411,8 +410,7 @@ function plugin_item_update_example($parm){
 	if (isset($parm["type"]))
 		switch ($parm["type"]){
 			case COMPUTER_TYPE :
-				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
-				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Update Computer Hook";
+				addMessageAfterRedirect("Update Computer Hook",true);
 				return true;
 				break;
 		}
@@ -425,8 +423,7 @@ function plugin_pre_item_add_example($input){
 		switch ($input["_item_type_"]){
 			case COMPUTER_TYPE :
 				// Manipulate data if needed 
-				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
-				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Pre Add Computer Hook";
+				addMessageAfterRedirect("Pre Add Computer Hook",true);
 				break;
 		}
 	return $input;
@@ -438,8 +435,7 @@ function plugin_item_add_example($parm){
 	if (isset($parm["type"]))
 		switch ($parm["type"]){
 			case COMPUTER_TYPE :
-				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
-				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Add Computer Hook";
+				addMessageAfterRedirect("Add Computer Hook",true);
 				return true;
 				break;
 		}
@@ -452,8 +448,7 @@ function plugin_pre_item_delete_example($input){
 		switch ($input["_item_type_"]){
 			case COMPUTER_TYPE :
 				// Manipulate data if needed 
-				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
-				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Pre Delete Computer Hook";
+				addMessageAfterRedirect("Pre Delete Computer Hook",true);
 				break;
 		}
 	return $input;
@@ -464,8 +459,7 @@ function plugin_item_delete_example($parm){
 	if (isset($parm["type"]))
 		switch ($parm["type"]){
 			case COMPUTER_TYPE :
-				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
-				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Delete Computer Hook";
+				addMessageAfterRedirect("Delete Computer Hook",true);
 				return true;
 				break;
 		}
@@ -478,8 +472,7 @@ function plugin_pre_item_purge_example($input){
 		switch ($input["_item_type_"]){
 			case COMPUTER_TYPE :
 				// Manipulate data if needed 
-				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
-				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Pre Purge Computer Hook";
+				addMessageAfterRedirect("Pre Purge Computer Hook",true);
 				break;
 		}
 	return $input;
@@ -490,8 +483,7 @@ function plugin_item_purge_example($parm){
 	if (isset($parm["type"]))
 		switch ($parm["type"]){
 			case COMPUTER_TYPE :
-				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
-				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Purge Computer Hook";
+				addMessageAfterRedirect("Purge Computer Hook",true);
 				return true;
 				break;
 		}
@@ -504,8 +496,7 @@ function plugin_pre_item_restore_example($input){
 		switch ($input["_item_type_"]){
 			case COMPUTER_TYPE :
 				// Manipulate data if needed 
-				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
-				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Pre Restore Computer Hook";
+				addMessageAfterRedirect("Pre Restore Computer Hook");
 				break;
 		}
 	return $input;
@@ -516,8 +507,7 @@ function plugin_item_restore_example($parm){
 	if (isset($parm["type"]))
 		switch ($parm["type"]){
 			case COMPUTER_TYPE :
-				if (!empty($_SESSION["MESSAGE_AFTER_REDIRECT"])) $_SESSION["MESSAGE_AFTER_REDIRECT"].="<br>";
-				$_SESSION["MESSAGE_AFTER_REDIRECT"].="Restore Computer Hook";
+				addMessageAfterRedirect("Restore Computer Hook");
 				return true;
 				break;
 		}
@@ -527,7 +517,7 @@ function plugin_item_restore_example($parm){
 // Hook done on restore item case
 function plugin_item_transfer_example($parm){
 	
-	$_SESSION["MESSAGE_AFTER_REDIRECT"].="Transfer Computer Hook ".$parm['type']." ".$parm['ID']." -> ".$parm['newID'];
+	addMessageAfterRedirect("Transfer Computer Hook ".$parm['type']." ".$parm['ID']." -> ".$parm['newID']);
 	
 	return false;
 }
