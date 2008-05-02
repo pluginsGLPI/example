@@ -221,6 +221,17 @@ function plugin_example_addLeftJoin($type,$ref_table,$new_table,$linkfield){
 }
 
 
+
+function plugin_example_forceGroupBy($type){
+	switch ($type){
+		case PLUGIN_EXAMPLE_TYPE :
+                        // Force add GROUP BY IN REQUEST
+			return true;
+			break;
+	}
+	return false;
+}
+
 function plugin_example_addWhere($link,$nott,$type,$ID,$val){
 	global $SEARCH_OPTION;
 
