@@ -563,10 +563,10 @@ function plugin_display_planning_example($parm){
 		case "from":
 			break;
 		case "begin";
-			echo $LANG["planning"][19]." ".date("H:i",strtotime($parm["begin"])).": ";
+			echo $LANG["buttons"][33]." ".date("H:i",strtotime($parm["begin"])).": ";
 			break;
 		case "end";
-			echo $LANG["planning"][20]." ".date("H:i",strtotime($parm["end"])).": ";
+			echo $LANG["buttons"][32]." ".date("H:i",strtotime($parm["end"])).": ";
 			break;
 	}
 	echo $parm["name"];
