@@ -62,8 +62,6 @@ function plugin_init_example() {
 	// Onglets management
 	$PLUGIN_HOOKS['headings']['example'] = 'plugin_get_headings_example';
 	$PLUGIN_HOOKS['headings_action']['example'] = 'plugin_headings_actions_example';
-	// Display on central page
-	$PLUGIN_HOOKS['central_action']['example'] = 'plugin_central_action_example';
 
 	// Item action event // See define.php for defined ITEM_TYPE
 	$PLUGIN_HOOKS['pre_item_update']['example'] = 'plugin_pre_item_update_example';
@@ -94,9 +92,6 @@ function plugin_init_example() {
 
 	//function to display planning items
 	$PLUGIN_HOOKS['display_planning']['example']="plugin_display_planning_example";
-
-	//function to populate user preferences
-	$PLUGIN_HOOKS['user_preferences']['example']="plugin_user_preferences_example";
 
 	// Massive Action definition
 	$PLUGIN_HOOKS['use_massive_action']['example']=1;
@@ -130,9 +125,9 @@ class pluginExample extends CommonDBTM {
 function plugin_version_example(){
 	return array( 
 		'name'    => 'Plugin Example',
-		'minGlpiVersion' => '0.71', // Optional but recommended
-		'maxGlpiVersion' => '0.71', // Optional
-		'version' => '0.0.1');
+		'minGlpiVersion' => '0.72', // Optional but recommended
+		'maxGlpiVersion' => '0.72', // Optional
+		'version' => '0.0.2');
 }
 
 // Define rights for the plugin types
@@ -592,6 +587,16 @@ function plugin_get_headings_example($type,$withtemplate){
 					2 => "Test PLugin 2",
 				    );
 			break;
+		case "central":
+			return array(
+				1 => "Test PLugin",
+			);
+			break;
+		case "prefs":
+			return array(
+				1 => "Test PLugin",
+			);
+			break;
 
 	}
 	return false;
@@ -614,6 +619,16 @@ function plugin_headings_actions_example($type){
 				    );
 
 			break;
+		case "central" :
+			return array(
+					1 => "plugin_headings_example",
+				    );
+			break;
+		case "prefs" :
+			return array(
+					1 => "plugin_headings_example",
+				    );
+			break;
 
 	}
 	return false;
@@ -621,48 +636,47 @@ function plugin_headings_actions_example($type){
 
 // Example of an action heading
 function plugin_headings_example($type,$ID,$withtemplate=0){
+	global $LANGEXAMPLE;
 	if (!$withtemplate){
 		echo "<div align='center'>";
-		echo "Plugin function with headings TYPE=".$type." ID=".$ID;
+		switch ($type){
+			case "central":
+				echo "Plugin central action ".$LANGEXAMPLE["test"];
+			break;
+			case "prefs":
+				// Complete form display
+			
+				$data=plugin_version_example();
+			
+				echo "<form action='Where to post form'>";
+				echo "<table class='tab_cadre_fixe'>";
+					echo "<tr><th colspan='3'>".$data['name'];
+					echo " - ".$data['version'];
+					echo "</th></tr>";
+			
+					echo "<tr class='tab_bg_1'><td>Name of the pref";
+					echo "</td><td>Input to set the pref</td>";
+			
+					echo "<td><input class='submit' type='submit' name='submit' value='submit'></td>";
+					echo "</tr>";
+			
+				echo "</table>";
+				echo "</form>";
+			break;
+			default :
+				echo "Plugin function with headings TYPE=".$type." ID=".$ID;
+			break;
+		}
 		echo "</div>";
 	}
 }
 
-// Hook to be launch on central
-function plugin_central_action_example(){
-	global $LANGEXAMPLE;
-
-	echo "<div align='center'>";
-	echo "Plugin central action ".$LANGEXAMPLE["test"];
-	echo "</div>";
-}
 
 // Cron function : name= cron_plugin_PLUGINNAME
 function cron_plugin_example(){
 	echo "tttt";
 }
 
-// Show user preferences
-function plugin_user_preferences_example($parm){
-	// Complete form display
-
-	$data=plugin_version_example();
-
-	echo "<form action='Where to post form'>";
-	echo "<table class='tab_cadre' width='100%'>";
-		echo "<tr><th colspan='3'>".$data['name'];
-		echo " - ".$data['version'];
-		echo "</th></tr>";
-
-		echo "<tr class='tab_bg_1'><td>Name of the pref";
-		echo "</td><td>Input to set the pref</td>";
-
-		echo "<td><input class='submit' type='submit' name='submit' value='submit'></td>";
-		echo "</tr>";
-
-	echo "</table>";
-	echo "</form>";
-}
 
 // Do special actions for dynamic report
 function plugin_example_dynamicReport($parm){
