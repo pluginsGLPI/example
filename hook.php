@@ -41,18 +41,6 @@ class pluginExample extends CommonDBTM {
 };
 
 
-// Define rights for the plugin types
-function plugin_example_haveTypeRight($type,$right){
-	switch ($type){
-		case PLUGIN_EXAMPLE_TYPE :
-			// 1 - All rights for all users
-			// return true;
-			// 2 - Similarity right : same right of computer
-			return haveRight("computer",$right);
-			break;
-	}
-}
-
 // Define dropdown relations
 function plugin_example_getDatabaseRelations(){
 	// 
@@ -70,7 +58,7 @@ function plugin_example_getDropdown(){
 
 // Define search option for types of the plugins
 function plugin_example_getSearchOption(){
-	global $LANGEXAMPLE,$LANG;
+	global $LANG;
 	$sopt=array();
 
 	// Part header
@@ -79,7 +67,7 @@ function plugin_example_getSearchOption(){
 	$sopt[PLUGIN_EXAMPLE_TYPE][1]['table']='glpi_plugin_example';
 	$sopt[PLUGIN_EXAMPLE_TYPE][1]['field']='name';
 	$sopt[PLUGIN_EXAMPLE_TYPE][1]['linkfield']='name';
-	$sopt[PLUGIN_EXAMPLE_TYPE][1]['name']=$LANGEXAMPLE["name"];
+	$sopt[PLUGIN_EXAMPLE_TYPE][1]['name']=$LANG['plugin_example']["name"];
 
 	$sopt[PLUGIN_EXAMPLE_TYPE][2]['table']='glpi_dropdown_plugin_example';
 	$sopt[PLUGIN_EXAMPLE_TYPE][2]['field']='name';
@@ -547,12 +535,12 @@ function plugin_headings_actions_example($type){
 
 // Example of an action heading
 function plugin_headings_example($type,$ID,$withtemplate=0){
-	global $LANGEXAMPLE;
+	global $LANG;
 	if (!$withtemplate){
 		echo "<div align='center'>";
 		switch ($type){
 			case "central":
-				echo "Plugin central action ".$LANGEXAMPLE["test"];
+				echo "Plugin central action ".$LANG['plugin_example']["test"];
 			break;
 			case "prefs":
 				// Complete form display

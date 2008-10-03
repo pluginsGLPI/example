@@ -34,6 +34,6 @@
 // ----------------------------------------------------------------------
 
 
-$LANGEXAMPLE["test"]="test french";
-$LANGEXAMPLE["name"]="Nom";
+$LANG['plugin_example']["test"]="test french";
+$LANG['plugin_example']["name"]="Nom";
 ?>

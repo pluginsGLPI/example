@@ -34,13 +34,13 @@
 
 // Init the hooks of the plugins -Needed
 function plugin_init_example() {
-	global $PLUGIN_HOOKS,$LANGEXAMPLE,$LANG,$CFG_GLPI;
+	global $PLUGIN_HOOKS,$LANG,$CFG_GLPI;
 
 	// Display a menu entry ?
 	$PLUGIN_HOOKS['menu_entry']['example'] = true;
 	$PLUGIN_HOOKS['submenu_entry']['example']['add'] = 'example.form.php';
-	$PLUGIN_HOOKS['submenu_entry']['example']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANGEXAMPLE["test"]."' alt='".$LANGEXAMPLE["test"]."'>"] = 'index.php';
-	$PLUGIN_HOOKS['submenu_entry']['example'][$LANGEXAMPLE["test"]] = 'index.php';
+	$PLUGIN_HOOKS['submenu_entry']['example']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANG['plugin_example']["test"]."' alt='".$LANG['plugin_example']["test"]."'>"] = 'index.php';
+	$PLUGIN_HOOKS['submenu_entry']['example'][$LANG['plugin_example']["test"]] = 'index.php';
 	$PLUGIN_HOOKS['submenu_entry']['example']['config'] = 'index.php';
 
 	$PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
@@ -194,6 +194,17 @@ function plugin_example_check_config(){
 	return true;
 }
 
+// Define rights for the plugin types
+function plugin_example_haveTypeRight($type,$right){
+	switch ($type){
+		case PLUGIN_EXAMPLE_TYPE :
+			// 1 - All rights for all users
+			// return true;
+			// 2 - Similarity right : same right of computer
+			return haveRight("computer",$right);
+			break;
+	}
+}
 
 
 ?>

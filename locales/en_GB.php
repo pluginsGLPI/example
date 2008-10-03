@@ -33,6 +33,6 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
-$LANGEXAMPLE["test"]="test english";
-$LANGEXAMPLE["name"]="Name";
+$LANG['plugin_example']["test"]="test english";
+$LANG['plugin_example']["name"]="Name";
 ?>
