@@ -116,7 +116,9 @@ function plugin_version_example(){
 		'name'    => 'Plugin Example',
 		'version' => '0.1.0',
 		'author' => 'Julien Dombre',
-		'homepage'=> 'http://glpi-project.org');
+		'homepage'=> 'http://glpi-project.org',
+		'minGlpiVersion' => '0.72',// For compatibility / no install in version < 0.72
+	);
 }
 
 // Install process for plugin : need to return true if succeeded
