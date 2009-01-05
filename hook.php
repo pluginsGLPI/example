@@ -149,6 +149,7 @@ function plugin_example_addWhere($link,$nott,$type,$ID,$val){
 	return "";
 }
 
+// This is not a real example because the use of Having condition in this case is not suitable
 function plugin_example_addHaving($link,$nott,$type,$ID,$val,$num){
 	global $SEARCH_OPTION;
 
