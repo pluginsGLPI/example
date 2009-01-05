@@ -78,6 +78,7 @@ function plugin_example_getSearchOption(){
 	$sopt[PLUGIN_EXAMPLE_TYPE][3]['field']='serial';
 	$sopt[PLUGIN_EXAMPLE_TYPE][3]['linkfield']='serial';
 	$sopt[PLUGIN_EXAMPLE_TYPE][3]['name']='Serial';
+	$sopt[PLUGIN_EXAMPLE_TYPE][3]['usehaving']=true;
 	
 	$sopt[PLUGIN_EXAMPLE_TYPE][30]['table']='glpi_plugin_example';
 	$sopt[PLUGIN_EXAMPLE_TYPE][30]['field']='ID';
@@ -145,6 +146,31 @@ function plugin_example_addWhere($link,$nott,$type,$ID,$val){
 //			return $link." ($table.$field $SEARCH ".$ADD." ) ";
 //			break;
 //	}
+	return "";
+}
+
+function plugin_example_addHaving($link,$nott,$type,$ID,$val,$num){
+	global $SEARCH_OPTION;
+
+	$table=$SEARCH_OPTION[$type][$ID]["table"];
+	$field=$SEARCH_OPTION[$type][$ID]["field"];
+	
+	$SEARCH=makeTextSearch($val,$nott);
+
+	// Example of standard Having clause but use it ONLY for specific Having
+	// No need of the function if you do not have specific cases
+	switch ($table.".".$field){
+		case "glpi_plugin_example.serial" :
+			$ADD="";	
+			if (($nott&&$val!="NULL")||$val=='^$') {
+				$ADD=" OR ITEM_$num IS NULL";
+			}
+			
+			return " $LINK ( ITEM_".$num.$SEARCH." $ADD ) ";
+			break;
+	}
+
+
 	return "";
 }
 
