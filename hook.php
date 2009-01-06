@@ -89,10 +89,13 @@ function plugin_example_getSearchOption(){
 	return $sopt;
 }
 
-function plugin_example_giveItem($type,$field,$data,$num,$linkfield=""){
-	global $CFG_GLPI, $INFOFORM_PAGES;
+function plugin_example_giveItem($type,$ID,$data,$num){
+	global $CFG_GLPI, $INFOFORM_PAGES,$SEARCH_OPTION;
 
-	switch ($field){
+	$table=$SEARCH_OPTION[$type][$ID]["table"];
+	$field=$SEARCH_OPTION[$type][$ID]["field"];
+
+	switch ($table.'.'.$field){
 		case "glpi_plugin_example.name" :
 			$out= "<a href=\"".$CFG_GLPI["root_doc"]."/".$INFOFORM_PAGES[$type]."?ID=".$data['ID']."\">";
 			$out.= $data["ITEM_$num"];
