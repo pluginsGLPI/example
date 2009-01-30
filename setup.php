@@ -37,79 +37,60 @@
 function plugin_init_example() {
 	global $PLUGIN_HOOKS,$LANG,$CFG_GLPI;
 
+	$plugin_name = "example";
+
 	// Display a menu entry ?
-	$PLUGIN_HOOKS['menu_entry']['example'] = true;
-	$PLUGIN_HOOKS['submenu_entry']['example']['add'] = 'example.form.php';
-	$PLUGIN_HOOKS['submenu_entry']['example']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANG['plugin_example']["test"]."' alt='".$LANG['plugin_example']["test"]."'>"] = 'index.php';
-	$PLUGIN_HOOKS['submenu_entry']['example'][$LANG['plugin_example']["test"]] = 'index.php';
-	$PLUGIN_HOOKS['submenu_entry']['example']['config'] = 'index.php';
-
-	$PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
-
-	// Config page
-	$PLUGIN_HOOKS['config_page']['example'] = 'config.php';
-
-	// Init session
-	//$PLUGIN_HOOKS['init_session']['example'] = 'plugin_init_session_example';
-	// Change profile
-	//$PLUGIN_HOOKS['change_profile']['example'] = 'plugin_change_profile_example';
-	// Change entity
-	//$PLUGIN_HOOKS['change_entity']['example'] = 'plugin_change_entity_example';
-	
+	$submenu_entries["add"]="example.form.php";
+	$submenu_entries["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANG['plugin_example']["test"]."'" .
+									" alt='".$LANG['plugin_example']["test"]."'>"]="index.php";
+	$submenu_entries[$LANG['plugin_example']["test"]]="index.php";
+	$submenu_entries["config"]="index.php";								
+							
+	pluginEnableMenuEntry($plugin_name,$submenu_entries);
 
 	// Onglets management
-	$PLUGIN_HOOKS['headings']['example'] = 'plugin_get_headings_example';
-	$PLUGIN_HOOKS['headings_action']['example'] = 'plugin_headings_actions_example';
+	pluginEnableHeadings($plugin_name);
 
 	// Item action event // See define.php for defined ITEM_TYPE
-	$PLUGIN_HOOKS['pre_item_update']['example'] = 'plugin_pre_item_update_example';
-	$PLUGIN_HOOKS['item_update']['example'] = 'plugin_item_update_example';
+	$hooks = array ('pre_item_update',
+					'item_update',
+					'item_update',
+					'item_add',
+					'pre_item_delete',
+					'item_delete',
+					'pre_item_purge',
+					'item_purge',
+					'pre_item_restore',
+					'item_restore',
+					'item_transfer');
+					
+	pluginEnableHooks($plugin_name,$hooks);	
 	
-	$PLUGIN_HOOKS['pre_item_add']['example'] = 'plugin_pre_item_add_example';
-	$PLUGIN_HOOKS['item_add']['example'] = 'plugin_item_add_example';
+	pluginEnableMassiveActions($plugin_name);
 	
-	$PLUGIN_HOOKS['pre_item_delete']['example'] = 'plugin_pre_item_delete_example';
-	$PLUGIN_HOOKS['item_delete']['example'] = 'plugin_item_delete_example';
-	
-	$PLUGIN_HOOKS['pre_item_purge']['example'] = 'plugin_pre_item_purge_example';
-	$PLUGIN_HOOKS['item_purge']['example'] = 'plugin_item_purge_example';
-	
-	$PLUGIN_HOOKS['pre_item_restore']['example'] = 'plugin_pre_item_restore_example';
-	$PLUGIN_HOOKS['item_restore']['example'] = 'plugin_item_restore_example';
-	
-	$PLUGIN_HOOKS['item_transfer']['example'] = 'plugin_item_transfer_example';
-
 	// Cron action
-	$PLUGIN_HOOKS['cron']['example'] = DAY_TIMESTAMP;
+	pluginAddCronTask($plugin_name,DAY_TIMESTAMP);
 
 	//redirect appel http://localhost/glpi/index.php?redirect=plugin_example_2 (ID 2 du form)
-	$PLUGIN_HOOKS['redirect_page']['example']="example.form.php";
+	pluginAddRedirectPage($plugin_name,"example.form.php");
 
-	//function to populate planning
-	$PLUGIN_HOOKS['planning_populate']['example']="plugin_planning_populate_example";
-
-	//function to display planning items
-	$PLUGIN_HOOKS['display_planning']['example']="plugin_display_planning_example";
-
-	// Massive Action definition
-	$PLUGIN_HOOKS['use_massive_action']['example']=1;
-
+	//function to populate & display planning
+	pluginUsePlanning($plugin_name,array('planning_populate','display_planning'));
+	
 	// Add specific files to add to the header : javascript or css
-	$PLUGIN_HOOKS['add_javascript']['example']="example.js";
-	$PLUGIN_HOOKS['add_css']['example']="example.css";
+	pluginAddJavascriptPage($plugin_name,"example.js");
+	pluginAddSpecificCss($plugin_name,"example.css");
 
 	// Retrieve others datas from LDAP
 	//$PLUGIN_HOOKS['retrieve_more_data_from_ldap']['example']="plugin_retrieve_more_data_from_ldap_example";
-	
-	// Reports
-	$PLUGIN_HOOKS['reports']['example'] = array('report.php'=>'New Report', 'report.php?other'=>'New Report 2',);
-	
-	// Stats
-	$PLUGIN_HOOKS['stats']['example'] = array('stat.php'=>'New stat', 'stat.php?other'=>'New stats 2',);
+
+	// Reports & stats
+	$params["reports"] = array('report.php'=>'New Report', 'report.php?other'=>'New Report 2',);
+	$params["stats"] = array('stat.php'=>'New stat', 'stat.php?other'=>'New stats 2',);
+	pluginAddStatsOrReports($plugin_name,$params);
 	
 	// Params : plugin name - string type - ID - class - table - form page - Type name
 	pluginNewType('example',"PLUGIN_EXAMPLE_TYPE",1001,"pluginExample","glpi_plugin_example","example.form.php","Example Type");
-
 }
 
 
