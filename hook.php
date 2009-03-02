@@ -466,7 +466,7 @@ function plugin_planning_populate_example($parm){
 	// Items need to have an unique index beginning by the begin date of the item to display
 	// needed to be correcly displayed
 
-	list($date,$time)=split(" ",$parm["begin"]);
+	list($date,$time)=explode(" ",$parm["begin"]);
 	$end=$date." 13:33:00";
 
 	$parm["items"][$parm["begin"]."$$$"."plugin_example1"]["plugin"]="example";
