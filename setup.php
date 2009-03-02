@@ -108,7 +108,17 @@ function plugin_init_example() {
 	$PLUGIN_HOOKS['stats']['example'] = array('stat.php'=>'New stat', 'stat.php?other'=>'New stats 2',);
 	
 	// Params : plugin name - string type - ID - class - table - form page - Type name
-	pluginNewType('example',"PLUGIN_EXAMPLE_TYPE",1001,"pluginExample","glpi_plugin_example","example.form.php","Example Type");
+	registerPluginType('example', 'PLUGIN_EXAMPLE_TYPE', 1001, array(
+		'classname'  => 'pluginExample',
+		'tablename'  => 'glpi_plugin_example',
+		'formpage'   => 'example.form.php',
+		'searchpage' => 'index.php',
+		'typename'   => 'Example Type',
+		'deleted_tables' => false,
+		'template_tables' => false,
+		'specif_entities_tables' => false,
+		'recursive_type' => false
+		));
 
 }
 

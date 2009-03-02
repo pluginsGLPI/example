@@ -43,7 +43,6 @@ if ($_SESSION["glpiactiveprofile"]["interface"] == "central"){
 } else {
 	helpHeader("TITRE", $_SERVER['PHP_SELF']);
 }
-$_GET['target']=$_SERVER['PHP_SELF'];
 
 checkTypeRight(PLUGIN_EXAMPLE_TYPE,"r");
 
