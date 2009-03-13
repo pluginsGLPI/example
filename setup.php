@@ -204,7 +204,7 @@ function plugin_example_check_prerequisites(){
 }
 
 
-// Uninstall process for plugin : need to return true if succeeded : may display messages or add to message after redirect
+// Check configuration process for plugin : need to return true if succeeded
 function plugin_example_check_config(){
 	return true;
 }
