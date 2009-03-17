@@ -205,8 +205,17 @@ function plugin_example_check_prerequisites(){
 
 
 // Check configuration process for plugin : need to return true if succeeded
-function plugin_example_check_config(){
-	return true;
+// Can display a message only if failure and $verbose is true
+function plugin_example_check_config($verbose=false){
+	global $LANG;
+
+	if (true) { // Your configuration check
+		return true;
+	}
+	if ($verbose) {
+		echo $LANG['plugins'][2];
+	}
+	return false;
 }
 
 // Define rights for the plugin types
