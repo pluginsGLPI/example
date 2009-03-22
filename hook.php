@@ -41,6 +41,23 @@ class pluginExample extends CommonDBTM {
 	}
 };
 
+// Hook called on profile change 
+// Good place to evaluate the user right on this plugin
+// And to save it in the session
+function plugin_change_profile_example() {
+
+	// For example : same right of computer
+	if (haveRight('computer','w')) {
+		$_SESSION["glpi_plugin_example_profile"]=array('example'=>'w');		
+
+	} else if (haveRight('computer','r')) {
+		$_SESSION["glpi_plugin_example_profile"]=array('example'=>'r');		
+
+	} else {
+		unset($_SESSION["glpi_plugin_example_profile"]);		
+	}
+		
+}
 
 // Define dropdown relations
 function plugin_example_getDatabaseRelations(){
@@ -636,6 +653,65 @@ function plugin_example_addParamFordynamicReport($device_type){
 	}
 	// Return false or a non array data if not needed
 	return false;
+}
+
+// Install process for plugin : need to return true if succeeded
+function plugin_example_install(){
+	global $DB;
+	if (!TableExists("glpi_plugin_example")){
+		$query="CREATE TABLE `glpi_plugin_example` (
+			`ID` int(11) NOT NULL auto_increment,
+			`name` varchar(255) collate utf8_unicode_ci default NULL,
+			`serial` varchar(255) collate utf8_unicode_ci NOT NULL,
+			`FK_dropdown` int(11) NOT NULL default '0',
+			`deleted` smallint(6) NOT NULL default '0',
+			`is_template` smallint(6) NOT NULL default '0',
+			`tplname` varchar(255) collate utf8_unicode_ci default NULL,
+			PRIMARY KEY  (`ID`)
+			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+			";
+		$DB->query($query) or die("error creating glpi_plugin_example ". $DB->error());
+		$query="INSERT INTO `glpi_plugin_example` (`ID`, `name`, `serial`, `FK_dropdown`, `deleted`, `is_template`, `tplname`) VALUES
+			(1, 'example 1', 'serial 1', 1, 0, 0, NULL),
+			(2, 'example 2', 'serial 2', 2, 0, 0, NULL),
+			(3, 'example 3', 'serial 3', 1, 0, 0, NULL);";
+		$DB->query($query) or die("error populate glpi_plugin_example ". $DB->error());
+
+	}
+	if (!TableExists("glpi_dropdown_plugin_example")){
+
+		$query="CREATE TABLE `glpi_dropdown_plugin_example` (
+			`ID` int(11) NOT NULL auto_increment,
+			`name` varchar(255) collate utf8_unicode_ci default NULL,
+			`comments` text collate utf8_unicode_ci,
+			PRIMARY KEY  (`ID`),
+			KEY `name` (`name`)
+			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
+
+		$DB->query($query) or die("error creating glpi_dropdown_plugin_example". $DB->error());
+		$query="INSERT INTO `glpi_dropdown_plugin_example` (`ID`, `name`, `comments`) VALUES
+			(1, 'dp 1', 'comment 1'),
+			(2, 'dp2', 'comment 2');";
+		$DB->query($query) or die("error populate glpi_dropdown_plugin_example". $DB->error());
+
+	}
+	return true;
+}
+
+// Uninstall process for plugin : need to return true if succeeded
+function plugin_example_uninstall(){
+	global $DB;
+
+	if (TableExists("glpi_plugin_example")){
+		$query="DROP TABLE `glpi_plugin_example`;";
+		$DB->query($query) or die("error creating glpi_plugin_example");
+	}
+	if (TableExists("glpi_dropdown_plugin_example")){
+
+		$query="DROP TABLE `glpi_dropdown_plugin_example`;";
+		$DB->query($query) or die("error creating glpi_dropdown_plugin_example");
+	}
+	return true;
 }
 
 

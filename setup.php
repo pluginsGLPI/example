@@ -37,22 +37,39 @@
 function plugin_init_example() {
 	global $PLUGIN_HOOKS,$LANG,$CFG_GLPI;
 
-	// Display a menu entry ?
-	$PLUGIN_HOOKS['menu_entry']['example'] = true;
-	$PLUGIN_HOOKS['submenu_entry']['example']['add'] = 'example.form.php';
-	$PLUGIN_HOOKS['submenu_entry']['example']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANG['plugin_example']["test"]."' alt='".$LANG['plugin_example']["test"]."'>"] = 'index.php';
-	$PLUGIN_HOOKS['submenu_entry']['example'][$LANG['plugin_example']["test"]] = 'index.php';
-	$PLUGIN_HOOKS['submenu_entry']['example']['config'] = 'index.php';
+	// Params : plugin name - string type - ID - Array of attributes
+	registerPluginType('example', 'PLUGIN_EXAMPLE_TYPE', 1001, array(
+		'classname'  => 'pluginExample',
+		'tablename'  => 'glpi_plugin_example',
+		'formpage'   => 'example.form.php',
+		'searchpage' => 'index.php',
+		'typename'   => 'Example Type',
+		'deleted_tables' => false,
+		'template_tables' => false,
+		'specif_entities_tables' => false,
+		'recursive_type' => false
+		));
 
-	$PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
+	// Display a menu entry ?
+	if (plugin_example_haveTypeRight(PLUGIN_EXAMPLE_TYPE,'r')) { // Right set in change_profile hook
+		$PLUGIN_HOOKS['menu_entry']['example'] = true;
+		$PLUGIN_HOOKS['submenu_entry']['example']['add'] = 'example.form.php';
+		$PLUGIN_HOOKS['submenu_entry']['example']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANG['plugin_example']["test"]."' alt='".$LANG['plugin_example']["test"]."'>"] = 'index.php';
+		$PLUGIN_HOOKS['submenu_entry']['example'][$LANG['plugin_example']["test"]] = 'index.php';
+		$PLUGIN_HOOKS['submenu_entry']['example']['config'] = 'index.php';
+	
+		$PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;		
+	}
 
 	// Config page
-	$PLUGIN_HOOKS['config_page']['example'] = 'config.php';
+	if (haveRight('config','w')) {
+		$PLUGIN_HOOKS['config_page']['example'] = 'config.php';
+	}
 
 	// Init session
 	//$PLUGIN_HOOKS['init_session']['example'] = 'plugin_init_session_example';
 	// Change profile
-	//$PLUGIN_HOOKS['change_profile']['example'] = 'plugin_change_profile_example';
+	$PLUGIN_HOOKS['change_profile']['example'] = 'plugin_change_profile_example';
 	// Change entity
 	//$PLUGIN_HOOKS['change_entity']['example'] = 'plugin_change_entity_example';
 	
@@ -107,19 +124,6 @@ function plugin_init_example() {
 	// Stats
 	$PLUGIN_HOOKS['stats']['example'] = array('stat.php'=>'New stat', 'stat.php?other'=>'New stats 2',);
 	
-	// Params : plugin name - string type - ID - Array of attributes
-	registerPluginType('example', 'PLUGIN_EXAMPLE_TYPE', 1001, array(
-		'classname'  => 'pluginExample',
-		'tablename'  => 'glpi_plugin_example',
-		'formpage'   => 'example.form.php',
-		'searchpage' => 'index.php',
-		'typename'   => 'Example Type',
-		'deleted_tables' => false,
-		'template_tables' => false,
-		'specif_entities_tables' => false,
-		'recursive_type' => false
-		));
-
 }
 
 
@@ -132,65 +136,6 @@ function plugin_version_example(){
 		'homepage'=> 'http://glpi-project.org',
 		'minGlpiVersion' => '0.72',// For compatibility / no install in version < 0.72
 	);
-}
-
-// Install process for plugin : need to return true if succeeded
-function plugin_example_install(){
-	global $DB;
-	if (!TableExists("glpi_plugin_example")){
-		$query="CREATE TABLE `glpi_plugin_example` (
-			`ID` int(11) NOT NULL auto_increment,
-			`name` varchar(255) collate utf8_unicode_ci default NULL,
-			`serial` varchar(255) collate utf8_unicode_ci NOT NULL,
-			`FK_dropdown` int(11) NOT NULL default '0',
-			`deleted` smallint(6) NOT NULL default '0',
-			`is_template` smallint(6) NOT NULL default '0',
-			`tplname` varchar(255) collate utf8_unicode_ci default NULL,
-			PRIMARY KEY  (`ID`)
-			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-			";
-		$DB->query($query) or die("error creating glpi_plugin_example ". $DB->error());
-		$query="INSERT INTO `glpi_plugin_example` (`ID`, `name`, `serial`, `FK_dropdown`, `deleted`, `is_template`, `tplname`) VALUES
-			(1, 'example 1', 'serial 1', 1, 0, 0, NULL),
-			(2, 'example 2', 'serial 2', 2, 0, 0, NULL),
-			(3, 'example 3', 'serial 3', 1, 0, 0, NULL);";
-		$DB->query($query) or die("error populate glpi_plugin_example ". $DB->error());
-
-	}
-	if (!TableExists("glpi_dropdown_plugin_example")){
-
-		$query="CREATE TABLE `glpi_dropdown_plugin_example` (
-			`ID` int(11) NOT NULL auto_increment,
-			`name` varchar(255) collate utf8_unicode_ci default NULL,
-			`comments` text collate utf8_unicode_ci,
-			PRIMARY KEY  (`ID`),
-			KEY `name` (`name`)
-			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
-
-		$DB->query($query) or die("error creating glpi_dropdown_plugin_example". $DB->error());
-		$query="INSERT INTO `glpi_dropdown_plugin_example` (`ID`, `name`, `comments`) VALUES
-			(1, 'dp 1', 'comment 1'),
-			(2, 'dp2', 'comment 2');";
-		$DB->query($query) or die("error populate glpi_dropdown_plugin_example". $DB->error());
-
-	}
-	return true;
-}
-
-// Uninstall process for plugin : need to return true if succeeded
-function plugin_example_uninstall(){
-	global $DB;
-
-	if (TableExists("glpi_plugin_example")){
-		$query="DROP TABLE `glpi_plugin_example`;";
-		$DB->query($query) or die("error creating glpi_plugin_example");
-	}
-	if (TableExists("glpi_dropdown_plugin_example")){
-
-		$query="DROP TABLE `glpi_dropdown_plugin_example`;";
-		$DB->query($query) or die("error creating glpi_dropdown_plugin_example");
-	}
-	return true;
 }
 
 
@@ -220,12 +165,15 @@ function plugin_example_check_config($verbose=false){
 
 // Define rights for the plugin types
 function plugin_example_haveTypeRight($type,$right){
+	
+	if (!isset($_SESSION["glpi_plugin_example_profile"])) {
+		// No right
+		return false;
+	}
 	switch ($type){
 		case PLUGIN_EXAMPLE_TYPE :
-			// 1 - All rights for all users
-			// return true;
-			// 2 - Similarity right : same right of computer
-			return haveRight("computer",$right);
+			// Evaluate the right from data saved in session by change_profile hook
+			return ($right=='r' || $_SESSION["glpi_plugin_example_profile"]=='w');
 			break;
 	}
 }
