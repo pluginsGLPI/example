@@ -555,6 +555,11 @@ function plugin_get_headings_example($type,$ID,$withtemplate){
 				1 => "Test PLugin",
 			);
 			break;
+		case "mailing":
+			return array(
+				1 => "Test PLugin",
+			);
+			break;
 
 	}
 	return false;
@@ -584,6 +589,11 @@ function plugin_headings_actions_example($type){
 				    );
 			break;
 		case "prefs" :
+			return array(
+					1 => "plugin_headings_example",
+				    );
+			break;
+		case "mailing" :
 			return array(
 					1 => "plugin_headings_example",
 				    );
@@ -621,6 +631,9 @@ function plugin_headings_example($type,$ID,$withtemplate=0){
 			
 				echo "</table>";
 				echo "</form>";
+			break;
+			case "mailing":
+				echo "Plugin mailing action ".$LANG['plugin_example']["test"];
 			break;
 			default :
 				echo "Plugin function with headings TYPE=".$type." ID=".$ID;
