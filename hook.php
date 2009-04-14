@@ -516,17 +516,28 @@ function plugin_display_planning_example($parm){
 }
 
 // Define headings added by the plugin
-function plugin_get_headings_example($type,$withtemplate){
+function plugin_get_headings_example($type,$ID,$withtemplate){
 	switch ($type){
-		case COMPUTER_TYPE :
-			// template case
-			if ($withtemplate)
+		case PROFILE_TYPE:
+			$prof = new Profile();
+			if ($ID>0 && $prof->getFromDB($ID) && $prof->fields['interface']=='central') {
+				return array(
+						1 => "Test PLugin",
+					    );				
+			} else {
 				return array();
-			// Non template case
-			else 
+			}
+			break;
+		case COMPUTER_TYPE :
+			// new object / template case
+			if ($withtemplate) {
+				return array();
+			// Non template case / editing an existing object
+			} else { 
 				return array(
 						1 => "Test PLugin",
 					    );
+			}
 			break;
 		case ENTERPRISE_TYPE :
 			return array(
@@ -553,6 +564,7 @@ function plugin_get_headings_example($type,$withtemplate){
 function plugin_headings_actions_example($type){
 
 	switch ($type){
+		case PROFILE_TYPE :
 		case COMPUTER_TYPE :
 			return array(
 					1 => "plugin_headings_example",
