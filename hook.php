@@ -234,12 +234,14 @@ function plugin_example_addOrderBy($type,$ID,$order,$key=0){
 function plugin_example_MassiveActions($type){
 	global $LANG;
 	switch ($type){
-		// New action for core type : name = plugin_PLUGINNAME_actionname
+		// New action for core and other plugin types : name = plugin_PLUGINNAME_actionname
 		case COMPUTER_TYPE :
 			return array(
 				"plugin_example_DoIt"=>"plugin_example_DoIt",
 			);
 			break;
+
+		// Actions for types provided by the plugin
 		case PLUGIN_EXAMPLE_TYPE :
 			return array(
 				// GLPI core one
