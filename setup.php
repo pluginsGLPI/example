@@ -47,7 +47,9 @@ function plugin_init_example() {
 		'deleted_tables' => false,
 		'template_tables' => false,
 		'specif_entities_tables' => false,
-		'recursive_type' => false
+		'recursive_type' => false,
+		//'linkuser_types' => true,
+		//'linkgroup_types' => true
 		));
 
 	// Display a menu entry ?
@@ -111,6 +113,8 @@ function plugin_init_example() {
 	// Massive Action definition
 	$PLUGIN_HOOKS['use_massive_action']['example']=1;
 
+	$PLUGIN_HOOKS['assign_to_ticket']['example']=1;
+	
 	// Add specific files to add to the header : javascript or css
 	$PLUGIN_HOOKS['add_javascript']['example']="example.js";
 	$PLUGIN_HOOKS['add_css']['example']="example.css";

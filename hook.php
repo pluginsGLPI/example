@@ -741,5 +741,14 @@ function plugin_example_uninstall(){
 	return true;
 }
 
+function plugin_example_AssignToTicket($types)
+{
+	$types[PLUGIN_EXAMPLE_TYPE] = "Example";
+	return $types;
+}
 
+function plugin_example_AssignToTicketList()
+{
+	
+}
 ?>
