@@ -747,8 +747,4 @@ function plugin_example_AssignToTicket($types)
 	return $types;
 }
 
-function plugin_example_AssignToTicketList()
-{
-	
-}
 ?>
