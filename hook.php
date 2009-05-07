@@ -648,7 +648,12 @@ function plugin_headings_example($type,$ID,$withtemplate=0){
 
 // Cron function : name= cron_plugin_PLUGINNAME
 function cron_plugin_example(){
-	echo "tttt";
+	logInFile('example',"cron called\n");
+	
+	// >0 : done
+	// <0 : to be run again (not finished)
+	//  0 : nothing to do
+	return 1;
 }
 
 
