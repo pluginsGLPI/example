@@ -541,11 +541,14 @@ function plugin_get_headings_example($type,$ID,$withtemplate){
 					    );
 			}
 			break;
+		case COMPUTERDISK_TYPE :
 		case ENTERPRISE_TYPE :
-			return array(
-					1 => "Test PLugin",
-					2 => "Test PLugin 2",
-				    );
+			if ($ID>0) { // Not in create mode
+				return array(
+						1 => "Test PLugin",
+						2 => "Test PLugin 2",
+					    );				
+			}
 			break;
 		case "central":
 			return array(
@@ -578,6 +581,7 @@ function plugin_headings_actions_example($type){
 				    );
 
 			break;
+		case COMPUTERDISK_TYPE :
 		case ENTERPRISE_TYPE :
 			return array(
 					1 => "plugin_headings_example",
