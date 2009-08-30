@@ -59,8 +59,8 @@ function plugin_init_example() {
 		$PLUGIN_HOOKS['submenu_entry']['example']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANG['plugin_example']["test"]."' alt='".$LANG['plugin_example']["test"]."'>"] = 'index.php';
 		$PLUGIN_HOOKS['submenu_entry']['example'][$LANG['plugin_example']["test"]] = 'index.php';
 		$PLUGIN_HOOKS['submenu_entry']['example']['config'] = 'index.php';
-	
-		$PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;		
+
+		$PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
 	}
 
 	// Config page
@@ -74,7 +74,7 @@ function plugin_init_example() {
 	$PLUGIN_HOOKS['change_profile']['example'] = 'plugin_change_profile_example';
 	// Change entity
 	//$PLUGIN_HOOKS['change_entity']['example'] = 'plugin_change_entity_example';
-	
+
 
 	// Onglets management
 	$PLUGIN_HOOKS['headings']['example'] = 'plugin_get_headings_example';
@@ -83,19 +83,19 @@ function plugin_init_example() {
 	// Item action event // See define.php for defined ITEM_TYPE
 	$PLUGIN_HOOKS['pre_item_update']['example'] = 'plugin_pre_item_update_example';
 	$PLUGIN_HOOKS['item_update']['example'] = 'plugin_item_update_example';
-	
+
 	$PLUGIN_HOOKS['pre_item_add']['example'] = 'plugin_pre_item_add_example';
 	$PLUGIN_HOOKS['item_add']['example'] = 'plugin_item_add_example';
-	
+
 	$PLUGIN_HOOKS['pre_item_delete']['example'] = 'plugin_pre_item_delete_example';
 	$PLUGIN_HOOKS['item_delete']['example'] = 'plugin_item_delete_example';
-	
+
 	$PLUGIN_HOOKS['pre_item_purge']['example'] = 'plugin_pre_item_purge_example';
 	$PLUGIN_HOOKS['item_purge']['example'] = 'plugin_item_purge_example';
-	
+
 	$PLUGIN_HOOKS['pre_item_restore']['example'] = 'plugin_pre_item_restore_example';
 	$PLUGIN_HOOKS['item_restore']['example'] = 'plugin_item_restore_example';
-	
+
 	$PLUGIN_HOOKS['item_transfer']['example'] = 'plugin_item_transfer_example';
 
 	// Cron action
@@ -114,41 +114,41 @@ function plugin_init_example() {
 	$PLUGIN_HOOKS['use_massive_action']['example']=1;
 
 	$PLUGIN_HOOKS['assign_to_ticket']['example']=1;
-	
+
 	// Add specific files to add to the header : javascript or css
 	$PLUGIN_HOOKS['add_javascript']['example']="example.js";
 	$PLUGIN_HOOKS['add_css']['example']="example.css";
 
 	// Retrieve others datas from LDAP
 	//$PLUGIN_HOOKS['retrieve_more_data_from_ldap']['example']="plugin_retrieve_more_data_from_ldap_example";
-	
+
 	// Reports
 	$PLUGIN_HOOKS['reports']['example'] = array('report.php'=>'New Report', 'report.php?other'=>'New Report 2',);
-	
+
 	// Stats
 	$PLUGIN_HOOKS['stats']['example'] = array('stat.php'=>'New stat', 'stat.php?other'=>'New stats 2',);
-	
+
 }
 
 
 // Get the name and the version of the plugin - Needed
 function plugin_version_example(){
-	return array( 
+	return array(
 		'name'    => 'Plugin Example',
-		'version' => '0.1.0',
+		'version' => '0.2.0',
 		'author' => 'Julien Dombre',
 		'homepage'=> 'http://glpi-project.org',
-		'minGlpiVersion' => '0.72',// For compatibility / no install in version < 0.72
+		'minGlpiVersion' => '0.80',// For compatibility / no install in version < 0.72
 	);
 }
 
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_example_check_prerequisites(){
-	if (GLPI_VERSION>=0.72){
+	if (GLPI_VERSION>=0.80){
 		return true;
 	} else {
-		echo "GLPI version not compatible need 0.72";
+		echo "GLPI version not compatible need 0.80";
 	}
 }
 
@@ -169,7 +169,7 @@ function plugin_example_check_config($verbose=false){
 
 // Define rights for the plugin types
 function plugin_example_haveTypeRight($type,$right){
-	
+
 	if (!isset($_SESSION["glpi_plugin_example_profile"])) {
 		// No right
 		return false;
