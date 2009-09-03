@@ -98,9 +98,6 @@ function plugin_init_example() {
 
 	$PLUGIN_HOOKS['item_transfer']['example'] = 'plugin_item_transfer_example';
 
-	// Cron action
-	$PLUGIN_HOOKS['cron']['example'] = DAY_TIMESTAMP;
-
 	//redirect appel http://localhost/glpi/index.php?redirect=plugin_example_2 (ID 2 du form)
 	$PLUGIN_HOOKS['redirect_page']['example']="example.form.php";
 

@@ -651,15 +651,35 @@ function plugin_headings_example($type,$ID,$withtemplate=0){
 	}
 }
 
+/**
+ * Execute 1 task manage by the plugin
+ *
+ * @param $task Object of CronTask class for log / stat
+ *
+ * @return interger
+ *    >0 : done
+ *    <0 : to be run again (not finished)
+ *     0 : nothing to do
+ */
+function plugin_example_cron_sample_run($task) {
+   $task->log("Example log message");
+   $task->setVolume(mt_rand(0,$task->fields['param']));
 
-// Cron function : name= cron_plugin_PLUGINNAME
-function cron_plugin_example(){
-	logInFile('example',"cron called\n");
+   return 1;
+}
 
-	// >0 : done
-	// <0 : to be run again (not finished)
-	//  0 : nothing to do
-	return 1;
+/**
+ * Give localized information about 1 task
+ *
+ * @param $name of the task
+ *
+ * @return array of strings
+ */
+function plugin_example_cron_sample_info($name) {
+
+   return array (
+      'description' => "Example cron task",  // Mandatory
+      'parameter' => "Example parameter");   // Optional
 }
 
 
@@ -735,6 +755,9 @@ function plugin_example_install(){
 		$DB->query($query) or die("error populate glpi_plugin_example_dropdown". $DB->error());
 
 	}
+
+   // To be called for each task the plugin manage
+   CronTask::Register('example', 'sample', DAY_TIMESTAMP, array('param'=>50));
 	return true;
 }
 
