@@ -677,9 +677,14 @@ function plugin_example_cron_sample_run($task) {
  */
 function plugin_example_cron_sample_info($name) {
 
-   return array (
-      'description' => "Example cron task",  // Mandatory
-      'parameter' => "Example parameter");   // Optional
+   switch ($name) {
+      case 'sample':
+         return array (
+            'description' => "Example cron task",  // Mandatory
+            'parameter' => "Example parameter");   // Optional
+         break;
+   }
+   return array();
 }
 
 
