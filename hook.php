@@ -675,13 +675,14 @@ function plugin_example_cron_sample_run($task) {
  *
  * @return array of strings
  */
-function plugin_example_cron_sample_info($name) {
+function plugin_example_cron_info($name) {
+   global $LANG;
 
    switch ($name) {
       case 'sample':
          return array (
-            'description' => "Example cron task",  // Mandatory
-            'parameter' => "Example parameter");   // Optional
+            'description' => $LANG['plugin_example']['test'],  // Mandatory
+            'parameter' => $LANG['plugin_example']['test']);   // Optional
          break;
    }
    return array();
