@@ -135,10 +135,12 @@ function plugin_example_getAddSearchOptions($itemtype){
 }
 
 function plugin_example_giveItem($type,$ID,$data,$num){
-	global $CFG_GLPI, $INFOFORM_PAGES,$SEARCH_OPTION;
+	global $CFG_GLPI, $INFOFORM_PAGES;
 
-	$table=$SEARCH_OPTION[$type][$ID]["table"];
-	$field=$SEARCH_OPTION[$type][$ID]["field"];
+	$searchopt=getSearchOptions($type);
+  
+	$table=$searchopt[$ID]["table"];
+	$field=$searchopt[$ID]["field"];
 
 	switch ($table.'.'.$field){
 		case "glpi_plugin_example.name" :
