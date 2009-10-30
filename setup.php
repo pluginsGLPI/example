@@ -56,8 +56,6 @@ function plugin_init_example() {
    registerPluginType('example', 'PLUGIN_EXAMPLEDROPDOWN_TYPE', 1002, array(
       'classname'  => 'pluginExampleDropdown',
       'tablename'  => 'glpi_plugin_example_dropdown',
-      'formpage'   => 'example.form.php',
-      'searchpage' => 'index.php',
       'typename'   => 'Example Dropdown Type',
       'dropdown'   => true));
 
