@@ -52,6 +52,15 @@ function plugin_init_example() {
 		//'linkgroup_types' => true
 		));
 
+   // Params : plugin name - string type - ID - Array of attributes
+   registerPluginType('example', 'PLUGIN_EXAMPLEDROPDOWN_TYPE', 1002, array(
+      'classname'  => 'pluginExampleDropdown',
+      'tablename'  => 'glpi_plugin_example_dropdown',
+      'formpage'   => 'example.form.php',
+      'searchpage' => 'index.php',
+      'typename'   => 'Example Dropdown Type',
+      'dropdown'   => true));
+
 	// Display a menu entry ?
 	if (plugin_example_haveTypeRight(PLUGIN_EXAMPLE_TYPE,'r')) { // Right set in change_profile hook
 		$PLUGIN_HOOKS['menu_entry']['example'] = true;
@@ -176,6 +185,9 @@ function plugin_example_haveTypeRight($type,$right){
 			// Evaluate the right from data saved in session by change_profile hook
 			return ($right=='r' || $_SESSION["glpi_plugin_example_profile"]=='w');
 			break;
+      case PLUGIN_EXAMPLEDROPDOWN_TYPE :
+         return haveRight("entity_dropdown",$right);
+         break;
 	}
 }
 

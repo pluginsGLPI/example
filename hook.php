@@ -35,11 +35,25 @@
 
 // Class of the defined type
 class pluginExample extends CommonDBTM {
-	function pluginExample () {
+	function __construct () {
 		$this->table="glpi_plugin_example";
 		$this->type=PLUGIN_EXAMPLE_TYPE;
 	}
-};
+}
+
+// Class for a Dropdown
+class pluginExampleDropdown extends CommonDropdown {
+   function __construct () {
+      $this->table="glpi_plugin_example_dropdown";
+      $this->type=PLUGIN_EXAMPLEDROPDOWN_TYPE;
+   }
+
+   static function getTypeName() {
+      global $LANG;
+
+      return "Plugin Example Dropdown";
+   }
+}
 
 // Hook called on profile change
 // Good place to evaluate the user right on this plugin
@@ -69,7 +83,7 @@ function plugin_example_getDatabaseRelations(){
 // Define Dropdown tables to be manage in GLPI :
 function plugin_example_getDropdown(){
 	// Table => Name
-	return array("glpi_plugin_example_dropdown"=>"Plugin Example Dropdown");
+	return array(PLUGIN_EXAMPLEDROPDOWN_TYPE => "Plugin Example Dropdown");
 }
 
 ////// SEARCH FUNCTIONS ///////(){
@@ -103,6 +117,8 @@ function plugin_example_getSearchOption(){
 	$sopt[PLUGIN_EXAMPLE_TYPE][30]['linkfield']='';
 	$sopt[PLUGIN_EXAMPLE_TYPE][30]['name']=$LANG["common"][2];
 
+   $obj = new pluginExampleDropdown();
+   $sopt[PLUGIN_EXAMPLEDROPDOWN_TYPE] = $obj->getSearchOptions();
 	return $sopt;
 }
 
