@@ -39,6 +39,36 @@ class pluginExample extends CommonDBTM {
 		$this->table="glpi_plugin_example";
 		$this->type=PLUGIN_EXAMPLE_TYPE;
 	}
+
+   function getSearchOptions() {
+      global $LANG;
+
+      $tab = array();
+      $tab['common']="Header Needed";
+
+      $tab[1]['table']='glpi_plugin_example';
+      $tab[1]['field']='name';
+      $tab[1]['linkfield']='name';
+      $tab[1]['name']=$LANG['plugin_example']["name"];
+
+      $tab[2]['table']='glpi_plugin_example_dropdown';
+      $tab[2]['field']='name';
+      $tab[2]['linkfield']='plugin_example_dropdown_id';
+      $tab[2]['name']='Dropdown';
+
+      $tab[3]['table']='glpi_plugin_example';
+      $tab[3]['field']='serial';
+      $tab[3]['linkfield']='serial';
+      $tab[3]['name']='Serial';
+      $tab[3]['usehaving']=true;
+
+      $tab[30]['table']='glpi_plugin_example';
+      $tab[30]['field']='id';
+      $tab[30]['linkfield']='';
+      $tab[30]['name']=$LANG["common"][2];
+
+      return $tab;
+   }
 }
 
 // Class for a Dropdown
@@ -88,37 +118,19 @@ function plugin_example_getDropdown(){
 
 ////// SEARCH FUNCTIONS ///////(){
 
-// Define search option for types of the plugins
-function plugin_example_getSearchOption(){
+// Define Additionnal search options for types (other than the plugin ones)
+function plugin_example_getAddSearchOptions($itemtype){
 	global $LANG;
+
 	$sopt=array();
+   if ($itemtype == COMPUTER_TYPE) {
+         // Just for example, not working...
+         $sopt[1001]['table']     = 'glpi_plugin_example_dropdown';
+         $sopt[1001]['field']     = 'name';
+         $sopt[1001]['linkfield'] = 'plugin_example_dropdown_id';
+         $sopt[1001]['name']      = 'Example plugin';
+   }
 
-	// Part header
-	$sopt[PLUGIN_EXAMPLE_TYPE]['common']="Header Needed";
-
-	$sopt[PLUGIN_EXAMPLE_TYPE][1]['table']='glpi_plugin_example';
-	$sopt[PLUGIN_EXAMPLE_TYPE][1]['field']='name';
-	$sopt[PLUGIN_EXAMPLE_TYPE][1]['linkfield']='name';
-	$sopt[PLUGIN_EXAMPLE_TYPE][1]['name']=$LANG['plugin_example']["name"];
-
-	$sopt[PLUGIN_EXAMPLE_TYPE][2]['table']='glpi_plugin_example_dropdown';
-	$sopt[PLUGIN_EXAMPLE_TYPE][2]['field']='name';
-	$sopt[PLUGIN_EXAMPLE_TYPE][2]['linkfield']='plugin_example_dropdown_id';
-	$sopt[PLUGIN_EXAMPLE_TYPE][2]['name']='Dropdown';
-
-	$sopt[PLUGIN_EXAMPLE_TYPE][3]['table']='glpi_plugin_example';
-	$sopt[PLUGIN_EXAMPLE_TYPE][3]['field']='serial';
-	$sopt[PLUGIN_EXAMPLE_TYPE][3]['linkfield']='serial';
-	$sopt[PLUGIN_EXAMPLE_TYPE][3]['name']='Serial';
-	$sopt[PLUGIN_EXAMPLE_TYPE][3]['usehaving']=true;
-
-	$sopt[PLUGIN_EXAMPLE_TYPE][30]['table']='glpi_plugin_example';
-	$sopt[PLUGIN_EXAMPLE_TYPE][30]['field']='id';
-	$sopt[PLUGIN_EXAMPLE_TYPE][30]['linkfield']='';
-	$sopt[PLUGIN_EXAMPLE_TYPE][30]['name']=$LANG["common"][2];
-
-   $obj = new pluginExampleDropdown();
-   $sopt[PLUGIN_EXAMPLEDROPDOWN_TYPE] = $obj->getSearchOptions();
 	return $sopt;
 }
 
