@@ -137,8 +137,7 @@ function plugin_example_getAddSearchOptions($itemtype){
 function plugin_example_giveItem($type,$ID,$data,$num){
 	global $CFG_GLPI, $INFOFORM_PAGES;
 
-	$searchopt=getSearchOptions($type);
-  
+   $searchopt=&getSearchOptions($type);
 	$table=$searchopt[$ID]["table"];
 	$field=$searchopt[$ID]["field"];
 
@@ -179,10 +178,10 @@ function plugin_example_forceGroupBy($type){
 }
 
 function plugin_example_addWhere($link,$nott,$type,$ID,$val){
-	global $SEARCH_OPTION;
 
-	$table=$SEARCH_OPTION[$type][$ID]["table"];
-	$field=$SEARCH_OPTION[$type][$ID]["field"];
+   $searchopt=&getSearchOptions($type);
+   $table=$searchopt[$ID]["table"];
+   $field=$searchopt[$ID]["field"];
 
 	$SEARCH=makeTextSearch($val,$nott);
 
@@ -202,10 +201,10 @@ function plugin_example_addWhere($link,$nott,$type,$ID,$val){
 
 // This is not a real example because the use of Having condition in this case is not suitable
 function plugin_example_addHaving($link,$nott,$type,$ID,$val,$num){
-	global $SEARCH_OPTION;
 
-	$table=$SEARCH_OPTION[$type][$ID]["table"];
-	$field=$SEARCH_OPTION[$type][$ID]["field"];
+   $searchopt=&getSearchOptions($type);
+   $table=$searchopt[$ID]["table"];
+   $field=$searchopt[$ID]["field"];
 
 	$SEARCH=makeTextSearch($val,$nott);
 
@@ -227,10 +226,10 @@ function plugin_example_addHaving($link,$nott,$type,$ID,$val,$num){
 }
 
 function plugin_example_addSelect($type,$ID,$num){
-	global $SEARCH_OPTION;
 
-	$table=$SEARCH_OPTION[$type][$ID]["table"];
-	$field=$SEARCH_OPTION[$type][$ID]["field"];
+   $searchopt=&getSearchOptions($type);
+   $table=$searchopt[$ID]["table"];
+   $field=$searchopt[$ID]["field"];
 
 // Example of standard Select clause but use it ONLY for specific Select
 // No need of the function if you do not have specific cases
@@ -243,10 +242,10 @@ function plugin_example_addSelect($type,$ID,$num){
 }
 
 function plugin_example_addOrderBy($type,$ID,$order,$key=0){
-	global $SEARCH_OPTION;
 
-	$table=$SEARCH_OPTION[$type][$ID]["table"];
-	$field=$SEARCH_OPTION[$type][$ID]["field"];
+   $searchopt=&getSearchOptions($type);
+   $table=$searchopt[$ID]["table"];
+   $field=$searchopt[$ID]["field"];
 
 // Example of standard OrderBy clause but use it ONLY for specific order by
 // No need of the function if you do not have specific cases
