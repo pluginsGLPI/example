@@ -65,11 +65,11 @@ function plugin_init_example() {
 
       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['title']="Search";
       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['page']='index.php';
-      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['search']='index.php';
-		$PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['add'] = 'example.form.php';
-		$PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['config'] = 'index.php';
-		$PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANG['plugin_example']["test"]."' alt='".$LANG['plugin_example']["test"]."'>"] = 'index.php';
-		$PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links'][$LANG['plugin_example']["test"]] = 'index.php';
+      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['search']='/plugins/example/index.php';
+		$PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['add'] = '/plugins/example/example.form.php';
+		$PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['config'] = '/plugins/example/index.php';
+		$PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANG['plugin_example']["test"]."' alt='".$LANG['plugin_example']["test"]."'>"] = '/plugins/example/index.php';
+		$PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links'][$LANG['plugin_example']["test"]] = '/plugins/example/index.php';
 
 		$PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
 	}
