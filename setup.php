@@ -62,10 +62,14 @@ function plugin_init_example() {
 	// Display a menu entry ?
 	if (plugin_example_haveTypeRight(PLUGIN_EXAMPLE_TYPE,'r')) { // Right set in change_profile hook
 		$PLUGIN_HOOKS['menu_entry']['example'] = true;
-		$PLUGIN_HOOKS['submenu_entry']['example']['add'] = 'example.form.php';
-		$PLUGIN_HOOKS['submenu_entry']['example']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANG['plugin_example']["test"]."' alt='".$LANG['plugin_example']["test"]."'>"] = 'index.php';
-		$PLUGIN_HOOKS['submenu_entry']['example'][$LANG['plugin_example']["test"]] = 'index.php';
-		$PLUGIN_HOOKS['submenu_entry']['example']['config'] = 'index.php';
+
+      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['title']="Search";
+      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['page']='index.php';
+      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['search']='index.php';
+		$PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['add'] = 'example.form.php';
+		$PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['config'] = 'index.php';
+		$PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANG['plugin_example']["test"]."' alt='".$LANG['plugin_example']["test"]."'>"] = 'index.php';
+		$PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links'][$LANG['plugin_example']["test"]] = 'index.php';
 
 		$PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
 	}
