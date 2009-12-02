@@ -40,6 +40,13 @@ class pluginExample extends CommonDBTM {
 		$this->type=PLUGIN_EXAMPLE_TYPE;
 	}
 
+   // Should return the localized name of the type
+   static function getTypeName() {
+      global $LANG;
+
+      return 'Example Type';
+   }
+
    function getSearchOptions() {
       global $LANG;
 
