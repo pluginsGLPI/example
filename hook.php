@@ -643,8 +643,8 @@ function plugin_headings_example($type,$ID,$withtemplate=0){
  *    <0 : to be run again (not finished)
  *     0 : nothing to do
  */
-function plugin_example_cron_sample_run($task) {
-   $task->log("Example log message");
+function plugin_example_cron_sample1_run($task) {
+   $task->log("Example log message from hook");
    $task->setVolume(mt_rand(0,$task->fields['param']));
 
    return 1;
@@ -661,9 +661,9 @@ function plugin_example_cron_info($name) {
    global $LANG;
 
    switch ($name) {
-      case 'sample':
+      case 'sample1':
          return array (
-            'description' => $LANG['plugin_example']['test'],  // Mandatory
+            'description' => $LANG['plugin_example']['test'] . " (hook)",  // Mandatory
             'parameter' => $LANG['plugin_example']['test']);   // Optional
          break;
    }
@@ -745,29 +745,36 @@ function plugin_example_install(){
 	}
 
    // To be called for each task the plugin manage
-   CronTask::Register('example', 'sample', DAY_TIMESTAMP, array('param'=>50));
+   // 1 task in hook.php
+   CronTask::Register('example', 'sample1', HOUR_TIMESTAMP*2, array('param'=>50));
+   // 1 task in class
+   CronTask::Register('example', 'sample2', DAY_TIMESTAMP, array('itemtype'=>'PluginExampleExample'));
 	return true;
 }
 
 // Uninstall process for plugin : need to return true if succeeded
 function plugin_example_uninstall(){
-	global $DB;
+   global $DB;
 
-	if (TableExists("glpi_plugin_example")){
-		$query="DROP TABLE `glpi_plugin_example`;";
-		$DB->query($query) or die("error deleting glpi_plugin_example");
-	}
-	if (TableExists("glpi_dropdown_plugin_example")){
-
-		$query="DROP TABLE `glpi_dropdown_plugin_example`;";
-		$DB->query($query) or die("error deleting glpi_dropdown_plugin_example");
-	}
+   // Old version tables
+   if (TableExists("glpi_dropdown_plugin_example")){
+      $query="DROP TABLE `glpi_dropdown_plugin_example`;";
+      $DB->query($query) or die("error deleting glpi_dropdown_plugin_example");
+   }
+   if (TableExists("glpi_plugin_example")){
+      $query="DROP TABLE `glpi_plugin_example`;";
+      $DB->query($query) or die("error deleting glpi_plugin_example");
+   }
+   // Current version tables
+   if (TableExists("glpi_plugin_example_example")){
+      $query="DROP TABLE `glpi_plugin_example_example`;";
+      $DB->query($query) or die("error deleting glpi_plugin_example_example");
+   }
    if (TableExists("glpi_plugin_example_dropdown")){
-
       $query="DROP TABLE `glpi_plugin_example_dropdown`;";
       $DB->query($query) or die("error deleting glpi_plugin_example_dropdown");
    }
-	return true;
+   return true;
 }
 
 function plugin_example_AssignToTicket($types)

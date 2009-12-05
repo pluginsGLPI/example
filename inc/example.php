@@ -76,6 +76,44 @@ class PluginExampleExample extends CommonDBTM {
 
       return $tab;
    }
+
+   /**
+    * Give localized information about 1 task
+    *
+    * @param $name of the task
+    *
+    * @return array of strings
+    */
+   static function cron_info($name) {
+      global $LANG;
+
+      switch ($name) {
+         case 'sample2':
+            return array (
+               'description' => $LANG['plugin_example']['test']." (class)",
+               'parameter' => $LANG['plugin_example']['test']);
+            break;
+      }
+      return array();
+   }
+
+   /**
+    * Execute 1 task manage by the plugin
+    *
+    * @param $task Object of CronTask class for log / stat
+    *
+    * @return interger
+    *    >0 : done
+    *    <0 : to be run again (not finished)
+    *     0 : nothing to do
+    */
+   static function cron_sample2_run($task) {
+      $task->log("Example log message from class");
+      $task->setVolume(mt_rand(0,10));
+
+      return 1;
+   }
+
 }
 
 ?>
