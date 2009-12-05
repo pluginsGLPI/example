@@ -38,10 +38,10 @@ function plugin_init_example() {
 	global $PLUGIN_HOOKS,$LANG,$CFG_GLPI;
 
 	// Params : plugin name - string type - ID - Array of attributes
-	registerPluginType('example', 'PLUGIN_EXAMPLE_TYPE', 1001, array(
-		'classname'  => 'pluginExample',
-		'tablename'  => 'glpi_plugin_example',
-		'formpage'   => 'example.form.php',
+	registerPluginType('example', 'PLUGIN_EXAMPLE_TYPE', 'PluginExampleExample', array(
+		'classname'  => 'PluginExampleExample',
+		'tablename'  => 'glpi_plugin_example_example',
+		'formpage'   => 'front/example.form.php',
 		'searchpage' => 'index.php',
 		'typename'   => 'Example Type',
 		'deleted_tables' => false,
@@ -53,11 +53,12 @@ function plugin_init_example() {
 		));
 
    // Params : plugin name - string type - ID - Array of attributes
-   registerPluginType('example', 'PLUGIN_EXAMPLEDROPDOWN_TYPE', 1002, array(
-      'classname'  => 'pluginExampleDropdown',
+   registerPluginType('example', 'PLUGIN_EXAMPLEDROPDOWN_TYPE', 'PluginExampleDropdown', array(
+      'classname'  => 'PluginExampleDropdown',
       'tablename'  => 'glpi_plugin_example_dropdown',
       'typename'   => 'Example Dropdown Type',
-      'dropdown'   => true));
+      'formpage'   => 'front/dropdown.form.php',
+      'searchpage' => 'front/dropdown.php'));
 
 	// Display a menu entry ?
 	if (plugin_example_haveTypeRight(PLUGIN_EXAMPLE_TYPE,'r')) { // Right set in change_profile hook
@@ -186,10 +187,6 @@ function plugin_example_haveTypeRight($type,$right){
 		case PLUGIN_EXAMPLE_TYPE :
 			// Evaluate the right from data saved in session by change_profile hook
 			return ($right=='r' || $_SESSION["glpi_plugin_example_profile"]=='w');
-			break;
-      case PLUGIN_EXAMPLEDROPDOWN_TYPE :
-         return haveRight("entity_dropdown",$right);
-         break;
 	}
 }
 

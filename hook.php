@@ -33,63 +33,9 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
-// Class of the defined type
-class pluginExample extends CommonDBTM {
-	function __construct () {
-		$this->table="glpi_plugin_example";
-		$this->type=PLUGIN_EXAMPLE_TYPE;
-	}
-
-   // Should return the localized name of the type
-   static function getTypeName() {
-      global $LANG;
-
-      return 'Example Type';
-   }
-
-   function getSearchOptions() {
-      global $LANG;
-
-      $tab = array();
-      $tab['common']="Header Needed";
-
-      $tab[1]['table']='glpi_plugin_example';
-      $tab[1]['field']='name';
-      $tab[1]['linkfield']='name';
-      $tab[1]['name']=$LANG['plugin_example']["name"];
-
-      $tab[2]['table']='glpi_plugin_example_dropdown';
-      $tab[2]['field']='name';
-      $tab[2]['linkfield']='plugin_example_dropdown_id';
-      $tab[2]['name']='Dropdown';
-
-      $tab[3]['table']='glpi_plugin_example';
-      $tab[3]['field']='serial';
-      $tab[3]['linkfield']='serial';
-      $tab[3]['name']='Serial';
-      $tab[3]['usehaving']=true;
-
-      $tab[30]['table']='glpi_plugin_example';
-      $tab[30]['field']='id';
-      $tab[30]['linkfield']='';
-      $tab[30]['name']=$LANG["common"][2];
-
-      return $tab;
-   }
-}
-
-// Class for a Dropdown
-class pluginExampleDropdown extends CommonDropdown {
-   function __construct () {
-      $this->table="glpi_plugin_example_dropdown";
-      $this->type=PLUGIN_EXAMPLEDROPDOWN_TYPE;
-   }
-
-   static function getTypeName() {
-      global $LANG;
-
-      return "Plugin Example Dropdown";
-   }
+// TODO remove this when autoload ready
+foreach (glob(GLPI_ROOT . '/plugins/example/inc/*.php') as $file) {
+   include_once ($file);
 }
 
 // Hook called on profile change
@@ -120,7 +66,7 @@ function plugin_example_getDatabaseRelations(){
 // Define Dropdown tables to be manage in GLPI :
 function plugin_example_getDropdown(){
 	// Table => Name
-	return array(PLUGIN_EXAMPLEDROPDOWN_TYPE => "Plugin Example Dropdown");
+	return array('PluginExampleDropdown' => "Plugin Example Dropdown");
 }
 
 ////// SEARCH FUNCTIONS ///////(){
@@ -760,8 +706,8 @@ function plugin_example_install(){
 	global $DB;
 
 
-	if (!TableExists("glpi_plugin_example")){
-		$query="CREATE TABLE `glpi_plugin_example` (
+	if (!TableExists("glpi_plugin_example_example")){
+		$query="CREATE TABLE `glpi_plugin_example_example` (
 			`id` int(11) NOT NULL auto_increment,
 			`name` varchar(255) collate utf8_unicode_ci default NULL,
 			`serial` varchar(255) collate utf8_unicode_ci NOT NULL,
@@ -772,8 +718,8 @@ function plugin_example_install(){
 			PRIMARY KEY  (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 			";
-		$DB->query($query) or die("error creating glpi_plugin_example ". $DB->error());
-		$query="INSERT INTO `glpi_plugin_example` (`id`, `name`, `serial`, `plugin_example_dropdown_id`,
+		$DB->query($query) or die("error creating glpi_plugin_example_example ". $DB->error());
+		$query="INSERT INTO `glpi_plugin_example_example` (`id`, `name`, `serial`, `plugin_example_dropdown_id`,
              `is_deleted`, `is_template`, `template_name`) VALUES
 			(1, 'example 1', 'serial 1', 1, 0, 0, NULL),
 			(2, 'example 2', 'serial 2', 2, 0, 0, NULL),
