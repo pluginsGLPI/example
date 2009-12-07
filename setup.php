@@ -38,7 +38,7 @@ function plugin_init_example() {
 	global $PLUGIN_HOOKS,$LANG,$CFG_GLPI;
 
 	// Params : plugin name - string type - ID - Array of attributes
-	registerPluginType('example', 'PLUGIN_EXAMPLE_TYPE', 'PluginExampleExample', array(
+	Plugin::registerClass('PluginExampleExample', array(
 		'classname'  => 'PluginExampleExample',
 		'tablename'  => 'glpi_plugin_example_example',
 		'formpage'   => 'front/example.form.php',
@@ -53,7 +53,7 @@ function plugin_init_example() {
 		));
 
    // Params : plugin name - string type - ID - Array of attributes
-   registerPluginType('example', 'PLUGIN_EXAMPLEDROPDOWN_TYPE', 'PluginExampleDropdown', array(
+   Plugin::registerClass('PluginExampleDropdown', array(
       'classname'  => 'PluginExampleDropdown',
       'tablename'  => 'glpi_plugin_example_dropdown',
       'typename'   => 'Example Dropdown Type',
@@ -61,7 +61,7 @@ function plugin_init_example() {
       'searchpage' => 'front/dropdown.php'));
 
 	// Display a menu entry ?
-	if (plugin_example_haveTypeRight(PLUGIN_EXAMPLE_TYPE,'r')) { // Right set in change_profile hook
+	if (plugin_example_haveTypeRight('PluginExampleExample','r')) { // Right set in change_profile hook
 		$PLUGIN_HOOKS['menu_entry']['example'] = true;
 
       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['title']="Search";
@@ -184,7 +184,7 @@ function plugin_example_haveTypeRight($type,$right){
 		return false;
 	}
 	switch ($type){
-		case PLUGIN_EXAMPLE_TYPE :
+		case 'PluginExampleExample' :
 			// Evaluate the right from data saved in session by change_profile hook
 			return ($right=='r' || $_SESSION["glpi_plugin_example_profile"]=='w');
 	}

@@ -35,8 +35,8 @@
 
 $NEEDED_ITEMS=array("search");
 
-define('GLPI_ROOT', '../..'); 
-include (GLPI_ROOT . "/inc/includes.php"); 
+define('GLPI_ROOT', '../..');
+include (GLPI_ROOT . "/inc/includes.php");
 
 if ($_SESSION["glpiactiveprofile"]["interface"] == "central"){
 	commonHeader("TITRE", $_SERVER['PHP_SELF'],"plugins","example","optionname");
@@ -44,13 +44,13 @@ if ($_SESSION["glpiactiveprofile"]["interface"] == "central"){
 	helpHeader("TITRE", $_SERVER['PHP_SELF']);
 }
 
-checkTypeRight(PLUGIN_EXAMPLE_TYPE,"r");
+checkTypeRight('PluginExampleExample',"r");
 
-manageGetValuesInSearch(PLUGIN_EXAMPLE_TYPE);
+manageGetValuesInSearch('PluginExampleExample');
 
-searchForm(PLUGIN_EXAMPLE_TYPE,$_GET);
+searchForm('PluginExampleExample',$_GET);
 
-showList(PLUGIN_EXAMPLE_TYPE,$_GET);
+showList('PluginExampleExample',$_GET);
 
 commonFooter();
 ?>

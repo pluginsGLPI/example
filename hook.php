@@ -122,7 +122,7 @@ function plugin_example_addLeftJoin($type,$ref_table,$new_table,$linkfield){
 
 function plugin_example_forceGroupBy($type){
 	switch ($type){
-		case PLUGIN_EXAMPLE_TYPE :
+		case 'PluginExampleExample' :
                         // Force add GROUP BY IN REQUEST
 			return true;
 			break;
@@ -224,7 +224,7 @@ function plugin_example_MassiveActions($type){
 			break;
 
 		// Actions for types provided by the plugin
-		case PLUGIN_EXAMPLE_TYPE :
+		case 'PluginExampleExample' :
 			return array(
 				// GLPI core one
 				"add_document"=>$LANG["document"][16],
@@ -247,7 +247,7 @@ function plugin_example_MassiveActionsDisplay($type,$action){
 				break;
 			}
 			break;
-		case PLUGIN_EXAMPLE_TYPE:
+		case 'PluginExampleExample':
 			switch ($action){
 				// No case for add_document : use GLPI core one
 				case "do_nothing":
@@ -280,7 +280,7 @@ function plugin_example_MassiveActionsProcess($data){
 			}
 			break;
 		case 'do_nothing':
-			if ($data['device_type']==PLUGIN_EXAMPLE_TYPE){
+			if ($data['device_type']=='PluginExampleExample'){
 				$ci =new CommonItem();
 				addMessageAfterRedirect("Right it is the type I want...");
 				addMessageAfterRedirect("But... I say I will do nothing for :");
@@ -673,7 +673,7 @@ function plugin_example_cron_info($name) {
 
 // Do special actions for dynamic report
 function plugin_example_dynamicReport($parm){
-	if ($parm["item_type"]==PLUGIN_EXAMPLE_TYPE){
+	if ($parm["item_type"]=='PluginExampleExample'){
 		// Do all what you want for export depending on $parm
 		echo "Personalized export for type ".$parm["display_type"];
 		echo 'with additional datas : <br>';
@@ -690,7 +690,7 @@ function plugin_example_dynamicReport($parm){
 
 // Add parameters to printPager in search system
 function plugin_example_addParamFordynamicReport($device_type){
-	if ($device_type==PLUGIN_EXAMPLE_TYPE){
+	if ($device_type=='PluginExampleExample'){
 		// Return array data containing all params to add : may be single data or array data
 		// Search config are available from session variable
 		return array(
@@ -779,7 +779,7 @@ function plugin_example_uninstall(){
 
 function plugin_example_AssignToTicket($types)
 {
-	$types[PLUGIN_EXAMPLE_TYPE] = "Example";
+	$types['PluginExampleExample'] = "Example";
 	return $types;
 }
 
