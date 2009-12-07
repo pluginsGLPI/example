@@ -96,7 +96,7 @@ function plugin_example_giveItem($type,$ID,$data,$num){
 
 	switch ($table.'.'.$field){
 		case "glpi_plugin_example.name" :
-			$out= "<a href=\"".$CFG_GLPI["root_doc"]."/".$INFOFORM_PAGES[$type]."?ID=".$data['id']."\">";
+			$out= "<a href=\"".$CFG_GLPI["root_doc"]."/".$INFOFORM_PAGES[$type]."?id=".$data['id']."\">";
 			$out.= $data["ITEM_$num"];
 			if ($_SESSION["glpiis_ids_visible"]||empty($data["ITEM_$num"])) $out.= " (".$data["id"].")";
 			$out.= "</a>";

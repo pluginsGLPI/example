@@ -35,7 +35,7 @@
 
 $NEEDED_ITEMS=array("search");
 
-define('GLPI_ROOT', '../..');
+define('GLPI_ROOT', '../../..');
 include (GLPI_ROOT . "/inc/includes.php");
 
 if ($_SESSION["glpiactiveprofile"]["interface"] == "central"){
