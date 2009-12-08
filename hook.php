@@ -502,135 +502,137 @@ function plugin_display_planning_example($parm){
 }
 
 // Define headings added by the plugin
-function plugin_get_headings_example($type,$ID,$withtemplate){
-	switch ($type){
-		case PROFILE_TYPE:
-			$prof = new Profile();
-			if ($ID>0 && $prof->getFromDB($ID) && $prof->fields['interface']=='central') {
-				return array(
-						1 => "Test PLugin",
-					    );
-			} else {
-				return array();
-			}
-			break;
-		case COMPUTER_TYPE :
-			// new object / template case
-			if ($withtemplate) {
-				return array();
-			// Non template case / editing an existing object
-			} else {
-				return array(
-						1 => "Test PLugin",
-					    );
-			}
-			break;
-		case COMPUTERDISK_TYPE :
-		case ENTERPRISE_TYPE :
-			if ($ID>0) { // Not in create mode
-				return array(
-						1 => "Test PLugin",
-						2 => "Test PLugin 2",
-					    );
-			}
-			break;
-		case "central":
-			return array(
-				1 => "Test PLugin",
-			);
-			break;
-		case "prefs":
-			return array(
-				1 => "Test PLugin",
-			);
-			break;
-		case "mailing":
-			return array(
-				1 => "Test PLugin",
-			);
-			break;
+function plugin_get_headings_example($item, $withtemplate){
+   switch (get_class($item)){
+      case 'Profile':
+         $prof = new Profile();
+         if ($item->fields['interface']=='central') {
+            return array(
+               1 => "Test PLugin",
+            );
+         } else {
+            return array();
+         }
+         break;
+      case 'Computer' :
+         // new object / template case
+         if ($withtemplate) {
+            return array();
+            // Non template case / editing an existing object
+         } else {
+            return array(
+               1 => "Test PLugin",
+            );
+         }
+         break;
+      case 'ComputerDisk' :
+      case 'Supplier' :
+         if ($item->getField('id')) { // Not in create mode
+            return array(
+               1 => "Test PLugin",
+               2 => "Test PLugin 2",
+            );
+         }
+         break;
+      case 'Central':
+         return array(
+            1 => "Test PLugin",
+         );
+         break;
+      case 'Preference':
+         return array(
+            1 => "Test PLugin",
+         );
+         break;
+      case 'Notification':
+         return array(
+            1 => "Test PLugin",
+         );
+         break;
 
-	}
-	return false;
+   }
+   return false;
 }
 
 // Define headings actions added by the plugin
-function plugin_headings_actions_example($type){
+function plugin_headings_actions_example($item){
 
-	switch ($type){
-		case PROFILE_TYPE :
-		case COMPUTER_TYPE :
-			return array(
-					1 => "plugin_headings_example",
-				    );
+   switch (get_class($item)){
+      case 'Profile' :
+      case 'Computer' :
+         return array(
+            1 => "plugin_headings_example",
+         );
 
-			break;
-		case COMPUTERDISK_TYPE :
-		case ENTERPRISE_TYPE :
-			return array(
-					1 => "plugin_headings_example",
-					2 => "plugin_headings_example",
-				    );
+         break;
+      case 'ComputerDisk' :
+      case 'Supplier' :
+         return array(
+            1 => "plugin_headings_example",
+            2 => "plugin_headings_example",
+         );
 
-			break;
-		case "central" :
-			return array(
-					1 => "plugin_headings_example",
-				    );
-			break;
-		case "prefs" :
-			return array(
-					1 => "plugin_headings_example",
-				    );
-			break;
-		case "mailing" :
-			return array(
-					1 => "plugin_headings_example",
-				    );
-			break;
+         break;
+      case 'Central' :
+         return array(
+            1 => "plugin_headings_example",
+         );
+         break;
+      case 'Preference' :
+         return array(
+            1 => "plugin_headings_example",
+         );
+         break;
+      case 'Notification' :
+         return array(
+            1 => "plugin_headings_example",
+         );
+         break;
 
-	}
-	return false;
+   }
+   return false;
 }
 
 // Example of an action heading
-function plugin_headings_example($type,$ID,$withtemplate=0){
-	global $LANG;
-	if (!$withtemplate){
-		echo "<div align='center'>";
-		switch ($type){
-			case "central":
-				echo "Plugin central action ".$LANG['plugin_example']["test"];
-			break;
-			case "prefs":
-				// Complete form display
+function plugin_headings_example($item, $withtemplate=0){
+   global $LANG;
+   if (!$withtemplate){
+      echo "<div align='center'>";
+      switch (get_class($item)){
+         case 'Central':
+            echo "Plugin central action ".$LANG['plugin_example']["test"];
+            break;
 
-				$data=plugin_version_example();
+         case 'Preference':
+            // Complete form display
+            $data=plugin_version_example();
 
-				echo "<form action='Where to post form'>";
-				echo "<table class='tab_cadre_fixe'>";
-					echo "<tr><th colspan='3'>".$data['name'];
-					echo " - ".$data['version'];
-					echo "</th></tr>";
+            echo "<form action='Where to post form'>";
+            echo "<table class='tab_cadre_fixe'>";
+            echo "<tr><th colspan='3'>".$data['name'];
+            echo " - ".$data['version'];
+            echo "</th></tr>";
 
-					echo "<tr class='tab_bg_1'><td>Name of the pref";
-					echo "</td><td>Input to set the pref</td>";
+            echo "<tr class='tab_bg_1'><td>Name of the pref";
+            echo "</td><td>Input to set the pref</td>";
 
-					echo "<td><input class='submit' type='submit' name='submit' value='submit'></td>";
-					echo "</tr>";
+            echo "<td><input class='submit' type='submit' name='submit' value='submit'></td>";
+            echo "</tr>";
 
-				echo "</table>";
-				echo "</form>";
-			break;
-			case "mailing":
-				echo "Plugin mailing action ".$LANG['plugin_example']["test"];
-			break;
-			default :
-				echo "Plugin function with headings TYPE=".$type." ID=".$ID;
-			break;
-		}
-		echo "</div>";
-	}
+            echo "</table>";
+            echo "</form>";
+            break;
+
+         case 'Notification':
+            echo "Plugin mailing action ".$LANG['plugin_example']["test"];
+            break;
+
+         default :
+            echo "Plugin function with headings CLASS=".get_class($item)." ID=".$item->getField('id');
+            break;
+      }
+      echo "</div>";
+   }
 }
 
 /**
