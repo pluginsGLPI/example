@@ -33,11 +33,6 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
-// TODO remove this when autoload ready
-foreach (glob(GLPI_ROOT . '/plugins/example/inc/*.php') as $file) {
-   include_once ($file);
-}
-
 // Hook called on profile change
 // Good place to evaluate the user right on this plugin
 // And to save it in the session
