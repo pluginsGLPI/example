@@ -53,7 +53,7 @@ class PluginExampleExample extends CommonDBTM {
       $tab = array();
       $tab['common']="Header Needed";
 
-      $tab[1]['table']='glpi_plugin_example';
+      $tab[1]['table']='glpi_plugin_example_example';
       $tab[1]['field']='name';
       $tab[1]['linkfield']='name';
       $tab[1]['name']=$LANG['plugin_example']["name"];
@@ -63,13 +63,13 @@ class PluginExampleExample extends CommonDBTM {
       $tab[2]['linkfield']='plugin_example_dropdown_id';
       $tab[2]['name']='Dropdown';
 
-      $tab[3]['table']='glpi_plugin_example';
+      $tab[3]['table']='glpi_plugin_example_example';
       $tab[3]['field']='serial';
       $tab[3]['linkfield']='serial';
       $tab[3]['name']='Serial';
       $tab[3]['usehaving']=true;
 
-      $tab[30]['table']='glpi_plugin_example';
+      $tab[30]['table']='glpi_plugin_example_example';
       $tab[30]['field']='id';
       $tab[30]['linkfield']='';
       $tab[30]['name']=$LANG["common"][2];

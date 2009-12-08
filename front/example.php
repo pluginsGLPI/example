@@ -46,11 +46,7 @@ if ($_SESSION["glpiactiveprofile"]["interface"] == "central"){
 
 checkTypeRight('PluginExampleExample',"r");
 
-manageGetValuesInSearch('PluginExampleExample');
-
-searchForm('PluginExampleExample',$_GET);
-
-showList('PluginExampleExample',$_GET);
+Search::show('PluginExampleExample');
 
 commonFooter();
 ?>

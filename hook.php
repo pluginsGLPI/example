@@ -90,12 +90,12 @@ function plugin_example_getAddSearchOptions($itemtype){
 function plugin_example_giveItem($type,$ID,$data,$num){
 	global $CFG_GLPI, $INFOFORM_PAGES;
 
-   $searchopt=&getSearchOptions($type);
+   $searchopt=&Search::getOptions($type);
 	$table=$searchopt[$ID]["table"];
 	$field=$searchopt[$ID]["field"];
 
 	switch ($table.'.'.$field){
-		case "glpi_plugin_example.name" :
+		case "glpi_plugin_example_example.name" :
 			$out= "<a href=\"".$CFG_GLPI["root_doc"]."/".$INFOFORM_PAGES[$type]."?id=".$data['id']."\">";
 			$out.= $data["ITEM_$num"];
 			if ($_SESSION["glpiis_ids_visible"]||empty($data["ITEM_$num"])) $out.= " (".$data["id"].")";
@@ -132,7 +132,7 @@ function plugin_example_forceGroupBy($type){
 
 function plugin_example_addWhere($link,$nott,$type,$ID,$val){
 
-   $searchopt=&getSearchOptions($type);
+   $searchopt=&Search::getOptions($type);
    $table=$searchopt[$ID]["table"];
    $field=$searchopt[$ID]["field"];
 
@@ -155,7 +155,7 @@ function plugin_example_addWhere($link,$nott,$type,$ID,$val){
 // This is not a real example because the use of Having condition in this case is not suitable
 function plugin_example_addHaving($link,$nott,$type,$ID,$val,$num){
 
-   $searchopt=&getSearchOptions($type);
+   $searchopt=&Search::getOptions($type);
    $table=$searchopt[$ID]["table"];
    $field=$searchopt[$ID]["field"];
 
@@ -180,7 +180,7 @@ function plugin_example_addHaving($link,$nott,$type,$ID,$val,$num){
 
 function plugin_example_addSelect($type,$ID,$num){
 
-   $searchopt=&getSearchOptions($type);
+   $searchopt=&Search::getOptions($type);
    $table=$searchopt[$ID]["table"];
    $field=$searchopt[$ID]["field"];
 
@@ -196,7 +196,7 @@ function plugin_example_addSelect($type,$ID,$num){
 
 function plugin_example_addOrderBy($type,$ID,$order,$key=0){
 
-   $searchopt=&getSearchOptions($type);
+   $searchopt=&Search::getOptions($type);
    $table=$searchopt[$ID]["table"];
    $field=$searchopt[$ID]["field"];
 
