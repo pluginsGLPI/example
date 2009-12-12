@@ -83,15 +83,14 @@ function plugin_example_getAddSearchOptions($itemtype){
 }
 
 function plugin_example_giveItem($type,$ID,$data,$num){
-	global $CFG_GLPI, $INFOFORM_PAGES;
 
    $searchopt=&Search::getOptions($type);
 	$table=$searchopt[$ID]["table"];
 	$field=$searchopt[$ID]["field"];
 
 	switch ($table.'.'.$field){
-		case "glpi_plugin_example_example.name" :
-			$out= "<a href=\"".$CFG_GLPI["root_doc"]."/".$INFOFORM_PAGES[$type]."?id=".$data['id']."\">";
+		case "glpi_plugin_example_examples.name" :
+			$out= "<a href=\"".getItemTypeFormURL('PluginExampleExample')."?id=".$data['id']."\">";
 			$out.= $data["ITEM_$num"];
 			if ($_SESSION["glpiis_ids_visible"]||empty($data["ITEM_$num"])) $out.= " (".$data["id"].")";
 			$out.= "</a>";
@@ -261,28 +260,28 @@ function plugin_example_MassiveActionsProcess($data){
 
 	switch ($data['action']){
 		case 'plugin_example_DoIt':
-			if ($data['device_type']==COMPUTER_TYPE){
-				$ci =new CommonItem();
+			if ($data['itemtype']=='Computer'){
+            $comp = new Computer;
 				addMessageAfterRedirect("Right it is the type I want...");
 				addMessageAfterRedirect("But... I say I will do nothing for :");
 				foreach ($data['item'] as $key => $val){
 					if ($val==1) {
-						if ($ci->getFromDB($data["device_type"],$key)){
-						addMessageAfterRedirect("- ".$ci->getField("name"));
+						if ($comp->getFromDB($key)){
+						addMessageAfterRedirect("- ".$comp->getField("name"));
 						}
 					}
 				}
 			}
 			break;
 		case 'do_nothing':
-			if ($data['device_type']=='PluginExampleExample'){
-				$ci =new CommonItem();
+			if ($data['itemtype']=='PluginExampleExample'){
+				$ex =new PluginExampleExample();
 				addMessageAfterRedirect("Right it is the type I want...");
 				addMessageAfterRedirect("But... I say I will do nothing for :");
 				foreach ($data['item'] as $key => $val){
 					if ($val==1) {
-						if ($ci->getFromDB($data["device_type"],$key)){
-							addMessageAfterRedirect("- ".$ci->getField("name"));
+						if ($ex->getFromDB($key)){
+							addMessageAfterRedirect("- ".$ex->getField("name"));
 						}
 					}
 				}
@@ -292,8 +291,8 @@ function plugin_example_MassiveActionsProcess($data){
 }
 // How to display specific update fields ?
 function plugin_example_MassiveActionsFieldsDisplay($type,$table,$field,$linkfield){
-	global $LINK_ID_TABLE;
-	if ($table==$LINK_ID_TABLE[$type]){
+
+	if ($table==getTableForItemType($type)){
 		// Table fields
 		switch ($table.".".$field){
 			case 'glpi_plugin_example.serial':
@@ -703,8 +702,8 @@ function plugin_example_install(){
 	global $DB;
 
 
-	if (!TableExists("glpi_plugin_example_example")){
-		$query="CREATE TABLE `glpi_plugin_example_example` (
+	if (!TableExists("glpi_plugin_example_examples")){
+		$query="CREATE TABLE `glpi_plugin_example_examples` (
 			`id` int(11) NOT NULL auto_increment,
 			`name` varchar(255) collate utf8_unicode_ci default NULL,
 			`serial` varchar(255) collate utf8_unicode_ci NOT NULL,
@@ -715,8 +714,8 @@ function plugin_example_install(){
 			PRIMARY KEY  (`id`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 			";
-		$DB->query($query) or die("error creating glpi_plugin_example_example ". $DB->error());
-		$query="INSERT INTO `glpi_plugin_example_example` (`id`, `name`, `serial`, `plugin_example_dropdown_id`,
+		$DB->query($query) or die("error creating glpi_plugin_example_examples ". $DB->error());
+		$query="INSERT INTO `glpi_plugin_example_examples` (`id`, `name`, `serial`, `plugin_example_dropdown_id`,
              `is_deleted`, `is_template`, `template_name`) VALUES
 			(1, 'example 1', 'serial 1', 1, 0, 0, NULL),
 			(2, 'example 2', 'serial 2', 2, 0, 0, NULL),

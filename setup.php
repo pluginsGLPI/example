@@ -61,7 +61,7 @@ function plugin_init_example() {
       'searchpage' => 'front/dropdown.php'));
 
 	// Display a menu entry ?
-	if (plugin_example_haveTypeRight('PluginExampleExample','r')) { // Right set in change_profile hook
+	if (isset($_SESSION["glpi_plugin_example_profile"])) { // Right set in change_profile hook
       $PLUGIN_HOOKS['menu_entry']['example'] = 'front/example.php';
 
       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['title']="Search";
@@ -174,20 +174,6 @@ function plugin_example_check_config($verbose=false){
 		echo $LANG['plugins'][2];
 	}
 	return false;
-}
-
-// Define rights for the plugin types
-function plugin_example_haveTypeRight($type,$right){
-
-	if (!isset($_SESSION["glpi_plugin_example_profile"])) {
-		// No right
-		return false;
-	}
-	switch ($type){
-		case 'PluginExampleExample' :
-			// Evaluate the right from data saved in session by change_profile hook
-			return ($right=='r' || $_SESSION["glpi_plugin_example_profile"]=='w');
-	}
 }
 
 

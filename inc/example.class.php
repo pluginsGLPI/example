@@ -37,7 +37,7 @@
 class PluginExampleExample extends CommonDBTM {
 
    // From CommonDBTM
-   public $table            = 'glpi_plugin_example_example';
+   public $table            = 'glpi_plugin_example_examples';
    public $type             = 'PluginExampleExample';
 
    // Should return the localized name of the type
@@ -47,13 +47,28 @@ class PluginExampleExample extends CommonDBTM {
       return 'Example Type';
    }
 
+   static function canCreate() {
+      if (isset($_SESSION["glpi_plugin_example_profile"])) {
+         return ($_SESSION["glpi_plugin_example_profile"]['example']=='w');
+      }
+      return false;
+   }
+
+   static function canView() {
+      if (isset($_SESSION["glpi_plugin_example_profile"])) {
+         return ($_SESSION["glpi_plugin_example_profile"]['example']=='w'
+                 || $_SESSION["glpi_plugin_example_profile"]['example']=='r');
+      }
+      return false;
+   }
+
    function getSearchOptions() {
       global $LANG;
 
       $tab = array();
       $tab['common']="Header Needed";
 
-      $tab[1]['table']='glpi_plugin_example_example';
+      $tab[1]['table']='glpi_plugin_example_examples';
       $tab[1]['field']='name';
       $tab[1]['linkfield']='name';
       $tab[1]['name']=$LANG['plugin_example']["name"];
@@ -63,13 +78,13 @@ class PluginExampleExample extends CommonDBTM {
       $tab[2]['linkfield']='plugin_example_dropdown_id';
       $tab[2]['name']='Dropdown';
 
-      $tab[3]['table']='glpi_plugin_example_example';
+      $tab[3]['table']='glpi_plugin_example_examples';
       $tab[3]['field']='serial';
       $tab[3]['linkfield']='serial';
       $tab[3]['name']='Serial';
       $tab[3]['usehaving']=true;
 
-      $tab[30]['table']='glpi_plugin_example_example';
+      $tab[30]['table']='glpi_plugin_example_examples';
       $tab[30]['field']='id';
       $tab[30]['linkfield']='';
       $tab[30]['name']=$LANG["common"][2];
