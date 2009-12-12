@@ -73,9 +73,9 @@ class PluginExampleExample extends CommonDBTM {
       $tab[1]['linkfield']='name';
       $tab[1]['name']=$LANG['plugin_example']["name"];
 
-      $tab[2]['table']='glpi_plugin_example_dropdown';
+      $tab[2]['table']='glpi_plugin_example_dropdowns';
       $tab[2]['field']='name';
-      $tab[2]['linkfield']='plugin_example_dropdown_id';
+      $tab[2]['linkfield']='plugin_example_dropdowns_id';
       $tab[2]['name']='Dropdown';
 
       $tab[3]['table']='glpi_plugin_example_examples';

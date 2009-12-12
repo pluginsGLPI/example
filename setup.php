@@ -40,10 +40,7 @@ function plugin_init_example() {
 	// Params : plugin name - string type - ID - Array of attributes
 	Plugin::registerClass('PluginExampleExample', array(
 		'classname'  => 'PluginExampleExample',
-		'tablename'  => 'glpi_plugin_example_example',
 		'formpage'   => 'front/example.form.php',
-		'searchpage' => 'front/example.php',
-		'typename'   => 'Example Type',
 		'deleted_tables' => false,
 		'template_tables' => false,
 		'specif_entities_tables' => false,
@@ -55,10 +52,8 @@ function plugin_init_example() {
    // Params : plugin name - string type - ID - Array of attributes
    Plugin::registerClass('PluginExampleDropdown', array(
       'classname'  => 'PluginExampleDropdown',
-      'tablename'  => 'glpi_plugin_example_dropdown',
       'typename'   => 'Example Dropdown Type',
-      'formpage'   => 'front/dropdown.form.php',
-      'searchpage' => 'front/dropdown.php'));
+      'formpage'   => 'front/dropdown.form.php'));
 
 	// Display a menu entry ?
 	if (isset($_SESSION["glpi_plugin_example_profile"])) { // Right set in change_profile hook

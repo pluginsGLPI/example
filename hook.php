@@ -54,7 +54,7 @@ function plugin_change_profile_example() {
 // Define dropdown relations
 function plugin_example_getDatabaseRelations(){
 	//
-	return array("glpi_plugin_example_dropdown"=>array("glpi_plugin_example"=>"plugin_example_dropdown_id"));
+	return array("glpi_plugin_example_dropdowns"=>array("glpi_plugin_example"=>"plugin_example_dropdowns_id"));
 }
 
 
@@ -73,9 +73,9 @@ function plugin_example_getAddSearchOptions($itemtype){
 	$sopt=array();
    if ($itemtype == COMPUTER_TYPE) {
          // Just for example, not working...
-         $sopt[1001]['table']     = 'glpi_plugin_example_dropdown';
+         $sopt[1001]['table']     = 'glpi_plugin_example_dropdowns';
          $sopt[1001]['field']     = 'name';
-         $sopt[1001]['linkfield'] = 'plugin_example_dropdown_id';
+         $sopt[1001]['linkfield'] = 'plugin_example_dropdowns_id';
          $sopt[1001]['name']      = 'Example plugin';
    }
 
@@ -105,7 +105,7 @@ function plugin_example_addLeftJoin($type,$ref_table,$new_table,$linkfield){
 	// Example of standard LEFT JOIN  clause but use it ONLY for specific LEFT JOIN
 	// No need of the function if you do not have specific cases
 	switch ($new_table){
-		case "glpi_plugin_example_dropdown" :
+		case "glpi_plugin_example_dropdowns" :
 			return " LEFT JOIN $new_table ON ($ref_table.$linkfield = $new_table.id) ";
 			break;
 	}
@@ -307,7 +307,7 @@ function plugin_example_MassiveActionsFieldsDisplay($type,$table,$field,$linkfie
 	} else {
 		// Linked Fields
 		switch ($table.".".$field){
-			case "glpi_plugin_example_dropdown.name" :
+			case "glpi_plugin_example_dropdowns.name" :
 				echo "Not really specific - Just for example&nbsp;";
 				dropdown($table,$linkfield,1,$_SESSION["glpiactive_entity"]);
 				//dropdownUsers($linkfield,0,"own_ticket",0,1,$_SESSION["glpiactive_entity"]);
@@ -707,7 +707,7 @@ function plugin_example_install(){
 			`id` int(11) NOT NULL auto_increment,
 			`name` varchar(255) collate utf8_unicode_ci default NULL,
 			`serial` varchar(255) collate utf8_unicode_ci NOT NULL,
-			`plugin_example_dropdown_id` int(11) NOT NULL default '0',
+			`plugin_example_dropdowns_id` int(11) NOT NULL default '0',
 			`is_deleted` smallint(6) NOT NULL default '0',
 			`is_template` smallint(6) NOT NULL default '0',
 			`template_name` varchar(255) collate utf8_unicode_ci default NULL,
@@ -715,16 +715,16 @@ function plugin_example_install(){
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 			";
 		$DB->query($query) or die("error creating glpi_plugin_example_examples ". $DB->error());
-		$query="INSERT INTO `glpi_plugin_example_examples` (`id`, `name`, `serial`, `plugin_example_dropdown_id`,
+		$query="INSERT INTO `glpi_plugin_example_examples` (`id`, `name`, `serial`, `plugin_example_dropdowns_id`,
              `is_deleted`, `is_template`, `template_name`) VALUES
 			(1, 'example 1', 'serial 1', 1, 0, 0, NULL),
 			(2, 'example 2', 'serial 2', 2, 0, 0, NULL),
 			(3, 'example 3', 'serial 3', 1, 0, 0, NULL);";
 		$DB->query($query) or die("error populate glpi_plugin_example ". $DB->error());
 	}
-	if (!TableExists("glpi_plugin_example_dropdown")){
+	if (!TableExists("glpi_plugin_example_dropdowns")){
 
-		$query="CREATE TABLE `glpi_plugin_example_dropdown` (
+		$query="CREATE TABLE `glpi_plugin_example_dropdowns` (
 			`id` int(11) NOT NULL auto_increment,
 			`name` varchar(255) collate utf8_unicode_ci default NULL,
 			`comment` text collate utf8_unicode_ci,
@@ -732,11 +732,11 @@ function plugin_example_install(){
 			KEY `name` (`name`)
 			) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
 
-		$DB->query($query) or die("error creating glpi_plugin_example_dropdown". $DB->error());
-		$query="INSERT INTO `glpi_plugin_example_dropdown` (`id`, `name`, `comment`) VALUES
+		$DB->query($query) or die("error creating glpi_plugin_example_dropdowns". $DB->error());
+		$query="INSERT INTO `glpi_plugin_example_dropdowns` (`id`, `name`, `comment`) VALUES
 			(1, 'dp 1', 'comment 1'),
 			(2, 'dp2', 'comment 2');";
-		$DB->query($query) or die("error populate glpi_plugin_example_dropdown". $DB->error());
+		$DB->query($query) or die("error populate glpi_plugin_example_dropdowns". $DB->error());
 
 	}
 
@@ -766,9 +766,9 @@ function plugin_example_uninstall(){
       $query="DROP TABLE `glpi_plugin_example_example`;";
       $DB->query($query) or die("error deleting glpi_plugin_example_example");
    }
-   if (TableExists("glpi_plugin_example_dropdown")){
-      $query="DROP TABLE `glpi_plugin_example_dropdown`;";
-      $DB->query($query) or die("error deleting glpi_plugin_example_dropdown");
+   if (TableExists("glpi_plugin_example_dropdowns")){
+      $query="DROP TABLE `glpi_plugin_example_dropdowns`;";
+      $DB->query($query) or die("error deleting glpi_plugin_example_dropdowns");
    }
    return true;
 }
