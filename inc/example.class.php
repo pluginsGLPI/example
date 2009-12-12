@@ -99,7 +99,7 @@ class PluginExampleExample extends CommonDBTM {
     *
     * @return array of strings
     */
-   static function cron_info($name) {
+   static function cronInfo($name) {
       global $LANG;
 
       switch ($name) {
@@ -122,7 +122,7 @@ class PluginExampleExample extends CommonDBTM {
     *    <0 : to be run again (not finished)
     *     0 : nothing to do
     */
-   static function cron_sample2_run($task) {
+   static function cronSample2($task) {
       $task->log("Example log message from class");
       $task->setVolume(mt_rand(0,10));
 
