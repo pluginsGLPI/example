@@ -42,22 +42,20 @@ class PluginExampleExample extends CommonDBTM {
 
    // Should return the localized name of the type
    static function getTypeName() {
-      global $LANG;
-
       return 'Example Type';
    }
 
    static function canCreate() {
       if (isset($_SESSION["glpi_plugin_example_profile"])) {
-         return ($_SESSION["glpi_plugin_example_profile"]['example']=='w');
+         return ($_SESSION["glpi_plugin_example_profile"]['example'] == 'w');
       }
       return false;
    }
 
    static function canView() {
       if (isset($_SESSION["glpi_plugin_example_profile"])) {
-         return ($_SESSION["glpi_plugin_example_profile"]['example']=='w'
-                 || $_SESSION["glpi_plugin_example_profile"]['example']=='r');
+         return ($_SESSION["glpi_plugin_example_profile"]['example'] == 'w'
+                 || $_SESSION["glpi_plugin_example_profile"]['example'] == 'r');
       }
       return false;
    }
@@ -66,28 +64,28 @@ class PluginExampleExample extends CommonDBTM {
       global $LANG;
 
       $tab = array();
-      $tab['common']="Header Needed";
+      $tab['common'] = "Header Needed";
 
-      $tab[1]['table']='glpi_plugin_example_examples';
-      $tab[1]['field']='name';
-      $tab[1]['linkfield']='name';
-      $tab[1]['name']=$LANG['plugin_example']["name"];
+      $tab[1]['table']     = 'glpi_plugin_example_examples';
+      $tab[1]['field']     = 'name';
+      $tab[1]['linkfield'] = 'name';
+      $tab[1]['name']      = $LANG['plugin_example']["name"];
 
-      $tab[2]['table']='glpi_plugin_example_dropdowns';
-      $tab[2]['field']='name';
-      $tab[2]['linkfield']='plugin_example_dropdowns_id';
-      $tab[2]['name']='Dropdown';
+      $tab[2]['table']     = 'glpi_plugin_example_dropdowns';
+      $tab[2]['field']     = 'name';
+      $tab[2]['linkfield'] = 'plugin_example_dropdowns_id';
+      $tab[2]['name']      = 'Dropdown';
 
-      $tab[3]['table']='glpi_plugin_example_examples';
-      $tab[3]['field']='serial';
-      $tab[3]['linkfield']='serial';
-      $tab[3]['name']='Serial';
-      $tab[3]['usehaving']=true;
+      $tab[3]['table']     = 'glpi_plugin_example_examples';
+      $tab[3]['field']     = 'serial';
+      $tab[3]['linkfield'] = 'serial';
+      $tab[3]['name']      = 'Serial';
+      $tab[3]['usehaving'] = true;
 
-      $tab[30]['table']='glpi_plugin_example_examples';
-      $tab[30]['field']='id';
-      $tab[30]['linkfield']='';
-      $tab[30]['name']=$LANG["common"][2];
+      $tab[30]['table']     = 'glpi_plugin_example_examples';
+      $tab[30]['field']     = 'id';
+      $tab[30]['linkfield'] = '';
+      $tab[30]['name']      = $LANG["common"][2];
 
       return $tab;
    }
@@ -103,11 +101,9 @@ class PluginExampleExample extends CommonDBTM {
       global $LANG;
 
       switch ($name) {
-         case 'sample2':
-            return array (
-               'description' => $LANG['plugin_example']['test']." (class)",
-               'parameter' => $LANG['plugin_example']['test']);
-            break;
+         case 'sample2' :
+            return array('description' => $LANG['plugin_example']['test']." (class)",
+                         'parameter'   => $LANG['plugin_example']['test']);
       }
       return array();
    }
@@ -123,6 +119,7 @@ class PluginExampleExample extends CommonDBTM {
     *     0 : nothing to do
     */
    static function cronSample2($task) {
+
       $task->log("Example log message from class");
       $task->setVolume(mt_rand(0,10));
 

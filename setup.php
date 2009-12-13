@@ -35,140 +35,137 @@
 
 // Init the hooks of the plugins -Needed
 function plugin_init_example() {
-	global $PLUGIN_HOOKS,$LANG,$CFG_GLPI;
-
-	// Params : plugin name - string type - ID - Array of attributes
-	Plugin::registerClass('PluginExampleExample', array(
-		'classname'  => 'PluginExampleExample',
-		'formpage'   => 'front/example.form.php',
-		'deleted_tables' => false,
-		'template_tables' => false,
-		'specif_entities_tables' => false,
-		'recursive_type' => false,
-		//'linkuser_types' => true,
-		//'linkgroup_types' => true
-		));
+   global $PLUGIN_HOOKS,$LANG,$CFG_GLPI;
 
    // Params : plugin name - string type - ID - Array of attributes
-   Plugin::registerClass('PluginExampleDropdown', array(
-      'classname'  => 'PluginExampleDropdown',
-      'typename'   => 'Example Dropdown Type',
-      'formpage'   => 'front/dropdown.form.php'));
+   Plugin::registerClass('PluginExampleExample',
+                         array('classname'              => 'PluginExampleExample',
+                               'formpage'               => 'front/example.form.php',
+                               'deleted_tables'         => false,
+                               'template_tables'        => false,
+                               'specif_entities_tables' => false,
+                               'recursive_type'         => false));
 
-	// Display a menu entry ?
-	if (isset($_SESSION["glpi_plugin_example_profile"])) { // Right set in change_profile hook
+   // Params : plugin name - string type - ID - Array of attributes
+   Plugin::registerClass('PluginExampleDropdown',
+                         array('classname'  => 'PluginExampleDropdown',
+                               'typename'   => 'Example Dropdown Type',
+                               'formpage'   => 'front/dropdown.form.php'));
+
+   // Display a menu entry ?
+   if (isset($_SESSION["glpi_plugin_example_profile"])) { // Right set in change_profile hook
       $PLUGIN_HOOKS['menu_entry']['example'] = 'front/example.php';
 
-      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['title']="Search";
-      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['page']='/plugins/example/front/example.php';
-      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['search']='/plugins/example/front/example.php';
-		$PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['add'] = '/plugins/example/front/example.form.php';
-		$PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['config'] = '/plugins/example/index.php';
-		$PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANG['plugin_example']["test"]."' alt='".$LANG['plugin_example']["test"]."'>"] = '/plugins/example/index.php';
-		$PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links'][$LANG['plugin_example']["test"]] = '/plugins/example/index.php';
+      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['title'] = "Search";
+      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['page'] = '/plugins/example/front/example.php';
+      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['search'] = '/plugins/example/front/example.php';
+      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['add'] = '/plugins/example/front/example.form.php';
+      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['config'] = '/plugins/example/index.php';
+      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANG['plugin_example']["test"]."' alt='".$LANG['plugin_example']["test"]."'>"] = '/plugins/example/index.php';
+      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links'][$LANG['plugin_example']["test"]] = '/plugins/example/index.php';
 
-		$PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
-	}
+      $PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
+   }
 
-	// Config page
-	if (haveRight('config','w')) {
-		$PLUGIN_HOOKS['config_page']['example'] = 'config.php';
-	}
+   // Config page
+   if (haveRight('config','w')) {
+      $PLUGIN_HOOKS['config_page']['example'] = 'config.php';
+   }
 
-	// Init session
-	//$PLUGIN_HOOKS['init_session']['example'] = 'plugin_init_session_example';
-	// Change profile
-	$PLUGIN_HOOKS['change_profile']['example'] = 'plugin_change_profile_example';
-	// Change entity
-	//$PLUGIN_HOOKS['change_entity']['example'] = 'plugin_change_entity_example';
+   // Init session
+   //$PLUGIN_HOOKS['init_session']['example'] = 'plugin_init_session_example';
+   // Change profile
+   $PLUGIN_HOOKS['change_profile']['example'] = 'plugin_change_profile_example';
+   // Change entity
+   //$PLUGIN_HOOKS['change_entity']['example'] = 'plugin_change_entity_example';
 
+   // Onglets management
+   $PLUGIN_HOOKS['headings']['example']        = 'plugin_get_headings_example';
+   $PLUGIN_HOOKS['headings_action']['example'] = 'plugin_headings_actions_example';
 
-	// Onglets management
-	$PLUGIN_HOOKS['headings']['example'] = 'plugin_get_headings_example';
-	$PLUGIN_HOOKS['headings_action']['example'] = 'plugin_headings_actions_example';
+   // Item action event // See define.php for defined ITEM_TYPE
+   $PLUGIN_HOOKS['pre_item_update']['example'] = 'plugin_pre_item_update_example';
+   $PLUGIN_HOOKS['item_update']['example']     = 'plugin_item_update_example';
 
-	// Item action event // See define.php for defined ITEM_TYPE
-	$PLUGIN_HOOKS['pre_item_update']['example'] = 'plugin_pre_item_update_example';
-	$PLUGIN_HOOKS['item_update']['example'] = 'plugin_item_update_example';
+   $PLUGIN_HOOKS['pre_item_add']['example'] = 'plugin_pre_item_add_example';
+   $PLUGIN_HOOKS['item_add']['example']     = 'plugin_item_add_example';
 
-	$PLUGIN_HOOKS['pre_item_add']['example'] = 'plugin_pre_item_add_example';
-	$PLUGIN_HOOKS['item_add']['example'] = 'plugin_item_add_example';
+   $PLUGIN_HOOKS['pre_item_delete']['example'] = 'plugin_pre_item_delete_example';
+   $PLUGIN_HOOKS['item_delete']['example']     = 'plugin_item_delete_example';
 
-	$PLUGIN_HOOKS['pre_item_delete']['example'] = 'plugin_pre_item_delete_example';
-	$PLUGIN_HOOKS['item_delete']['example'] = 'plugin_item_delete_example';
+   $PLUGIN_HOOKS['pre_item_purge']['example'] = 'plugin_pre_item_purge_example';
+   $PLUGIN_HOOKS['item_purge']['example']     = 'plugin_item_purge_example';
 
-	$PLUGIN_HOOKS['pre_item_purge']['example'] = 'plugin_pre_item_purge_example';
-	$PLUGIN_HOOKS['item_purge']['example'] = 'plugin_item_purge_example';
+   $PLUGIN_HOOKS['pre_item_restore']['example'] = 'plugin_pre_item_restore_example';
+   $PLUGIN_HOOKS['item_restore']['example']     = 'plugin_item_restore_example';
 
-	$PLUGIN_HOOKS['pre_item_restore']['example'] = 'plugin_pre_item_restore_example';
-	$PLUGIN_HOOKS['item_restore']['example'] = 'plugin_item_restore_example';
+   $PLUGIN_HOOKS['item_transfer']['example'] = 'plugin_item_transfer_example';
 
-	$PLUGIN_HOOKS['item_transfer']['example'] = 'plugin_item_transfer_example';
+   //redirect appel http://localhost/glpi/index.php?redirect=plugin_example_2 (ID 2 du form)
+   $PLUGIN_HOOKS['redirect_page']['example'] = 'example.form.php';
 
-	//redirect appel http://localhost/glpi/index.php?redirect=plugin_example_2 (ID 2 du form)
-	$PLUGIN_HOOKS['redirect_page']['example']="example.form.php";
+   //function to populate planning
+   $PLUGIN_HOOKS['planning_populate']['example'] = 'plugin_planning_populate_example';
 
-	//function to populate planning
-	$PLUGIN_HOOKS['planning_populate']['example']="plugin_planning_populate_example";
+   //function to display planning items
+   $PLUGIN_HOOKS['display_planning']['example'] = 'plugin_display_planning_example';
 
-	//function to display planning items
-	$PLUGIN_HOOKS['display_planning']['example']="plugin_display_planning_example";
+   // Massive Action definition
+   $PLUGIN_HOOKS['use_massive_action']['example'] = 1;
 
-	// Massive Action definition
-	$PLUGIN_HOOKS['use_massive_action']['example']=1;
+   $PLUGIN_HOOKS['assign_to_ticket']['example'] = 1;
 
-	$PLUGIN_HOOKS['assign_to_ticket']['example']=1;
+   // Add specific files to add to the header : javascript or css
+   $PLUGIN_HOOKS['add_javascript']['example'] = 'example.js';
+   $PLUGIN_HOOKS['add_css']['example']        = 'example.css';
 
-	// Add specific files to add to the header : javascript or css
-	$PLUGIN_HOOKS['add_javascript']['example']="example.js";
-	$PLUGIN_HOOKS['add_css']['example']="example.css";
+   // Retrieve others datas from LDAP
+   //$PLUGIN_HOOKS['retrieve_more_data_from_ldap']['example']="plugin_retrieve_more_data_from_ldap_example";
 
-	// Retrieve others datas from LDAP
-	//$PLUGIN_HOOKS['retrieve_more_data_from_ldap']['example']="plugin_retrieve_more_data_from_ldap_example";
+   // Reports
+   $PLUGIN_HOOKS['reports']['example'] = array('report.php'       => 'New Report',
+                                               'report.php?other' => 'New Report 2');
 
-	// Reports
-	$PLUGIN_HOOKS['reports']['example'] = array('report.php'=>'New Report', 'report.php?other'=>'New Report 2',);
-
-	// Stats
-	$PLUGIN_HOOKS['stats']['example'] = array('stat.php'=>'New stat', 'stat.php?other'=>'New stats 2',);
-
+   // Stats
+   $PLUGIN_HOOKS['stats']['example'] = array('stat.php'       => 'New stat',
+                                             'stat.php?other' => 'New stats 2',);
 }
 
 
 // Get the name and the version of the plugin - Needed
-function plugin_version_example(){
-	return array(
-		'name'    => 'Plugin Example',
-		'version' => '0.2.0',
-		'author' => 'Julien Dombre',
-		'homepage'=> 'http://glpi-project.org',
-		'minGlpiVersion' => '0.80',// For compatibility / no install in version < 0.72
-	);
+function plugin_version_example() {
+
+   return array('name'           => 'Plugin Example',
+                'version'        => '0.2.0',
+                'author'         => 'Julien Dombre',
+                'homepage'       => 'https://forge.indepnet.net/projects/show/example',
+                'minGlpiVersion' => '0.80');// For compatibility / no install in version < 0.72
 }
 
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
-function plugin_example_check_prerequisites(){
-	if (GLPI_VERSION>=0.80){
-		return true;
-	} else {
-		echo "GLPI version not compatible need 0.80";
-	}
+function plugin_example_check_prerequisites() {
+
+   if (GLPI_VERSION >= 0.80) {
+      return true;
+   } else {
+      echo "GLPI version not compatible need 0.80";
+   }
 }
 
 
 // Check configuration process for plugin : need to return true if succeeded
 // Can display a message only if failure and $verbose is true
-function plugin_example_check_config($verbose=false){
-	global $LANG;
+function plugin_example_check_config($verbose=false) {
+   global $LANG;
 
-	if (true) { // Your configuration check
-		return true;
-	}
-	if ($verbose) {
-		echo $LANG['plugins'][2];
-	}
-	return false;
+   if (true) { // Your configuration check
+      return true;
+   }
+   if ($verbose) {
+      echo $LANG['plugins'][2];
+   }
+   return false;
 }
 
 

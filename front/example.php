@@ -36,10 +36,10 @@
 define('GLPI_ROOT', '../../..');
 include (GLPI_ROOT . "/inc/includes.php");
 
-if ($_SESSION["glpiactiveprofile"]["interface"] == "central"){
-	commonHeader("TITRE", $_SERVER['PHP_SELF'],"plugins","example","optionname");
+if ($_SESSION["glpiactiveprofile"]["interface"] == "central") {
+   commonHeader("TITRE", $_SERVER['PHP_SELF'],"plugins","example","optionname");
 } else {
-	helpHeader("TITRE", $_SERVER['PHP_SELF']);
+   helpHeader("TITRE", $_SERVER['PHP_SELF']);
 }
 
 checkTypeRight('PluginExampleExample',"r");
