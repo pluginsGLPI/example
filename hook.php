@@ -380,58 +380,50 @@ function plugin_item_add_example($parm) {
 
 
 // Hook done on before delete item case
-function plugin_pre_item_delete_example($input) {
+function plugin_pre_item_delete_example($object) {
 
-   if (isset($input["_item_type_"])) {
-      switch ($input["_item_type_"]) {
-         case 'Computer' :
-            // Manipulate data if needed
-            addMessageAfterRedirect("Pre Delete Computer Hook",true);
-            break;
-      }
+   switch (get_class($object)) {
+      case 'Computer' :
+         // Manipulate data if needed
+         addMessageAfterRedirect("Pre Delete Computer Hook",true);
+         break;
    }
-   return $input;
+   return $object->input;
 }
 
 
 // Hook done on delete item case
-function plugin_item_delete_example($parm) {
+function plugin_item_delete_example($object) {
 
-   if (isset($parm["type"])) {
-      switch ($parm["type"]) {
-         case 'Computer' :
-            addMessageAfterRedirect("Delete Computer Hook",true);
-            return true;
-      }
+   switch (get_class($object)) {
+      case 'Computer' :
+         addMessageAfterRedirect("Delete Computer Hook",true);
+         return true;
    }
    return false;
 }
 
 
 // Hook done on before purge item case
-function plugin_pre_item_purge_example($input) {
+function plugin_pre_item_purge_example($object) {
 
-   if (isset($input["_item_type_"])) {
-      switch ($input["_item_type_"]) {
-         case 'Computer' :
-            // Manipulate data if needed
-            addMessageAfterRedirect("Pre Purge Computer Hook",true);
-            break;
-      }
+   switch (get_class($object)) {
+      case 'Computer' :
+         // Manipulate data if needed
+         addMessageAfterRedirect("Pre Purge Computer Hook",true);
+         break;
    }
-   return $input;
+   return $object->input;
 }
 
 
 // Hook done on purge item case
-function plugin_item_purge_example($parm) {
+function plugin_item_purge_example($object) {
 
-   if (isset($parm["type"])) {
-      switch ($parm["type"]) {
-         case 'Computer' :
-            addMessageAfterRedirect("Purge Computer Hook",true);
-            return true;
-      }
+   switch (get_class($object)) {
+      case 'Computer' :
+         addMessageAfterRedirect("Purge Computer Hook",true);
+         return true;
    }
    return false;
 }
