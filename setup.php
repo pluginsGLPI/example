@@ -38,9 +38,10 @@ function plugin_init_example() {
    global $PLUGIN_HOOKS,$LANG,$CFG_GLPI;
 
    // Params : plugin name - string type - ID - Array of attributes
-   Plugin::registerClass('PluginExampleExample',
-                         array('classname'              => 'PluginExampleExample',
-                           ));
+   // No specific information passed so not needed
+   //Plugin::registerClass('PluginExampleExample',
+   //                      array('classname'              => 'PluginExampleExample',
+   //                        ));
 
    // Params : plugin name - string type - ID - Array of attributes
    Plugin::registerClass('PluginExampleDropdown',
