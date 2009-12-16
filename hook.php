@@ -435,29 +435,24 @@ function plugin_item_purge_example($object) {
 
 
 // Hook done on before restore item case
-function plugin_pre_item_restore_example($input) {
+function plugin_pre_item_restore_example($item) {
 
-   if (isset($input["_item_type_"])) {
-      switch ($input["_item_type_"]) {
-         case 'Computer' :
-            // Manipulate data if needed
-            addMessageAfterRedirect("Pre Restore Computer Hook");
-            break;
-      }
+   switch (get_class($item)) {
+      case 'Computer' :
+         // Manipulate data if needed
+         addMessageAfterRedirect("Pre Restore Computer Hook");
+         break;
    }
-   return $input;
 }
 
 
 // Hook done on restore item case
-function plugin_item_restore_example($parm) {
+function plugin_item_restore_example($item) {
 
-   if (isset($parm["type"])) {
-      switch ($parm["type"]) {
-         case 'Computer' :
-            addMessageAfterRedirect("Restore Computer Hook");
-            return true;
-      }
+   switch (get_class($item)) {
+      case 'Computer' :
+         addMessageAfterRedirect("Restore Computer Hook");
+         return true;
    }
    return false;
 }
