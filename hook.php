@@ -351,29 +351,27 @@ function plugin_item_update_example($parm) {
 
 
 // Hook done on before add item case
-function plugin_pre_item_add_example($input) {
+function plugin_pre_item_add_example($item) {
 
-   if (isset($input["_item_type_"])) {
-      switch ($input["_item_type_"]) {
-         case 'Computer' :
-            // Manipulate data if needed
-            addMessageAfterRedirect("Pre Add Computer Hook",true);
-            break;
-      }
+   switch (get_class($item)) {
+      case 'Computer' :
+         // Manipulate data if needed
+         if (isset($item->input['comment'])) {
+            //$item->input['comment'] .= addslashes("\nFrom Example plugin");
+         }
+         addMessageAfterRedirect("Pre Add Computer Hook",true);
+         break;
    }
-   return $input;
 }
 
 
 // Hook done on add item case
-function plugin_item_add_example($parm) {
+function plugin_item_add_example($item) {
 
-   if (isset($parm["type"])) {
-      switch ($parm["type"]) {
-         case 'Computer' :
-            addMessageAfterRedirect("Add Computer Hook",true);
-            return true;
-      }
+   switch (get_class($item)) {
+      case 'Computer' :
+         addMessageAfterRedirect("Add Computer Hook, ID=".$item->getField('id'),true);
+         return true;
    }
    return false;
 }
