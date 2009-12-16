@@ -322,29 +322,29 @@ function plugin_example_MassiveActionsFieldsDisplay($type,$table,$field,$linkfie
 //////////////////////////////
 
 // Hook done on before update item case
-function plugin_pre_item_update_example($input) {
+function plugin_pre_item_update_example($item) {
 
-   if (isset($input["_item_type_"])) {
-      switch ($input["_item_type_"]) {
-         case 'Computer' :
-            // Manipulate data if needed
-            addMessageAfterRedirect("Pre Update Computer Hook",true);
-            break;
-      }
+   switch (get_class($item)) {
+      case 'Computer' :
+         /* Manipulate data if needed
+         if (!isset($item->input['comment'])) {
+            $item->input['comment'] = addslashes($item->fields['comment']);
+         }
+         $item->input['comment'] .= addslashes("\nUpdate: ".date('r'));
+         */
+         addMessageAfterRedirect("Pre Update Computer Hook",true);
+         break;
    }
-   return $input;
 }
 
 
 // Hook done on update item case
-function plugin_item_update_example($parm) {
+function plugin_item_update_example($item) {
 
-   if (isset($parm["type"])) {
-      switch ($parm["type"]){
-         case 'Computer' :
-            addMessageAfterRedirect("Update Computer Hook",true);
-            return true;
-      }
+   switch (get_class($item)){
+      case 'Computer' :
+         addMessageAfterRedirect("Update Computer Hook (".implode(',',$item->updates).")",true);
+         return true;
    }
    return false;
 }
