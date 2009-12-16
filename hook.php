@@ -388,7 +388,6 @@ function plugin_pre_item_delete_example($object) {
          addMessageAfterRedirect("Pre Delete Computer Hook",true);
          break;
    }
-   return $object->input;
 }
 
 
@@ -412,8 +411,14 @@ function plugin_pre_item_purge_example($object) {
          // Manipulate data if needed
          addMessageAfterRedirect("Pre Purge Computer Hook",true);
          break;
+
+      case 'Phone' :
+         // Manipulate data if needed
+         addMessageAfterRedirect("Pre Purge Phone Hook",true);
+         // Cancel purge
+         // $object->input = false;
+         break;
    }
-   return $object->input;
 }
 
 
