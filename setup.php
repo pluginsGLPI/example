@@ -40,17 +40,12 @@ function plugin_init_example() {
    // Params : plugin name - string type - ID - Array of attributes
    Plugin::registerClass('PluginExampleExample',
                          array('classname'              => 'PluginExampleExample',
-                               'formpage'               => 'front/example.form.php',
-                               'deleted_tables'         => false,
-                               'template_tables'        => false,
-                               'specif_entities_tables' => false,
-                               'recursive_type'         => false));
+                           ));
 
    // Params : plugin name - string type - ID - Array of attributes
    Plugin::registerClass('PluginExampleDropdown',
                          array('classname'  => 'PluginExampleDropdown',
-                               'typename'   => 'Example Dropdown Type',
-                               'formpage'   => 'front/dropdown.form.php'));
+                               'typename'   => 'Example Dropdown Type'));
 
    // Display a menu entry ?
    if (isset($_SESSION["glpi_plugin_example_profile"])) { // Right set in change_profile hook
