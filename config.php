@@ -50,4 +50,3 @@ echo "This is the plugin config page<br>";
 echo $LANG['plugin_example']["test"];
 commonFooter();
 ?>
-

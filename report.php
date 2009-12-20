@@ -48,4 +48,3 @@ echo "This is the plugin report page";
 
 commonFooter();
 ?>
-

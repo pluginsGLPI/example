@@ -48,4 +48,3 @@ echo "This is the plugin stat page";
 
 commonFooter();
 ?>
-

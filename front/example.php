@@ -48,4 +48,3 @@ Search::show('PluginExampleExample');
 
 commonFooter();
 ?>
-
