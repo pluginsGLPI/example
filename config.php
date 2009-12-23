@@ -37,13 +37,13 @@
 //header("Location:../../central.php");
 
 // Entry menu case
-define('GLPI_ROOT', '../..'); 
-include (GLPI_ROOT . "/inc/includes.php"); 
+define('GLPI_ROOT', '../..');
+include (GLPI_ROOT . "/inc/includes.php");
 
 checkRight("config","w");
 
 // To be available when plugin in not activated
-usePLugin('example');
+Plugin::load('example');
 
 commonHeader("TITRE",$_SERVER['PHP_SELF'],"config","plugins");
 echo "This is the plugin config page<br>";
