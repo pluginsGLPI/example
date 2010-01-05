@@ -737,9 +737,9 @@ function plugin_example_install() {
 
    // To be called for each task the plugin manage
    // 1 task in hook.php
-   CronTask::Register('example', 'sample1', HOUR_TIMESTAMP*2, array('param' => 50));
+   CronTask::Register('PluginExampleExample', 'sample1', HOUR_TIMESTAMP*2, array('param' => 50));
    // 1 task in class
-   CronTask::Register('example', 'sample2', DAY_TIMESTAMP, array('itemtype' => 'PluginExampleExample'));
+   CronTask::Register('PluginExampleExample', 'sample2', DAY_TIMESTAMP);
    return true;
 }
 
