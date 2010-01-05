@@ -616,44 +616,6 @@ function plugin_headings_example($item, $withtemplate=0) {
 }
 
 
-/**
- * Execute 1 task manage by the plugin
- *
- * @param $task Object of CronTask class for log / stat
- *
- * @return interger
- *    >0 : done
- *    <0 : to be run again (not finished)
- *     0 : nothing to do
- */
-function plugin_example_cron_sample1_run($task) {
-
-   $task->log("Example log message from hook");
-   $task->setVolume(mt_rand(0,$task->fields['param']));
-
-   return 1;
-}
-
-
-/**
- * Give localized information about 1 task
- *
- * @param $name of the task
- *
- * @return array of strings
- */
-function plugin_example_cron_info($name) {
-   global $LANG;
-
-   switch ($name) {
-      case 'sample1' :
-         return array('description' => $LANG['plugin_example']['test'] . " (hook)",  // Mandatory
-                      'parameter'   => $LANG['plugin_example']['test']);   // Optional
-   }
-   return array();
-}
-
-
 // Do special actions for dynamic report
 function plugin_example_dynamicReport($parm) {
 
@@ -736,10 +698,8 @@ function plugin_example_install() {
    }
 
    // To be called for each task the plugin manage
-   // 1 task in hook.php
-   CronTask::Register('PluginExampleExample', 'sample1', HOUR_TIMESTAMP*2, array('param' => 50));
-   // 1 task in class
-   CronTask::Register('PluginExampleExample', 'sample2', DAY_TIMESTAMP);
+   // task in class
+   CronTask::Register('PluginExampleExample', 'Sample', DAY_TIMESTAMP, array('param' => 50));
    return true;
 }
 

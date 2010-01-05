@@ -101,7 +101,7 @@ class PluginExampleExample extends CommonDBTM {
       global $LANG;
 
       switch ($name) {
-         case 'sample2' :
+         case 'Sample' :
             return array('description' => $LANG['plugin_example']['test']." (class)",
                          'parameter'   => $LANG['plugin_example']['test']);
       }
@@ -118,10 +118,10 @@ class PluginExampleExample extends CommonDBTM {
     *    <0 : to be run again (not finished)
     *     0 : nothing to do
     */
-   static function cronSample2($task) {
+   static function cronSample($task) {
 
       $task->log("Example log message from class");
-      $task->setVolume(mt_rand(0,10));
+      $task->setVolume(mt_rand(0,$task->fields['param']));
 
       return 1;
    }
