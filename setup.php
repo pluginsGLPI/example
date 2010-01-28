@@ -44,9 +44,10 @@ function plugin_init_example() {
    //                        ));
 
    // Params : plugin name - string type - ID - Array of attributes
-   Plugin::registerClass('PluginExampleDropdown',
-                         array('classname'  => 'PluginExampleDropdown',
-                               'typename'   => 'Example Dropdown Type'));
+   Plugin::registerClass('PluginExampleDropdown');
+
+   Plugin::registerClass('PluginExampleExample',
+                         array('notificationtemplates_types' => true));
 
    // Display a menu entry ?
    if (isset($_SESSION["glpi_plugin_example_profile"])) { // Right set in change_profile hook
