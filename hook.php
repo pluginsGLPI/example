@@ -224,12 +224,13 @@ function plugin_example_MassiveActions($type) {
 
 
 // How to display specific actions ?
-function plugin_example_MassiveActionsDisplay($type,$action) {
+// options contain at least itemtype and and action
+function plugin_example_MassiveActionsDisplay($options=array()) {
    global $LANG;
 
-   switch ($type) {
+   switch ($options['itemtype']) {
       case 'Computer' :
-         switch ($action) {
+         switch ($options['action']) {
             case "plugin_example_DoIt" :
                echo "&nbsp;<input type='submit' name='massiveaction' class='submit' value='".
                      $LANG["buttons"][2]."'>&nbsp;but do nothing :)";
@@ -238,7 +239,7 @@ function plugin_example_MassiveActionsDisplay($type,$action) {
          break;
 
       case 'PluginExampleExample' :
-         switch ($action) {
+         switch ($options['action']) {
             // No case for add_document : use GLPI core one
             case "do_nothing" :
                echo "&nbsp;<input type='submit' name='massiveaction' class='submit' value='".
@@ -290,9 +291,15 @@ function plugin_example_MassiveActionsProcess($data) {
 
 
 // How to display specific update fields ?
-function plugin_example_MassiveActionsFieldsDisplay($type,$table,$field,$linkfield) {
+// options must contain at least itemtype and options array
+function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
+   //$type,$table,$field,$linkfield
 
-   if ($table == getTableForItemType($type)) {
+   if ($table == getTableForItemType($options)) {
+      $table = $options['options']['table'];
+      $field = $options['options']['field'];
+      $linkfield = $options['options']['linkfield'];
+
       // Table fields
       switch ($table.".".$field) {
          case 'glpi_plugin_example.serial' :
