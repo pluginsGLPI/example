@@ -40,7 +40,7 @@ class PluginExampleNotificationTargetExample extends NotificationTarget {
       return array ('alert' => 'alert example');
    }
 
-   function getDatasForTemplate($event) {
+   function getDatasForTemplate($event,$options=array()) {
       global $DB, $LANG, $CFG_GLPI;
 
       $tpldatas = array();
