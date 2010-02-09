@@ -1,9 +1,9 @@
 <?php
 /*
- * @version $Id: phone.tabs.php 8933 2009-09-10 18:41:20Z remi $
+ * @version $Id: HEADER 10411 2010-02-09 07:58:26Z moyo $
  -------------------------------------------------------------------------
  GLPI - Gestionnaire Libre de Parc Informatique
- Copyright (C) 2003-2009 by the INDEPNET Development Team.
+ Copyright (C) 2003-2010 by the INDEPNET Development Team.
 
  http://indepnet.net/   http://glpi-project.org
  -------------------------------------------------------------------------
