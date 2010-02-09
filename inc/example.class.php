@@ -126,6 +126,20 @@ class PluginExampleExample extends CommonDBTM {
       return 1;
    }
 
+   // Hook done on before add item case
+   static function pre_item_add_example($item) {
+      addMessageAfterRedirect("Pre Add Computer Hook",true);
+   }
+
+
+   // Hook done on add item case
+   static function item_add_example($item) {
+
+      addMessageAfterRedirect("Add Computer Hook, ID=".$item->getField('id'),true);
+      return true;
+   }
+
+
 }
 
 ?>

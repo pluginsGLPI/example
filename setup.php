@@ -81,20 +81,28 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['headings_action']['example'] = 'plugin_headings_actions_example';
 
    // Item action event // See define.php for defined ITEM_TYPE
-   $PLUGIN_HOOKS['pre_item_update']['example'] = 'plugin_pre_item_update_example';
-   $PLUGIN_HOOKS['item_update']['example']     = 'plugin_item_update_example';
+   $PLUGIN_HOOKS['pre_item_update']['example'] = array('Computer'=>'plugin_pre_item_update_example');
+   $PLUGIN_HOOKS['item_update']['example']     = array('Computer'=>'plugin_item_update_example');
 
-   $PLUGIN_HOOKS['pre_item_add']['example'] = 'plugin_pre_item_add_example';
-   $PLUGIN_HOOKS['item_add']['example']     = 'plugin_item_add_example';
+   // Example using a method in class
+   $PLUGIN_HOOKS['pre_item_add']['example'] = array('Computer' => array('PluginExampleExample',
+                                                                        'pre_item_add_example'));
+   $PLUGIN_HOOKS['item_add']['example']     = array('Computer' => array('PluginExampleExample',
+                                                                        'item_add_example'));
 
-   $PLUGIN_HOOKS['pre_item_delete']['example'] = 'plugin_pre_item_delete_example';
-   $PLUGIN_HOOKS['item_delete']['example']     = 'plugin_item_delete_example';
+   $PLUGIN_HOOKS['pre_item_delete']['example'] = array('Computer'=>'plugin_pre_item_delete_example');
+   $PLUGIN_HOOKS['item_delete']['example']     = array('Computer'=>'plugin_item_delete_example');
 
-   $PLUGIN_HOOKS['pre_item_purge']['example'] = 'plugin_pre_item_purge_example';
-   $PLUGIN_HOOKS['item_purge']['example']     = 'plugin_item_purge_example';
+   // Example using the same function
+   $PLUGIN_HOOKS['pre_item_purge']['example'] = array('Computer'=>'plugin_pre_item_purge_example',
+                                                      'Phone'=>'plugin_pre_item_purge_example');
+   $PLUGIN_HOOKS['item_purge']['example']     = array('Computer'=>'plugin_item_purge_example',
+                                                      'Phone'=>'plugin_item_purge_example');
 
-   $PLUGIN_HOOKS['pre_item_restore']['example'] = 'plugin_pre_item_restore_example';
-   $PLUGIN_HOOKS['item_restore']['example']     = 'plugin_item_restore_example';
+   // Example with 2 different functions
+   $PLUGIN_HOOKS['pre_item_restore']['example'] = array('Computer'=>'plugin_pre_item_restore_example',
+                                                         'Phone'=>'plugin_pre_item_restore_example2');
+   $PLUGIN_HOOKS['item_restore']['example']     = array('Computer'=>'plugin_item_restore_example');
 
    $PLUGIN_HOOKS['item_transfer']['example'] = 'plugin_item_transfer_example';
 

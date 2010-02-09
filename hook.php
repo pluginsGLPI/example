@@ -331,135 +331,77 @@ function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
 // Hook done on before update item case
 function plugin_pre_item_update_example($item) {
 
-   switch (get_class($item)) {
-      case 'Computer' :
-         /* Manipulate data if needed
-         if (!isset($item->input['comment'])) {
-            $item->input['comment'] = addslashes($item->fields['comment']);
-         }
-         $item->input['comment'] .= addslashes("\nUpdate: ".date('r'));
-         */
-         addMessageAfterRedirect("Pre Update Computer Hook",true);
-         break;
+   /* Manipulate data if needed
+   if (!isset($item->input['comment'])) {
+      $item->input['comment'] = addslashes($item->fields['comment']);
    }
+   $item->input['comment'] .= addslashes("\nUpdate: ".date('r'));
+   */
+   addMessageAfterRedirect("Pre Update Computer Hook",true);
+   break;
 }
 
 
 // Hook done on update item case
 function plugin_item_update_example($item) {
 
-   switch (get_class($item)){
-      case 'Computer' :
-         addMessageAfterRedirect("Update Computer Hook (".implode(',',$item->updates).")",true);
-         return true;
-   }
-   return false;
-}
-
-
-// Hook done on before add item case
-function plugin_pre_item_add_example($item) {
-
-   switch (get_class($item)) {
-      case 'Computer' :
-         // Manipulate data if needed
-         if (isset($item->input['comment'])) {
-            //$item->input['comment'] .= addslashes("\nFrom Example plugin");
-         }
-         addMessageAfterRedirect("Pre Add Computer Hook",true);
-         break;
-   }
-}
-
-
-// Hook done on add item case
-function plugin_item_add_example($item) {
-
-   switch (get_class($item)) {
-      case 'Computer' :
-         addMessageAfterRedirect("Add Computer Hook, ID=".$item->getField('id'),true);
-         return true;
-   }
-   return false;
+   addMessageAfterRedirect("Update Computer Hook (".implode(',',$item->updates).")",true);
+   return true;
 }
 
 
 // Hook done on before delete item case
 function plugin_pre_item_delete_example($object) {
 
-   switch (get_class($object)) {
-      case 'Computer' :
-         // Manipulate data if needed
-         addMessageAfterRedirect("Pre Delete Computer Hook",true);
-         break;
-   }
+   // Manipulate data if needed
+   addMessageAfterRedirect("Pre Delete Computer Hook",true);
 }
 
 
 // Hook done on delete item case
 function plugin_item_delete_example($object) {
 
-   switch (get_class($object)) {
-      case 'Computer' :
-         addMessageAfterRedirect("Delete Computer Hook",true);
-         return true;
-   }
-   return false;
+   addMessageAfterRedirect("Delete Computer Hook",true);
+   return true;
 }
 
 
 // Hook done on before purge item case
 function plugin_pre_item_purge_example($object) {
 
-   switch (get_class($object)) {
-      case 'Computer' :
-         // Manipulate data if needed
-         addMessageAfterRedirect("Pre Purge Computer Hook",true);
-         break;
-
-      case 'Phone' :
-         // Manipulate data if needed
-         addMessageAfterRedirect("Pre Purge Phone Hook",true);
-         // Cancel purge
-         // $object->input = false;
-         break;
-   }
+   // Manipulate data if needed
+   addMessageAfterRedirect("Pre Purge Computer Hook",true);
 }
 
 
 // Hook done on purge item case
 function plugin_item_purge_example($object) {
 
-   switch (get_class($object)) {
-      case 'Computer' :
-         addMessageAfterRedirect("Purge Computer Hook",true);
-         return true;
-   }
-   return false;
+   addMessageAfterRedirect("Purge Computer Hook",true);
+   return true;
 }
 
 
 // Hook done on before restore item case
 function plugin_pre_item_restore_example($item) {
 
-   switch (get_class($item)) {
-      case 'Computer' :
-         // Manipulate data if needed
-         addMessageAfterRedirect("Pre Restore Computer Hook");
-         break;
-   }
+   // Manipulate data if needed
+   addMessageAfterRedirect("Pre Restore Computer Hook");
 }
 
+
+// Hook done on before restore item case
+function plugin_pre_item_restore_example2($item) {
+
+   // Manipulate data if needed
+   addMessageAfterRedirect("Pre Restore Phone Hook");
+}
 
 // Hook done on restore item case
 function plugin_item_restore_example($item) {
 
-   switch (get_class($item)) {
-      case 'Computer' :
-         addMessageAfterRedirect("Restore Computer Hook");
-         return true;
-   }
-   return false;
+   addMessageAfterRedirect("Restore Computer Hook");
+   return true;
 }
 
 
