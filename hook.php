@@ -338,7 +338,6 @@ function plugin_pre_item_update_example($item) {
    $item->input['comment'] .= addslashes("\nUpdate: ".date('r'));
    */
    addMessageAfterRedirect("Pre Update Computer Hook",true);
-   break;
 }
 
 
