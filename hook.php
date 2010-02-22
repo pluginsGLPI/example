@@ -656,6 +656,14 @@ function plugin_example_install() {
 function plugin_example_uninstall() {
    global $DB;
 
+
+   $notif = new Notification();
+   $options = array('itemtype' => 'Ticket',
+                    'event'    => 'plugin_example',
+                    'FIELDS'   => 'id');
+   foreach ($DB->request('glpi_notifications', $options) as $data) {
+      $notif->delete($data);
+   }
    // Old version tables
    if (TableExists("glpi_dropdown_plugin_example")) {
       $query = "DROP TABLE `glpi_dropdown_plugin_example`";
