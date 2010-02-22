@@ -104,6 +104,9 @@ function plugin_init_example() {
                                                          'Phone'=>'plugin_pre_item_restore_example2');
    $PLUGIN_HOOKS['item_restore']['example']     = array('Computer'=>'plugin_item_restore_example');
 
+   // Add event to GLPI core itemtype, event will be raised by the plugin.
+   $PLUGIN_HOOKS['item_get_events']['example'] = array('NotificationTargetTicket'=>'plugin_example_add_event');
+
    $PLUGIN_HOOKS['item_transfer']['example'] = 'plugin_item_transfer_example';
 
    //redirect appel http://localhost/glpi/index.php?redirect=plugin_example_2 (ID 2 du form)

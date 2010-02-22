@@ -684,4 +684,8 @@ function plugin_example_AssignToTicket($types) {
    return $types;
 }
 
+function plugin_example_add_event(NotificationTargetTicket $target) {
+   $target->events['plugin_example'] = "Example event";
+   logDebug("plugin_example_add_event",$target->events);
+}
 ?>
