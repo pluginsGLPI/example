@@ -42,7 +42,8 @@ if ($_SESSION["glpiactiveprofile"]["interface"] == "central") {
    helpHeader("TITRE", $_SERVER['PHP_SELF']);
 }
 
-checkTypeRight('PluginExampleExample',"r");
+
+//checkTypeRight('PluginExampleExample',"r");
 
 Search::show('PluginExampleExample');
 
