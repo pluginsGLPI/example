@@ -692,8 +692,11 @@ function plugin_example_AssignToTicket($types) {
    return $types;
 }
 
-function plugin_example_add_event(NotificationTargetTicket $target) {
+function plugin_example_get_events(NotificationTargetTicket $target) {
    $target->events['plugin_example'] = "Example event";
-   logDebug("plugin_example_add_event",$target->events);
+}
+
+function plugin_example_get_datas(NotificationTargetTicket $target) {
+   $target->datas['##ticket.example##'] = "Example datas";
 }
 ?>
