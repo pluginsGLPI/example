@@ -295,10 +295,10 @@ function plugin_example_MassiveActionsProcess($data) {
 function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
    //$type,$table,$field,$linkfield
 
-   if ($table == getTableForItemType($options)) {
-      $table = $options['options']['table'];
-      $field = $options['options']['field'];
-      $linkfield = $options['options']['linkfield'];
+   $table = $options['options']['table'];
+   $field = $options['options']['field'];
+   $linkfield = $options['options']['linkfield'];
+   if ($table == getTableForItemType($options['itemtype'])) {
 
       // Table fields
       switch ($table.".".$field) {
