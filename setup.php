@@ -49,10 +49,6 @@ function plugin_init_example() {
    Plugin::registerClass('PluginExampleExample',
                          array('notificationtemplates_types' => true));
 
-   //Classes for rulesengine
-   Plugin::registerClass('PluginExampleRuleTest');
-   Plugin::registerClass('PluginExampleRuleTestCollection',array('rulecollections_types'=>true));
-
    // Display a menu entry ?
    if (isset($_SESSION["glpi_plugin_example_profile"])) { // Right set in change_profile hook
       $PLUGIN_HOOKS['menu_entry']['example'] = 'front/example.php';
@@ -87,6 +83,8 @@ function plugin_init_example() {
    // Item action event // See define.php for defined ITEM_TYPE
    $PLUGIN_HOOKS['pre_item_update']['example'] = array('Computer'=>'plugin_pre_item_update_example');
    $PLUGIN_HOOKS['item_update']['example']     = array('Computer'=>'plugin_item_update_example');
+
+   $PLUGIN_HOOKS['item_empty']['example']     = array('Computer'=>'plugin_item_empty_example');
 
    // Example using a method in class
    $PLUGIN_HOOKS['pre_item_add']['example'] = array('Computer' => array('PluginExampleExample',
@@ -152,20 +150,20 @@ function plugin_init_example() {
 function plugin_version_example() {
 
    return array('name'           => 'Plugin Example',
-                'version'        => '4.0',
+                'version'        => '0.3.0',
                 'author'         => 'Julien Dombre',
-                'homepage'       => 'https://forge.indepnet.net/projects/show/example',
-                'minGlpiVersion' => '0.78');// For compatibility / no install in version < 0.72
+                'homepage'       => 'https://forge.indepnet.net/projects/example',
+                'minGlpiVersion' => '0.80');// For compatibility / no install in version < 0.80
 }
 
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_example_check_prerequisites() {
 
-   if (GLPI_VERSION >= 0.78) {
+   if (GLPI_VERSION >= 0.80) {
       return true;
    } else {
-      echo "GLPI version not compatible need 0.78";
+      echo "GLPI version not compatible need 0.80";
    }
 }
 

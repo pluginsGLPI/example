@@ -232,7 +232,8 @@ function plugin_example_MassiveActionsDisplay($options=array()) {
       case 'Computer' :
          switch ($options['action']) {
             case "plugin_example_DoIt" :
-               echo "&nbsp;<input type='submit' name='massiveaction' class='submit' value='".
+               
+               echo "&nbsp;<input type='hidden' name='toto' value='1'><input type='submit' name='massiveaction' class='submit' value='".
                      $LANG["buttons"][2]."'>&nbsp;but do nothing :)";
             break;
          }
@@ -345,6 +346,13 @@ function plugin_pre_item_update_example($item) {
 function plugin_item_update_example($item) {
 
    addMessageAfterRedirect("Update Computer Hook (".implode(',',$item->updates).")",true);
+   return true;
+}
+
+// Hook done on get empty item case
+function plugin_item_empty_example($item) {
+
+   addMessageAfterRedirect("Empty Computer Hook",true);
    return true;
 }
 
