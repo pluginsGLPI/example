@@ -152,7 +152,7 @@ function plugin_init_example() {
 function plugin_version_example() {
 
    return array('name'           => 'Plugin Example',
-                'version'        => '0.2.0',
+                'version'        => '4.0',
                 'author'         => 'Julien Dombre',
                 'homepage'       => 'https://forge.indepnet.net/projects/show/example',
                 'minGlpiVersion' => '0.78');// For compatibility / no install in version < 0.72
