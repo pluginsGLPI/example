@@ -48,6 +48,9 @@ function plugin_init_example() {
 
    Plugin::registerClass('PluginExampleExample',
                          array('notificationtemplates_types' => true));
+   
+   Plugin::registerClass('PluginExampleRuleTestCollection', 
+                        array('rulecollections_types' => true));
 
    // Display a menu entry ?
    if (isset($_SESSION["glpi_plugin_example_profile"])) { // Right set in change_profile hook
