@@ -107,8 +107,9 @@ function plugin_example_addDefaultJoin($type, $ref_table, &$already_link_tables)
    switch ($type) {
 //       case "PluginExampleExample" :
       case "MyType" :
-            return Search::addLeftJoin($type, $ref_table, $already_link_tables,
+         return Search::addLeftJoin($type, $ref_table, $already_link_tables,
                                        "newtable", "linkfield");
+         break;
    }
    return "";
 }
@@ -120,7 +121,8 @@ function plugin_example_addDefaultSelect($type) {
    switch ($type) {
 //       case "PluginExampleExample" :
       case "MyType" :
-            return "`mytable`.`myfield` = 'myvalue' AS MYNAME, ";
+         return "`mytable`.`myfield` = 'myvalue' AS MYNAME, ";
+         break;
    }
    return "";
 }
@@ -132,7 +134,8 @@ function plugin_example_addDefaultWhere($type) {
    switch ($type) {
 //       case "PluginExampleExample" :
       case "MyType" :
-            return " `mytable`.`myfield` = 'myvalue' ";
+         return " `mytable`.`myfield` = 'myvalue' ";
+         break;
    }
    return "";
 }
