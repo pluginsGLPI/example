@@ -100,6 +100,23 @@ function plugin_example_giveItem($type,$ID,$data,$num) {
    return "";
 }
 
+function plugin_example_displayConfigItem($type, $ID, $data, $num) {
+
+   $searchopt = &Search::getOptions($type);
+   $table = $searchopt[$ID]["table"];
+   $field = $searchopt[$ID]["field"];
+
+
+   // Example of specific style options
+   // No need of the function if you do not have specific cases
+   switch ($table.'.'.$field) {
+      case "glpi_plugin_example_examples.name" :
+         return " style=\"background-color:#DDDDDD;\" ";
+         break;
+   }
+   return "";
+}
+
 function plugin_example_addDefaultJoin($type, $ref_table, &$already_link_tables) {
 
    // Example of default JOIN clause 
