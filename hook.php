@@ -191,14 +191,16 @@ function plugin_example_addWhere($link,$nott,$type,$ID,$val) {
 
    // Example of standard Where clause but use it ONLY for specific Where
    // No need of the function if you do not have specific cases
-   // switch ($table.".".$field) {
-   //    case "glpi_plugin_example.name" :
-   //       $ADD = "";
-   //       if ($nott && $val!="NULL") {
-   //          $ADD = " OR `$table`.`$field` IS NULL";
-   //       }
-   //       return $link." (`$table`.`$field` $SEARCH ".$ADD." ) ";
-   // }
+    switch ($table.".".$field) {
+       /*case "glpi_plugin_example.name" :
+          $ADD = "";
+          if ($nott && $val!="NULL") {
+             $ADD = " OR `$table`.`$field` IS NULL";
+          }
+          return $link." (`$table`.`$field` $SEARCH ".$ADD." ) ";*/
+         case "glpi_plugin_example_examples.serial" :
+            return $link." `$table`.`$field` = '$val' ";
+    }
    return "";
 }
 
@@ -360,9 +362,9 @@ function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
 
       // Table fields
       switch ($table.".".$field) {
-         case 'glpi_plugin_example.serial' :
-            echo "Not really specific - Just for example&nbsp;";
-            autocompletionTextField($linkfield,$table,$field);
+         case 'glpi_plugin_example_examples.serial' :
+            echo "Not really specific -  Just for example&nbsp;";
+            //autocompletionTextField($linkfield,$table,$field);
             // Dropdown::showYesNo($linkfield);
             // Need to return true if specific display
             return true;
@@ -373,13 +375,35 @@ function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
       switch ($table.".".$field) {
          case "glpi_plugin_example_dropdowns.name" :
             echo "Not really specific - Just for example&nbsp;";
-            dropdown($table,$linkfield,1,$_SESSION["glpiactive_entity"]);
-            //dropdownUsers($linkfield,0,"own_ticket",0,1,$_SESSION["glpiactive_entity"]);
             // Need to return true if specific display
             return true;
       }
    }
    // Need to return false on non display item
+   return false;
+}
+
+// How to display specific search fields or dropdown ?
+// options must contain at least itemtype and options array
+// MUST Use a specific AddWhere & $tab[X]['searchtype'] = 'equals'; declaration
+function plugin_example_searchOptionsValues($options=array()) {
+   global $LANG;
+   
+   $table = $options['searchoption']['table'];
+   $field = $options['searchoption']['field'];
+   
+    // Table fields
+   switch ($table.".".$field) {
+      
+      case "glpi_plugin_example_examples.serial" :
+            echo "Not really specific -  Use your own dropdown  - Just for example&nbsp;";
+            Dropdown::show(getItemTypeForTable($options['searchoption']['table']),
+                                    array('value'    => $options['value'],
+                                          'name'     => $options['name'],
+                                          'comments' => 0));
+            // Need to return true if specific display
+            return true;
+   }
    return false;
 }
 
