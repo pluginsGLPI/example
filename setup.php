@@ -48,8 +48,8 @@ function plugin_init_example() {
 
    Plugin::registerClass('PluginExampleExample',
                          array('notificationtemplates_types' => true));
-   
-   Plugin::registerClass('PluginExampleRuleTestCollection', 
+
+   Plugin::registerClass('PluginExampleRuleTestCollection',
                         array('rulecollections_types' => true));
 
    // Display a menu entry ?
@@ -146,6 +146,8 @@ function plugin_init_example() {
    // Stats
    $PLUGIN_HOOKS['stats']['example'] = array('stat.php'       => 'New stat',
                                              'stat.php?other' => 'New stats 2',);
+
+   $PLUGIN_HOOKS['post_init']['example'] = 'plugin_example_postinit';
 }
 
 

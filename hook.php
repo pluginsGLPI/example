@@ -119,7 +119,7 @@ function plugin_example_displayConfigItem($type, $ID, $data, $num) {
 
 function plugin_example_addDefaultJoin($type, $ref_table, &$already_link_tables) {
 
-   // Example of default JOIN clause 
+   // Example of default JOIN clause
    // No need of the function if you do not have specific cases
    switch ($type) {
 //       case "PluginExampleExample" :
@@ -291,7 +291,7 @@ function plugin_example_MassiveActionsDisplay($options=array()) {
       case 'Computer' :
          switch ($options['action']) {
             case "plugin_example_DoIt" :
-               
+
                echo "&nbsp;<input type='hidden' name='toto' value='1'><input type='submit' name='massiveaction' class='submit' value='".
                      $LANG["buttons"][2]."'>&nbsp;but do nothing :)";
             break;
@@ -388,13 +388,13 @@ function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
 // MUST Use a specific AddWhere & $tab[X]['searchtype'] = 'equals'; declaration
 function plugin_example_searchOptionsValues($options=array()) {
    global $LANG;
-   
+
    $table = $options['searchoption']['table'];
    $field = $options['searchoption']['field'];
-   
+
     // Table fields
    switch ($table.".".$field) {
-      
+
       case "glpi_plugin_example_examples.serial" :
             echo "Not really specific -  Use your own dropdown  - Just for example&nbsp;";
             Dropdown::show(getItemTypeForTable($options['searchoption']['table']),
@@ -787,5 +787,14 @@ function plugin_example_get_events(NotificationTargetTicket $target) {
 
 function plugin_example_get_datas(NotificationTargetTicket $target) {
    $target->datas['##ticket.example##'] = "Example datas";
+}
+
+function plugin_example_postinit() {
+   global $CFG_GLPI;
+
+   // All plugins are initialized, so all types are registered
+   foreach ($CFG_GLPI["infocom_types"] as $type) {
+      // do something
+   }
 }
 ?>
