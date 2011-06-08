@@ -118,7 +118,7 @@ function plugin_init_example() {
 
    $PLUGIN_HOOKS['item_transfer']['example'] = 'plugin_item_transfer_example';
 
-   //redirect 
+   //redirect
    // Simple redirect : http://localhost/glpi/index.php?redirect=plugin_example_2 (ID 2 du form)
    // $PLUGIN_HOOKS['redirect_page']['example'] = 'example.form.php';
    // Multiple redirect : http://localhost/glpi/index.php?redirect=plugin_example_one_2 (ID 2 du form)
@@ -170,11 +170,12 @@ function plugin_version_example() {
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_example_check_prerequisites() {
 
-   if (GLPI_VERSION >= 0.80) {
-      return true;
-   } else {
-      echo "GLPI version not compatible need 0.80";
+   // Strict version check (could be less strict, or could allow various version)
+   if (version_compare(GLPI_VERSION,'0.83','lt') || version_compare(GLPI_VERSION,'0.84','ge')) {
+      echo "This plugin requires GLPI >= 0.80";
+      return false;
    }
+   return true;
 }
 
 
