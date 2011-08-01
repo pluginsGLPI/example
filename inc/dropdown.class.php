@@ -36,9 +36,6 @@
 // Class for a Dropdown
 class PluginExampleDropdown extends CommonDropdown {
 
-   // From CommonDBTM
-   public $table = 'glpi_plugin_example_dropdowns';
-   public $type  = 'PluginExampleDropdown';
 
    static function getTypeName() {
       global $LANG;
