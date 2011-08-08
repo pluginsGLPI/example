@@ -137,11 +137,10 @@ class PluginExampleExample extends CommonDBTM {
    }
 
 
-   function getTabNameForItem(CommonGLPI $item) {
+   function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
       global $LANG;
 
-      Toolbox::logDebug('getTabNameForItem', $item);
-      if ($item->getID()) {
+      if (!$withtemplate) {
          switch ($item->getType()) {
             case 'Phone' :
                if ($_SESSION['glpishow_count_on_tabs']) {
