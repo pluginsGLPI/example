@@ -47,7 +47,8 @@ function plugin_init_example() {
    Plugin::registerClass('PluginExampleDropdown');
 
    Plugin::registerClass('PluginExampleExample',
-                         array('notificationtemplates_types' => true));
+                         array('notificationtemplates_types' => true,
+                               'addtabon'                    => array('Phone')));
 
    Plugin::registerClass('PluginExampleRuleTestCollection',
                         array('rulecollections_types' => true));

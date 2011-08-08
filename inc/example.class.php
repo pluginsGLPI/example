@@ -137,6 +137,31 @@ class PluginExampleExample extends CommonDBTM {
    }
 
 
+   function getTabNameForItem(CommonGLPI $item) {
+      global $LANG;
+
+      Toolbox::logDebug('getTabNameForItem', $item);
+      if ($item->getID()) {
+         switch ($item->getType()) {
+            case 'Phone' :
+               if ($_SESSION['glpishow_count_on_tabs']) {
+                  return self::createTabEntry('Example',
+                                              countElementsInTable($this->getTable()));
+               }
+               return 'Example';
+         }
+      }
+      return '';
+   }
+
+
+   static function displayTabContentForItem(CommonGLPI $item, $tabnum=1, $withtemplate=0) {
+
+      if ($item->getType()=='Phone') {
+         echo "Plugin Example on Phone";
+      }
+      return true;
+   }
 }
 
 ?>
