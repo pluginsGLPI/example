@@ -187,7 +187,7 @@ function plugin_example_addWhere($link,$nott,$type,$ID,$val) {
    $table = $searchopt[$ID]["table"];
    $field = $searchopt[$ID]["field"];
 
-   $SEARCH = makeTextSearch($val,$nott);
+   $SEARCH = Search::makeTextSearch($val,$nott);
 
    // Example of standard Where clause but use it ONLY for specific Where
    // No need of the function if you do not have specific cases
@@ -212,7 +212,7 @@ function plugin_example_addHaving($link,$nott,$type,$ID,$val,$num) {
    $table = $searchopt[$ID]["table"];
    $field = $searchopt[$ID]["field"];
 
-   $SEARCH = makeTextSearch($val,$nott);
+   $SEARCH = Search::makeTextSearch($val,$nott);
 
    // Example of standard Having clause but use it ONLY for specific Having
    // No need of the function if you do not have specific cases
