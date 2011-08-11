@@ -37,10 +37,10 @@
 //header("Location:../../central.php");
 
 // Entry menu case
-define('GLPI_ROOT', '../..'); 
-include (GLPI_ROOT . "/inc/includes.php"); 
+define('GLPI_ROOT', '../..');
+include (GLPI_ROOT . "/inc/includes.php");
 
-checkRight("config","w");
+Session::checkRight("config", "w");
 
 commonHeader("TITRE",$_SERVER['PHP_SELF'],"plugins");
 
