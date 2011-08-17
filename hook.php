@@ -419,21 +419,21 @@ function plugin_pre_item_update_example($item) {
    }
    $item->input['comment'] .= addslashes("\nUpdate: ".date('r'));
    */
-   addMessageAfterRedirect("Pre Update Computer Hook",true);
+   Session::addMessageAfterRedirect("Pre Update Computer Hook",true);
 }
 
 
 // Hook done on update item case
 function plugin_item_update_example($item) {
 
-   addMessageAfterRedirect("Update Computer Hook (".implode(',',$item->updates).")",true);
+   Session::addMessageAfterRedirect("Update Computer Hook (".implode(',',$item->updates).")",true);
    return true;
 }
 
 // Hook done on get empty item case
 function plugin_item_empty_example($item) {
 
-   addMessageAfterRedirect("Empty Computer Hook",true);
+   Session::addMessageAfterRedirect("Empty Computer Hook",true);
    return true;
 }
 
@@ -442,14 +442,14 @@ function plugin_item_empty_example($item) {
 function plugin_pre_item_delete_example($object) {
 
    // Manipulate data if needed
-   addMessageAfterRedirect("Pre Delete Computer Hook",true);
+   Session::addMessageAfterRedirect("Pre Delete Computer Hook",true);
 }
 
 
 // Hook done on delete item case
 function plugin_item_delete_example($object) {
 
-   addMessageAfterRedirect("Delete Computer Hook",true);
+   Session::addMessageAfterRedirect("Delete Computer Hook",true);
    return true;
 }
 
@@ -458,14 +458,14 @@ function plugin_item_delete_example($object) {
 function plugin_pre_item_purge_example($object) {
 
    // Manipulate data if needed
-   addMessageAfterRedirect("Pre Purge Computer Hook",true);
+   Session::addMessageAfterRedirect("Pre Purge Computer Hook",true);
 }
 
 
 // Hook done on purge item case
 function plugin_item_purge_example($object) {
 
-   addMessageAfterRedirect("Purge Computer Hook",true);
+   Session::addMessageAfterRedirect("Purge Computer Hook",true);
    return true;
 }
 
@@ -474,7 +474,7 @@ function plugin_item_purge_example($object) {
 function plugin_pre_item_restore_example($item) {
 
    // Manipulate data if needed
-   addMessageAfterRedirect("Pre Restore Computer Hook");
+   Session::addMessageAfterRedirect("Pre Restore Computer Hook");
 }
 
 
@@ -482,13 +482,13 @@ function plugin_pre_item_restore_example($item) {
 function plugin_pre_item_restore_example2($item) {
 
    // Manipulate data if needed
-   addMessageAfterRedirect("Pre Restore Phone Hook");
+   Session::addMessageAfterRedirect("Pre Restore Phone Hook");
 }
 
 // Hook done on restore item case
 function plugin_item_restore_example($item) {
 
-   addMessageAfterRedirect("Restore Computer Hook");
+   Session::addMessageAfterRedirect("Restore Computer Hook");
    return true;
 }
 
@@ -496,7 +496,7 @@ function plugin_item_restore_example($item) {
 // Hook done on restore item case
 function plugin_item_transfer_example($parm) {
 
-   addMessageAfterRedirect("Transfer Computer Hook ".$parm['type']." ".$parm['id']." -> ".
+   Session::addMessageAfterRedirect("Transfer Computer Hook ".$parm['type']." ".$parm['id']." -> ".
                            $parm['newID']);
 
    return false;
