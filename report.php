@@ -42,9 +42,9 @@ include (GLPI_ROOT . "/inc/includes.php");
 
 Session::checkRight("config", "w");
 
-commonHeader("TITRE",$_SERVER['PHP_SELF'],"plugins");
+Html::header("TITRE",$_SERVER['PHP_SELF'],"plugins");
 
 echo "This is the plugin report page";
 
-commonFooter();
+Html::footer();
 ?>

@@ -69,7 +69,7 @@ function plugin_init_example() {
    }
 
    // Config page
-   if (haveRight('config','w')) {
+   if (Session::haveRight('config','w')) {
       $PLUGIN_HOOKS['config_page']['example'] = 'config.php';
    }
 

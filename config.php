@@ -45,8 +45,8 @@ Session::checkRight("config", "w");
 // To be available when plugin in not activated
 Plugin::load('example');
 
-commonHeader("TITRE",$_SERVER['PHP_SELF'],"config","plugins");
+Html::header("TITRE",$_SERVER['PHP_SELF'],"config","plugins");
 echo "This is the plugin config page<br>";
 echo $LANG['plugin_example']["test"];
-commonFooter();
+Html::footer();
 ?>

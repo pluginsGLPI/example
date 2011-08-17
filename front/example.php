@@ -37,9 +37,9 @@ define('GLPI_ROOT', '../../..');
 include (GLPI_ROOT . "/inc/includes.php");
 
 if ($_SESSION["glpiactiveprofile"]["interface"] == "central") {
-   commonHeader("TITRE", $_SERVER['PHP_SELF'],"plugins","example","optionname");
+   Html::header("TITRE", $_SERVER['PHP_SELF'],"plugins","example","optionname");
 } else {
-   helpHeader("TITRE", $_SERVER['PHP_SELF']);
+   Html::helpHeader("TITRE", $_SERVER['PHP_SELF']);
 }
 
 
@@ -47,5 +47,5 @@ if ($_SESSION["glpiactiveprofile"]["interface"] == "central") {
 
 Search::show('PluginExampleExample');
 
-commonFooter();
+Html::footer();
 ?>

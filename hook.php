@@ -39,10 +39,10 @@
 function plugin_change_profile_example() {
 
    // For example : same right of computer
-   if (haveRight('computer','w')) {
+   if (Session::haveRight('computer','w')) {
       $_SESSION["glpi_plugin_example_profile"] = array('example' => 'w');
 
-   } else if (haveRight('computer','r')) {
+   } else if (Session::haveRight('computer','r')) {
       $_SESSION["glpi_plugin_example_profile"] = array('example' => 'r');
 
    } else {
