@@ -663,7 +663,7 @@ function plugin_example_dynamicReport($parm) {
       echo "Single data : add1 <br>";
       print $parm['add1'].'<br>';
       echo "Array data : add2 <br>";
-      printCleanArray($parm['add2']);
+      Html::printCleanArray($parm['add2']);
       // Return true if personalized display is done
       return true;
    }
@@ -672,7 +672,7 @@ function plugin_example_dynamicReport($parm) {
 }
 
 
-// Add parameters to printPager in search system
+// Add parameters to Html::printPager in search system
 function plugin_example_addParamFordynamicReport($itemtype) {
 
    if ($itemtype == 'PluginExampleExample') {
