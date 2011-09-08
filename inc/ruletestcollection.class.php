@@ -40,15 +40,12 @@ if (!defined('GLPI_ROOT')) {
 class PluginExampleRuleTestCollection extends RuleCollection {
 
    // From RuleCollection
-   public $stop_on_first_match=true;
-   public $right='rule_ocs';
-   public $menu_option='test';
+   public $stop_on_first_match = true;
+   public $right               = 'rule_ocs';
+   public $menu_option         = 'test';
 
    function getTitle() {
-      global $LANG;
-
       return 'Rulesengine test';
    }
 }
-
 ?>

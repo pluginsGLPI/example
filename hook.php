@@ -63,6 +63,8 @@ function plugin_example_getDropdown() {
    return array('PluginExampleDropdown' => "Plugin Example Dropdown");
 }
 
+
+
 ////// SEARCH FUNCTIONS ///////(){
 
 // Define Additionnal search options for types (other than the plugin ones)
@@ -100,22 +102,22 @@ function plugin_example_giveItem($type,$ID,$data,$num) {
    return "";
 }
 
+
 function plugin_example_displayConfigItem($type, $ID, $data, $num) {
 
    $searchopt = &Search::getOptions($type);
-   $table = $searchopt[$ID]["table"];
-   $field = $searchopt[$ID]["field"];
-
+   $table     = $searchopt[$ID]["table"];
+   $field     = $searchopt[$ID]["field"];
 
    // Example of specific style options
    // No need of the function if you do not have specific cases
    switch ($table.'.'.$field) {
       case "glpi_plugin_example_examples.name" :
          return " style=\"background-color:#DDDDDD;\" ";
-         break;
    }
    return "";
 }
+
 
 function plugin_example_addDefaultJoin($type, $ref_table, &$already_link_tables) {
 
@@ -125,11 +127,11 @@ function plugin_example_addDefaultJoin($type, $ref_table, &$already_link_tables)
 //       case "PluginExampleExample" :
       case "MyType" :
          return Search::addLeftJoin($type, $ref_table, $already_link_tables,
-                                       "newtable", "linkfield");
-         break;
+                                    "newtable", "linkfield");
    }
    return "";
 }
+
 
 function plugin_example_addDefaultSelect($type) {
 
@@ -139,10 +141,10 @@ function plugin_example_addDefaultSelect($type) {
 //       case "PluginExampleExample" :
       case "MyType" :
          return "`mytable`.`myfield` = 'myvalue' AS MYNAME, ";
-         break;
    }
    return "";
 }
+
 
 function plugin_example_addDefaultWhere($type) {
 
@@ -152,13 +154,12 @@ function plugin_example_addDefaultWhere($type) {
 //       case "PluginExampleExample" :
       case "MyType" :
          return " `mytable`.`myfield` = 'myvalue' ";
-         break;
    }
    return "";
 }
 
 
-function plugin_example_addLeftJoin($type,$ref_table,$new_table,$linkfield) {
+function plugin_example_addLeftJoin($type, $ref_table, $new_table, $linkfield) {
 
    // Example of standard LEFT JOIN  clause but use it ONLY for specific LEFT JOIN
    // No need of the function if you do not have specific cases
@@ -184,8 +185,8 @@ function plugin_example_forceGroupBy($type) {
 function plugin_example_addWhere($link,$nott,$type,$ID,$val) {
 
    $searchopt = &Search::getOptions($type);
-   $table = $searchopt[$ID]["table"];
-   $field = $searchopt[$ID]["field"];
+   $table     = $searchopt[$ID]["table"];
+   $field     = $searchopt[$ID]["field"];
 
    $SEARCH = Search::makeTextSearch($val,$nott);
 
@@ -206,11 +207,11 @@ function plugin_example_addWhere($link,$nott,$type,$ID,$val) {
 
 
 // This is not a real example because the use of Having condition in this case is not suitable
-function plugin_example_addHaving($link,$nott,$type,$ID,$val,$num) {
+function plugin_example_addHaving($link, $nott, $type, $ID, $val, $num) {
 
    $searchopt = &Search::getOptions($type);
-   $table = $searchopt[$ID]["table"];
-   $field = $searchopt[$ID]["field"];
+   $table     = $searchopt[$ID]["table"];
+   $field     = $searchopt[$ID]["field"];
 
    $SEARCH = Search::makeTextSearch($val,$nott);
 
@@ -232,8 +233,8 @@ function plugin_example_addHaving($link,$nott,$type,$ID,$val,$num) {
 function plugin_example_addSelect($type,$ID,$num) {
 
    $searchopt = &Search::getOptions($type);
-   $table = $searchopt[$ID]["table"];
-   $field = $searchopt[$ID]["field"];
+   $table     = $searchopt[$ID]["table"];
+   $field     = $searchopt[$ID]["field"];
 
 // Example of standard Select clause but use it ONLY for specific Select
 // No need of the function if you do not have specific cases
@@ -248,8 +249,8 @@ function plugin_example_addSelect($type,$ID,$num) {
 function plugin_example_addOrderBy($type,$ID,$order,$key=0) {
 
    $searchopt = &Search::getOptions($type);
-   $table = $searchopt[$ID]["table"];
-   $field = $searchopt[$ID]["field"];
+   $table     = $searchopt[$ID]["table"];
+   $field     = $searchopt[$ID]["field"];
 
 // Example of standard OrderBy clause but use it ONLY for specific order by
 // No need of the function if you do not have specific cases
@@ -291,9 +292,9 @@ function plugin_example_MassiveActionsDisplay($options=array()) {
       case 'Computer' :
          switch ($options['action']) {
             case "plugin_example_DoIt" :
-
-               echo "&nbsp;<input type='hidden' name='toto' value='1'><input type='submit' name='massiveaction' class='submit' value='".
-                     $LANG["buttons"][2]."'>&nbsp;but do nothing :)";
+               echo "&nbsp;<input type='hidden' name='toto' value='1'>".
+                    "<input type='submit' name='massiveaction' class='submit' value='".
+                      $LANG["buttons"][2]."'>&nbsp;but do nothing :)";
             break;
          }
          break;
@@ -319,13 +320,13 @@ function plugin_example_MassiveActionsProcess($data) {
    switch ($data['action']) {
       case 'plugin_example_DoIt' :
          if ($data['itemtype'] == 'Computer') {
-            $comp = new Computer;
-            addMessageAfterRedirect("Right it is the type I want...");
-            addMessageAfterRedirect("But... I say I will do nothing for :");
+            $comp = new Computer();
+            Session::addMessageAfterRedirect("Right it is the type I want...");
+            Session::addMessageAfterRedirect("But... I say I will do nothing for :");
             foreach ($data['item'] as $key => $val) {
                if ($val == 1) {
                   if ($comp->getFromDB($key)) {
-                     addMessageAfterRedirect("- ".$comp->getField("name"));
+                     Session::addMessageAfterRedirect("- ".$comp->getField("name"));
                   }
                }
             }
@@ -335,12 +336,12 @@ function plugin_example_MassiveActionsProcess($data) {
       case 'do_nothing' :
          if ($data['itemtype'] == 'PluginExampleExample') {
             $ex = new PluginExampleExample();
-            addMessageAfterRedirect("Right it is the type I want...");
-            addMessageAfterRedirect("But... I say I will do nothing for :");
+            Session::addMessageAfterRedirect("Right it is the type I want...");
+            Session::addMessageAfterRedirect("But... I say I will do nothing for :");
             foreach ($data['item'] as $key => $val) {
                if ($val == 1) {
                   if ($ex->getFromDB($key)) {
-                     addMessageAfterRedirect("- ".$ex->getField("name"));
+                     Session::addMessageAfterRedirect("- ".$ex->getField("name"));
                   }
                }
             }
@@ -355,11 +356,11 @@ function plugin_example_MassiveActionsProcess($data) {
 function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
    //$type,$table,$field,$linkfield
 
-   $table = $options['options']['table'];
-   $field = $options['options']['field'];
+   $table     = $options['options']['table'];
+   $field     = $options['options']['field'];
    $linkfield = $options['options']['linkfield'];
-   if ($table == getTableForItemType($options['itemtype'])) {
 
+   if ($table == getTableForItemType($options['itemtype'])) {
       // Table fields
       switch ($table.".".$field) {
          case 'glpi_plugin_example_examples.serial' :
@@ -383,6 +384,7 @@ function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
    return false;
 }
 
+
 // How to display specific search fields or dropdown ?
 // options must contain at least itemtype and options array
 // MUST Use a specific AddWhere & $tab[X]['searchtype'] = 'equals'; declaration
@@ -394,13 +396,12 @@ function plugin_example_searchOptionsValues($options=array()) {
 
     // Table fields
    switch ($table.".".$field) {
-
       case "glpi_plugin_example_examples.serial" :
             echo "Not really specific -  Use your own dropdown  - Just for example&nbsp;";
             Dropdown::show(getItemTypeForTable($options['searchoption']['table']),
-                                    array('value'    => $options['value'],
-                                          'name'     => $options['name'],
-                                          'comments' => 0));
+                                               array('value'    => $options['value'],
+                                                     'name'     => $options['name'],
+                                                     'comments' => 0));
             // Need to return true if specific display
             return true;
    }
@@ -419,16 +420,17 @@ function plugin_pre_item_update_example($item) {
    }
    $item->input['comment'] .= addslashes("\nUpdate: ".date('r'));
    */
-   Session::addMessageAfterRedirect("Pre Update Computer Hook",true);
+   Session::addMessageAfterRedirect("Pre Update Computer Hook", true);
 }
 
 
 // Hook done on update item case
 function plugin_item_update_example($item) {
 
-   Session::addMessageAfterRedirect("Update Computer Hook (".implode(',',$item->updates).")",true);
+   Session::addMessageAfterRedirect("Update Computer Hook (".implode(',',$item->updates).")", true);
    return true;
 }
+
 
 // Hook done on get empty item case
 function plugin_item_empty_example($item) {
@@ -485,6 +487,7 @@ function plugin_pre_item_restore_example2($item) {
    Session::addMessageAfterRedirect("Pre Restore Phone Hook");
 }
 
+
 // Hook done on restore item case
 function plugin_item_restore_example($item) {
 
@@ -497,7 +500,7 @@ function plugin_item_restore_example($item) {
 function plugin_item_transfer_example($parm) {
 
    Session::addMessageAfterRedirect("Transfer Computer Hook ".$parm['type']." ".$parm['id']." -> ".
-                           $parm['newID']);
+                                     $parm['newID']);
 
    return false;
 }
@@ -532,14 +535,14 @@ function plugin_display_planning_example($parm) {
    // Add items in the items fields of the parm array
    switch ($parm["type"]) {
       case "in" :
-         echo date("H:i",strtotime($parm["begin"]))." -> ".date("H:i",strtotime($parm["end"])).": ";
+         echo date("H:i",strtotime($parm["begin"]))." -> ".date("H:i", strtotime($parm["end"])).": ";
          break;
 
       case "from" :
          break;
 
       case "begin" :
-         echo $LANG["buttons"][33]." ".date("H:i",strtotime($parm["begin"])).": ";
+         echo $LANG["buttons"][33]." ".date("H:i", strtotime($parm["begin"])).": ";
          break;
 
       case "end" :
@@ -558,18 +561,16 @@ function plugin_get_headings_example($item, $withtemplate) {
          $prof = new Profile();
          if ($item->fields['interface'] == 'central') {
             return array(1 => "Test PLugin");
-         } else {
-            return array();
          }
+         return array();
 
       case 'Computer' :
          // new object / template case
          if ($withtemplate) {
             return array();
             // Non template case / editing an existing object
-         } else {
-            return array(1 => "Test PLugin");
          }
+         return array(1 => "Test PLugin");
 
       case 'ComputerDisk' :
       case 'Supplier' :
@@ -679,7 +680,7 @@ function plugin_example_addParamFordynamicReport($itemtype) {
       // Return array data containing all params to add : may be single data or array data
       // Search config are available from session variable
       return array('add1' => $_SESSION['glpisearch'][$itemtype]['order'],
-                   'add2' => array('tutu'=>'Second Add',
+                   'add2' => array('tutu' => 'Second Add',
                                    'Other Data'));
    }
    // Return false or a non array data if not needed
@@ -781,13 +782,16 @@ function plugin_example_AssignToTicket($types) {
    return $types;
 }
 
+
 function plugin_example_get_events(NotificationTargetTicket $target) {
    $target->events['plugin_example'] = "Example event";
 }
 
+
 function plugin_example_get_datas(NotificationTargetTicket $target) {
    $target->datas['##ticket.example##'] = "Example datas";
 }
+
 
 function plugin_example_postinit() {
    global $CFG_GLPI;

@@ -36,29 +36,31 @@
 // Class of the defined type
 class PluginExampleExample extends CommonDBTM {
 
-   // From CommonDBTM
-   public $table            = 'glpi_plugin_example_examples';
-   public $type             = 'PluginExampleExample';
 
    // Should return the localized name of the type
    static function getTypeName() {
       return 'Example Type';
    }
 
+
    function canCreate() {
+
       if (isset($_SESSION["glpi_plugin_example_profile"])) {
          return ($_SESSION["glpi_plugin_example_profile"]['example'] == 'w');
       }
       return false;
    }
 
+
    function canView() {
+
       if (isset($_SESSION["glpi_plugin_example_profile"])) {
          return ($_SESSION["glpi_plugin_example_profile"]['example'] == 'w'
                  || $_SESSION["glpi_plugin_example_profile"]['example'] == 'r');
       }
       return false;
    }
+
 
    function getSearchOptions() {
       global $LANG;
@@ -87,6 +89,7 @@ class PluginExampleExample extends CommonDBTM {
       return $tab;
    }
 
+
    /**
     * Give localized information about 1 task
     *
@@ -104,6 +107,7 @@ class PluginExampleExample extends CommonDBTM {
       }
       return array();
    }
+
 
    /**
     * Execute 1 task manage by the plugin
@@ -123,16 +127,17 @@ class PluginExampleExample extends CommonDBTM {
       return 1;
    }
 
+
    // Hook done on before add item case
    static function pre_item_add_example($item) {
-      addMessageAfterRedirect("Pre Add Computer Hook",true);
+      Session::addMessageAfterRedirect("Pre Add Computer Hook", true);
    }
 
 
    // Hook done on add item case
    static function item_add_example($item) {
 
-      addMessageAfterRedirect("Add Computer Hook, ID=".$item->getField('id'),true);
+      Session::addMessageAfterRedirect("Add Computer Hook, ID=".$item->getField('id'), true);
       return true;
    }
 

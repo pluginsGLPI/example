@@ -36,7 +36,6 @@ if (!defined('GLPI_ROOT')){
 class PluginExampleNotificationTargetExample extends NotificationTarget {
 
    function getEvents() {
-      global $LANG;
       return array ('alert' => 'alert example');
    }
 

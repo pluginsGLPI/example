@@ -51,16 +51,16 @@ function plugin_init_example() {
                                'addtabon'                    => array('Phone')));
 
    Plugin::registerClass('PluginExampleRuleTestCollection',
-                        array('rulecollections_types' => true));
+                         array('rulecollections_types' => true));
 
    // Display a menu entry ?
    if (isset($_SESSION["glpi_plugin_example_profile"])) { // Right set in change_profile hook
       $PLUGIN_HOOKS['menu_entry']['example'] = 'front/example.php';
 
       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['title'] = "Search";
-      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['page'] = '/plugins/example/front/example.php';
+      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['page']  = '/plugins/example/front/example.php';
       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['search'] = '/plugins/example/front/example.php';
-      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['add'] = '/plugins/example/front/example.form.php';
+      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['add']    = '/plugins/example/front/example.form.php';
       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['config'] = '/plugins/example/index.php';
       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANG['plugin_example']["test"]."' alt='".$LANG['plugin_example']["test"]."'>"] = '/plugins/example/index.php';
       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links'][$LANG['plugin_example']["test"]] = '/plugins/example/index.php';
@@ -85,10 +85,10 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['headings_action']['example'] = 'plugin_headings_actions_example';
 
    // Item action event // See define.php for defined ITEM_TYPE
-   $PLUGIN_HOOKS['pre_item_update']['example'] = array('Computer'=>'plugin_pre_item_update_example');
-   $PLUGIN_HOOKS['item_update']['example']     = array('Computer'=>'plugin_item_update_example');
+   $PLUGIN_HOOKS['pre_item_update']['example'] = array('Computer' => 'plugin_pre_item_update_example');
+   $PLUGIN_HOOKS['item_update']['example']     = array('Computer' => 'plugin_item_update_example');
 
-   $PLUGIN_HOOKS['item_empty']['example']     = array('Computer'=>'plugin_item_empty_example');
+   $PLUGIN_HOOKS['item_empty']['example']     = array('Computer' => 'plugin_item_empty_example');
 
    // Example using a method in class
    $PLUGIN_HOOKS['pre_item_add']['example'] = array('Computer' => array('PluginExampleExample',
@@ -96,26 +96,28 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['item_add']['example']     = array('Computer' => array('PluginExampleExample',
                                                                         'item_add_example'));
 
-   $PLUGIN_HOOKS['pre_item_delete']['example'] = array('Computer'=>'plugin_pre_item_delete_example');
-   $PLUGIN_HOOKS['item_delete']['example']     = array('Computer'=>'plugin_item_delete_example');
+   $PLUGIN_HOOKS['pre_item_delete']['example'] = array('Computer' => 'plugin_pre_item_delete_example');
+   $PLUGIN_HOOKS['item_delete']['example']     = array('Computer' => 'plugin_item_delete_example');
 
    // Example using the same function
-   $PLUGIN_HOOKS['pre_item_purge']['example'] = array('Computer'=>'plugin_pre_item_purge_example',
-                                                      'Phone'=>'plugin_pre_item_purge_example');
-   $PLUGIN_HOOKS['item_purge']['example']     = array('Computer'=>'plugin_item_purge_example',
-                                                      'Phone'=>'plugin_item_purge_example');
+   $PLUGIN_HOOKS['pre_item_purge']['example'] = array('Computer' => 'plugin_pre_item_purge_example',
+                                                      'Phone'    => 'plugin_pre_item_purge_example');
+   $PLUGIN_HOOKS['item_purge']['example']     = array('Computer' => 'plugin_item_purge_example',
+                                                      'Phone'    => 'plugin_item_purge_example');
 
    // Example with 2 different functions
-   $PLUGIN_HOOKS['pre_item_restore']['example'] = array('Computer'=>'plugin_pre_item_restore_example',
-                                                         'Phone'=>'plugin_pre_item_restore_example2');
-   $PLUGIN_HOOKS['item_restore']['example']     = array('Computer'=>'plugin_item_restore_example');
+   $PLUGIN_HOOKS['pre_item_restore']['example'] = array('Computer' => 'plugin_pre_item_restore_example',
+                                                         'Phone'   => 'plugin_pre_item_restore_example2');
+   $PLUGIN_HOOKS['item_restore']['example']     = array('Computer' => 'plugin_item_restore_example');
 
    // Add event to GLPI core itemtype, event will be raised by the plugin.
    // See plugin_example_uninstall for cleanup of notification
-   $PLUGIN_HOOKS['item_get_events']['example'] = array('NotificationTargetTicket'=>'plugin_example_get_events');
+   $PLUGIN_HOOKS['item_get_events']['example']
+                                 = array('NotificationTargetTicket' => 'plugin_example_get_events');
 
    // Add datas to GLPI core itemtype for notifications template.
-   $PLUGIN_HOOKS['item_get_datas']['example'] = array('NotificationTargetTicket'=>'plugin_example_get_datas');
+   $PLUGIN_HOOKS['item_get_datas']['example']
+                                 = array('NotificationTargetTicket' => 'plugin_example_get_datas');
 
    $PLUGIN_HOOKS['item_transfer']['example'] = 'plugin_item_transfer_example';
 
@@ -188,11 +190,10 @@ function plugin_example_check_config($verbose=false) {
    if (true) { // Your configuration check
       return true;
    }
+
    if ($verbose) {
       echo $LANG['plugins'][2];
    }
    return false;
 }
-
-
 ?>
