@@ -91,12 +91,12 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['item_empty']['example']     = array('Computer' => 'plugin_item_empty_example');
 
    // Example using a method in class
-   $PLUGIN_HOOKS['pre_item_add']['example']  = array('Computer' => array('PluginExampleExample',
-                                                                         'pre_item_add_example'));
-   $PLUGIN_HOOKS['pre_item_add2']['example'] = array('Computer' => array('PluginExampleExample',
-                                                                        'pre_item_add2_example'));
-   $PLUGIN_HOOKS['item_add']['example']      = array('Computer' => array('PluginExampleExample',
-                                                                         'item_add_example'));
+   $PLUGIN_HOOKS['pre_item_add']['example']    = array('Computer' => array('PluginExampleExample',
+                                                                           'pre_item_add_computer'));
+   $PLUGIN_HOOKS['post_prepareadd']['example'] = array('Computer' => array('PluginExampleExample',
+                                                                           'post_prepareadd_computer'));
+   $PLUGIN_HOOKS['item_add']['example']        = array('Computer' => array('PluginExampleExample',
+                                                                           'item_add_computer'));
 
    $PLUGIN_HOOKS['pre_item_delete']['example'] = array('Computer' => 'plugin_pre_item_delete_example');
    $PLUGIN_HOOKS['item_delete']['example']     = array('Computer' => 'plugin_item_delete_example');

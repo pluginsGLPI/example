@@ -129,18 +129,18 @@ class PluginExampleExample extends CommonDBTM {
 
 
    // Hook done on before add item case (data from form, not altered)
-   static function pre_item_add_example($item) {
+   static function pre_item_add_computer(Computer $item) {
       Session::addMessageAfterRedirect("Pre Add Computer Hook", true);
    }
 
    // Hook done on before add item case (data altered by object prepareInputForAdd)
-   static function pre_item_add2_example($item) {
-      Session::addMessageAfterRedirect("Pre Add2 Computer Hook", true);
+   static function post_prepareadd_computer(Computer$item) {
+      Session::addMessageAfterRedirect("Post prepareAdd Computer Hook", true);
    }
 
 
    // Hook done on add item case
-   static function item_add_example($item) {
+   static function item_add_computer(Computer$item) {
 
       Session::addMessageAfterRedirect("Add Computer Hook, ID=".$item->getID(), true);
       return true;
