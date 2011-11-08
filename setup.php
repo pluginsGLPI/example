@@ -167,6 +167,7 @@ function plugin_version_example() {
    return array('name'           => 'Plugin Example',
                 'version'        => '5.0',
                 'author'         => 'Julien Dombre',
+                'license'        => 'GPLv2+',
                 'homepage'       => 'https://forge.indepnet.net/projects/example',
                 'minGlpiVersion' => '0.83');// For compatibility / no install in version < 0.80
 }
