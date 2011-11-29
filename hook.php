@@ -82,7 +82,7 @@ function plugin_example_getAddSearchOptions($itemtype) {
    return $sopt;
 }
 
-
+// See also PluginExampleExample::getSpecificValueToDisplay()
 function plugin_example_giveItem($type,$ID,$data,$num) {
 
    $searchopt = &Search::getOptions($type);
