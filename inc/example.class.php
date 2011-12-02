@@ -172,9 +172,12 @@ class PluginExampleExample extends CommonDBTM {
       return true;
    }
 
-   static function getSpecificValueToDisplay($field, &$values, $options=array()) {
+   static function getSpecificValueToDisplay($field, $values, $options=array()) {
       global $LANG;
 
+      if (!is_array($values)) {
+         $values = array($field => $values);
+      }
       switch ($field) {
          case 'serial' :
             return "S/N: ".$values[$field];
