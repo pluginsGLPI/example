@@ -60,7 +60,7 @@ function plugin_example_getDatabaseRelations() {
 // Define Dropdown tables to be manage in GLPI :
 function plugin_example_getDropdown() {
    // Table => Name
-   return array('PluginExampleDropdown' => "Plugin Example Dropdown");
+   return array('PluginExampleDropdown' => __("Plugin Example Dropdown"));
 }
 
 
@@ -69,7 +69,6 @@ function plugin_example_getDropdown() {
 
 // Define Additionnal search options for types (other than the plugin ones)
 function plugin_example_getAddSearchOptions($itemtype) {
-   global $LANG;
 
    $sopt = array();
    if ($itemtype == 'Computer') {
@@ -77,7 +76,7 @@ function plugin_example_getAddSearchOptions($itemtype) {
          $sopt[1001]['table']     = 'glpi_plugin_example_dropdowns';
          $sopt[1001]['field']     = 'name';
          $sopt[1001]['linkfield'] = 'plugin_example_dropdowns_id';
-         $sopt[1001]['name']      = 'Example plugin';
+         $sopt[1001]['name']      = __('Example plugin');
    }
    return $sopt;
 }
@@ -267,17 +266,16 @@ function plugin_example_addOrderBy($type,$ID,$order,$key=0) {
 
 // Define actions :
 function plugin_example_MassiveActions($type) {
-   global $LANG;
 
    switch ($type) {
       // New action for core and other plugin types : name = plugin_PLUGINNAME_actionname
       case 'Computer' :
-         return array("plugin_example_DoIt" => "plugin_example_DoIt");
+         return array("plugin_example_DoIt" => __("plugin_example_DoIt"));
 
       // Actions for types provided by the plugin
       case 'PluginExampleExample' :
-         return array("add_document" => $LANG["document"][16],         // GLPI core one
-                      "do_nothing"   => 'Do Nothing - just for fun');  // Specific one
+         return array("add_document" => __('Add a document'),         // GLPI core one
+                      "do_nothing"   => __('Do Nothing - just for fun'));  // Specific one
    }
    return array();
 }
@@ -286,7 +284,6 @@ function plugin_example_MassiveActions($type) {
 // How to display specific actions ?
 // options contain at least itemtype and and action
 function plugin_example_MassiveActionsDisplay($options=array()) {
-   global $LANG;
 
    switch ($options['itemtype']) {
       case 'Computer' :
@@ -294,7 +291,7 @@ function plugin_example_MassiveActionsDisplay($options=array()) {
             case "plugin_example_DoIt" :
                echo "&nbsp;<input type='hidden' name='toto' value='1'>".
                     "<input type='submit' name='massiveaction' class='submit' value='".
-                      $LANG["buttons"][2]."'>&nbsp;but do nothing :)";
+                      __s('Post')."'> ".__('but do nothing :)');
             break;
          }
          break;
@@ -304,7 +301,7 @@ function plugin_example_MassiveActionsDisplay($options=array()) {
             // No case for add_document : use GLPI core one
             case "do_nothing" :
                echo "&nbsp;<input type='submit' name='massiveaction' class='submit' value='".
-                     $LANG["buttons"][2]."'>&nbsp;but do nothing :)";
+                     __s('Post')."'> ".__('but do nothing :)');
             break;
          }
          break;
@@ -315,14 +312,13 @@ function plugin_example_MassiveActionsDisplay($options=array()) {
 
 // How to process specific actions ?
 function plugin_example_MassiveActionsProcess($data) {
-   global $LANG;
 
    switch ($data['action']) {
       case 'plugin_example_DoIt' :
          if ($data['itemtype'] == 'Computer') {
             $comp = new Computer();
-            Session::addMessageAfterRedirect("Right it is the type I want...");
-            Session::addMessageAfterRedirect("But... I say I will do nothing for :");
+            Session::addMessageAfterRedirect(__("Right it is the type I want..."));
+            Session::addMessageAfterRedirect(__("But... I say I will do nothing for:"));
             foreach ($data['item'] as $key => $val) {
                if ($val == 1) {
                   if ($comp->getFromDB($key)) {
@@ -336,8 +332,8 @@ function plugin_example_MassiveActionsProcess($data) {
       case 'do_nothing' :
          if ($data['itemtype'] == 'PluginExampleExample') {
             $ex = new PluginExampleExample();
-            Session::addMessageAfterRedirect("Right it is the type I want...");
-            Session::addMessageAfterRedirect("But... I say I will do nothing for :");
+            Session::addMessageAfterRedirect(__("Right it is the type I want..."));
+            Session::addMessageAfterRedirect(__("But... I say I will do nothing for:"));
             foreach ($data['item'] as $key => $val) {
                if ($val == 1) {
                   if ($ex->getFromDB($key)) {
@@ -364,7 +360,7 @@ function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
       // Table fields
       switch ($table.".".$field) {
          case 'glpi_plugin_example_examples.serial' :
-            echo "Not really specific -  Just for example&nbsp;";
+            _e("Not really specific - Just for example");
             //Html::autocompletionTextField($linkfield,$table,$field);
             // Dropdown::showYesNo($linkfield);
             // Need to return true if specific display
@@ -375,7 +371,7 @@ function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
       // Linked Fields
       switch ($table.".".$field) {
          case "glpi_plugin_example_dropdowns.name" :
-            echo "Not really specific - Just for example&nbsp;";
+            _e("Not really specific - Just for example");
             // Need to return true if specific display
             return true;
       }
@@ -389,15 +385,14 @@ function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
 // options must contain at least itemtype and options array
 // MUST Use a specific AddWhere & $tab[X]['searchtype'] = 'equals'; declaration
 function plugin_example_searchOptionsValues($options=array()) {
-   global $LANG;
-
+   
    $table = $options['searchoption']['table'];
    $field = $options['searchoption']['field'];
 
     // Table fields
    switch ($table.".".$field) {
       case "glpi_plugin_example_examples.serial" :
-            echo "Not really specific -  Use your own dropdown  - Just for example&nbsp;";
+            _e("Not really specific - Use your own dropdown - Just for example");
             Dropdown::show(getItemTypeForTable($options['searchoption']['table']),
                                                array('value'    => $options['value'],
                                                      'name'     => $options['name'],
@@ -420,14 +415,14 @@ function plugin_pre_item_update_example($item) {
    }
    $item->input['comment'] .= addslashes("\nUpdate: ".date('r'));
    */
-   Session::addMessageAfterRedirect("Pre Update Computer Hook", true);
+   Session::addMessageAfterRedirect(__("Pre Update Computer Hook"), true);
 }
 
 
 // Hook done on update item case
 function plugin_item_update_example($item) {
 
-   Session::addMessageAfterRedirect("Update Computer Hook (".implode(',',$item->updates).")", true);
+   Session::addMessageAfterRedirect(sprintf(__("Update Computer Hook (%s)"),implode(',',$item->updates)), true);
    return true;
 }
 
@@ -435,7 +430,7 @@ function plugin_item_update_example($item) {
 // Hook done on get empty item case
 function plugin_item_empty_example($item) {
 
-   Session::addMessageAfterRedirect("Empty Computer Hook",true);
+   Session::addMessageAfterRedirect(__("Empty Computer Hook"),true);
    return true;
 }
 
@@ -444,14 +439,14 @@ function plugin_item_empty_example($item) {
 function plugin_pre_item_delete_example($object) {
 
    // Manipulate data if needed
-   Session::addMessageAfterRedirect("Pre Delete Computer Hook",true);
+   Session::addMessageAfterRedirect(__("Pre Delete Computer Hook"),true);
 }
 
 
 // Hook done on delete item case
 function plugin_item_delete_example($object) {
 
-   Session::addMessageAfterRedirect("Delete Computer Hook",true);
+   Session::addMessageAfterRedirect(__("Delete Computer Hook"),true);
    return true;
 }
 
@@ -460,14 +455,14 @@ function plugin_item_delete_example($object) {
 function plugin_pre_item_purge_example($object) {
 
    // Manipulate data if needed
-   Session::addMessageAfterRedirect("Pre Purge Computer Hook",true);
+   Session::addMessageAfterRedirect(__("Pre Purge Computer Hook"),true);
 }
 
 
 // Hook done on purge item case
 function plugin_item_purge_example($object) {
 
-   Session::addMessageAfterRedirect("Purge Computer Hook",true);
+   Session::addMessageAfterRedirect(__("Purge Computer Hook"),true);
    return true;
 }
 
@@ -476,7 +471,7 @@ function plugin_item_purge_example($object) {
 function plugin_pre_item_restore_example($item) {
 
    // Manipulate data if needed
-   Session::addMessageAfterRedirect("Pre Restore Computer Hook");
+   Session::addMessageAfterRedirect(__("Pre Restore Computer Hook"));
 }
 
 
@@ -484,23 +479,23 @@ function plugin_pre_item_restore_example($item) {
 function plugin_pre_item_restore_example2($item) {
 
    // Manipulate data if needed
-   Session::addMessageAfterRedirect("Pre Restore Phone Hook");
+   Session::addMessageAfterRedirect(__("Pre Restore Phone Hook"));
 }
 
 
 // Hook done on restore item case
 function plugin_item_restore_example($item) {
 
-   Session::addMessageAfterRedirect("Restore Computer Hook");
+   Session::addMessageAfterRedirect(__("Restore Computer Hook"));
    return true;
 }
 
 
 // Hook done on restore item case
 function plugin_item_transfer_example($parm) {
-
-   Session::addMessageAfterRedirect("Transfer Computer Hook ".$parm['type']." ".$parm['id']." -> ".
-                                     $parm['newID']);
+   //TRANS: %1$s is the source type, %2$d is the source ID, %3$d is the destination ID
+   Session::addMessageAfterRedirect(sprintf(__('Transfer Computer Hook %1$s %2$d -> %3$d'),$parm['type'],$parm['id'],
+                                     $parm['newID']));
 
    return false;
 }
@@ -518,7 +513,7 @@ function plugin_planning_populate_example($parm) {
    $parm["items"][$parm["begin"]."$$$"."plugin_example1"]["plugin"] = "example";
    $parm["items"][$parm["begin"]."$$$"."plugin_example1"]["begin"]  = date("Y-m-d 17:00:00");
    $parm["items"][$parm["begin"]."$$$"."plugin_example1"]["end"]    = date("Y-m-d 18:00:00");
-   $parm["items"][$parm["begin"]."$$$"."plugin_example1"]["name"]   = "test planning example 1 ";
+   $parm["items"][$parm["begin"]."$$$"."plugin_example1"]["name"]   = __("test planning example 1");
    // Set the ID using the ID of the item in the database to have unique ID
    $ID = date("Ymd"); // Current date for example
    $parm["items"][$parm["begin"]."$$$"."plugin_example1"]["planningID"] = "plugin_example".$ID;
@@ -529,27 +524,34 @@ function plugin_planning_populate_example($parm) {
 
 // Display the planning item
 function plugin_display_planning_example($parm) {
-   global $LANG;
 
    // $parm["type"] say begin end in or from type
    // Add items in the items fields of the parm array
    switch ($parm["type"]) {
       case "in" :
-         echo date("H:i",strtotime($parm["begin"]))." -> ".date("H:i", strtotime($parm["end"])).": ";
+         //TRANS: %1$s is the start time of a planned item, %2$s is the end and %3$s is its name
+         printf(__('From %1$s to %2$s: %3$s'),date("H:i",strtotime($parm["begin"])),
+                                            date("H:i",strtotime($parm["end"])),
+                                            Html::resume_text($parm["name"],80)) ;
+
          break;
 
-      case "from" :
+      case "through" :
+         echo Html::resume_text($val["name"],80);
          break;
 
       case "begin" :
-         echo $LANG["buttons"][33]." ".date("H:i", strtotime($parm["begin"])).": ";
+         //TRANS: %1$s is the start time of a planned item, %2$s is its name
+         printf(__('Start at %1$s: %2$s'),date("H:i",strtotime($parm["begin"])),
+                                       Html::resume_text($parm["name"],80)) ;
          break;
 
       case "end" :
-         echo $LANG["buttons"][32]." ".date("H:i",strtotime($parm["end"])).": ";
-         break;
+         //TRANS: %1$s is the end time of a planned item and %2$s is its name
+         printf(__('End at %1$s: %2$s'),date("H:i",strtotime($parm["end"])),
+                                       Html::resume_text($parm["name"],80)) ;
+      break;
    }
-   echo $parm["name"];
 }
 
 
@@ -560,7 +562,7 @@ function plugin_get_headings_example($item, $withtemplate) {
       case 'Profile' :
          $prof = new Profile();
          if ($item->fields['interface'] == 'central') {
-            return array(1 => "Test PLugin");
+            return array(1 => __("Test PLugin"));
          }
          return array();
 
@@ -570,20 +572,20 @@ function plugin_get_headings_example($item, $withtemplate) {
             return array();
             // Non template case / editing an existing object
          }
-         return array(1 => "Test PLugin");
+         return array(1 => __("Test PLugin"));
 
       case 'ComputerDisk' :
       case 'Supplier' :
          if ($item->getField('id')) { // Not in create mode
-            return array(1 => "Test PLugin",
-                         2 => "Test PLugin 2");
+            return array(1 => __("Test PLugin"),
+                         2 => __("Test PLugin 2"));
          }
          break;
 
       case 'Central' :
       case 'Preference':
       case 'Notification':
-         return array(1 => "Test PLugin");
+         return array(1 => __("Test PLugin"));
    }
    return false;
 }
@@ -613,13 +615,12 @@ function plugin_headings_actions_example($item) {
 
 // Example of an action heading
 function plugin_headings_example($item, $withtemplate=0) {
-   global $LANG;
 
    if (!$withtemplate) {
       echo "<div class='center'>";
       switch (get_class($item)) {
          case 'Central' :
-            echo "Plugin central action ".$LANG['plugin_example']["test"];
+            _e("Plugin central action");
             break;
 
          case 'Preference' :
@@ -642,11 +643,11 @@ function plugin_headings_example($item, $withtemplate=0) {
             break;
 
          case 'Notification' :
-            echo "Plugin mailing action ".$LANG['plugin_example']["test"];
+            _e("Plugin mailing action");
             break;
 
          default :
-            echo "Plugin function with headings CLASS=".get_class($item)." id=".$item->getField('id');
+            printf(__("Plugin function with headings CLASS=%1$s id=%1$d"),get_class($item),$item->getField('id'));
             break;
       }
       echo "</div>";

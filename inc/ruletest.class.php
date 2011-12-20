@@ -62,11 +62,10 @@ class PluginExampleRuleTest extends Rule {
 
 
    function getCriterias() {
-      global $LANG;
 
       $criterias = array();
       $criterias['name']['field'] = 'name';
-      $criterias['name']['name']  = $LANG['help'][31];
+      $criterias['name']['name']  = __('Software');
       $criterias['name']['table'] = 'glpi_softwares';
 
       return $criterias;
@@ -74,10 +73,9 @@ class PluginExampleRuleTest extends Rule {
 
 
    function getActions() {
-      global $LANG;
 
       $actions = array();
-      $actions['softwarecategories_id']['name']  = $LANG['common'][36];
+      $actions['softwarecategories_id']['name']  = __('Category (class)');
       $actions['softwarecategories_id']['type']  = 'dropdown';
       $actions['softwarecategories_id']['table'] = 'glpi_softwarecategories';
       return $actions;

@@ -35,7 +35,7 @@
 
 // Init the hooks of the plugins -Needed
 function plugin_init_example() {
-   global $PLUGIN_HOOKS,$LANG,$CFG_GLPI;
+   global $PLUGIN_HOOKS,$CFG_GLPI;
 
    // Params : plugin name - string type - ID - Array of attributes
    // No specific information passed so not needed
@@ -62,8 +62,8 @@ function plugin_init_example() {
       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['search'] = '/plugins/example/front/example.php';
       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['add']    = '/plugins/example/front/example.form.php';
       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['config'] = '/plugins/example/index.php';
-      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".$LANG['plugin_example']["test"]."' alt='".$LANG['plugin_example']["test"]."'>"] = '/plugins/example/index.php';
-      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links'][$LANG['plugin_example']["test"]] = '/plugins/example/index.php';
+      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".__s('Show all')."' alt='".__s('Show all')."'>"] = '/plugins/example/index.php';
+      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links'][__s('Test link')] = '/plugins/example/index.php';
 
       $PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
    }
@@ -165,11 +165,11 @@ function plugin_init_example() {
 function plugin_version_example() {
 
    return array('name'           => 'Plugin Example',
-                'version'        => '5.0',
-                'author'         => 'Julien Dombre',
+                'version'        => '6.0',
+                'author'         => 'GLPI developer team',
                 'license'        => 'GPLv2+',
                 'homepage'       => 'https://forge.indepnet.net/projects/example',
-                'minGlpiVersion' => '0.83');// For compatibility / no install in version < 0.80
+                'minGlpiVersion' => '0.84');// For compatibility / no install in version < 0.80
 }
 
 
@@ -177,8 +177,8 @@ function plugin_version_example() {
 function plugin_example_check_prerequisites() {
 
    // Strict version check (could be less strict, or could allow various version)
-   if (version_compare(GLPI_VERSION,'0.83','lt') || version_compare(GLPI_VERSION,'0.84','ge')) {
-      echo "This plugin requires GLPI >= 0.83";
+   if (version_compare(GLPI_VERSION,'0.84','lt') /*|| version_compare(GLPI_VERSION,'0.84','gt')*/) {
+      echo "This plugin requires GLPI >= 0.84";
       return false;
    }
    return true;
@@ -188,14 +188,12 @@ function plugin_example_check_prerequisites() {
 // Check configuration process for plugin : need to return true if succeeded
 // Can display a message only if failure and $verbose is true
 function plugin_example_check_config($verbose=false) {
-   global $LANG;
-
    if (true) { // Your configuration check
       return true;
    }
 
    if ($verbose) {
-      echo $LANG['plugins'][2];
+      _e('Installed / not configured');
    }
    return false;
 }

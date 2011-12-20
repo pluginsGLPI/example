@@ -63,28 +63,27 @@ class PluginExampleExample extends CommonDBTM {
 
 
    function getSearchOptions() {
-      global $LANG;
 
       $tab = array();
       $tab['common'] = "Header Needed";
 
       $tab[1]['table']     = 'glpi_plugin_example_examples';
       $tab[1]['field']     = 'name';
-      $tab[1]['name']      = $LANG['plugin_example']["name"];
+      $tab[1]['name']      = __('Name');
 
       $tab[2]['table']     = 'glpi_plugin_example_dropdowns';
       $tab[2]['field']     = 'name';
-      $tab[2]['name']      = 'Dropdown';
+      $tab[2]['name']      = __('Dropdown');
 
       $tab[3]['table']     = 'glpi_plugin_example_examples';
       $tab[3]['field']     = 'serial';
-      $tab[3]['name']      = 'Serial';
+      $tab[3]['name']      = __('Serial number');
       $tab[3]['usehaving'] = true;
       $tab[3]['searchtype'] = 'equals';
 
       $tab[30]['table']     = 'glpi_plugin_example_examples';
       $tab[30]['field']     = 'id';
-      $tab[30]['name']      = $LANG["common"][2];
+      $tab[30]['name']      = __('ID');
 
       return $tab;
    }
@@ -98,12 +97,11 @@ class PluginExampleExample extends CommonDBTM {
     * @return array of strings
     */
    static function cronInfo($name) {
-      global $LANG;
 
       switch ($name) {
          case 'Sample' :
-            return array('description' => $LANG['plugin_example']['test']." (class)",
-                         'parameter'   => $LANG['plugin_example']['test']);
+            return array('description' => __('Cron description for example'),
+                         'parameter'   => __('Cron parameter for example'));
       }
       return array();
    }
@@ -148,16 +146,15 @@ class PluginExampleExample extends CommonDBTM {
 
 
    function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
-      global $LANG;
 
       if (!$withtemplate) {
          switch ($item->getType()) {
             case 'Phone' :
                if ($_SESSION['glpishow_count_on_tabs']) {
-                  return self::createTabEntry('Example',
+                  return self::createTabEntry(__('Example'),
                                               countElementsInTable($this->getTable()));
                }
-               return 'Example';
+               return __('Example');
          }
       }
       return '';
@@ -173,7 +170,6 @@ class PluginExampleExample extends CommonDBTM {
    }
 
    static function getSpecificValueToDisplay($field, $values, $options=array()) {
-      global $LANG;
 
       if (!is_array($values)) {
          $values = array($field => $values);

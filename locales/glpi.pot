@@ -1,0 +1,174 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-12-20 10:59+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: config.php:49
+msgid "This is the plugin config page"
+msgstr ""
+
+#: hook.php:63 inc/dropdown.class.php:42
+msgid "Plugin Example Dropdown"
+msgstr ""
+
+#: hook.php:79
+msgid "Example plugin"
+msgstr ""
+
+#: hook.php:273
+msgid "plugin_example_DoIt"
+msgstr ""
+
+#: hook.php:277
+msgid "Add a document"
+msgstr ""
+
+#: hook.php:278
+msgid "Do Nothing - just for fun"
+msgstr ""
+
+#: hook.php:294 hook.php:304
+msgid "but do nothing :)"
+msgstr ""
+
+#: hook.php:320 hook.php:335
+msgid "Right it is the type I want..."
+msgstr ""
+
+#: hook.php:321 hook.php:336
+msgid "But... I say I will do nothing for:"
+msgstr ""
+
+#: hook.php:363 hook.php:374
+msgid "Not really specific - Just for example"
+msgstr ""
+
+#: hook.php:395
+msgid "Not really specific - Use your own dropdown - Just for example"
+msgstr ""
+
+#: hook.php:418
+msgid "Pre Update Computer Hook"
+msgstr ""
+
+#: hook.php:425
+#, php-format
+msgid "Update Computer Hook (%s)"
+msgstr ""
+
+#: hook.php:433
+msgid "Empty Computer Hook"
+msgstr ""
+
+#: hook.php:442
+msgid "Pre Delete Computer Hook"
+msgstr ""
+
+#: hook.php:449
+msgid "Delete Computer Hook"
+msgstr ""
+
+#: hook.php:458
+msgid "Pre Purge Computer Hook"
+msgstr ""
+
+#: hook.php:465
+msgid "Purge Computer Hook"
+msgstr ""
+
+#: hook.php:474
+msgid "Pre Restore Computer Hook"
+msgstr ""
+
+#: hook.php:482
+msgid "Pre Restore Phone Hook"
+msgstr ""
+
+#: hook.php:489
+msgid "Restore Computer Hook"
+msgstr ""
+
+#. TRANS: %1$s is the source type, %2$d is the source ID, %3$d is the destination ID
+#: hook.php:497
+#, php-format
+msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
+msgstr ""
+
+#: hook.php:516
+msgid "test planning example 1"
+msgstr ""
+
+#: hook.php:565 hook.php:575 hook.php:580 hook.php:588
+msgid "Test PLugin"
+msgstr ""
+
+#: hook.php:581
+msgid "Test PLugin 2"
+msgstr ""
+
+#: hook.php:623
+msgid "Plugin central action"
+msgstr ""
+
+#: hook.php:646
+msgid "Plugin mailing action"
+msgstr ""
+
+#: setup.php:66
+msgid "Test link"
+msgstr ""
+
+#: setup.php:196
+msgid "Installed / not configured"
+msgstr ""
+
+#: front/popup.php:48
+msgid "Test rules engine"
+msgstr ""
+
+#: front/popup.php:53
+msgid "Cache informations"
+msgstr ""
+
+#: inc/example.class.php:76
+msgid "Dropdown"
+msgstr ""
+
+#: inc/example.class.php:80
+msgid "Serial number"
+msgstr ""
+
+#: inc/example.class.php:103
+msgid "Cron description for example"
+msgstr ""
+
+#: inc/example.class.php:104
+msgid "Cron parameter for example"
+msgstr ""
+
+#: inc/example.class.php:154 inc/example.class.php:157
+#: inc/notificationtargetexample.class.php:45
+msgid "Example"
+msgstr ""
+
+#: inc/ruletest.class.php:68
+msgid "Software"
+msgstr ""
+
+#: inc/ruletest.class.php:78
+msgid "Category (class)"
+msgstr ""

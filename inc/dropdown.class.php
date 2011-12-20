@@ -38,9 +38,8 @@ class PluginExampleDropdown extends CommonDropdown {
 
 
    static function getTypeName() {
-      global $LANG;
 
-      return "Plugin Example Dropdown";
+      return __('Plugin Example Dropdown');
    }
 }
 ?>
