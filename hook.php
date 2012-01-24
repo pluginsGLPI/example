@@ -500,28 +500,6 @@ function plugin_item_transfer_example($parm) {
    return false;
 }
 
-
-// Parm contains begin, end and who
-// Create data to be displayed in the planning of $parm["who"] or $parm["who_group"] between $parm["begin"] and $parm["end"]
-
-function plugin_planning_populate_example($parm) {
-
-   // Add items in the items fields of the parm array
-   // Items need to have an unique index beginning by the begin date of the item to display
-   // needed to be correcly displayed
-
-   $parm["items"][$parm["begin"]."$$$"."plugin_example1"]["plugin"] = "example";
-   $parm["items"][$parm["begin"]."$$$"."plugin_example1"]["begin"]  = date("Y-m-d 17:00:00");
-   $parm["items"][$parm["begin"]."$$$"."plugin_example1"]["end"]    = date("Y-m-d 18:00:00");
-   $parm["items"][$parm["begin"]."$$$"."plugin_example1"]["name"]   = __("test planning example 1");
-   // Set the ID using the ID of the item in the database to have unique ID
-   $ID = date("Ymd"); // Current date for example
-   $parm["items"][$parm["begin"]."$$$"."plugin_example1"]["planningID"] = "plugin_example".$ID;
-
-   return $parm;
-}
-
-
 // Display the planning item
 function plugin_display_planning_example($parm) {
 

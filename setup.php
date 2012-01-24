@@ -131,8 +131,11 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['redirect_page']['example']['one'] = 'example.form.php';
    $PLUGIN_HOOKS['redirect_page']['example']['two'] = 'example2.form.php';
 
-   //function to populate planning
-   $PLUGIN_HOOKS['planning_populate']['example'] = 'plugin_planning_populate_example';
+   // function to populate planning
+   // No more used since GLPI 0.84
+   // $PLUGIN_HOOKS['planning_populate']['example'] = 'plugin_planning_populate_example';
+   // Use instead : add class to planning types and define populatePlanning in class
+   $CFG_GLPI['planning_types'][] = 'PluginExampleExample';
 
    //function to display planning items
    $PLUGIN_HOOKS['display_planning']['example'] = 'plugin_display_planning_example';

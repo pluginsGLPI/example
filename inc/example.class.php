@@ -169,7 +169,7 @@ class PluginExampleExample extends CommonDBTM {
       return true;
    }
 
-   static function getSpecificValueToDisplay($field, $values, $options=array()) {
+   static function getSpecificValueToDisplay($field, $values, array $options=array()) {
 
       if (!is_array($values)) {
          $values = array($field => $values);
@@ -180,6 +180,24 @@ class PluginExampleExample extends CommonDBTM {
       }
       return '';
    }
+   
+   // Parm contains begin, end and who
+   // Create data to be displayed in the planning of $parm["who"] or $parm["who_group"] between $parm["begin"] and $parm["end"]
+   static function populatePlanning($parm) {
+   
+      // Add items in the output array
+      // Items need to have an unique index beginning by the begin date of the item to display
+      // needed to be correcly displayed
+      $output = array();
+      $output[$parm["begin"]."$$$"."plugin_example1"]["plugin"] = "example";
+      $output[$parm["begin"]."$$$"."plugin_example1"]["begin"]  = date("Y-m-d 17:00:00");
+      $output[$parm["begin"]."$$$"."plugin_example1"]["end"]    = date("Y-m-d 18:00:00");
+      $output[$parm["begin"]."$$$"."plugin_example1"]["name"]   = __("test planning example 1");
+      // Set the ID using the ID of the item in the database to have unique ID
+      $ID = date("Ymd"); // Current date for example
+      $output[$parm["begin"]."$$$"."plugin_example1"]["planningID"] = "plugin_example".$ID;
+      return $output;
+   }   
 }
 
 ?>
