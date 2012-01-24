@@ -1,5 +1,3 @@
-<?php
-/*
  * @version $Id: HEADER 15930 2011-10-25 10:47:55Z jmd $
  -------------------------------------------------------------------------
  GLPI - Gestionnaire Libre de Parc Informatique
@@ -25,19 +23,3 @@
  You should have received a copy of the GNU General Public License
  along with GLPI. If not, see <http://www.gnu.org/licenses/>.
  --------------------------------------------------------------------------
- */
-
-// ----------------------------------------------------------------------
-// Original Author of file: Remi collet
-// Purpose of file:
-// ----------------------------------------------------------------------
-
-
-define('GLPI_ROOT', '../../..');
-include (GLPI_ROOT . "/inc/includes.php");
-
-Plugin::load('example',true);
-
-$dropdown = new PluginExampleDropdown();
-include (GLPI_ROOT . "/front/dropdown.common.php");
-?>

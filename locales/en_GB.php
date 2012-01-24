@@ -1,9 +1,9 @@
 <?php
 /*
- * @version $Id: HEADER 10411 2010-02-09 07:58:26Z moyo $
+ * @version $Id: HEADER 15930 2011-10-25 10:47:55Z jmd $
  -------------------------------------------------------------------------
  GLPI - Gestionnaire Libre de Parc Informatique
- Copyright (C) 2003-2010 by the INDEPNET Development Team.
+ Copyright (C) 2003-2011 by the INDEPNET Development Team.
 
  http://indepnet.net/   http://glpi-project.org
  -------------------------------------------------------------------------
@@ -23,8 +23,7 @@
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with GLPI; if not, write to the Free Software
- Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ along with GLPI. If not, see <http://www.gnu.org/licenses/>.
  --------------------------------------------------------------------------
  */
 
