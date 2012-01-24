@@ -81,10 +81,6 @@ function plugin_init_example() {
    // Change entity
    //$PLUGIN_HOOKS['change_entity']['example'] = 'plugin_change_entity_example';
 
-   // Onglets management
-   $PLUGIN_HOOKS['headings']['example']        = 'plugin_get_headings_example';
-   $PLUGIN_HOOKS['headings_action']['example'] = 'plugin_headings_actions_example';
-
    // Item action event // See define.php for defined ITEM_TYPE
    $PLUGIN_HOOKS['pre_item_update']['example'] = array('Computer' => 'plugin_pre_item_update_example');
    $PLUGIN_HOOKS['item_update']['example']     = array('Computer' => 'plugin_item_update_example');
