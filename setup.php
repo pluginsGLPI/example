@@ -45,9 +45,11 @@ function plugin_init_example() {
    // Params : plugin name - string type - ID - Array of attributes
    Plugin::registerClass('PluginExampleDropdown');
 
+   $types = array('Central', 'Computer', 'ComputerDisk', 'Notification', 'Phone',
+                  'Preference', 'Profile', 'Supplier');
    Plugin::registerClass('PluginExampleExample',
                          array('notificationtemplates_types' => true,
-                               'addtabon'                    => array('Phone')));
+                               'addtabon'                    => $types));
 
    Plugin::registerClass('PluginExampleRuleTestCollection',
                          array('rulecollections_types' => true));

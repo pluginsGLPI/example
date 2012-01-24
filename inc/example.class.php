@@ -148,12 +148,30 @@ class PluginExampleExample extends CommonDBTM {
 
       if (!$withtemplate) {
          switch ($item->getType()) {
+            case 'Profile' :
+               if ($item->getField('central')) {
+                  return __('Example');
+               }
+               break;
+
             case 'Phone' :
                if ($_SESSION['glpishow_count_on_tabs']) {
                   return self::createTabEntry(__('Example'),
                                               countElementsInTable($this->getTable()));
                }
                return __('Example');
+
+            case 'ComputerDisk' :
+            case 'Supplier' :
+               return array(1 => __("Test PLugin"),
+                            2 => __("Test PLugin 2"));
+
+            case 'Computer' :
+            case 'Central' :
+            case 'Preference':
+            case 'Notification':
+               return array(1 => __("Test PLugin"));
+
          }
       }
       return '';
@@ -162,8 +180,51 @@ class PluginExampleExample extends CommonDBTM {
 
    static function displayTabContentForItem(CommonGLPI $item, $tabnum=1, $withtemplate=0) {
 
-      if ($item->getType()=='Phone') {
-         echo "Plugin Example on Phone";
+      switch ($item->getType()) {
+         case 'Phone' :
+            _e("Plugin Example on Phone");
+            break;
+
+         case 'Central' :
+            _e("Plugin central action");
+            break;
+
+         case 'Preference' :
+            // Complete form display
+            $data = plugin_version_example();
+
+            echo "<form action='Where to post form'>";
+            echo "<table class='tab_cadre_fixe'>";
+            echo "<tr><th colspan='3'>".$data['name']." - ".$data['version'];
+            echo "</th></tr>";
+
+            echo "<tr class='tab_bg_1'><td>Name of the pref</td>";
+            echo "<td>Input to set the pref</td>";
+
+            echo "<td><input class='submit' type='submit' name='submit' value='submit'></td>";
+            echo "</tr>";
+
+            echo "</table>";
+            echo "</form>";
+            break;
+
+         case 'Notification' :
+            _e("Plugin mailing action");
+            break;
+
+         case 'ComputerDisk' :
+         case 'Supplier' :
+            if ($tabnum==1) {
+               _e('First tab of Plugin example');
+            } else {
+               _e('Second tab of Plugin example');
+            }
+            break;
+
+         default :
+            //TRANS: %1$s is a class name, %2$d is an item ID
+            printf(__('Plugin example CLASS=%1$s id=%2$d'), $item->getType(), $item->getField('id'));
+            break;
       }
       return true;
    }
@@ -179,11 +240,11 @@ class PluginExampleExample extends CommonDBTM {
       }
       return '';
    }
-   
+
    // Parm contains begin, end and who
    // Create data to be displayed in the planning of $parm["who"] or $parm["who_group"] between $parm["begin"] and $parm["end"]
    static function populatePlanning($parm) {
-   
+
       // Add items in the output array
       // Items need to have an unique index beginning by the begin date of the item to display
       // needed to be correcly displayed
@@ -199,7 +260,7 @@ class PluginExampleExample extends CommonDBTM {
       // Specify the itemtype to be able to use specific display system
       $output[$key]["itemtype"] = "PluginExampleExample";
       return $output;
-   }   
+   }
 }
 
 ?>

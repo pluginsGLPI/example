@@ -384,7 +384,7 @@ function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
 // options must contain at least itemtype and options array
 // MUST Use a specific AddWhere & $tab[X]['searchtype'] = 'equals'; declaration
 function plugin_example_searchOptionsValues($options=array()) {
-   
+
    $table = $options['searchoption']['table'];
    $field = $options['searchoption']['field'];
 
@@ -514,7 +514,7 @@ function plugin_display_planning_example($parm) {
          break;
 
       case "through" :
-         echo Html::resume_text($val["name"],80);
+         echo Html::resume_text($parm["name"],80);
          break;
 
       case "begin" :
@@ -528,106 +528,6 @@ function plugin_display_planning_example($parm) {
          printf(__('End at %1$s: %2$s'),date("H:i",strtotime($parm["end"])),
                                        Html::resume_text($parm["name"],80)) ;
       break;
-   }
-}
-
-
-// Define headings added by the plugin
-function plugin_get_headings_example($item, $withtemplate) {
-
-   switch (get_class($item)) {
-      case 'Profile' :
-         $prof = new Profile();
-         if ($item->fields['interface'] == 'central') {
-            return array(1 => __("Test PLugin"));
-         }
-         return array();
-
-      case 'Computer' :
-         // new object / template case
-         if ($withtemplate) {
-            return array();
-            // Non template case / editing an existing object
-         }
-         return array(1 => __("Test PLugin"));
-
-      case 'ComputerDisk' :
-      case 'Supplier' :
-         if ($item->getField('id')) { // Not in create mode
-            return array(1 => __("Test PLugin"),
-                         2 => __("Test PLugin 2"));
-         }
-         break;
-
-      case 'Central' :
-      case 'Preference':
-      case 'Notification':
-         return array(1 => __("Test PLugin"));
-   }
-   return false;
-}
-
-
-// Define headings actions added by the plugin
-function plugin_headings_actions_example($item) {
-
-   switch (get_class($item)) {
-      case 'Profile' :
-      case 'Computer' :
-         return array(1 => "plugin_headings_example");
-
-      case 'ComputerDisk' :
-      case 'Supplier' :
-         return array(1 => "plugin_headings_example",
-                      2 => "plugin_headings_example");
-
-      case 'Central' :
-      case 'Preference' :
-      case 'Notification' :
-         return array(1 => "plugin_headings_example");
-   }
-   return false;
-}
-
-
-// Example of an action heading
-function plugin_headings_example($item, $withtemplate=0) {
-
-   if (!$withtemplate) {
-      echo "<div class='center'>";
-      switch (get_class($item)) {
-         case 'Central' :
-            _e("Plugin central action");
-            break;
-
-         case 'Preference' :
-            // Complete form display
-            $data = plugin_version_example();
-
-            echo "<form action='Where to post form'>";
-            echo "<table class='tab_cadre_fixe'>";
-            echo "<tr><th colspan='3'>".$data['name']." - ".$data['version'];
-            echo "</th></tr>";
-
-            echo "<tr class='tab_bg_1'><td>Name of the pref</td>";
-            echo "<td>Input to set the pref</td>";
-
-            echo "<td><input class='submit' type='submit' name='submit' value='submit'></td>";
-            echo "</tr>";
-
-            echo "</table>";
-            echo "</form>";
-            break;
-
-         case 'Notification' :
-            _e("Plugin mailing action");
-            break;
-
-         default :
-            printf(__("Plugin function with headings CLASS=%1$s id=%1$d"),get_class($item),$item->getField('id'));
-            break;
-      }
-      echo "</div>";
    }
 }
 
