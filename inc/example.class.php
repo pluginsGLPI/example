@@ -189,13 +189,16 @@ class PluginExampleExample extends CommonDBTM {
       // Items need to have an unique index beginning by the begin date of the item to display
       // needed to be correcly displayed
       $output = array();
-      $output[$parm["begin"]."$$$"."plugin_example1"]["plugin"] = "example";
-      $output[$parm["begin"]."$$$"."plugin_example1"]["begin"]  = date("Y-m-d 17:00:00");
-      $output[$parm["begin"]."$$$"."plugin_example1"]["end"]    = date("Y-m-d 18:00:00");
-      $output[$parm["begin"]."$$$"."plugin_example1"]["name"]   = __("test planning example 1");
+      $key = $parm["begin"]."$$$"."plugin_example1";
+      $output[$key]["plugin"] = "example";
+      $output[$key]["begin"]  = date("Y-m-d 17:00:00");
+      $output[$key]["end"]    = date("Y-m-d 18:00:00");
+      $output[$key]["name"]   = __("test planning example 1");
       // Set the ID using the ID of the item in the database to have unique ID
       $ID = date("Ymd"); // Current date for example
-      $output[$parm["begin"]."$$$"."plugin_example1"]["planningID"] = "plugin_example".$ID;
+      $output[$key]["planningID"] = "plugin_example".$ID;
+      // Specify the itemtype to be able to use specific display system
+      $output[$key]["itemtype"] = "PluginExampleExample";
       return $output;
    }   
 }
