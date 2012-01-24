@@ -135,7 +135,9 @@ function plugin_init_example() {
    $CFG_GLPI['planning_types'][] = 'PluginExampleExample';
 
    //function to display planning items
-   $PLUGIN_HOOKS['display_planning']['example'] = 'plugin_display_planning_example';
+   // No more used sinc GLPi 0.84
+   // $PLUGIN_HOOKS['display_planning']['example'] = 'plugin_display_planning_example';
+   // Use instead : displayPlanningItem of the specific itemtype
 
    // Massive Action definition
    $PLUGIN_HOOKS['use_massive_action']['example'] = 1;

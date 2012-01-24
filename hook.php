@@ -499,39 +499,6 @@ function plugin_item_transfer_example($parm) {
    return false;
 }
 
-// Display the planning item
-function plugin_display_planning_example($parm) {
-
-   // $parm["type"] say begin end in or from type
-   // Add items in the items fields of the parm array
-   switch ($parm["type"]) {
-      case "in" :
-         //TRANS: %1$s is the start time of a planned item, %2$s is the end and %3$s is its name
-         printf(__('From %1$s to %2$s: %3$s'),date("H:i",strtotime($parm["begin"])),
-                                            date("H:i",strtotime($parm["end"])),
-                                            Html::resume_text($parm["name"],80)) ;
-
-         break;
-
-      case "through" :
-         echo Html::resume_text($parm["name"],80);
-         break;
-
-      case "begin" :
-         //TRANS: %1$s is the start time of a planned item, %2$s is its name
-         printf(__('Start at %1$s: %2$s'),date("H:i",strtotime($parm["begin"])),
-                                       Html::resume_text($parm["name"],80)) ;
-         break;
-
-      case "end" :
-         //TRANS: %1$s is the end time of a planned item and %2$s is its name
-         printf(__('End at %1$s: %2$s'),date("H:i",strtotime($parm["end"])),
-                                       Html::resume_text($parm["name"],80)) ;
-      break;
-   }
-}
-
-
 // Do special actions for dynamic report
 function plugin_example_dynamicReport($parm) {
 

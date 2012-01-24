@@ -250,17 +250,55 @@ class PluginExampleExample extends CommonDBTM {
       // needed to be correcly displayed
       $output = array();
       $key = $parm["begin"]."$$$"."plugin_example1";
-      $output[$key]["plugin"] = "example";
       $output[$key]["begin"]  = date("Y-m-d 17:00:00");
       $output[$key]["end"]    = date("Y-m-d 18:00:00");
       $output[$key]["name"]   = __("test planning example 1");
-      // Set the ID using the ID of the item in the database to have unique ID
-      $ID = date("Ymd"); // Current date for example
-      $output[$key]["planningID"] = "plugin_example".$ID;
       // Specify the itemtype to be able to use specific display system
       $output[$key]["itemtype"] = "PluginExampleExample";
+      // Set the ID using the ID of the item in the database to have unique ID
+      $output[$key][getForeignKeyFieldForItemType('PluginExampleExample')] = 1;
       return $output;
    }
+   
+   /**
+    * Display a Planning Item
+    *
+    * @param $val Array of the item to display
+    * @param $who ID of the user (0 if all)
+    * @param $type position of the item in the time block (in, through, begin or end)
+    * @param $complete complete display (more details)
+    *
+    * @return Nothing (display function)
+    **/
+   static function displayPlanningItem(array $val, $who, $type="", $complete=0) {
+   
+      // $parm["type"] say begin end in or from type
+      // Add items in the items fields of the parm array
+      switch ($type) {
+         case "in" :
+            //TRANS: %1$s is the start time of a planned item, %2$s is the end and %3$s is its name
+            printf(__('From %1$s to %2$s: %3$s'),date("H:i",strtotime($val["begin"])),
+                                             date("H:i",strtotime($val["end"])),
+                                             Html::resume_text($val["name"],80)) ;
+   
+            break;
+   
+         case "through" :
+            echo Html::resume_text($val["name"],80);
+            break;
+   
+         case "begin" :
+            //TRANS: %1$s is the start time of a planned item, %2$s is its name
+            printf(__('Start at %1$s: %2$s'),date("H:i",strtotime($val["begin"])),
+                                          Html::resume_text($val["name"],80)) ;
+            break;
+   
+         case "end" :
+            //TRANS: %1$s is the end time of a planned item and %2$s is its name
+            printf(__('End at %1$s: %2$s'),date("H:i",strtotime($val["end"])),
+                                          Html::resume_text($val["name"],80)) ;
+         break;
+      }
+   }   
 }
-
 ?>
