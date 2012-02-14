@@ -37,7 +37,7 @@ class PluginExampleExample extends CommonDBTM {
 
 
    // Should return the localized name of the type
-   static function getTypeName() {
+   static function getTypeName($nb = 0) {
       return 'Example Type';
    }
 
