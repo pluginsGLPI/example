@@ -310,7 +310,12 @@ function plugin_example_MassiveActionsDisplay($options=array()) {
 
 
 // How to process specific actions ?
+// May return array of stats containing number of process: ok / ko / noright count to display stats
 function plugin_example_MassiveActionsProcess($data) {
+
+   $ok      = 0;
+   $ko      = 0;
+   $noright = 0;
 
    switch ($data['action']) {
       case 'plugin_example_DoIt' :
@@ -322,6 +327,10 @@ function plugin_example_MassiveActionsProcess($data) {
                if ($val == 1) {
                   if ($comp->getFromDB($key)) {
                      Session::addMessageAfterRedirect("- ".$comp->getField("name"));
+                     $ok++;
+                  } else {
+                     // Example of ko count
+                     $ko++;
                   }
                }
             }
@@ -337,12 +346,20 @@ function plugin_example_MassiveActionsProcess($data) {
                if ($val == 1) {
                   if ($ex->getFromDB($key)) {
                      Session::addMessageAfterRedirect("- ".$ex->getField("name"));
+                     $ok++;
+                  } else {
+                     // Example for noright / Maybe do it with can function is better
+                     $noright++;
                   }
                }
             }
          }
          break;
    }
+   return array('ok'      => $ok,
+                'ko'      => $ko,
+                'noright' => $noright);
+   
 }
 
 
