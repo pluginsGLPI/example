@@ -127,7 +127,12 @@ class PluginExampleExample extends CommonDBTM {
 
    // Hook done on before add item case (data from form, not altered)
    static function pre_item_add_computer(Computer $item) {
-      Session::addMessageAfterRedirect("Pre Add Computer Hook", true);
+      if (isset($item->input['name']) && empty($item->input['name'])) {
+         Session::addMessageAfterRedirect("Pre Add Computer Hook KO (name empty)", true);
+         return $item->input = false;
+      } else {
+         Session::addMessageAfterRedirect("Pre Add Computer Hook OK", true);
+      }
    }
 
    // Hook done on before add item case (data altered by object prepareInputForAdd)
@@ -259,7 +264,7 @@ class PluginExampleExample extends CommonDBTM {
       $output[$key][getForeignKeyFieldForItemType('PluginExampleExample')] = 1;
       return $output;
    }
-   
+
    /**
     * Display a Planning Item
     *
@@ -271,7 +276,7 @@ class PluginExampleExample extends CommonDBTM {
     * @return Nothing (display function)
     **/
    static function displayPlanningItem(array $val, $who, $type="", $complete=0) {
-   
+
       // $parm["type"] say begin end in or from type
       // Add items in the items fields of the parm array
       switch ($type) {
@@ -280,25 +285,25 @@ class PluginExampleExample extends CommonDBTM {
             printf(__('From %1$s to %2$s: %3$s'),date("H:i",strtotime($val["begin"])),
                                              date("H:i",strtotime($val["end"])),
                                              Html::resume_text($val["name"],80)) ;
-   
+
             break;
-   
+
          case "through" :
             echo Html::resume_text($val["name"],80);
             break;
-   
+
          case "begin" :
             //TRANS: %1$s is the start time of a planned item, %2$s is its name
             printf(__('Start at %1$s: %2$s'),date("H:i",strtotime($val["begin"])),
                                           Html::resume_text($val["name"],80)) ;
             break;
-   
+
          case "end" :
             //TRANS: %1$s is the end time of a planned item and %2$s is its name
             printf(__('End at %1$s: %2$s'),date("H:i",strtotime($val["end"])),
                                           Html::resume_text($val["name"],80)) ;
          break;
       }
-   }   
+   }
 }
 ?>
