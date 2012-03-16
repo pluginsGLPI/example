@@ -36,9 +36,12 @@
 class PluginExampleDropdown extends CommonDropdown {
 
 
-   static function getTypeName() {
+   static function getTypeName($nb=0) {
 
-      return __('Plugin Example Dropdown');
+      if ($nb > 0) {
+         return __('Plugin Example Dropdowns');
+      }
+      return __('Plugin Example Dropdowns');
    }
 }
 ?>
