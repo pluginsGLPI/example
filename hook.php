@@ -180,7 +180,7 @@ function plugin_example_forceGroupBy($type) {
 }
 
 
-function plugin_example_addWhere($link,$nott,$type,$ID,$val) {
+function plugin_example_addWhere($link, $nott, $type, $ID, $val, $searchtype) {
 
    $searchopt = &Search::getOptions($type);
    $table     = $searchopt[$ID]["table"];
@@ -359,7 +359,7 @@ function plugin_example_MassiveActionsProcess($data) {
    return array('ok'      => $ok,
                 'ko'      => $ko,
                 'noright' => $noright);
-   
+
 }
 
 
