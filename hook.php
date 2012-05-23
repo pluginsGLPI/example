@@ -290,7 +290,7 @@ function plugin_example_MassiveActionsDisplay($options=array()) {
             case "plugin_example_DoIt" :
                echo "&nbsp;<input type='hidden' name='toto' value='1'>".
                     "<input type='submit' name='massiveaction' class='submit' value='".
-                      __s('Post')."'> ".__('but do nothing :)');
+                      __s('Post')."'> ".__('Write in item history');
             break;
          }
          break;
@@ -322,11 +322,13 @@ function plugin_example_MassiveActionsProcess($data) {
          if ($data['itemtype'] == 'Computer') {
             $comp = new Computer();
             Session::addMessageAfterRedirect(__("Right it is the type I want..."));
-            Session::addMessageAfterRedirect(__("But... I say I will do nothing for:"));
+            Session::addMessageAfterRedirect(__('Write in item history'));
+            $changes = array(0, 'old value', 'new value');
             foreach ($data['item'] as $key => $val) {
                if ($val == 1) {
                   if ($comp->getFromDB($key)) {
                      Session::addMessageAfterRedirect("- ".$comp->getField("name"));
+                     Log::history($key, 'Computer', $changes, 'PluginExampleExample', Log::HISTORY_PLUGIN);
                      $ok++;
                   } else {
                      // Example of ko count

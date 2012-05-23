@@ -305,5 +305,24 @@ class PluginExampleExample extends CommonDBTM {
          break;
       }
    }
+
+   /**
+    * Get an history entry message
+    *
+    * @param $data Array from glpi_logs table
+    *
+    * @since GLPI version 0.84
+    *
+    * @return string
+   **/
+   static function getHistoryEntry($data) {
+
+      switch($data['linked_action'] - Log::HISTORY_PLUGIN) {
+         case 0:
+            return _('History from plugin example');
+      }
+
+      return '';
+   }
 }
 ?>
