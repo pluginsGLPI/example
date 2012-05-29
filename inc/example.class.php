@@ -281,11 +281,9 @@ class PluginExampleExample extends CommonDBTM {
       // Add items in the items fields of the parm array
       switch ($type) {
          case "in" :
-            //TRANS: %1$s is the start time of a planned item, %2$s is the end and %3$s is its name
-            printf(__('From %1$s to %2$s: %3$s'),date("H:i",strtotime($val["begin"])),
-                                             date("H:i",strtotime($val["end"])),
-                                             Html::resume_text($val["name"],80)) ;
-
+            //TRANS: %1$s is the start time of a planned item, %2$s is the end
+            printf(__('From %1$s to %2$s :'),
+                   date("H:i",strtotime($val["begin"])), date("H:i",strtotime($val["end"]))) ;
             break;
 
          case "through" :
@@ -293,17 +291,17 @@ class PluginExampleExample extends CommonDBTM {
             break;
 
          case "begin" :
-            //TRANS: %1$s is the start time of a planned item, %2$s is its name
-            printf(__('Start at %1$s: %2$s'),date("H:i",strtotime($val["begin"])),
-                                          Html::resume_text($val["name"],80)) ;
+            //TRANS: %s is the start time of a planned item
+            printf(__('Start at %s:'), date("H:i", strtotime($val["begin"]))) ;
             break;
 
          case "end" :
-            //TRANS: %1$s is the end time of a planned item and %2$s is its name
-            printf(__('End at %1$s: %2$s'),date("H:i",strtotime($val["end"])),
-                                          Html::resume_text($val["name"],80)) ;
+            //TRANS: %s is the end time of a planned item
+            printf(__('End at %s:'), date("H:i", strtotime($val["end"]))) ;
          break;
       }
+      echo "<br>";
+      echo Html::resume_text($val["name"],80);
    }
 
    /**

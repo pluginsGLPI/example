@@ -11,7 +11,7 @@ xgettext *.php */*.php --exclude-file=../../locales/glpi.pot -o locales/glpi.pot
 
 
 ### for using tx :
-##tx set --execute --auto-local -r GLPI.glpipot 'locales/<lang>.po' --source-lang en --source-file locales/glpi.pot
+##tx set --execute --auto-local -r GLPI_example.glpi-084-current 'locales/<lang>.po' --source-lang en --source-file locales/glpi.pot
 ## tx push -s
 ## tx pull -a
 
