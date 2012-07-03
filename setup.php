@@ -161,7 +161,7 @@ function plugin_init_example() {
 
    $PLUGIN_HOOKS['post_init']['example'] = 'plugin_example_postinit';
 
-   // CSRF compliance 
+   // CSRF compliance : All actions must be done via POST and forms closed by Html::closeForm(); 
    $PLUGIN_HOOKS['csrf_compliant']['example'] = true;
 }
 
