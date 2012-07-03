@@ -160,6 +160,9 @@ function plugin_init_example() {
                                              'stat.php?other' => 'New stats 2',);
 
    $PLUGIN_HOOKS['post_init']['example'] = 'plugin_example_postinit';
+
+   // CSRF compliance 
+   $PLUGIN_HOOKS['csrf_compliant']['example'] = true;
 }
 
 
