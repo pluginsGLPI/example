@@ -42,7 +42,7 @@ class PluginExampleExample extends CommonDBTM {
    }
 
 
-   function canCreate() {
+   static function canCreate() {
 
       if (isset($_SESSION["glpi_plugin_example_profile"])) {
          return ($_SESSION["glpi_plugin_example_profile"]['example'] == 'w');
@@ -51,7 +51,7 @@ class PluginExampleExample extends CommonDBTM {
    }
 
 
-   function canView() {
+   static function canView() {
 
       if (isset($_SESSION["glpi_plugin_example_profile"])) {
          return ($_SESSION["glpi_plugin_example_profile"]['example'] == 'w'
