@@ -49,7 +49,7 @@ if (isset($_SESSION["glpipopup"]["name"])) {
          break;
 
       case "show_cache" :
-         Html::popHeader(__('Cache informations'),$_SERVER['PHP_SELF']);
+         Html::popHeader(__('Cache information'),$_SERVER['PHP_SELF']);
          include "../../../front/rule.cache.php";
          break;
    }

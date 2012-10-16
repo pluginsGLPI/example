@@ -59,7 +59,7 @@ function plugin_example_getDatabaseRelations() {
 // Define Dropdown tables to be manage in GLPI :
 function plugin_example_getDropdown() {
    // Table => Name
-   return array('PluginExampleDropdown' => __("Plugin Example Dropdown"));
+   return array('PluginExampleDropdown' => __("Plugin Example Dropdown", 'example'));
 }
 
 
@@ -75,7 +75,7 @@ function plugin_example_getAddSearchOptions($itemtype) {
          $sopt[1001]['table']     = 'glpi_plugin_example_dropdowns';
          $sopt[1001]['field']     = 'name';
          $sopt[1001]['linkfield'] = 'plugin_example_dropdowns_id';
-         $sopt[1001]['name']      = __('Example plugin');
+         $sopt[1001]['name']      = __('Example plugin', 'example');
    }
    return $sopt;
 }
@@ -263,18 +263,19 @@ function plugin_example_addOrderBy($type,$ID,$order,$key=0) {
 //////////////////////////////
 ////// SPECIFIC MODIF MASSIVE FUNCTIONS ///////
 
+
 // Define actions :
 function plugin_example_MassiveActions($type) {
 
    switch ($type) {
       // New action for core and other plugin types : name = plugin_PLUGINNAME_actionname
       case 'Computer' :
-         return array("plugin_example_DoIt" => __("plugin_example_DoIt"));
+         return array("plugin_example_DoIt" => __("plugin_example_DoIt", 'example'));
 
       // Actions for types provided by the plugin
       case 'PluginExampleExample' :
-         return array("add_document" => __('Add a document'),         // GLPI core one
-                      "do_nothing"   => __('Do Nothing - just for fun'));  // Specific one
+         return array("add_document" => _x('button', 'Add a document'),         // GLPI core one
+                      "do_nothing"   => __('Do Nothing - just for fun', 'example'));  // Specific one
    }
    return array();
 }
@@ -290,7 +291,7 @@ function plugin_example_MassiveActionsDisplay($options=array()) {
             case "plugin_example_DoIt" :
                echo "&nbsp;<input type='hidden' name='toto' value='1'>".
                     "<input type='submit' name='massiveaction' class='submit' value='".
-                      __s('Post')."'> ".__('Write in item history');
+                      __s('Post')."'> ".__('Write in item history', 'example');
             break;
          }
          break;
@@ -300,7 +301,7 @@ function plugin_example_MassiveActionsDisplay($options=array()) {
             // No case for add_document : use GLPI core one
             case "do_nothing" :
                echo "&nbsp;<input type='submit' name='massiveaction' class='submit' value='".
-                     __s('Post')."'> ".__('but do nothing :)');
+                     __s('Post')."'> ".__('but do nothing :)', 'example');
             break;
          }
          break;
@@ -321,8 +322,8 @@ function plugin_example_MassiveActionsProcess($data) {
       case 'plugin_example_DoIt' :
          if ($data['itemtype'] == 'Computer') {
             $comp = new Computer();
-            Session::addMessageAfterRedirect(__("Right it is the type I want..."));
-            Session::addMessageAfterRedirect(__('Write in item history'));
+            Session::addMessageAfterRedirect(__("Right it is the type I want...", 'example'));
+            Session::addMessageAfterRedirect(__('Write in item history', 'example'));
             $changes = array(0, 'old value', 'new value');
             foreach ($data['item'] as $key => $val) {
                if ($val == 1) {
@@ -342,8 +343,8 @@ function plugin_example_MassiveActionsProcess($data) {
       case 'do_nothing' :
          if ($data['itemtype'] == 'PluginExampleExample') {
             $ex = new PluginExampleExample();
-            Session::addMessageAfterRedirect(__("Right it is the type I want..."));
-            Session::addMessageAfterRedirect(__("But... I say I will do nothing for:"));
+            Session::addMessageAfterRedirect(__("Right it is the type I want...", 'example'));
+            Session::addMessageAfterRedirect(__("But... I say I will do nothing for:", 'example'));
             foreach ($data['item'] as $key => $val) {
                if ($val == 1) {
                   if ($ex->getFromDB($key)) {
@@ -378,7 +379,7 @@ function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
       // Table fields
       switch ($table.".".$field) {
          case 'glpi_plugin_example_examples.serial' :
-            _e("Not really specific - Just for example");
+            _e("Not really specific - Just for example", 'example');
             //Html::autocompletionTextField($linkfield,$table,$field);
             // Dropdown::showYesNo($linkfield);
             // Need to return true if specific display
@@ -389,7 +390,7 @@ function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
       // Linked Fields
       switch ($table.".".$field) {
          case "glpi_plugin_example_dropdowns.name" :
-            _e("Not really specific - Just for example");
+            _e("Not really specific - Just for example", 'example');
             // Need to return true if specific display
             return true;
       }
@@ -410,7 +411,7 @@ function plugin_example_searchOptionsValues($options=array()) {
     // Table fields
    switch ($table.".".$field) {
       case "glpi_plugin_example_examples.serial" :
-            _e("Not really specific - Use your own dropdown - Just for example");
+            _e("Not really specific - Use your own dropdown - Just for example", 'example');
             Dropdown::show(getItemTypeForTable($options['searchoption']['table']),
                                                array('value'    => $options['value'],
                                                      'name'     => $options['name'],
@@ -433,14 +434,14 @@ function plugin_pre_item_update_example($item) {
    }
    $item->input['comment'] .= addslashes("\nUpdate: ".date('r'));
    */
-   Session::addMessageAfterRedirect(__("Pre Update Computer Hook"), true);
+   Session::addMessageAfterRedirect(__("Pre Update Computer Hook", 'example'), true);
 }
 
 
 // Hook done on update item case
 function plugin_item_update_example($item) {
 
-   Session::addMessageAfterRedirect(sprintf(__("Update Computer Hook (%s)"),implode(',',$item->updates)), true);
+   Session::addMessageAfterRedirect(sprintf(__("Update Computer Hook (%s)", 'example'),implode(',',$item->updates)), true);
    return true;
 }
 
@@ -448,7 +449,7 @@ function plugin_item_update_example($item) {
 // Hook done on get empty item case
 function plugin_item_empty_example($item) {
 
-   Session::addMessageAfterRedirect(__("Empty Computer Hook"),true);
+   Session::addMessageAfterRedirect(__("Empty Computer Hook", 'example'),true);
    return true;
 }
 
@@ -457,14 +458,14 @@ function plugin_item_empty_example($item) {
 function plugin_pre_item_delete_example($object) {
 
    // Manipulate data if needed
-   Session::addMessageAfterRedirect(__("Pre Delete Computer Hook"),true);
+   Session::addMessageAfterRedirect(__("Pre Delete Computer Hook", 'example'),true);
 }
 
 
 // Hook done on delete item case
 function plugin_item_delete_example($object) {
 
-   Session::addMessageAfterRedirect(__("Delete Computer Hook"),true);
+   Session::addMessageAfterRedirect(__("Delete Computer Hook", 'example'),true);
    return true;
 }
 
@@ -473,14 +474,14 @@ function plugin_item_delete_example($object) {
 function plugin_pre_item_purge_example($object) {
 
    // Manipulate data if needed
-   Session::addMessageAfterRedirect(__("Pre Purge Computer Hook"),true);
+   Session::addMessageAfterRedirect(__("Pre Purge Computer Hook", 'example'),true);
 }
 
 
 // Hook done on purge item case
 function plugin_item_purge_example($object) {
 
-   Session::addMessageAfterRedirect(__("Purge Computer Hook"),true);
+   Session::addMessageAfterRedirect(__("Purge Computer Hook", 'example'),true);
    return true;
 }
 
@@ -489,7 +490,7 @@ function plugin_item_purge_example($object) {
 function plugin_pre_item_restore_example($item) {
 
    // Manipulate data if needed
-   Session::addMessageAfterRedirect(__("Pre Restore Computer Hook"));
+   Session::addMessageAfterRedirect(__("Pre Restore Computer Hook", 'example'));
 }
 
 
@@ -497,14 +498,14 @@ function plugin_pre_item_restore_example($item) {
 function plugin_pre_item_restore_example2($item) {
 
    // Manipulate data if needed
-   Session::addMessageAfterRedirect(__("Pre Restore Phone Hook"));
+   Session::addMessageAfterRedirect(__("Pre Restore Phone Hook", 'example'));
 }
 
 
 // Hook done on restore item case
 function plugin_item_restore_example($item) {
 
-   Session::addMessageAfterRedirect(__("Restore Computer Hook"));
+   Session::addMessageAfterRedirect(__("Restore Computer Hook", 'example'));
    return true;
 }
 
@@ -512,7 +513,7 @@ function plugin_item_restore_example($item) {
 // Hook done on restore item case
 function plugin_item_transfer_example($parm) {
    //TRANS: %1$s is the source type, %2$d is the source ID, %3$d is the destination ID
-   Session::addMessageAfterRedirect(sprintf(__('Transfer Computer Hook %1$s %2$d -> %3$d'),$parm['type'],$parm['id'],
+   Session::addMessageAfterRedirect(sprintf(__('Transfer Computer Hook %1$s %2$d -> %3$d', 'example'),$parm['type'],$parm['id'],
                                      $parm['newID']));
 
    return false;
@@ -648,12 +649,12 @@ function plugin_example_AssignToTicket($types) {
 
 
 function plugin_example_get_events(NotificationTargetTicket $target) {
-   $target->events['plugin_example'] = "Example event";
+   $target->events['plugin_example'] = __("Example event", 'example');
 }
 
 
 function plugin_example_get_datas(NotificationTargetTicket $target) {
-   $target->datas['##ticket.example##'] = "Example datas";
+   $target->datas['##ticket.example##'] = __("Example datas", 'example');
 }
 
 

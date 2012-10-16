@@ -99,8 +99,8 @@ class PluginExampleExample extends CommonDBTM {
 
       switch ($name) {
          case 'Sample' :
-            return array('description' => __('Cron description for example'),
-                         'parameter'   => __('Cron parameter for example'));
+            return array('description' => __('Cron description for example', 'example'),
+                         'parameter'   => __('Cron parameter for example', 'example'));
       }
       return array();
    }
@@ -157,27 +157,27 @@ class PluginExampleExample extends CommonDBTM {
          switch ($item->getType()) {
             case 'Profile' :
                if ($item->getField('central')) {
-                  return __('Example');
+                  return __('Example', 'example');
                }
                break;
 
             case 'Phone' :
                if ($_SESSION['glpishow_count_on_tabs']) {
-                  return self::createTabEntry(__('Example'),
+                  return self::createTabEntry(__('Example', 'example'),
                                               countElementsInTable($this->getTable()));
                }
-               return __('Example');
+               return __('Example', 'example');
 
             case 'ComputerDisk' :
             case 'Supplier' :
-               return array(1 => __("Test PLugin"),
-                            2 => __("Test PLugin 2"));
+               return array(1 => __("Test PLugin", 'example'),
+                            2 => __("Test PLugin 2", 'example'));
 
             case 'Computer' :
             case 'Central' :
             case 'Preference':
             case 'Notification':
-               return array(1 => __("Test PLugin"));
+               return array(1 => __("Test PLugin", 'example'));
 
          }
       }
@@ -189,11 +189,11 @@ class PluginExampleExample extends CommonDBTM {
 
       switch ($item->getType()) {
          case 'Phone' :
-            _e("Plugin Example on Phone");
+            _e("Plugin Example on Phone", 'example');
             break;
 
          case 'Central' :
-            _e("Plugin central action");
+            _e("Plugin central action", 'example');
             break;
 
          case 'Preference' :
@@ -216,21 +216,21 @@ class PluginExampleExample extends CommonDBTM {
             break;
 
          case 'Notification' :
-            _e("Plugin mailing action");
+            _e("Plugin mailing action", 'example');
             break;
 
          case 'ComputerDisk' :
          case 'Supplier' :
             if ($tabnum==1) {
-               _e('First tab of Plugin example');
+               _e('First tab of Plugin example', 'example');
             } else {
-               _e('Second tab of Plugin example');
+               _e('Second tab of Plugin example', 'example');
             }
             break;
 
          default :
             //TRANS: %1$s is a class name, %2$d is an item ID
-            printf(__('Plugin example CLASS=%1$s id=%2$d'), $item->getType(), $item->getField('id'));
+            printf(__('Plugin example CLASS=%1$s id=%2$d', 'example'), $item->getType(), $item->getField('id'));
             break;
       }
       return true;
@@ -259,7 +259,7 @@ class PluginExampleExample extends CommonDBTM {
       $key = $parm["begin"]."$$$"."plugin_example1";
       $output[$key]["begin"]  = date("Y-m-d 17:00:00");
       $output[$key]["end"]    = date("Y-m-d 18:00:00");
-      $output[$key]["name"]   = __("test planning example 1");
+      $output[$key]["name"]   = __("test planning example 1", 'example');
       // Specify the itemtype to be able to use specific display system
       $output[$key]["itemtype"] = "PluginExampleExample";
       // Set the ID using the ID of the item in the database to have unique ID
@@ -319,7 +319,7 @@ class PluginExampleExample extends CommonDBTM {
 
       switch($data['linked_action'] - Log::HISTORY_PLUGIN) {
          case 0:
-            return _('History from plugin example');
+            return __('History from plugin example', 'example');
       }
 
       return '';

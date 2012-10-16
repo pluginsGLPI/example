@@ -74,7 +74,7 @@ class PluginExampleRuleTest extends Rule {
    function getActions() {
 
       $actions = array();
-      $actions['softwarecategories_id']['name']  = __('Category (class)');
+      $actions['softwarecategories_id']['name']  = __('Category (class)', 'example');
       $actions['softwarecategories_id']['type']  = 'dropdown';
       $actions['softwarecategories_id']['table'] = 'glpi_softwarecategories';
       return $actions;

@@ -64,7 +64,7 @@ function plugin_init_example() {
       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['add']    = '/plugins/example/front/example.form.php';
       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['config'] = '/plugins/example/index.php';
       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".__s('Show all')."' alt='".__s('Show all')."'>"] = '/plugins/example/index.php';
-      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links'][__s('Test link')] = '/plugins/example/index.php';
+      $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links'][__s('Test link', 'example')] = '/plugins/example/index.php';
 
       $PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
    }
@@ -198,7 +198,7 @@ function plugin_example_check_config($verbose=false) {
    }
 
    if ($verbose) {
-      _e('Installed / not configured');
+      _e('Installed / not configured', 'example');
    }
    return false;
 }
