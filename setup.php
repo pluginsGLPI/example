@@ -148,6 +148,9 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['add_javascript']['example'] = 'example.js';
    $PLUGIN_HOOKS['add_css']['example']        = 'example.css';
 
+   // request more attributes from ldap
+   //$PLUGIN_HOOKS['retrieve_more_field_from_ldap']['example']="plugin_retrieve_more_field_from_ldap_example";
+
    // Retrieve others datas from LDAP
    //$PLUGIN_HOOKS['retrieve_more_data_from_ldap']['example']="plugin_retrieve_more_data_from_ldap_example";
 
@@ -161,7 +164,7 @@ function plugin_init_example() {
 
    $PLUGIN_HOOKS['post_init']['example'] = 'plugin_example_postinit';
 
-   // CSRF compliance : All actions must be done via POST and forms closed by Html::closeForm(); 
+   // CSRF compliance : All actions must be done via POST and forms closed by Html::closeForm();
    $PLUGIN_HOOKS['csrf_compliant']['example'] = true;
 }
 

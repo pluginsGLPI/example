@@ -666,4 +666,29 @@ function plugin_example_postinit() {
       // do something
    }
 }
+
+
+/**
+ * Hook to add more data from ldap
+ * fields from plugin_retrieve_more_field_from_ldap_example
+ *
+ * @param $datas   array
+ *
+ * @return un tableau
+ **/
+function plugin_retrieve_more_data_from_ldap_example(array $datas) {
+   return $datas;
+}
+
+
+/**
+ * Hook to add more fields from LDAP
+ *
+ * @param $fields   array
+ *
+ * @return un tableau
+ **/
+function plugin_retrieve_more_field_from_ldap_example($fields) {
+   return $fields;
+}
 ?>
