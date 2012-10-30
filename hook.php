@@ -691,4 +691,20 @@ function plugin_retrieve_more_data_from_ldap_example(array $datas) {
 function plugin_retrieve_more_field_from_ldap_example($fields) {
    return $fields;
 }
+
+// Check to add to status page
+function plugin_example_Status($param) {
+   // Do checks (no check for example)
+   $ok = true;
+   echo "example plugin: example";
+   if ($ok) {
+      echo "_OK";
+   } else {
+      echo "_PROBLEM";
+      // Only set ok to false if trouble (global status)
+      $param['ok'] = false;
+   }
+   echo "\n";
+   return $param;
+}
 ?>
