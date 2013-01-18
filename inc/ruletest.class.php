@@ -46,7 +46,7 @@ if (!defined('GLPI_ROOT')) {
 class PluginExampleRuleTest extends Rule {
 
    // From Rule
-   static public $right     = 'rule_ocs';
+   static public $right     = 'rule_import';
    public $can_sort  = true;
 
 
