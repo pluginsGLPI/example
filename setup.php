@@ -175,11 +175,11 @@ function plugin_init_example() {
 function plugin_version_example() {
 
    return array('name'           => 'Plugin Example',
-                'version'        => '6.0',
+                'version'        => '7.0',
                 'author'         => 'GLPI developer team',
                 'license'        => 'GPLv2+',
                 'homepage'       => 'https://forge.indepnet.net/projects/example',
-                'minGlpiVersion' => '0.84');// For compatibility / no install in version < 0.80
+                'minGlpiVersion' => '0.85');// For compatibility / no install in version < 0.80
 }
 
 
@@ -187,8 +187,8 @@ function plugin_version_example() {
 function plugin_example_check_prerequisites() {
 
    // Strict version check (could be less strict, or could allow various version)
-   if (version_compare(GLPI_VERSION,'0.84','lt') /*|| version_compare(GLPI_VERSION,'0.84','gt')*/) {
-      echo "This plugin requires GLPI >= 0.84";
+   if (version_compare(GLPI_VERSION,'0.85','lt') /*|| version_compare(GLPI_VERSION,'0.84','gt')*/) {
+      echo "This plugin requires GLPI >= 0.85";
       return false;
    }
    return true;
