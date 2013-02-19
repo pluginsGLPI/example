@@ -557,6 +557,11 @@ function plugin_example_addParamFordynamicReport($itemtype) {
 function plugin_example_install() {
    global $DB;
 
+   $config = new Config();
+   $config->setConfigurationValues('plugin:Example', array('configuration' => false));
+
+   ProfileRight::addProfileRights(array('example:read'));
+
    if (!TableExists("glpi_plugin_example_examples")) {
       $query = "CREATE TABLE `glpi_plugin_example_examples` (
                   `id` int(11) NOT NULL auto_increment,
@@ -611,6 +616,10 @@ function plugin_example_install() {
 function plugin_example_uninstall() {
    global $DB;
 
+   $config = new Config();
+   $config->deleteConfigurationValues('plugin:Example', array('configuration' => false));
+
+   ProfileRight::deleteProfileRights(array('example:read'));
 
    $notif = new Notification();
    $options = array('itemtype' => 'Ticket',

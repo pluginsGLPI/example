@@ -42,6 +42,9 @@ function plugin_init_example() {
    //                      array('classname'              => 'PluginExampleExample',
    //                        ));
 
+   Plugin::registerClass('PluginExampleConfig', array('addtabon' => 'Config'));
+   Plugin::registerClass('PluginExampleRight',  array('addtabon' => 'Profile'));
+
    // Params : plugin name - string type - ID - Array of attributes
    Plugin::registerClass('PluginExampleDropdown');
 
