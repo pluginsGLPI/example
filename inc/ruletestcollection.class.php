@@ -40,7 +40,7 @@ class PluginExampleRuleTestCollection extends RuleCollection {
 
    // From RuleCollection
    public $stop_on_first_match = true;
-   static public               = 'rule_import';
+   static public  $right       = 'rule_import';
    public $menu_option         = 'test';
 
    function getTitle() {
