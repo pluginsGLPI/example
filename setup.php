@@ -59,7 +59,7 @@ function plugin_init_example() {
    // Display a menu entry ?
    if (isset($_SESSION["glpi_plugin_example_profile"])) { // Right set in change_profile hook
       $PLUGIN_HOOKS['menu_toadd']['example'] = array('plugins' => 'PluginExampleExample',
-                                                     'utils'    => 'PluginExampleExample');
+                                                     'tools'   => 'PluginExampleExample');
       
       // Old menu style
 //       $PLUGIN_HOOKS['menu_entry']['example'] = 'front/example.php';
@@ -125,14 +125,6 @@ function plugin_init_example() {
                                  = array('NotificationTargetTicket' => 'plugin_example_get_datas');
 
    $PLUGIN_HOOKS['item_transfer']['example'] = 'plugin_item_transfer_example';
-
-   //redirect
-   // Simple redirect : http://localhost/glpi/index.php?redirect=plugin_example_2 (ID 2 du form)
-   // $PLUGIN_HOOKS['redirect_page']['example'] = 'example.form.php';
-   // Multiple redirect : http://localhost/glpi/index.php?redirect=plugin_example_one_2 (ID 2 du form)
-   // Multiple redirect : http://localhost/glpi/index.php?redirect=plugin_example_two_2 (ID 2 du form)
-   $PLUGIN_HOOKS['redirect_page']['example']['one'] = 'example.form.php';
-   $PLUGIN_HOOKS['redirect_page']['example']['two'] = 'example2.form.php';
 
    // function to populate planning
    // No more used since GLPI 0.84
