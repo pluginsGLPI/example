@@ -291,7 +291,7 @@ function plugin_example_MassiveActionsDisplay($options=array()) {
             case "plugin_example_DoIt" :
                echo "&nbsp;<input type='hidden' name='toto' value='1'>".
                     "<input type='submit' name='massiveaction' class='submit' value='".
-                      __s('Post')."'> ".__('Write in item history', 'example');
+                      _sx('button','Post')."'> ".__('Write in item history', 'example');
             break;
          }
          break;
@@ -301,7 +301,7 @@ function plugin_example_MassiveActionsDisplay($options=array()) {
             // No case for add_document : use GLPI core one
             case "do_nothing" :
                echo "&nbsp;<input type='submit' name='massiveaction' class='submit' value='".
-                     __s('Post')."'> ".__('but do nothing :)', 'example');
+                            _sx('button','Post')."'> ".__('but do nothing :)', 'example');
             break;
          }
          break;
