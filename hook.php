@@ -270,99 +270,12 @@ function plugin_example_MassiveActions($type) {
    switch ($type) {
       // New action for core and other plugin types : name = plugin_PLUGINNAME_actionname
       case 'Computer' :
-         return array("plugin_example_DoIt" => __("plugin_example_DoIt", 'example'));
+         return array('PluginExampleExample'.MassiveAction::CLASS_ACTION_SEPARATOR.'DoIt' =>
+                                                              __("plugin_example_DoIt", 'example'));
 
-      // Actions for types provided by the plugin
-      case 'PluginExampleExample' :
-         return array("add_document" => _x('button', 'Add a document'),         // GLPI core one
-                      "do_nothing"   => __('Do Nothing - just for fun', 'example'));  // Specific one
+      // Actions for types provided by the plugin are included inside the classes
    }
    return array();
-}
-
-
-// How to display specific actions ?
-// options contain at least itemtype and and action
-function plugin_example_MassiveActionsDisplay($options=array()) {
-
-   switch ($options['itemtype']) {
-      case 'Computer' :
-         switch ($options['action']) {
-            case "plugin_example_DoIt" :
-               echo "&nbsp;<input type='hidden' name='toto' value='1'>".
-                    "<input type='submit' name='massiveaction' class='submit' value='".
-                      _sx('button','Post')."'> ".__('Write in item history', 'example');
-            break;
-         }
-         break;
-
-      case 'PluginExampleExample' :
-         switch ($options['action']) {
-            // No case for add_document : use GLPI core one
-            case "do_nothing" :
-               echo "&nbsp;<input type='submit' name='massiveaction' class='submit' value='".
-                            _sx('button','Post')."'> ".__('but do nothing :)', 'example');
-            break;
-         }
-         break;
-   }
-   return "";
-}
-
-
-// How to process specific actions ?
-// May return array of stats containing number of process: ok / ko / noright count to display stats
-function plugin_example_MassiveActionsProcess($data) {
-
-   $ok      = 0;
-   $ko      = 0;
-   $noright = 0;
-
-   switch ($data['action']) {
-      case 'plugin_example_DoIt' :
-         if ($data['itemtype'] == 'Computer') {
-            $comp = new Computer();
-            Session::addMessageAfterRedirect(__("Right it is the type I want...", 'example'));
-            Session::addMessageAfterRedirect(__('Write in item history', 'example'));
-            $changes = array(0, 'old value', 'new value');
-            foreach ($data['item'] as $key => $val) {
-               if ($val == 1) {
-                  if ($comp->getFromDB($key)) {
-                     Session::addMessageAfterRedirect("- ".$comp->getField("name"));
-                     Log::history($key, 'Computer', $changes, 'PluginExampleExample', Log::HISTORY_PLUGIN);
-                     $ok++;
-                  } else {
-                     // Example of ko count
-                     $ko++;
-                  }
-               }
-            }
-         }
-         break;
-
-      case 'do_nothing' :
-         if ($data['itemtype'] == 'PluginExampleExample') {
-            $ex = new PluginExampleExample();
-            Session::addMessageAfterRedirect(__("Right it is the type I want...", 'example'));
-            Session::addMessageAfterRedirect(__("But... I say I will do nothing for:", 'example'));
-            foreach ($data['item'] as $key => $val) {
-               if ($val == 1) {
-                  if ($ex->getFromDB($key)) {
-                     Session::addMessageAfterRedirect("- ".$ex->getField("name"));
-                     $ok++;
-                  } else {
-                     // Example for noright / Maybe do it with can function is better
-                     $noright++;
-                  }
-               }
-            }
-         }
-         break;
-   }
-   return array('ok'      => $ok,
-                'ko'      => $ko,
-                'noright' => $noright);
-
 }
 
 
@@ -449,7 +362,10 @@ function plugin_item_update_example($item) {
 // Hook done on get empty item case
 function plugin_item_empty_example($item) {
 
-   Session::addMessageAfterRedirect(__("Empty Computer Hook", 'example'),true);
+   if (empty($_SESSION['Already displayed "Empty Computer Hook"'])) {
+      Session::addMessageAfterRedirect(__("Empty Computer Hook", 'example'),true);
+      $_SESSION['Already displayed "Empty Computer Hook"'] = true;
+   }
    return true;
 }
 
