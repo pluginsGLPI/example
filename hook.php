@@ -521,6 +521,38 @@ function plugin_example_install() {
 
    }
 
+   if (!TableExists('glpi_plugin_example_devicecameras')) {
+      $query = "CREATE TABLE `glpi_plugin_example_devicecameras` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `designation` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                  `comment` text COLLATE utf8_unicode_ci,
+                  `manufacturers_id` int(11) NOT NULL DEFAULT '0',
+                  PRIMARY KEY (`id`),
+                  KEY `designation` (`designation`),
+                  KEY `manufacturers_id` (`manufacturers_id`)
+                ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
+
+      $DB->query($query) or die("error creating glpi_plugin_example_examples ". $DB->error());
+   }
+
+   if (!TableExists('glpi_plugin_example_items_devicecameras')) {
+      $query = "CREATE TABLE `glpi_plugin_example_items_devicecameras` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `items_id` int(11) NOT NULL DEFAULT '0',
+                  `itemtype` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                  `plugin_example_devicecameras_id` int(11) NOT NULL DEFAULT '0',
+                  `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
+                  `is_dynamic` tinyint(1) NOT NULL DEFAULT '0',
+                  PRIMARY KEY (`id`),
+                  KEY `computers_id` (`items_id`),
+                  KEY `plugin_example_devicecameras_id` (`plugin_example_devicecameras_id`),
+                  KEY `is_deleted` (`is_deleted`),
+                  KEY `is_dynamic` (`is_dynamic`)
+                ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
+
+      $DB->query($query) or die("error creating glpi_plugin_example_examples ". $DB->error());
+   }
+
    // To be called for each task the plugin manage
    // task in class
    CronTask::Register('PluginExampleExample', 'Sample', DAY_TIMESTAMP, array('param' => 50));
@@ -562,6 +594,14 @@ function plugin_example_uninstall() {
       $query = "DROP TABLE `glpi_plugin_example_dropdowns`;";
       $DB->query($query) or die("error deleting glpi_plugin_example_dropdowns");
    }
+   if (TableExists("glpi_plugin_example_devicecameras")) {
+      $query = "DROP TABLE `glpi_plugin_example_devicecameras`;";
+      $DB->query($query) or die("error deleting glpi_plugin_example_devicecameras");
+   }
+   if (TableExists("glpi_plugin_example_items_devicecameras")) {
+      $query = "DROP TABLE `glpi_plugin_example_items_devicecameras`;";
+      $DB->query($query) or die("error deleting glpi_plugin_example_items_devicecameras");
+   }
    return true;
 }
 
@@ -587,7 +627,7 @@ function plugin_example_postinit() {
    global $CFG_GLPI;
 
    // All plugins are initialized, so all types are registered
-   foreach ($CFG_GLPI["infocom_types"] as $type) {
+   foreach (Infocom::getItemtypesThatCanHave() as $type) {
       // do something
    }
 }

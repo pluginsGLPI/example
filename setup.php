@@ -56,6 +56,9 @@ function plugin_init_example() {
    Plugin::registerClass('PluginExampleRuleTestCollection',
                          array('rulecollections_types' => true));
 
+   Plugin::registerClass('PluginExampleDeviceCamera',
+                         array('device_types' => true));
+
    // Display a menu entry ?
    if (isset($_SESSION["glpi_plugin_example_profile"])) { // Right set in change_profile hook
       $PLUGIN_HOOKS['menu_toadd']['example'] = array('plugins' => 'PluginExampleExample',
