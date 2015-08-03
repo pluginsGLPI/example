@@ -1,0 +1,48 @@
+<root>
+      <name>Dummy Plugin</name>
+      <key>dummyplugin</key>
+      <state>stable</state>
+      <logo>https://raw.githubusercontent.com/pluginsGLPI/example/master/misc/logo.png</logo>
+      <description>
+         <short>
+            <en>GLPI example plugin useful to bootstrap a new one</en>
+            <fr>Plugin GLPI d'example utile pour en démarrer un</fr>
+         </short>
+         <long>
+            <en>GLPI example plugin useful to bootstrap a new one, you should edit every field of this file, and see README.md</en>
+            <fr>Plugin GLPI d'example utile pour en démarrer un, vous devriez editer tous les champs de ce fichier, et voir README.md</fr>
+         </long>
+      </description>
+      <homepage>https://github.com/pluginsGLPI/example</homepage>
+      <download>https://github.com/pluginsGLPI/example/releases</download>
+      <issues>https://github.com/pluginsGLPI/example/issues</issues>
+      <readme>https://raw.githubusercontent.com/pluginsGLPI/example/master/README.md</readme>
+      <authors>
+         <author>Teclib</author>
+      </authors>
+      <versions>
+         <version>
+            <num>0.0.1</num>
+            <compatibility>0.85</compatibility>
+         </version>
+      </versions>
+      <langs>
+         <lang>en_GB</lang>
+         <lang>fr_FR</lang>
+      </langs>
+      <license>GPL v2+</license>
+      <tags>
+         <fr>
+            <tag>exemple</tag>
+         </fr>
+         <en>
+            <tag>dummy</tag>
+         </en>
+      </tags>
+      <screenshots>
+         <screenshot>https://raw.githubusercontent.com/pluginsGLPI/example/master/misc/screenshots/first.png</screenshot>
+         <screenshot>https://raw.githubusercontent.com/pluginsGLPI/example/master/misc/screenshots/second.png</screenshot>
+         <screenshot>https://raw.githubusercontent.com/pluginsGLPI/example/master/misc/screenshots/third.png</screenshot>
+         <screenshot>https://raw.githubusercontent.com/pluginsGLPI/example/master/misc/screenshots/fourth.png</screenshot>
+      </screenshots>
+</root>
