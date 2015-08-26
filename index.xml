@@ -1,6 +1,6 @@
 <root>
-      <name>Dummy Plugin</name>
-      <key>dummyplugin</key>
+      <name>Example</name>
+      <key>exemple</key>
       <state>stable</state>
       <logo>https://raw.githubusercontent.com/pluginsGLPI/example/master/misc/logo.png</logo>
       <description>
@@ -18,7 +18,8 @@
       <issues>https://github.com/pluginsGLPI/example/issues</issues>
       <readme>https://raw.githubusercontent.com/pluginsGLPI/example/master/README.md</readme>
       <authors>
-         <author>Teclib</author>
+         <author>Teclib'</author>
+         <author>Indepnet</author>
       </authors>
       <versions>
          <version>
@@ -36,7 +37,7 @@
             <tag>exemple</tag>
          </fr>
          <en>
-            <tag>dummy</tag>
+            <tag>example</tag>
          </en>
       </tags>
       <screenshots>
