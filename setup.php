@@ -179,7 +179,7 @@ function plugin_version_example() {
                 'version'        => '7.0',
                 'author'         => 'GLPI developer team',
                 'license'        => 'GPLv2+',
-                'homepage'       => 'https://forge.indepnet.net/projects/example',
+                'homepage'       => 'https://github.com/pluginsGLPI/example',
                 'minGlpiVersion' => '0.85');// For compatibility / no install in version < 0.80
 }
 
