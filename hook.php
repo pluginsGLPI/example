@@ -586,9 +586,9 @@ function plugin_example_uninstall() {
       $DB->query($query) or die("error deleting glpi_plugin_example");
    }
    // Current version tables
-   if (TableExists("glpi_plugin_example_example")) {
-      $query = "DROP TABLE `glpi_plugin_example_example`";
-      $DB->query($query) or die("error deleting glpi_plugin_example_example");
+   if (TableExists("glpi_plugin_example_examples")) {
+      $query = "DROP TABLE `glpi_plugin_example_examples`";
+      $DB->query($query) or die("error deleting glpi_plugin_example_examples");
    }
    if (TableExists("glpi_plugin_example_dropdowns")) {
       $query = "DROP TABLE `glpi_plugin_example_dropdowns`;";
