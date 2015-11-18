@@ -1,6 +1,6 @@
 <?php
 /*
- * @version $Id$
+ * @version $Id: hook.php 219 2013-11-25 19:01:42Z webmyster $
  -------------------------------------------------------------------------
  GLPI - Gestionnaire Libre de Parc Informatique
  Copyright (C) 2003-2011 by the INDEPNET Development Team.
@@ -36,7 +36,6 @@
 // Good place to evaluate the user right on this plugin
 // And to save it in the session
 function plugin_change_profile_example() {
-
    // For example : same right of computer
    if (Session::haveRight('computer','w')) {
       $_SESSION["glpi_plugin_example_profile"] = array('example' => 'w');
@@ -68,7 +67,6 @@ function plugin_example_getDropdown() {
 
 // Define Additionnal search options for types (other than the plugin ones)
 function plugin_example_getAddSearchOptions($itemtype) {
-
    $sopt = array();
    if ($itemtype == 'Computer') {
          // Just for example, not working...
@@ -82,7 +80,6 @@ function plugin_example_getAddSearchOptions($itemtype) {
 
 // See also PluginExampleExample::getSpecificValueToDisplay()
 function plugin_example_giveItem($type,$ID,$data,$num) {
-
    $searchopt = &Search::getOptions($type);
    $table = $searchopt[$ID]["table"];
    $field = $searchopt[$ID]["field"];
@@ -102,7 +99,6 @@ function plugin_example_giveItem($type,$ID,$data,$num) {
 
 
 function plugin_example_displayConfigItem($type, $ID, $data, $num) {
-
    $searchopt = &Search::getOptions($type);
    $table     = $searchopt[$ID]["table"];
    $field     = $searchopt[$ID]["field"];
@@ -118,7 +114,6 @@ function plugin_example_displayConfigItem($type, $ID, $data, $num) {
 
 
 function plugin_example_addDefaultJoin($type, $ref_table, &$already_link_tables) {
-
    // Example of default JOIN clause
    // No need of the function if you do not have specific cases
    switch ($type) {
@@ -132,7 +127,6 @@ function plugin_example_addDefaultJoin($type, $ref_table, &$already_link_tables)
 
 
 function plugin_example_addDefaultSelect($type) {
-
    // Example of default SELECT item to be added
    // No need of the function if you do not have specific cases
    switch ($type) {
@@ -145,7 +139,6 @@ function plugin_example_addDefaultSelect($type) {
 
 
 function plugin_example_addDefaultWhere($type) {
-
    // Example of default WHERE item to be added
    // No need of the function if you do not have specific cases
    switch ($type) {
@@ -158,7 +151,6 @@ function plugin_example_addDefaultWhere($type) {
 
 
 function plugin_example_addLeftJoin($type, $ref_table, $new_table, $linkfield) {
-
    // Example of standard LEFT JOIN  clause but use it ONLY for specific LEFT JOIN
    // No need of the function if you do not have specific cases
    switch ($new_table) {
@@ -170,7 +162,6 @@ function plugin_example_addLeftJoin($type, $ref_table, $new_table, $linkfield) {
 
 
 function plugin_example_forceGroupBy($type) {
-
    switch ($type) {
       case 'PluginExampleExample' :
          // Force add GROUP BY IN REQUEST
@@ -181,7 +172,6 @@ function plugin_example_forceGroupBy($type) {
 
 
 function plugin_example_addWhere($link, $nott, $type, $ID, $val, $searchtype) {
-
    $searchopt = &Search::getOptions($type);
    $table     = $searchopt[$ID]["table"];
    $field     = $searchopt[$ID]["field"];
@@ -206,7 +196,6 @@ function plugin_example_addWhere($link, $nott, $type, $ID, $val, $searchtype) {
 
 // This is not a real example because the use of Having condition in this case is not suitable
 function plugin_example_addHaving($link, $nott, $type, $ID, $val, $num) {
-
    $searchopt = &Search::getOptions($type);
    $table     = $searchopt[$ID]["table"];
    $field     = $searchopt[$ID]["field"];
@@ -229,7 +218,6 @@ function plugin_example_addHaving($link, $nott, $type, $ID, $val, $num) {
 
 
 function plugin_example_addSelect($type,$ID,$num) {
-
    $searchopt = &Search::getOptions($type);
    $table     = $searchopt[$ID]["table"];
    $field     = $searchopt[$ID]["field"];
@@ -245,7 +233,6 @@ function plugin_example_addSelect($type,$ID,$num) {
 
 
 function plugin_example_addOrderBy($type,$ID,$order,$key=0) {
-
    $searchopt = &Search::getOptions($type);
    $table     = $searchopt[$ID]["table"];
    $field     = $searchopt[$ID]["field"];
@@ -266,7 +253,6 @@ function plugin_example_addOrderBy($type,$ID,$order,$key=0) {
 
 // Define actions :
 function plugin_example_MassiveActions($type) {
-
    switch ($type) {
       // New action for core and other plugin types : name = plugin_PLUGINNAME_actionname
       case 'Computer' :
@@ -317,7 +303,6 @@ function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
 // options must contain at least itemtype and options array
 // MUST Use a specific AddWhere & $tab[X]['searchtype'] = 'equals'; declaration
 function plugin_example_searchOptionsValues($options=array()) {
-
    $table = $options['searchoption']['table'];
    $field = $options['searchoption']['field'];
 
@@ -340,7 +325,6 @@ function plugin_example_searchOptionsValues($options=array()) {
 
 // Hook done on before update item case
 function plugin_pre_item_update_example($item) {
-
    /* Manipulate data if needed
    if (!isset($item->input['comment'])) {
       $item->input['comment'] = addslashes($item->fields['comment']);
@@ -353,7 +337,6 @@ function plugin_pre_item_update_example($item) {
 
 // Hook done on update item case
 function plugin_item_update_example($item) {
-
    Session::addMessageAfterRedirect(sprintf(__("Update Computer Hook (%s)", 'example'),implode(',',$item->updates)), true);
    return true;
 }
@@ -361,7 +344,6 @@ function plugin_item_update_example($item) {
 
 // Hook done on get empty item case
 function plugin_item_empty_example($item) {
-
    if (empty($_SESSION['Already displayed "Empty Computer Hook"'])) {
       Session::addMessageAfterRedirect(__("Empty Computer Hook", 'example'),true);
       $_SESSION['Already displayed "Empty Computer Hook"'] = true;
@@ -372,7 +354,6 @@ function plugin_item_empty_example($item) {
 
 // Hook done on before delete item case
 function plugin_pre_item_delete_example($object) {
-
    // Manipulate data if needed
    Session::addMessageAfterRedirect(__("Pre Delete Computer Hook", 'example'),true);
 }
@@ -380,7 +361,6 @@ function plugin_pre_item_delete_example($object) {
 
 // Hook done on delete item case
 function plugin_item_delete_example($object) {
-
    Session::addMessageAfterRedirect(__("Delete Computer Hook", 'example'),true);
    return true;
 }
@@ -388,7 +368,6 @@ function plugin_item_delete_example($object) {
 
 // Hook done on before purge item case
 function plugin_pre_item_purge_example($object) {
-
    // Manipulate data if needed
    Session::addMessageAfterRedirect(__("Pre Purge Computer Hook", 'example'),true);
 }
@@ -396,7 +375,6 @@ function plugin_pre_item_purge_example($object) {
 
 // Hook done on purge item case
 function plugin_item_purge_example($object) {
-
    Session::addMessageAfterRedirect(__("Purge Computer Hook", 'example'),true);
    return true;
 }
@@ -404,7 +382,6 @@ function plugin_item_purge_example($object) {
 
 // Hook done on before restore item case
 function plugin_pre_item_restore_example($item) {
-
    // Manipulate data if needed
    Session::addMessageAfterRedirect(__("Pre Restore Computer Hook", 'example'));
 }
@@ -412,7 +389,6 @@ function plugin_pre_item_restore_example($item) {
 
 // Hook done on before restore item case
 function plugin_pre_item_restore_example2($item) {
-
    // Manipulate data if needed
    Session::addMessageAfterRedirect(__("Pre Restore Phone Hook", 'example'));
 }
@@ -420,7 +396,6 @@ function plugin_pre_item_restore_example2($item) {
 
 // Hook done on restore item case
 function plugin_item_restore_example($item) {
-
    Session::addMessageAfterRedirect(__("Restore Computer Hook", 'example'));
    return true;
 }
@@ -437,7 +412,6 @@ function plugin_item_transfer_example($parm) {
 
 // Do special actions for dynamic report
 function plugin_example_dynamicReport($parm) {
-
    if ($parm["item_type"] == 'PluginExampleExample') {
       // Do all what you want for export depending on $parm
       echo "Personalized export for type ".$parm["display_type"];
@@ -456,7 +430,6 @@ function plugin_example_dynamicReport($parm) {
 
 // Add parameters to Html::printPager in search system
 function plugin_example_addParamFordynamicReport($itemtype) {
-
    if ($itemtype == 'PluginExampleExample') {
       // Return array data containing all params to add : may be single data or array data
       // Search config are available from session variable
@@ -586,9 +559,9 @@ function plugin_example_uninstall() {
       $DB->query($query) or die("error deleting glpi_plugin_example");
    }
    // Current version tables
-   if (TableExists("glpi_plugin_example_examples")) {
-      $query = "DROP TABLE `glpi_plugin_example_examples`";
-      $DB->query($query) or die("error deleting glpi_plugin_example_examples");
+   if (TableExists("glpi_plugin_example_example")) {
+      $query = "DROP TABLE `glpi_plugin_example_example`";
+      $DB->query($query) or die("error deleting glpi_plugin_example_example");
    }
    if (TableExists("glpi_plugin_example_dropdowns")) {
       $query = "DROP TABLE `glpi_plugin_example_dropdowns`;";
@@ -607,7 +580,6 @@ function plugin_example_uninstall() {
 
 
 function plugin_example_AssignToTicket($types) {
-
    $types['PluginExampleExample'] = "Example";
    return $types;
 }
