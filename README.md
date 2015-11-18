@@ -33,3 +33,22 @@ Once it is created, you will have every opportunity to manage its evolution as y
 * Add logo/screenshosts in png on your git master and target it in your xml.
 * Submit the url of raw xml of your plugin in the catalogue http://plugins.glpi-project.org/#/submit
 * The manager team will recieve a mail and after a check of your plugin and xml, it will be available in lists.
+
+## Create a new plugin 
+
+* [How to]
+
+## Ressources 
+
+* [Reserved ranges of Item type for plugins]
+* [Hooks provided by plugins]
+* [CSRF Protection]
+
+Migrations : 
+
+* 0.85 -> 0.90
+* 0.84 -> 0.85
+* 0.83 -> 0.84
+* 0.80 -> 0.83
+* 0.78 -> 0.80
+* 0.72 -> 0.78
