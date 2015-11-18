@@ -12,7 +12,7 @@ Most of implemented features are for example and do nothing.
 
 ## What features are provided by a plugin?
 
-* Plugin Features
+* [Plugins features](https://github.com/pluginsGLPI/example/wiki/Plugins-features)
 * Version Management for plugins
 
 ## How to develop a plugin for glpi?
