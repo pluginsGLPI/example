@@ -15,7 +15,24 @@ Most of implemented features are for example and do nothing.
 * [Plugins features](https://github.com/pluginsGLPI/example/wiki/Features)
 * [Version Management for plugins](https://github.com/pluginsGLPI/example/wiki/Version-management)
 
-## How to develop a plugin for glpi?
+## Create a new plugin for GLPI
+
+* [Create a plugin](https://github.com/pluginsGLPI/example/wiki/Create-a-plugin)
+
+## Ressources 
+
+* [Reserved ranges of Item type for plugins]
+* [Hooks provided by plugins]
+* [CSRF Protection]
+
+## Migrations : 
+
+* 0.85 -> 0.90
+* 0.84 -> 0.85
+* 0.83 -> 0.84
+* 0.80 -> 0.83
+* 0.78 -> 0.80
+* 0.72 -> 0.78
 
 ## How to make a plugin available?
 
@@ -34,21 +51,3 @@ Once it is created, you will have every opportunity to manage its evolution as y
 * Submit the url of raw xml of your plugin in the catalogue http://plugins.glpi-project.org/#/submit
 * The manager team will recieve a mail and after a check of your plugin and xml, it will be available in lists.
 
-## Create a new plugin 
-
-* [How to]
-
-## Ressources 
-
-* [Reserved ranges of Item type for plugins]
-* [Hooks provided by plugins]
-* [CSRF Protection]
-
-Migrations : 
-
-* 0.85 -> 0.90
-* 0.84 -> 0.85
-* 0.83 -> 0.84
-* 0.80 -> 0.83
-* 0.78 -> 0.80
-* 0.72 -> 0.78
