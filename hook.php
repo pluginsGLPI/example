@@ -646,11 +646,17 @@ function plugin_example_Status($param) {
 }
 
 function plugin_example_display_central() {
+   echo "<tr><th colspan='2'>";
+   echo "<div style='text-align:center; font-size:2em'>";
    echo __("Plugin example displays on central page", "example");
+   echo "</div>";
+   echo "</th></tr>";
 }
 
 function plugin_example_display_login() {
+   echo "<div style='text-align:center; font-size:2em'>";
    echo __("Plugin example displays on login page", "example");
+   echo "</div>";
 }
 
 ?>
