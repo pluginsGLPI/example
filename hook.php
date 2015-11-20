@@ -644,4 +644,13 @@ function plugin_example_Status($param) {
    echo "\n";
    return $param;
 }
+
+function plugin_example_display_central() {
+   echo __("Plugin example displays on central page", "example");
+}
+
+function plugin_example_display_login() {
+   echo __("Plugin example displays on login page", "example");
+}
+
 ?>
