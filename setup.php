@@ -51,15 +51,20 @@ function plugin_init_example() {
                   'Preference', 'Profile', 'Supplier');
    Plugin::registerClass('PluginExampleExample',
                          array('notificationtemplates_types' => true,
-                               'addtabon'                    => $types));
+                               'addtabon'                    => $types,
+                              'link_types' => true));
 
    Plugin::registerClass('PluginExampleRuleTestCollection',
                          array('rulecollections_types' => true));
 
    Plugin::registerClass('PluginExampleDeviceCamera',
                          array('device_types' => true));
-
+   
+   if (class_exists('PluginExampleExample')) {
+      Link::registerTag(PluginExampleExample::$tags);
+   }
    // Display a menu entry ?
+   $_SESSION["glpi_plugin_example_profile"]['example'] = 'w';
    if (isset($_SESSION["glpi_plugin_example_profile"])) { // Right set in change_profile hook
       $PLUGIN_HOOKS['menu_toadd']['example'] = array('plugins' => 'PluginExampleExample',
                                                      'tools'   => 'PluginExampleExample');
@@ -79,7 +84,7 @@ function plugin_init_example() {
    }
 
    // Config page
-   if (Session::haveRight('config','w')) {
+   if (Session::haveRight('config',UPDATE)) {
       $PLUGIN_HOOKS['config_page']['example'] = 'config.php';
    }
 

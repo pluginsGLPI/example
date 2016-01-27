@@ -34,7 +34,8 @@
 
 // Class of the defined type
 class PluginExampleExample extends CommonDBTM {
-
+   
+   static $tags = '[EXAMPLE_ID]';
 
    // Should return the localized name of the type
    static function getTypeName($nb = 0) {
@@ -68,6 +69,7 @@ class PluginExampleExample extends CommonDBTM {
       return __('Example plugin');
    }
    
+   
    /**
     * @see CommonGLPI::getAdditionalMenuLinks()
    **/
@@ -82,7 +84,33 @@ class PluginExampleExample extends CommonDBTM {
       return $links;
    }
 
+   function defineTabs($options = array()) {
 
+      $ong = array();
+      $this->addDefaultFormTab($ong);
+      $this->addStandardTab('Link', $ong, $options);
+
+      return $ong;
+   }
+   
+    function showForm($ID, $options = array()) {
+      global $CFG_GLPI;
+
+      $this->initForm($ID, $options);
+      $this->showFormHeader($options);
+
+      echo "<tr class='tab_bg_1'>";
+
+      echo "<td>" . __('ID') . "</td>";
+      echo "<td>";
+      echo $ID;
+      echo "</td>";
+      
+      $this->showFormButtons($options);
+
+      return true;
+   }
+   
    function getSearchOptions() {
 
       $tab = array();
@@ -357,8 +385,6 @@ class PluginExampleExample extends CommonDBTM {
    **/
    function getSpecificMassiveActions($checkitem=NULL) {
 
-      Toolbox::logDebug();
-
       $actions = parent::getSpecificMassiveActions($checkitem);
 
       $actions['Document_Item'.MassiveAction::CLASS_ACTION_SEPARATOR.'add']  =
@@ -444,6 +470,17 @@ class PluginExampleExample extends CommonDBTM {
             Return;
       }
       parent::processMassiveActionsForOneItemtype($ma, $item, $ids);
+   }
+   
+   static function generateLinkContents($link, CommonDBTM $item) {
+
+      if (strstr($link,"[EXAMPLE_ID]")) {
+         $link = str_replace("[EXAMPLE_ID]", $item->getID(),$link);
+         return array($link);
+      }
+
+      
+      return parent::generateLinkContents($link, $item);
    }
 
 }

@@ -49,7 +49,7 @@ class PluginExampleConfig extends CommonDBTM {
    function showFormExample() {
       global $CFG_GLPI;
 
-      if (!Session::haveRight("config", "w")) {
+      if (!Session::haveRight("config", UPDATE)) {
          return false;
       }
 
