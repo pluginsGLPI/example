@@ -220,14 +220,14 @@ class PluginExampleExample extends CommonDBTM {
 
             case 'ComputerDisk' :
             case 'Supplier' :
-               return array(1 => __("Test PLugin", 'example'),
-                            2 => __("Test PLugin 2", 'example'));
+               return array(1 => __("Test Plugin", 'example'),
+                            2 => __("Test Plugin 2", 'example'));
 
             case 'Computer' :
             case 'Central' :
             case 'Preference':
             case 'Notification':
-               return array(1 => __("Test PLugin", 'example'));
+               return array(1 => __("Test Plugin", 'example'));
 
          }
       }

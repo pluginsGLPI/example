@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-16 11:22+0200\n"
+"POT-Creation-Date: 2016-06-02 14:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,106 +21,90 @@ msgstr ""
 msgid "This is the plugin config page"
 msgstr ""
 
-#: hook.php:62
+#: hook.php:61
 msgid "Plugin Example Dropdown"
 msgstr ""
 
-#: hook.php:78
+#: hook.php:76
 msgid "Example plugin"
 msgstr ""
 
-#: hook.php:273
+#: hook.php:260
 msgid "plugin_example_DoIt"
 msgstr ""
 
-#: hook.php:278
-msgid "Do Nothing - just for fun"
-msgstr ""
-
-#: hook.php:294 hook.php:326
-msgid "Write in item history"
-msgstr ""
-
-#: hook.php:304
-msgid "but do nothing :)"
-msgstr ""
-
-#: hook.php:325 hook.php:346
-msgid "Right it is the type I want..."
-msgstr ""
-
-#: hook.php:347
-msgid "But... I say I will do nothing for:"
-msgstr ""
-
-#: hook.php:382 hook.php:393
+#: hook.php:281 hook.php:292
 msgid "Not really specific - Just for example"
 msgstr ""
 
-#: hook.php:414
+#: hook.php:312
 msgid "Not really specific - Use your own dropdown - Just for example"
 msgstr ""
 
-#: hook.php:437
+#: hook.php:334
 msgid "Pre Update Computer Hook"
 msgstr ""
 
-#: hook.php:444
+#: hook.php:340
 #, php-format
 msgid "Update Computer Hook (%s)"
 msgstr ""
 
-#: hook.php:452
+#: hook.php:348
 msgid "Empty Computer Hook"
 msgstr ""
 
-#: hook.php:461
+#: hook.php:358
 msgid "Pre Delete Computer Hook"
 msgstr ""
 
-#: hook.php:468
+#: hook.php:364
 msgid "Delete Computer Hook"
 msgstr ""
 
-#: hook.php:477
+#: hook.php:372
 msgid "Pre Purge Computer Hook"
 msgstr ""
 
-#: hook.php:484
+#: hook.php:378
 msgid "Purge Computer Hook"
 msgstr ""
 
-#: hook.php:493
+#: hook.php:386
 msgid "Pre Restore Computer Hook"
 msgstr ""
 
-#: hook.php:501
+#: hook.php:393
 msgid "Pre Restore Phone Hook"
 msgstr ""
 
-#: hook.php:508
+#: hook.php:399
 msgid "Restore Computer Hook"
 msgstr ""
 
 #. TRANS: %1$s is the source type, %2$d is the source ID, %3$d is the destination ID
-#: hook.php:516
+#: hook.php:407
 #, php-format
 msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
 msgstr ""
 
-#: hook.php:652
+#: hook.php:589
 msgid "Example event"
 msgstr ""
 
-#: hook.php:657
+#: hook.php:594
 msgid "Example datas"
 msgstr ""
 
-#: setup.php:67
-msgid "Test link"
+#: hook.php:651
+msgid "Plugin example displays on central page"
 msgstr ""
 
-#: setup.php:201
+#: hook.php:658
+msgid "Plugin example displays on login page"
+msgstr ""
+
+#: setup.php:210
 msgid "Installed / not configured"
 msgstr ""
 
@@ -128,59 +112,83 @@ msgstr ""
 msgid "Plugin Example Dropdowns"
 msgstr ""
 
-#: inc/example.class.php:102
+#: inc/example.class.php:80
+msgid "Test link"
+msgstr ""
+
+#: inc/example.class.php:124
 msgid "Cron description for example"
 msgstr ""
 
-#: inc/example.class.php:103
+#: inc/example.class.php:125
 msgid "Cron parameter for example"
 msgstr ""
 
-#: inc/example.class.php:160 inc/example.class.php:166
-#: inc/example.class.php:169 inc/notificationtargetexample.class.php:44
+#: inc/example.class.php:182 inc/example.class.php:188
+#: inc/example.class.php:191 inc/notificationtargetexample.class.php:44
 msgid "Example"
 msgstr ""
 
-#: inc/example.class.php:173 inc/example.class.php:180
-msgid "Test PLugin"
-msgstr ""
-
-#: inc/example.class.php:174
-msgid "Test PLugin 2"
-msgstr ""
-
-#: inc/example.class.php:192
-msgid "Plugin Example on Phone"
+#: inc/example.class.php:195 inc/example.class.php:202
+msgid "Test Plugin"
 msgstr ""
 
 #: inc/example.class.php:196
+msgid "Test Plugin 2"
+msgstr ""
+
+#: inc/example.class.php:214
+msgid "Plugin Example on Phone"
+msgstr ""
+
+#: inc/example.class.php:218
 msgid "Plugin central action"
 msgstr ""
 
-#: inc/example.class.php:219
+#: inc/example.class.php:241
 msgid "Plugin mailing action"
 msgstr ""
 
-#: inc/example.class.php:225
+#: inc/example.class.php:247
 msgid "First tab of Plugin example"
 msgstr ""
 
-#: inc/example.class.php:227
+#: inc/example.class.php:249
 msgid "Second tab of Plugin example"
 msgstr ""
 
 #. TRANS: %1$s is a class name, %2$d is an item ID
-#: inc/example.class.php:233
+#: inc/example.class.php:255
 #, php-format
 msgid "Plugin example CLASS=%1$s id=%2$d"
 msgstr ""
 
-#: inc/example.class.php:262
+#: inc/example.class.php:284
 msgid "test planning example 1"
 msgstr ""
 
-#: inc/example.class.php:322
+#: inc/example.class.php:344
 msgid "History from plugin example"
+msgstr ""
+
+#: inc/example.class.php:367
+msgid "Do Nothing - just for fun"
+msgstr ""
+
+#: inc/example.class.php:384 inc/example.class.php:408
+msgid "Write in item history"
+msgstr ""
+
+#: inc/example.class.php:388
+msgid "but do nothing :)"
+msgstr ""
+
+#: inc/example.class.php:407 inc/example.class.php:429
+msgid "Right it is the type I want..."
+msgstr ""
+
+#: inc/example.class.php:430
+msgid "But... I say I will do nothing for:"
 msgstr ""
 
 #: inc/ruletest.class.php:77
