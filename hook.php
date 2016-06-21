@@ -659,4 +659,10 @@ function plugin_example_display_login() {
    echo "</div>";
 }
 
+function plugin_example_infocom_hook($params) {
+   echo "<tr><th colspan='4'>";
+   echo __("Plugin example displays on central page", "example");
+   echo "</th></tr>";
+}
+
 ?>
