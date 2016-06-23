@@ -4,7 +4,7 @@
 
 This plugin implements a few basic glpi hooks.
 Most of implemented features stands for example and are not
-expected to provide fantastic functionality.
+expected to provide fantastic functionality other than teaching.
 
 ## Installation
 
