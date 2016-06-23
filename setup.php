@@ -177,6 +177,7 @@ function plugin_init_example() {
 
    $PLUGIN_HOOKS['display_central']['example'] = "plugin_example_display_central";
    $PLUGIN_HOOKS['display_login']['example'] = "plugin_example_display_login";
+   $PLUGIN_HOOKS['infocom']['example'] = "plugin_example_infocom_hook";
 }
 
 
