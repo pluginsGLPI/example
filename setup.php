@@ -59,7 +59,7 @@ function plugin_init_example() {
 
    Plugin::registerClass('PluginExampleDeviceCamera',
                          array('device_types' => true));
-   
+
    if (class_exists('PluginExampleExample')) {
       Link::registerTag(PluginExampleExample::$tags);
    }
@@ -68,10 +68,10 @@ function plugin_init_example() {
    if (isset($_SESSION["glpi_plugin_example_profile"])) { // Right set in change_profile hook
       $PLUGIN_HOOKS['menu_toadd']['example'] = array('plugins' => 'PluginExampleExample',
                                                      'tools'   => 'PluginExampleExample');
-      
+
       // Old menu style
 //       $PLUGIN_HOOKS['menu_entry']['example'] = 'front/example.php';
-// 
+//
 //       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['title'] = "Search";
 //       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['page']  = '/plugins/example/front/example.php';
 //       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['search'] = '/plugins/example/front/example.php';
@@ -171,12 +171,20 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['post_init']['example'] = 'plugin_example_postinit';
 
    $PLUGIN_HOOKS['status']['example'] = 'plugin_example_Status';
-   
+
    // CSRF compliance : All actions must be done via POST and forms closed by Html::closeForm();
    $PLUGIN_HOOKS['csrf_compliant']['example'] = true;
 
    $PLUGIN_HOOKS['display_central']['example'] = "plugin_example_display_central";
    $PLUGIN_HOOKS['display_login']['example'] = "plugin_example_display_login";
+
+   // pre_show and post_show for tabs and items, 
+   // see PluginExampleShowtabitem class for implementation explanations
+   $PLUGIN_HOOKS['pre_show_tab']['example'] = array( 'PluginExampleShowtabitem',  'pre_show_tab' );
+   $PLUGIN_HOOKS['post_show_tab']['example'] = array( 'PluginExampleShowtabitem',  'post_show_tab' );
+   $PLUGIN_HOOKS['pre_show_item']['example'] = array( 'PluginExampleShowtabitem',  'pre_show_item' );
+   $PLUGIN_HOOKS['post_show_item']['example'] = array( 'PluginExampleShowtabitem',  'post_show_item' );
+
 }
 
 
@@ -184,7 +192,7 @@ function plugin_init_example() {
 function plugin_version_example() {
 
    return array('name'           => 'Plugin Example',
-                'version'        => '7.0',
+                'version'        => '7.1',
                 'author'         => 'GLPI developer team',
                 'license'        => 'GPLv2+',
                 'homepage'       => 'https://github.com/pluginsGLPI/example',
