@@ -128,6 +128,7 @@ class PluginExampleShowtabitem {
     * @param array $params is an array like following
     *                array( 'item', 'options')
     *                where 'item' is the object to show (like 'Ticket', 'TicketTask', ...),
+    *                BEWARE that sometimes it can be an array of data and not an object (ex: for solution item)
     *                and 'options' are options like following
     *                if item is a main object like a ticket, change, problem, ... then it contains
     *                  array( 'id' )
@@ -140,6 +141,7 @@ class PluginExampleShowtabitem {
     * Note: you may pass datas to post_show_item using the $param['options'] array
     */
    static function pre_show_item($params) {
+    if(!is_array($params['item'])) {
       switch( $params['item']->getType() ) {
          case 'Ticket':
             //echo 'test' ;
@@ -151,6 +153,9 @@ class PluginExampleShowtabitem {
             //echo 'test' ;
             break;
       }
+     } else {
+      // here we are going to view a Solution
+     }
    }
 
    /**
@@ -170,6 +175,7 @@ class PluginExampleShowtabitem {
     * Note: you may get datas from pre_show_item using the $param['options'] array
     */
    static function post_show_item($params) {
+    if(!is_array($params['item'])) {
       switch( $params['item']->getType() ) {
          case 'Ticket':
             //echo 'test' ;
@@ -181,6 +187,9 @@ class PluginExampleShowtabitem {
             //echo 'test' ;
             break;
       }
+    } else {
+     // here we are going to view a Solution
+    }
    }
 
 }
