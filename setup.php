@@ -186,6 +186,14 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['pre_show_item']['example'] = array( 'PluginExampleShowtabitem',  'pre_show_item' );
    $PLUGIN_HOOKS['post_show_item']['example'] = array( 'PluginExampleShowtabitem',  'post_show_item' );
 
+   // declare this plugin as an import plugin for Computer itemtype
+   $PLUGIN_HOOKS['import_item']['exemple'] = array('Computer' => array('Plugin'));
+
+   // add additional informations on Computer::showForm
+   $PLUGIN_HOOKS['autoinventory_information']['exemple'] =  array(
+      'Computer' =>  array('PluginExampleComputer', 'showInfo')
+   );
+
 }
 
 
