@@ -60,8 +60,10 @@ function plugin_init_example() {
    Plugin::registerClass('PluginExampleDeviceCamera',
                          array('device_types' => true));
 
-   if (class_exists('PluginExampleExample')) {
-      Link::registerTag(PluginExampleExample::$tags);
+   if (version_compare(GLPI_VERSION,'9.1','ge')) {
+      if (class_exists('PluginExampleExample')) {
+         Link::registerTag(PluginExampleExample::$tags);
+      }
    }
    // Display a menu entry ?
    $_SESSION["glpi_plugin_example_profile"]['example'] = 'w';
