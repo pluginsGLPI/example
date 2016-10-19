@@ -30,71 +30,62 @@ along with GLPI. If not, see <http://www.gnu.org/licenses/>.
 /**
  * Show how to dowload a file (or any stream) from the REST API
  * as well as metatadata stored in DB
+ *
+ * This itemtype is designed to be the same as Document in GLPi Core
+ * to focus on the file dowload and upload features
+ *
+ *
+ *
  */
 
 if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access this file directly");
 }
 
-class PluginExampleStreamviaapi extends CommonDBTM {
+class PluginExampleDocument extends Document {
 
-   public function prepareInputForAdd($input) {
-      if (isset ($_FILES['file']['error']) && !$_FILES['file']['error'] == UPLOAD_ERR_OK) {
-         // Skeleton for error handling
-         switch ($_FILES['file']['error']) {
-            case UPLOAD_ERR_INI_SIZE:
-            case UPLOAD_ERR_FORM_SIZE:
-            case UPLOAD_ERR_PARTIAL:
-            case UPLOAD_ERR_NO_FILE:
-            case UPLOAD_ERR_NO_TMP_DIR:
-            case UPLOAD_ERR_CANT_WRITE:
-            case UPLOAD_ERR_EXTENSION:
-            default:
-               Session::addMessageAfterRedirect(__('Could not upload file', "storkmdm"));
-         }
-         $input = false;
-      } else {
-         // Move uploaded file somewhere
+   /**
+    * Return the table used to stor this object
+    * @return string
+    */
+   public static function getTable() {
+      if (empty($_SESSION['glpi_table_of'][get_called_class()])) {
+         $_SESSION['glpi_table_of'][get_called_class()] = Document::getTable();
       }
 
-      return $input;
+      return $_SESSION['glpi_table_of'][get_called_class()];
+   }
+
+   public function prepareInputForAdd($input) {
+      $input['_only_if_upload_succeed'] = true;
+      if (isset($_FILES['file'])) {
+         // Move the uploaded file to GLPi's tmp dir
+         $destination = GLPI_TMP_DIR."/".$_FILES['file']['name'];
+         move_uploaded_file($_FILES['file']['tmp_name'], $destination);
+         $input['_filename'][] = $_FILES['file']['name'];
+      } else {
+         return false;
+      }
+      return parent::prepareInputForAdd($input);
    }
 
    public function prepareInputForUpdate($input) {
-      if (isset ($_FILES['file']['error']) && !$_FILES['file']['error'] == UPLOAD_ERR_OK) {
-         // Skeleton for error handling
-         switch ($_FILES['file']['error']) {
-            case UPLOAD_ERR_INI_SIZE:
-            case UPLOAD_ERR_FORM_SIZE:
-            case UPLOAD_ERR_PARTIAL:
-            case UPLOAD_ERR_NO_FILE:
-            case UPLOAD_ERR_NO_TMP_DIR:
-            case UPLOAD_ERR_CANT_WRITE:
-            case UPLOAD_ERR_EXTENSION:
-            default:
-               Session::addMessageAfterRedirect(__('Could not upload file', "storkmdm"));
-         }
-         $input = false;
-      } else {
-         // Move uploaded file somewhere
-      }
-
-      return $input;
+      // Do not allow update of document
+      return false;
    }
 
-
-
    public function post_getFromDB() {
-      // Check the user can view this itemtype and can view thisitem
+      // Check the user can view this itemtype and can view this item
       if ($this->canView() && $this->canViewItem()) {
-         if (isset($_SERVER['HTTP_ACCEPT']) && $_SERVER['HTTP_ACCEPT'] == 'application/octet-stream') {
+         if (isset($_SERVER['HTTP_ACCEPT']) && $_SERVER['HTTP_ACCEPT'] == 'application/octet-stream'
+               || isset($_GET['alt']) && $_GET['alt'] == 'media') {
             $this->sendFile(); // and terminate script
          }
       }
    }
 
    protected function sendFile() {
-      $streamSource = STORKMDM_FILE_PATH . "/" . $this->fields['source'];
+      $streamSource = GLPI_DOC_DIR."/".$this->fields['filepath'];
 
       // Ensure the file exists
       if (!file_exists($streamSource)) {
@@ -106,7 +97,7 @@ class PluginExampleStreamviaapi extends CommonDBTM {
       // get file metadata
       $size = filesize($streamSource);
       $begin = 0;
-      $end = $size;
+      $end = $size - 1;
       $mimeType = 'application/octet-stream';
       $time = date('r', filemtime($streamSource));
 
@@ -124,7 +115,7 @@ class PluginExampleStreamviaapi extends CommonDBTM {
                $begin = intval($matches[1]);
             }
             if (!empty($matches[2])) {
-               $end = intval($matches[2]);
+               $end = min(intval($matches[2]), $end);
             }
          }
       }
@@ -143,17 +134,17 @@ class PluginExampleStreamviaapi extends CommonDBTM {
       header("Expires: Mon, 26 Nov 1962 00:00:00 GMT");
       header('Pragma: private'); /// IE BUG + SSL
       header('Cache-control: private, must-revalidate'); /// IE BUG + SSL
-      header("Content-disposition: attachment; filename=\"" . $this->fields['name'] . "\"");
+      header("Content-disposition: attachment; filename=\"" . $this->fields['filename'] . "\"");
       header("Content-type: $mimeType");
       header("Last-Modified: $time");
       header('Accept-Ranges: bytes');
-      header('Content-Length:' . ($end - $begin));
+      header('Content-Length:' . ($end - $begin + 1));
       header("Content-Range: bytes $begin-$end/$size");
       header("Content-Transfer-Encoding: binary\n");
       header('Connection: close');
 
       // Prepare HTTP response
-      if ($begin > 0 || $end < $size) {
+      if ($begin > 0 || $end < $size - 1) {
          header('HTTP/1.0 206 Partial Content');
       } else {
          header('HTTP/1.0 200 OK');
@@ -163,11 +154,12 @@ class PluginExampleStreamviaapi extends CommonDBTM {
       while (!feof($fileHandle) && $currentPosition < $end && (connection_status() == 0)) {
          // allow a few seconds to send a few KB.
          set_time_limit(10);
-         print fread($fileHandle, min(1024 * 16, $end - $currentPosition));
+         print fread($fileHandle, min(1024 * 16, $end - $currentPosition + 1));
+         flush();
          $currentPosition += 1024 * 16;
       }
 
-      // Endnow to prevent any unwanted bytes
+      // End now to prevent any unwanted bytes
       exit(0);
    }
 
