@@ -88,7 +88,7 @@ class PluginExampleDocument extends Document {
       $streamSource = GLPI_DOC_DIR."/".$this->fields['filepath'];
 
       // Ensure the file exists
-      if (!file_exists($streamSource)) {
+      if (!file_exists($streamSource) || !is_file($streamSource)) {
          header("HTTP/1.0 404 Not Found");
          exit(0);
       }
@@ -154,7 +154,13 @@ class PluginExampleDocument extends Document {
       while (!feof($fileHandle) && $currentPosition < $end && (connection_status() == 0)) {
          // allow a few seconds to send a few KB.
          set_time_limit(10);
-         print fread($fileHandle, min(1024 * 16, $end - $currentPosition + 1));
+         $content = fread($fileHandle, min(1024 * 16, $end - $currentPosition + 1));
+         if ($content === false) {
+            header("HTTP/1.0 500 Internal Server Error", true); // Replace previously sent headers
+            exit(0);
+         } else {
+            print $content;
+         }
          flush();
          $currentPosition += 1024 * 16;
       }
