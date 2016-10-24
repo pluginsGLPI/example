@@ -39,7 +39,7 @@
 define('GLPI_ROOT', '../..');
 include (GLPI_ROOT . "/inc/includes.php");
 
-Session::checkRight("config", "w");
+Session::checkRight("config", UPDATE);
 
 // To be available when plugin in not activated
 Plugin::load('example');
