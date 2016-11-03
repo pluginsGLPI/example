@@ -40,7 +40,7 @@ if (!defined('GLPI_ROOT')) {
 
 class PluginExampleComputer extends CommonDBTM {
 
-   static function showInfo($this) {
+   static function showInfo() {
 
       echo '<table class="tab_glpi" width="100%">';
       echo '<tr>';
