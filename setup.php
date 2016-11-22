@@ -182,11 +182,11 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['infocom']['example'] = "plugin_example_infocom_hook";
 
    // pre_show and post_show for tabs and items, 
-   // see PluginExampleShowtabitem class for implementation explanations
-   $PLUGIN_HOOKS['pre_show_tab']['example'] = array( 'PluginExampleShowtabitem',  'pre_show_tab' );
-   $PLUGIN_HOOKS['post_show_tab']['example'] = array( 'PluginExampleShowtabitem',  'post_show_tab' );
-   $PLUGIN_HOOKS['pre_show_item']['example'] = array( 'PluginExampleShowtabitem',  'pre_show_item' );
-   $PLUGIN_HOOKS['post_show_item']['example'] = array( 'PluginExampleShowtabitem',  'post_show_item' );
+   // see called functions for implementation explanations
+   $PLUGIN_HOOKS['pre_show_tab']['example'] = 'plugin_example_pre_show_tab';
+   $PLUGIN_HOOKS['post_show_tab']['example'] = 'plugin_example_post_show_tab';
+   $PLUGIN_HOOKS['pre_show_item']['example'] = 'plugin_example_pre_show_item';
+   $PLUGIN_HOOKS['post_show_item']['example'] = 'plugin_example_post_show_item';
 
    // declare this plugin as an import plugin for Computer itemtype
    $PLUGIN_HOOKS['import_item']['exemple'] = array('Computer' => array('Plugin'));
