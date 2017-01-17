@@ -101,7 +101,10 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['pre_item_update']['example'] = array('Computer' => 'plugin_pre_item_update_example');
    $PLUGIN_HOOKS['item_update']['example']     = array('Computer' => 'plugin_item_update_example');
 
-   $PLUGIN_HOOKS['item_empty']['example']     = array('Computer' => 'plugin_item_empty_example');
+   $PLUGIN_HOOKS['item_empty']['example']      = array('Computer' => 'plugin_item_empty_example');
+
+   // Restrict right
+   $PLUGIN_HOOKS['item_can']['example']        = ['Computer' => ['PluginExampleComputer', 'restrict']];
 
    // Example using a method in class
    $PLUGIN_HOOKS['pre_item_add']['example']    = array('Computer' => array('PluginExampleExample',
@@ -181,7 +184,7 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['display_login']['example'] = "plugin_example_display_login";
    $PLUGIN_HOOKS['infocom']['example'] = "plugin_example_infocom_hook";
 
-   // pre_show and post_show for tabs and items, 
+   // pre_show and post_show for tabs and items,
    // see PluginExampleShowtabitem class for implementation explanations
    $PLUGIN_HOOKS['pre_show_tab']['example'] = array( 'PluginExampleShowtabitem',  'pre_show_tab' );
    $PLUGIN_HOOKS['post_show_tab']['example'] = array( 'PluginExampleShowtabitem',  'post_show_tab' );
