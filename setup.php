@@ -1,29 +1,28 @@
 <?php
 /*
- * @version $Id: HEADER 15930 2011-10-25 10:47:55Z jmd $
  -------------------------------------------------------------------------
- GLPI - Gestionnaire Libre de Parc Informatique
- Copyright (C) 2003-2011 by the INDEPNET Development Team.
+ Example plugin for GLPI
+ Copyright (C) {YEAR} by the {NAME} Development Team.
 
- http://indepnet.net/   http://glpi-project.org
+ https://github.com/pluginsGLPI/example
  -------------------------------------------------------------------------
 
  LICENSE
 
- This file is part of GLPI.
+ This file is part of Example.
 
- GLPI is free software; you can redistribute it and/or modify
+ Example is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
  (at your option) any later version.
 
- GLPI is distributed in the hope that it will be useful,
+ Example is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with GLPI. If not, see <http://www.gnu.org/licenses/>.
+ along with Example. If not, see <http://www.gnu.org/licenses/>.
  --------------------------------------------------------------------------
  */
 
@@ -32,7 +31,14 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
-// Init the hooks of the plugins -Needed
+define ('PLUGIN_EXAMPLE_VERSION', '7.1');
+
+/**
+ * Init hooks of the plugin.
+ * REQUIRED
+ *
+ * @return void
+ */
 function plugin_init_example() {
    global $PLUGIN_HOOKS,$CFG_GLPI;
 
@@ -205,11 +211,16 @@ function plugin_init_example() {
 }
 
 
-// Get the name and the version of the plugin - Needed
+/**
+ * Get the name and the version of the plugin
+ * REQUIRED
+ *
+ * @return array
+ */
 function plugin_version_example() {
 
    return array('name'           => 'Plugin Example',
-                'version'        => '7.1',
+                'version'        => PLUGIN_EXAMPLE_VERSION,
                 'author'         => 'GLPI developer team',
                 'license'        => 'GPLv2+',
                 'homepage'       => 'https://github.com/pluginsGLPI/example',
@@ -217,21 +228,34 @@ function plugin_version_example() {
 }
 
 
-// Optional : check prerequisites before install : may print errors or add to message after redirect
+/**
+ * Check pre-requisites before install
+ * OPTIONNAL, but recommanded
+ *
+ * @return boolean
+ */
 function plugin_example_check_prerequisites() {
 
    // Strict version check (could be less strict, or could allow various version)
    if (version_compare(GLPI_VERSION,'0.85','lt') /*|| version_compare(GLPI_VERSION,'0.84','gt')*/) {
-      echo "This plugin requires GLPI >= 0.85";
+      if (method_exists('Plugin', 'messageIncompatible')) {
+         echo Plugin::messageIncompatible('core', '0.85');
+      } else {
+         echo "This plugin requires GLPI >= 0.85";
+      }
       return false;
    }
    return true;
 }
 
-
-// Check configuration process for plugin : need to return true if succeeded
-// Can display a message only if failure and $verbose is true
-function plugin_example_check_config($verbose=false) {
+/**
+ * Check configuration process
+ *
+ * @param boolean $verbose Whether to display message on failure. Defaults to false
+ *
+ * @return boolean
+ */
+function plugin_example_check_config($verbose = false) {
    if (true) { // Your configuration check
       return true;
    }

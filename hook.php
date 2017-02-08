@@ -1,29 +1,28 @@
 <?php
 /*
- * @version $Id: hook.php 219 2013-11-25 19:01:42Z webmyster $
  -------------------------------------------------------------------------
- GLPI - Gestionnaire Libre de Parc Informatique
- Copyright (C) 2003-2011 by the INDEPNET Development Team.
+ Example plugin for GLPI
+ Copyright (C) 2001-2017 by the Example Development Team.
 
- http://indepnet.net/   http://glpi-project.org
+ https://github.com/pluginsGLPI/example
  -------------------------------------------------------------------------
 
  LICENSE
 
- This file is part of GLPI.
+ This file is part of Example.
 
- GLPI is free software; you can redistribute it and/or modify
+ Example is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
  (at your option) any later version.
 
- GLPI is distributed in the hope that it will be useful,
+ Example is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with GLPI. If not, see <http://www.gnu.org/licenses/>.
+ along with Example. If not, see <http://www.gnu.org/licenses/>.
  --------------------------------------------------------------------------
  */
 
@@ -442,7 +441,11 @@ function plugin_example_addParamFordynamicReport($itemtype) {
 }
 
 
-// Install process for plugin : need to return true if succeeded
+/**
+ * Plugin install process
+ *
+ * @return boolean
+ */
 function plugin_example_install() {
    global $DB;
 
@@ -533,7 +536,11 @@ function plugin_example_install() {
 }
 
 
-// Uninstall process for plugin : need to return true if succeeded
+/**
+ * Plugin uninstall process
+ *
+ * @return boolean
+ */
 function plugin_example_uninstall() {
    global $DB;
 
@@ -664,5 +671,3 @@ function plugin_example_infocom_hook($params) {
    echo __("Plugin example displays on central page", "example");
    echo "</th></tr>";
 }
-
-?>
