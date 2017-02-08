@@ -38,17 +38,17 @@ if (isset($_GET["popup"])) {
 if (isset($_SESSION["glpipopup"]["name"])) {
    switch ($_SESSION["glpipopup"]["name"]) {
       case "test_rule" :
-         Html::popHeader(__('Test'),$_SERVER['PHP_SELF']);
+         Html::popHeader(__('Test'), $_SERVER['PHP_SELF']);
          include "../../../front/rule.test.php";
          break;
 
       case "test_all_rules" :
-         Html::popHeader(__('Test rules engine'),$_SERVER['PHP_SELF']);
+         Html::popHeader(__('Test rules engine'), $_SERVER['PHP_SELF']);
          include "../../../front/rulesengine.test.php";
          break;
 
       case "show_cache" :
-         Html::popHeader(__('Cache information'),$_SERVER['PHP_SELF']);
+         Html::popHeader(__('Cache information'), $_SERVER['PHP_SELF']);
          include "../../../front/rule.cache.php";
          break;
    }
@@ -56,4 +56,3 @@ if (isset($_SESSION["glpipopup"]["name"])) {
    echo "</div>";
    Html::popFooter();
 }
-?>

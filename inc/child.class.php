@@ -99,4 +99,3 @@ class PluginExampleChild extends CommonDBChild {
    }
 
 }
-?>

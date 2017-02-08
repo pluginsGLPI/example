@@ -30,23 +30,23 @@ along with GLPI. If not, see <http://www.gnu.org/licenses/>.
 /**
  * Summary of PluginExampleShowtabitem
  * Example of pre_show_xxx and post_show_xxx implementation
- * 
- * 
+ *
+ *
  * pre_show_item will be fired before an item is shown
  *    ex: when viewing a ticket, change, computer,...
- *    
+ *
  *    will be fired at each sub-item
  *    ex: for each TicketTask, TicketFollowup, ...
- * 
+ *
  * post_show_item will be fired after the item show
- * 
- * 
+ *
+ *
  * pre_show_tab will be fired before a tab is shown
  *    when tabs are loaded,
  *    ex: when viewing the Followup tab
- *    
+ *
  * post_show_tab will be fired after the tab show
- * 
+ *
  * */
 class PluginExampleShowtabitem {
 
@@ -62,15 +62,15 @@ class PluginExampleShowtabitem {
     * Note: you may pass datas to post_show_tab using the $param['options'] array (see example below)
     */
    static function pre_show_tab($params) {
-      switch( $params['item']->getType() ) {
+      switch ($params['item']->getType()) {
          case 'Ticket':
-            if( $params['options']['itemtype']=='Ticket' && $params['options']['tabnum']==2) {
+            if ($params['options']['itemtype']=='Ticket' && $params['options']['tabnum']==2) {
                // if tasks are not all done
                // then prevent solution div to show
                // this is an example to prevent solving of ticket
-               if( true ) { // here you should test if some tasks are in todo status.
-                  $params['options']['prevent_solution'] = true ; // this will be passed to the post_show hook
-                  echo "<div id='toHideSolution' style='display: none;'>" ; // in order to hide the default solution div
+               if (true) { // here you should test if some tasks are in todo status.
+                  $params['options']['prevent_solution'] = true; // this will be passed to the post_show hook
+                  echo "<div id='toHideSolution' style='display: none;'>"; // in order to hide the default solution div
                }
             }
       }
@@ -82,9 +82,9 @@ class PluginExampleShowtabitem {
     * Note: you may get datas from pre_show_tab in $param['options'] array (see example below)
     */
    static function post_show_tab($params) {
-      switch( $params['item']->getType() ) {
+      switch ($params['item']->getType()) {
          case 'Ticket':
-            if( isset($params['options']['prevent_solution'])) {
+            if (isset($params['options']['prevent_solution'])) {
                echo "</div>";
                echo "<div style='margin-bottom: 20px;' class='box'>
                                 <div class='box-tleft'>
@@ -116,7 +116,7 @@ class PluginExampleShowtabitem {
                                  </div>
                               </div>  ";
             }
-            break ;
+            break;
 
          case 'Computer':
             break;
@@ -141,21 +141,22 @@ class PluginExampleShowtabitem {
     * Note: you may pass datas to post_show_item using the $param['options'] array
     */
    static function pre_show_item($params) {
-    if(!is_array($params['item'])) {
-      switch( $params['item']->getType() ) {
-         case 'Ticket':
-            //echo 'test' ;
-            break;
-         case 'TicketTask' :
-            //echo 'test' ;
-            break;
-         case 'TicketFollowup' :
-            //echo 'test' ;
-            break;
+      if (!is_array($params['item'])) {
+         switch ($params['item']->getType()) {
+            case 'Ticket':
+               //echo 'test' ;
+               break;
+            case 'TicketTask' :
+               //echo 'test' ;
+               break;
+            case 'TicketFollowup' :
+               //echo 'test' ;
+               break;
+         }
+      } else {
+         // here we are going to view a Solution
+         return;
       }
-     } else {
-      // here we are going to view a Solution
-     }
    }
 
    /**
@@ -175,21 +176,22 @@ class PluginExampleShowtabitem {
     * Note: you may get datas from pre_show_item using the $param['options'] array
     */
    static function post_show_item($params) {
-    if(!is_array($params['item'])) {
-      switch( $params['item']->getType() ) {
-         case 'Ticket':
-            //echo 'test' ;
-            break;
-         case 'TicketTask' :
-            //echo 'test' ;
-            break;
-         case 'TicketFollowup' :
-            //echo 'test' ;
-            break;
+      if (!is_array($params['item'])) {
+         switch ($params['item']->getType()) {
+            case 'Ticket':
+               //echo 'test' ;
+               break;
+            case 'TicketTask' :
+               //echo 'test' ;
+               break;
+            case 'TicketFollowup' :
+               //echo 'test' ;
+               break;
+         }
+      } else {
+         // here we are going to view a Solution
+         return;
       }
-    } else {
-     // here we are going to view a Solution
-    }
    }
 
 }

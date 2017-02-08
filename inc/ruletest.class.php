@@ -80,4 +80,3 @@ class PluginExampleRuleTest extends Rule {
       return $actions;
    }
 }
-?>

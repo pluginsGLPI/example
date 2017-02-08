@@ -66,7 +66,7 @@ function plugin_init_example() {
    Plugin::registerClass('PluginExampleDeviceCamera',
                          array('device_types' => true));
 
-   if (version_compare(GLPI_VERSION,'9.1','ge')) {
+   if (version_compare(GLPI_VERSION, '9.1', 'ge')) {
       if (class_exists('PluginExampleExample')) {
          Link::registerTag(PluginExampleExample::$tags);
       }
@@ -78,21 +78,21 @@ function plugin_init_example() {
                                                      'tools'   => 'PluginExampleExample');
 
       // Old menu style
-//       $PLUGIN_HOOKS['menu_entry']['example'] = 'front/example.php';
-//
-//       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['title'] = "Search";
-//       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['page']  = '/plugins/example/front/example.php';
-//       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['search'] = '/plugins/example/front/example.php';
-//       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['add']    = '/plugins/example/front/example.form.php';
-//       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['config'] = '/plugins/example/index.php';
-//       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".__s('Show all')."' alt='".__s('Show all')."'>"] = '/plugins/example/index.php';
-//       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links'][__s('Test link', 'example')] = '/plugins/example/index.php';
+      //       $PLUGIN_HOOKS['menu_entry']['example'] = 'front/example.php';
+      //
+      //       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['title'] = "Search";
+      //       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['page']  = '/plugins/example/front/example.php';
+      //       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['search'] = '/plugins/example/front/example.php';
+      //       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['add']    = '/plugins/example/front/example.form.php';
+      //       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']['config'] = '/plugins/example/index.php';
+      //       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".__s('Show all')."' alt='".__s('Show all')."'>"] = '/plugins/example/index.php';
+      //       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links'][__s('Test link', 'example')] = '/plugins/example/index.php';
 
       $PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
    }
 
    // Config page
-   if (Session::haveRight('config',UPDATE)) {
+   if (Session::haveRight('config', UPDATE)) {
       $PLUGIN_HOOKS['config_page']['example'] = 'config.php';
    }
 
@@ -237,7 +237,7 @@ function plugin_version_example() {
 function plugin_example_check_prerequisites() {
 
    // Strict version check (could be less strict, or could allow various version)
-   if (version_compare(GLPI_VERSION,'0.85','lt') /*|| version_compare(GLPI_VERSION,'0.84','gt')*/) {
+   if (version_compare(GLPI_VERSION, '0.85', 'lt') /*|| version_compare(GLPI_VERSION,'0.84','gt')*/) {
       if (method_exists('Plugin', 'messageIncompatible')) {
          echo Plugin::messageIncompatible('core', '0.85');
       } else {
@@ -265,4 +265,3 @@ function plugin_example_check_config($verbose = false) {
    }
    return false;
 }
-?>

@@ -66,10 +66,9 @@ class PluginExampleConfig extends CommonDBTM {
       Dropdown::showYesNo("configuration", $my_config['configuration']);
       echo "</td></tr>";
 
-
       echo "<tr class='tab_bg_2'>";
       echo "<td colspan='4' class='center'>";
-      echo "<input type='submit' name='update' class='submit' value=\""._sx('button','Save')."\">";
+      echo "<input type='submit' name='update' class='submit' value=\""._sx('button', 'Save')."\">";
       echo "</td></tr>";
 
       echo "</table></div>";
@@ -85,4 +84,3 @@ class PluginExampleConfig extends CommonDBTM {
    }
 
 }
-?>

@@ -44,4 +44,3 @@ class PluginExampleDropdown extends CommonDropdown {
       return __('Plugin Example Dropdowns', 'example');
    }
 }
-?>
