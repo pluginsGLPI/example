@@ -36,10 +36,10 @@
 // And to save it in the session
 function plugin_change_profile_example() {
    // For example : same right of computer
-   if (Session::haveRight('computer','w')) {
+   if (Session::haveRight('computer', 'w')) {
       $_SESSION["glpi_plugin_example_profile"] = array('example' => 'w');
 
-   } else if (Session::haveRight('computer','r')) {
+   } else if (Session::haveRight('computer', 'r')) {
       $_SESSION["glpi_plugin_example_profile"] = array('example' => 'r');
 
    } else {
@@ -116,7 +116,7 @@ function plugin_example_addDefaultJoin($type, $ref_table, &$already_link_tables)
    // Example of default JOIN clause
    // No need of the function if you do not have specific cases
    switch ($type) {
-//       case "PluginExampleExample" :
+      //       case "PluginExampleExample" :
       case "MyType" :
          return Search::addLeftJoin($type, $ref_table, $already_link_tables,
                                     "newtable", "linkfield");
@@ -129,7 +129,7 @@ function plugin_example_addDefaultSelect($type) {
    // Example of default SELECT item to be added
    // No need of the function if you do not have specific cases
    switch ($type) {
-//       case "PluginExampleExample" :
+      //       case "PluginExampleExample" :
       case "MyType" :
          return "`mytable`.`myfield` = 'myvalue' AS MYNAME, ";
    }
@@ -141,7 +141,7 @@ function plugin_example_addDefaultWhere($type) {
    // Example of default WHERE item to be added
    // No need of the function if you do not have specific cases
    switch ($type) {
-//       case "PluginExampleExample" :
+      //       case "PluginExampleExample" :
       case "MyType" :
          return " `mytable`.`myfield` = 'myvalue' ";
    }
@@ -175,20 +175,20 @@ function plugin_example_addWhere($link, $nott, $type, $ID, $val, $searchtype) {
    $table     = $searchopt[$ID]["table"];
    $field     = $searchopt[$ID]["field"];
 
-   $SEARCH = Search::makeTextSearch($val,$nott);
+   $SEARCH = Search::makeTextSearch($val, $nott);
 
    // Example of standard Where clause but use it ONLY for specific Where
    // No need of the function if you do not have specific cases
-    switch ($table.".".$field) {
-       /*case "glpi_plugin_example.name" :
-          $ADD = "";
-          if ($nott && $val!="NULL") {
-             $ADD = " OR `$table`.`$field` IS NULL";
-          }
-          return $link." (`$table`.`$field` $SEARCH ".$ADD." ) ";*/
-         case "glpi_plugin_example_examples.serial" :
-            return $link." `$table`.`$field` = '$val' ";
-    }
+   switch ($table.".".$field) {
+      /*case "glpi_plugin_example.name" :
+        $ADD = "";
+        if ($nott && $val!="NULL") {
+           $ADD = " OR `$table`.`$field` IS NULL";
+        }
+        return $link." (`$table`.`$field` $SEARCH ".$ADD." ) ";*/
+      case "glpi_plugin_example_examples.serial" :
+          return $link." `$table`.`$field` = '$val' ";
+   }
    return "";
 }
 
@@ -199,7 +199,7 @@ function plugin_example_addHaving($link, $nott, $type, $ID, $val, $num) {
    $table     = $searchopt[$ID]["table"];
    $field     = $searchopt[$ID]["field"];
 
-   $SEARCH = Search::makeTextSearch($val,$nott);
+   $SEARCH = Search::makeTextSearch($val, $nott);
 
    // Example of standard Having clause but use it ONLY for specific Having
    // No need of the function if you do not have specific cases
@@ -221,12 +221,12 @@ function plugin_example_addSelect($type,$ID,$num) {
    $table     = $searchopt[$ID]["table"];
    $field     = $searchopt[$ID]["field"];
 
-// Example of standard Select clause but use it ONLY for specific Select
-// No need of the function if you do not have specific cases
-// switch ($table.".".$field) {
-//    case "glpi_plugin_example.name" :
-//       return $table.".".$field." AS ITEM_$num, ";
-// }
+   // Example of standard Select clause but use it ONLY for specific Select
+   // No need of the function if you do not have specific cases
+   // switch ($table.".".$field) {
+   //    case "glpi_plugin_example.name" :
+   //       return $table.".".$field." AS ITEM_$num, ";
+   // }
    return "";
 }
 
@@ -236,12 +236,12 @@ function plugin_example_addOrderBy($type,$ID,$order,$key=0) {
    $table     = $searchopt[$ID]["table"];
    $field     = $searchopt[$ID]["field"];
 
-// Example of standard OrderBy clause but use it ONLY for specific order by
-// No need of the function if you do not have specific cases
-// switch ($table.".".$field) {
-//    case "glpi_plugin_example.name" :
-//       return " ORDER BY $table.$field $order ";
-// }
+   // Example of standard OrderBy clause but use it ONLY for specific order by
+   // No need of the function if you do not have specific cases
+   // switch ($table.".".$field) {
+   //    case "glpi_plugin_example.name" :
+   //       return " ORDER BY $table.$field $order ";
+   // }
    return "";
 }
 
@@ -336,7 +336,7 @@ function plugin_pre_item_update_example($item) {
 
 // Hook done on update item case
 function plugin_item_update_example($item) {
-   Session::addMessageAfterRedirect(sprintf(__("Update Computer Hook (%s)", 'example'),implode(',',$item->updates)), true);
+   Session::addMessageAfterRedirect(sprintf(__("Update Computer Hook (%s)", 'example'), implode(',', $item->updates)), true);
    return true;
 }
 
@@ -344,7 +344,7 @@ function plugin_item_update_example($item) {
 // Hook done on get empty item case
 function plugin_item_empty_example($item) {
    if (empty($_SESSION['Already displayed "Empty Computer Hook"'])) {
-      Session::addMessageAfterRedirect(__("Empty Computer Hook", 'example'),true);
+      Session::addMessageAfterRedirect(__("Empty Computer Hook", 'example'), true);
       $_SESSION['Already displayed "Empty Computer Hook"'] = true;
    }
    return true;
@@ -354,13 +354,13 @@ function plugin_item_empty_example($item) {
 // Hook done on before delete item case
 function plugin_pre_item_delete_example($object) {
    // Manipulate data if needed
-   Session::addMessageAfterRedirect(__("Pre Delete Computer Hook", 'example'),true);
+   Session::addMessageAfterRedirect(__("Pre Delete Computer Hook", 'example'), true);
 }
 
 
 // Hook done on delete item case
 function plugin_item_delete_example($object) {
-   Session::addMessageAfterRedirect(__("Delete Computer Hook", 'example'),true);
+   Session::addMessageAfterRedirect(__("Delete Computer Hook", 'example'), true);
    return true;
 }
 
@@ -368,13 +368,13 @@ function plugin_item_delete_example($object) {
 // Hook done on before purge item case
 function plugin_pre_item_purge_example($object) {
    // Manipulate data if needed
-   Session::addMessageAfterRedirect(__("Pre Purge Computer Hook", 'example'),true);
+   Session::addMessageAfterRedirect(__("Pre Purge Computer Hook", 'example'), true);
 }
 
 
 // Hook done on purge item case
 function plugin_item_purge_example($object) {
-   Session::addMessageAfterRedirect(__("Purge Computer Hook", 'example'),true);
+   Session::addMessageAfterRedirect(__("Purge Computer Hook", 'example'), true);
    return true;
 }
 
@@ -403,7 +403,7 @@ function plugin_item_restore_example($item) {
 // Hook done on restore item case
 function plugin_item_transfer_example($parm) {
    //TRANS: %1$s is the source type, %2$d is the source ID, %3$d is the destination ID
-   Session::addMessageAfterRedirect(sprintf(__('Transfer Computer Hook %1$s %2$d -> %3$d', 'example'),$parm['type'],$parm['id'],
+   Session::addMessageAfterRedirect(sprintf(__('Transfer Computer Hook %1$s %2$d -> %3$d', 'example'), $parm['type'], $parm['id'],
                                      $parm['newID']));
 
    return false;
@@ -606,9 +606,9 @@ function plugin_example_postinit() {
    global $CFG_GLPI;
 
    // All plugins are initialized, so all types are registered
-   foreach (Infocom::getItemtypesThatCanHave() as $type) {
+   //foreach (Infocom::getItemtypesThatCanHave() as $type) {
       // do something
-   }
+   //}
 }
 
 

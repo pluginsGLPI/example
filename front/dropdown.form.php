@@ -35,8 +35,7 @@
 
 include ('../../../inc/includes.php');
 
-Plugin::load('example',true);
+Plugin::load('example', true);
 
 $dropdown = new PluginExampleDropdown();
 include (GLPI_ROOT . "/front/dropdown.common.form.php");
-?>

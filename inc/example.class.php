@@ -34,7 +34,7 @@
 
 // Class of the defined type
 class PluginExampleExample extends CommonDBTM {
-   
+
    static $tags = '[EXAMPLE_ID]';
 
    // Should return the localized name of the type
@@ -68,8 +68,8 @@ class PluginExampleExample extends CommonDBTM {
    static function getMenuName() {
       return __('Example plugin');
    }
-   
-   
+
+
    /**
     * @see CommonGLPI::getAdditionalMenuLinks()
    **/
@@ -92,8 +92,8 @@ class PluginExampleExample extends CommonDBTM {
 
       return $ong;
    }
-   
-    function showForm($ID, $options = array()) {
+
+   function showForm($ID, $options = array()) {
       global $CFG_GLPI;
 
       $this->initForm($ID, $options);
@@ -105,12 +105,12 @@ class PluginExampleExample extends CommonDBTM {
       echo "<td>";
       echo $ID;
       echo "</td>";
-      
+
       $this->showFormButtons($options);
 
       return true;
    }
-   
+
    function getSearchOptions() {
 
       $tab = array();
@@ -169,7 +169,7 @@ class PluginExampleExample extends CommonDBTM {
    static function cronSample($task) {
 
       $task->log("Example log message from class");
-      $r = mt_rand(0,$task->fields['param']);
+      $r = mt_rand(0, $task->fields['param']);
       usleep(1000000+$r*1000);
       $task->setVolume($r);
 
@@ -335,25 +335,25 @@ class PluginExampleExample extends CommonDBTM {
          case "in" :
             //TRANS: %1$s is the start time of a planned item, %2$s is the end
             printf(__('From %1$s to %2$s :'),
-                   date("H:i",strtotime($val["begin"])), date("H:i",strtotime($val["end"]))) ;
+                   date("H:i", strtotime($val["begin"])), date("H:i", strtotime($val["end"])));
             break;
 
          case "through" :
-            echo Html::resume_text($val["name"],80);
+            echo Html::resume_text($val["name"], 80);
             break;
 
          case "begin" :
             //TRANS: %s is the start time of a planned item
-            printf(__('Start at %s:'), date("H:i", strtotime($val["begin"]))) ;
+            printf(__('Start at %s:'), date("H:i", strtotime($val["begin"])));
             break;
 
          case "end" :
             //TRANS: %s is the end time of a planned item
-            printf(__('End at %s:'), date("H:i", strtotime($val["end"]))) ;
+            printf(__('End at %s:'), date("H:i", strtotime($val["end"])));
          break;
       }
       echo "<br>";
-      echo Html::resume_text($val["name"],80);
+      echo Html::resume_text($val["name"], 80);
    }
 
    /**
@@ -367,7 +367,7 @@ class PluginExampleExample extends CommonDBTM {
    **/
    static function getHistoryEntry($data) {
 
-      switch($data['linked_action'] - Log::HISTORY_PLUGIN) {
+      switch ($data['linked_action'] - Log::HISTORY_PLUGIN) {
          case 0:
             return __('History from plugin example', 'example');
       }
@@ -376,8 +376,8 @@ class PluginExampleExample extends CommonDBTM {
    }
 
 
-//////////////////////////////
-////// SPECIFIC MODIF MASSIVE FUNCTIONS ///////
+   //////////////////////////////
+   ////// SPECIFIC MODIF MASSIVE FUNCTIONS ///////
    /**
     * @since version 0.85
     *
@@ -406,14 +406,14 @@ class PluginExampleExample extends CommonDBTM {
       switch ($ma->getAction()) {
          case 'DoIt':
             echo "&nbsp;<input type='hidden' name='toto' value='1'>".
-                 Html::submit(_x('button','Post'), array('name' => 'massiveaction')).
+                 Html::submit(_x('button', 'Post'), array('name' => 'massiveaction')).
                  " ".__('Write in item history', 'example');
             return true;
          case 'do_nothing' :
-            echo "&nbsp;".Html::submit(_x('button','Post'), array('name' => 'massiveaction')).
+            echo "&nbsp;".Html::submit(_x('button', 'Post'), array('name' => 'massiveaction')).
                  " ".__('but do nothing :)', 'example');
             return true;
-    }
+      }
       return parent::showMassiveActionsSubForm($ma);
    }
 
@@ -471,17 +471,15 @@ class PluginExampleExample extends CommonDBTM {
       }
       parent::processMassiveActionsForOneItemtype($ma, $item, $ids);
    }
-   
+
    static function generateLinkContents($link, CommonDBTM $item) {
 
-      if (strstr($link,"[EXAMPLE_ID]")) {
-         $link = str_replace("[EXAMPLE_ID]", $item->getID(),$link);
+      if (strstr($link, "[EXAMPLE_ID]")) {
+         $link = str_replace("[EXAMPLE_ID]", $item->getID(), $link);
          return array($link);
       }
 
-      
       return parent::generateLinkContents($link, $item);
    }
 
 }
-?>

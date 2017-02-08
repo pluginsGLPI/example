@@ -46,4 +46,3 @@ class PluginExampleDeviceCamera extends CommonDevice {
    }
 
 }
-?>

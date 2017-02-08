@@ -47,4 +47,3 @@ class PluginExampleRuleTestCollection extends RuleCollection {
       return 'Rulesengine test';
    }
 }
-?>

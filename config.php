@@ -44,7 +44,6 @@ Session::checkRight("config", UPDATE);
 // To be available when plugin in not activated
 Plugin::load('example');
 
-Html::header("TITRE",$_SERVER['PHP_SELF'],"config","plugins");
+Html::header("TITRE", $_SERVER['PHP_SELF'], "config", "plugins");
 _e("This is the plugin config page", 'example');
 Html::footer();
-?>

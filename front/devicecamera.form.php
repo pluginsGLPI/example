@@ -36,4 +36,3 @@ include ('../../../inc/includes.php');
 
 $dropdown = new PluginExampleDeviceCamera();
 include (GLPI_ROOT . "/front/dropdown.common.form.php");
-?>

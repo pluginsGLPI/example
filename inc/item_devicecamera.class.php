@@ -49,4 +49,3 @@ class PluginExampleItem_DeviceCamera extends Item_Devices {
    static protected $notable = false;
 
 }
-?>
