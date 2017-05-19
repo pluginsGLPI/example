@@ -56,28 +56,28 @@ class PluginExampleChild extends CommonDBChild {
    // * $mustBeAttached: some CommonDBChild can be free, without any parent.
    static function canCreate() {
 
-      return (Session::haveRight('internet', 'w')
+      return (Session::haveRight('internet', UPDATE)
               && parent::canCreate());
    }
 
 
    static function canView() {
 
-      return (Session::haveRight('internet', 'r')
+      return (Session::haveRight('internet', READ)
               && parent::canView());
    }
 
 
    static function canUpdate() {
 
-      return (Session::haveRight('internet', 'w')
+      return (Session::haveRight('internet', UPDATE)
               && parent::canUpdate());
    }
 
 
    static function canDelete() {
 
-      return (Session::haveRight('internet', 'w')
+      return (Session::haveRight('internet', DELETE)
               && parent::canDelete());
    }
 
