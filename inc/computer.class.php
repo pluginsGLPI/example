@@ -54,7 +54,7 @@ class PluginExampleComputer extends CommonDBTM {
       echo '</table>';
    }
 
- 
+
    static function item_can($item) {
 
       if (($item-getType() == 'Computer')
