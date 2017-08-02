@@ -110,7 +110,8 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['item_empty']['example']      = array('Computer' => 'plugin_item_empty_example');
 
    // Restrict right
-   $PLUGIN_HOOKS['item_can']['example']        = ['Computer' => ['PluginExampleComputer', 'restrict']];
+   $PLUGIN_HOOKS['item_can']['example']          = ['Computer' => ['PluginExampleComputer', 'item_can']];
+   $PLUGIN_HOOKS['add_default_where']['example'] = ['Computer' => ['PluginExampleComputer', 'add_default_where']];
 
    // Example using a method in class
    $PLUGIN_HOOKS['pre_item_add']['example']    = array('Computer' => array('PluginExampleExample',
