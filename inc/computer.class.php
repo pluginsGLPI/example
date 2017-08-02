@@ -70,7 +70,7 @@ class PluginExampleComputer extends CommonDBTM {
       list($itemtype, $condition) = $in;
       if ($itemtype == 'Computer') {
          $table = getTableForItemType($itemtype);
-         $condition .= " (".$table.".groups_id NOT IN (".implode(',',$_SESSION["glpigroups"])."))";
+         $condition .= " (".$table.".groups_id NOT IN (".implode(',', $_SESSION["glpigroups"])."))";
       }
       return [$itemtype, $condition];
    }
