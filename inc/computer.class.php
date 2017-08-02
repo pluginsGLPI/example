@@ -54,18 +54,27 @@ class PluginExampleComputer extends CommonDBTM {
       echo '</table>';
    }
 
-   // implement "item_can" hook (9.2) for Computer
-   static function restrict(Computer $comp) {
-      // no right to see computer from group 1
-      if (isset($comp->right)) {
-         // call from ConnDBTM::can method, filter for current item
-         if ($comp->getField('groups_id') == 1) {
-            $comp->right = false;
-         }
-      } else {
-         // called from Search::addDefaultWhere method, return additional condition
-         $comp->add_where = "glpi_computers.groups_id != 1";
+
+   static function item_can($item) {
+
+      if (($item-getType() == 'Computer')
+          && ($item->right == READ)
+          && ($item->fields['groups_id'] > 0)
+          && !in_array($item->fields['groups_id'], $_SESSION["glpigroups"])) {
+         $item->right = 0; // unknown, so denied.
       }
    }
+
+
+   static function add_default_where($in) {
+
+      list($itemtype, $condition) = $in;
+      if ($itemtype == 'Computer') {
+         $table = getTableForItemType($itemtype);
+         $condition .= " (".$table.".groups_id NOT IN (".implode(',', $_SESSION["glpigroups"])."))";
+      }
+      return [$itemtype, $condition];
+   }
+
 }
 
