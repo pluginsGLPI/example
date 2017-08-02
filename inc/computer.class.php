@@ -55,7 +55,7 @@ class PluginExampleComputer extends CommonDBTM {
    }
 
  
-   function item_can($item) {
+   static function item_can($item) {
 
       if (($item-getType() == 'Computer')
           && ($item->right == READ)
@@ -65,7 +65,8 @@ class PluginExampleComputer extends CommonDBTM {
       }
    }
 
-   function add_default_where($in) {
+
+   static function add_default_where($in) {
 
       list($itemtype, $condition) = $in;
       if ($itemtype == 'Computer') {
