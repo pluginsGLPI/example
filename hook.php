@@ -77,6 +77,21 @@ function plugin_example_getAddSearchOptions($itemtype) {
    return $sopt;
 }
 
+function plugin_example_getAddSearchOptionsNew($itemtype) {
+   $options = [];
+   if ($itemtype == 'Computer') {
+      //Just for example, not working
+      $options[] = [
+         'id'        => '1002',
+         'table'     => 'glpi_plugin_example_dropdowns',
+         'field'     => 'name',
+         'linkfield' => 'plugin_example_dropdowns_id',
+         'name'      => __('Example plugin new', 'example')
+      ];
+   }
+   return $options;
+}
+
 // See also PluginExampleExample::getSpecificValueToDisplay()
 function plugin_example_giveItem($type,$ID,$data,$num) {
    $searchopt = &Search::getOptions($type);
