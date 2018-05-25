@@ -613,7 +613,7 @@ function plugin_example_get_events(NotificationTargetTicket $target) {
 
 
 function plugin_example_get_datas(NotificationTargetTicket $target) {
-   $target->datas['##ticket.example##'] = __("Example datas", 'example');
+   $target->data['##ticket.example##'] = __("Example datas", 'example');
 }
 
 
