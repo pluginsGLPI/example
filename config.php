@@ -45,5 +45,5 @@ Session::checkRight("config", UPDATE);
 Plugin::load('example');
 
 Html::header("TITRE", $_SERVER['PHP_SELF'], "config", "plugins");
-_e("This is the plugin config page", 'example');
+echo __("This is the plugin config page", 'example');
 Html::footer();
