@@ -239,11 +239,11 @@ class PluginExampleExample extends CommonDBTM {
 
       switch ($item->getType()) {
          case 'Phone' :
-            _e("Plugin Example on Phone", 'example');
+            echo __("Plugin Example on Phone", 'example');
             break;
 
          case 'Central' :
-            _e("Plugin central action", 'example');
+            echo __("Plugin central action", 'example');
             break;
 
          case 'Preference' :
@@ -266,15 +266,15 @@ class PluginExampleExample extends CommonDBTM {
             break;
 
          case 'Notification' :
-            _e("Plugin mailing action", 'example');
+            echo __("Plugin mailing action", 'example');
             break;
 
          case 'ComputerDisk' :
          case 'Supplier' :
             if ($tabnum==1) {
-               _e('First tab of Plugin example', 'example');
+               echo __('First tab of Plugin example', 'example');
             } else {
-               _e('Second tab of Plugin example', 'example');
+               echo __('Second tab of Plugin example', 'example');
             }
             break;
 

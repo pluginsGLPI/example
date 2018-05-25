@@ -292,7 +292,7 @@ function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
       // Table fields
       switch ($table.".".$field) {
          case 'glpi_plugin_example_examples.serial' :
-            _e("Not really specific - Just for example", 'example');
+            echo __("Not really specific - Just for example", 'example');
             //Html::autocompletionTextField($linkfield,$table,$field);
             // Dropdown::showYesNo($linkfield);
             // Need to return true if specific display
@@ -303,7 +303,7 @@ function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
       // Linked Fields
       switch ($table.".".$field) {
          case "glpi_plugin_example_dropdowns.name" :
-            _e("Not really specific - Just for example", 'example');
+            echo __("Not really specific - Just for example", 'example');
             // Need to return true if specific display
             return true;
       }
@@ -323,7 +323,7 @@ function plugin_example_searchOptionsValues($options=array()) {
     // Table fields
    switch ($table.".".$field) {
       case "glpi_plugin_example_examples.serial" :
-            _e("Not really specific - Use your own dropdown - Just for example", 'example');
+            echo __("Not really specific - Use your own dropdown - Just for example", 'example');
             Dropdown::show(getItemTypeForTable($options['searchoption']['table']),
                                                array('value'    => $options['value'],
                                                      'name'     => $options['name'],

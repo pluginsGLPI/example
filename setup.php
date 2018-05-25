@@ -262,7 +262,7 @@ function plugin_example_check_config($verbose = false) {
    }
 
    if ($verbose) {
-      _e('Installed / not configured', 'example');
+      echo __('Installed / not configured', 'example');
    }
    return false;
 }
