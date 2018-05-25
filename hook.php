@@ -469,7 +469,7 @@ function plugin_example_install() {
 
    ProfileRight::addProfileRights(array('example:read'));
 
-   if (!TableExists("glpi_plugin_example_examples")) {
+   if (!$DB->tableExists("glpi_plugin_example_examples")) {
       $query = "CREATE TABLE `glpi_plugin_example_examples` (
                   `id` int(11) NOT NULL auto_increment,
                   `name` varchar(255) collate utf8_unicode_ci default NULL,
@@ -492,7 +492,7 @@ function plugin_example_install() {
       $DB->query($query) or die("error populate glpi_plugin_example ". $DB->error());
    }
 
-   if (!TableExists("glpi_plugin_example_dropdowns")) {
+   if (!$DB->tableExists("glpi_plugin_example_dropdowns")) {
       $query = "CREATE TABLE `glpi_plugin_example_dropdowns` (
                   `id` int(11) NOT NULL auto_increment,
                   `name` varchar(255) collate utf8_unicode_ci default NULL,
@@ -512,7 +512,7 @@ function plugin_example_install() {
 
    }
 
-   if (!TableExists('glpi_plugin_example_devicecameras')) {
+   if (!$DB->tableExists('glpi_plugin_example_devicecameras')) {
       $query = "CREATE TABLE `glpi_plugin_example_devicecameras` (
                   `id` int(11) NOT NULL AUTO_INCREMENT,
                   `designation` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -526,7 +526,7 @@ function plugin_example_install() {
       $DB->query($query) or die("error creating glpi_plugin_example_examples ". $DB->error());
    }
 
-   if (!TableExists('glpi_plugin_example_items_devicecameras')) {
+   if (!$DB->tableExists('glpi_plugin_example_items_devicecameras')) {
       $query = "CREATE TABLE `glpi_plugin_example_items_devicecameras` (
                   `id` int(11) NOT NULL AUTO_INCREMENT,
                   `items_id` int(11) NOT NULL DEFAULT '0',
@@ -572,28 +572,28 @@ function plugin_example_uninstall() {
       $notif->delete($data);
    }
    // Old version tables
-   if (TableExists("glpi_dropdown_plugin_example")) {
+   if ($DB->tableExists("glpi_dropdown_plugin_example")) {
       $query = "DROP TABLE `glpi_dropdown_plugin_example`";
       $DB->query($query) or die("error deleting glpi_dropdown_plugin_example");
    }
-   if (TableExists("glpi_plugin_example")) {
+   if ($DB->tableExists("glpi_plugin_example")) {
       $query = "DROP TABLE `glpi_plugin_example`";
       $DB->query($query) or die("error deleting glpi_plugin_example");
    }
    // Current version tables
-   if (TableExists("glpi_plugin_example_example")) {
+   if ($DB->tableExists("glpi_plugin_example_example")) {
       $query = "DROP TABLE `glpi_plugin_example_example`";
       $DB->query($query) or die("error deleting glpi_plugin_example_example");
    }
-   if (TableExists("glpi_plugin_example_dropdowns")) {
+   if ($DB->tableExists("glpi_plugin_example_dropdowns")) {
       $query = "DROP TABLE `glpi_plugin_example_dropdowns`;";
       $DB->query($query) or die("error deleting glpi_plugin_example_dropdowns");
    }
-   if (TableExists("glpi_plugin_example_devicecameras")) {
+   if ($DB->tableExists("glpi_plugin_example_devicecameras")) {
       $query = "DROP TABLE `glpi_plugin_example_devicecameras`;";
       $DB->query($query) or die("error deleting glpi_plugin_example_devicecameras");
    }
-   if (TableExists("glpi_plugin_example_items_devicecameras")) {
+   if ($DB->tableExists("glpi_plugin_example_items_devicecameras")) {
       $query = "DROP TABLE `glpi_plugin_example_items_devicecameras`;";
       $DB->query($query) or die("error deleting glpi_plugin_example_items_devicecameras");
    }
