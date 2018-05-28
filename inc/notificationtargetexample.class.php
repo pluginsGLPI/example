@@ -38,7 +38,7 @@ class PluginExampleNotificationTargetExample extends NotificationTarget {
       return array ('alert' => 'alert example');
    }
 
-   function getDatasForTemplate($event, $options=array()) {
+   function addDataForTemplate($event, $options=array()) {
       global $DB, $CFG_GLPI;
 
       $this->data['##example.name##'] = __('Example', 'example');
