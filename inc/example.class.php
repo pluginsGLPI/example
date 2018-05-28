@@ -111,28 +111,46 @@ class PluginExampleExample extends CommonDBTM {
       return true;
    }
 
-   function getSearchOptions() {
+   function rawSearchOptions() {
 
-      $tab = array();
-      $tab['common'] = "Header Needed";
+      $tab = [];
 
-      $tab[1]['table']     = 'glpi_plugin_example_examples';
-      $tab[1]['field']     = 'name';
-      $tab[1]['name']      = __('Name');
+      $tab[] = [
+         'id'                 => 'common',
+         'name'               => __('Header Needed')
+      ];
 
-      $tab[2]['table']     = 'glpi_plugin_example_dropdowns';
-      $tab[2]['field']     = 'name';
-      $tab[2]['name']      = __('Dropdown');
+      $tab[] = [
+         'id'                 => '1',
+         'table'              => 'glpi_plugin_example_examples',
+         'field'              => 'name',
+         'name'               => __('Name'),
+      ];
 
-      $tab[3]['table']     = 'glpi_plugin_example_examples';
-      $tab[3]['field']     = 'serial';
-      $tab[3]['name']      = __('Serial number');
-      $tab[3]['usehaving'] = true;
-      $tab[3]['searchtype'] = 'equals';
+      $tab[] = [
+         'id'                 => '2',
+         'table'              => 'glpi_plugin_example_dropdowns',
+         'field'              => 'name',
+         'name'               => __('Dropdown'),
+      ];
 
-      $tab[30]['table']     = 'glpi_plugin_example_examples';
-      $tab[30]['field']     = 'id';
-      $tab[30]['name']      = __('ID');
+      $tab[] = [
+         'id'                 => '3',
+         'table'              => 'glpi_plugin_example_examples',
+         'field'              => 'serial',
+         'name'               => __('Serial number'),
+         'usehaving'          => true,
+         'searchtype'         => 'equals',
+      ];
+
+      $tab[] = [
+         'id'                 => '30',
+         'table'              => 'glpi_plugin_example_examples',
+         'field'              => 'id',
+         'name'               => __('ID'),
+         'usehaving'          => true,
+         'searchtype'         => 'equals',
+      ];
 
       return $tab;
    }
