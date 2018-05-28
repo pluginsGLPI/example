@@ -219,13 +219,19 @@ function plugin_init_example() {
  * @return array
  */
 function plugin_version_example() {
-
-   return array('name'           => 'Plugin Example',
-                'version'        => PLUGIN_EXAMPLE_VERSION,
-                'author'         => 'GLPI developer team',
-                'license'        => 'GPLv2+',
-                'homepage'       => 'https://github.com/pluginsGLPI/example',
-                'minGlpiVersion' => '0.85');// For compatibility / no install in version < 0.80
+   return [
+      'name'           => 'Plugin Example',
+      'version'        => PLUGIN_EXAMPLE_VERSION,
+      'author'         => 'GLPI developer team',
+      'license'        => 'GPLv2+',
+      'homepage'       => 'https://github.com/pluginsGLPI/example',
+      'requirements'   => [
+         'glpi' => [
+            'min' => '9.3',
+            'dev' => true
+         ]
+      ]
+   ];
 }
 
 
@@ -237,15 +243,12 @@ function plugin_version_example() {
  */
 function plugin_example_check_prerequisites() {
 
-   // Strict version check (could be less strict, or could allow various version)
-   if (version_compare(GLPI_VERSION, '0.85', 'lt') /*|| version_compare(GLPI_VERSION,'0.84','gt')*/) {
-      if (method_exists('Plugin', 'messageIncompatible')) {
-         echo Plugin::messageIncompatible('core', '0.85');
-      } else {
-         echo "This plugin requires GLPI >= 0.85";
-      }
+   $version = rtrim(GLPI_VERSION, '-dev');
+   if (version_compare($version, '9.3', 'lt')) {
+      echo "This plugin requires GLPI 9.3";
       return false;
    }
+
    return true;
 }
 
