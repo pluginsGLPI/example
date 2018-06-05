@@ -3,195 +3,197 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# David Stepan <stepand@tiscali.cz>, 2016
+# Pavel Borecki <pavel.borecki@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-02 14:54+0200\n"
-"PO-Revision-Date: 2016-06-02 12:54+0000\n"
-"Last-Translator: Alexandre DELAUNAY <delaunay.alexandre@gmail.com>\n"
+"PO-Revision-Date: 2018-03-21 05:31+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/teclib/glpi-plugin-example/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: config.php:48
 msgid "This is the plugin config page"
-msgstr ""
+msgstr "Toto je stránka nastavení zásuvného modulu"
 
 #: hook.php:61
 msgid "Plugin Example Dropdown"
-msgstr ""
+msgstr "Rozbalovací nabídka zásuvného modulu pro ukázku"
 
 #: hook.php:76
 msgid "Example plugin"
-msgstr ""
+msgstr "Zásuvný modul pro ukázku"
 
 #: hook.php:260
 msgid "plugin_example_DoIt"
-msgstr ""
+msgstr "plugin_example_DoIt"
 
 #: hook.php:281 hook.php:292
 msgid "Not really specific - Just for example"
-msgstr ""
+msgstr "Ve skutečnosti nekonkrétní – jen pro ukázku"
 
 #: hook.php:312
 msgid "Not really specific - Use your own dropdown - Just for example"
-msgstr ""
+msgstr "Ve skutečnosti nekonkrétní – použijte vlastní rozbalovací nabídku – jen pro příklad"
 
 #: hook.php:334
 msgid "Pre Update Computer Hook"
-msgstr ""
+msgstr "Háček počítač před aktualizací"
 
 #: hook.php:340
 #, php-format
 msgid "Update Computer Hook (%s)"
-msgstr ""
+msgstr "Háček aktualizovat počítač (%s)"
 
 #: hook.php:348
 msgid "Empty Computer Hook"
-msgstr ""
+msgstr "Prázdný háček počítač"
 
 #: hook.php:358
 msgid "Pre Delete Computer Hook"
-msgstr ""
+msgstr "Háček před smazáním počítače"
 
 #: hook.php:364
 msgid "Delete Computer Hook"
-msgstr ""
+msgstr "Smazat háček počítač"
 
 #: hook.php:372
 msgid "Pre Purge Computer Hook"
-msgstr ""
+msgstr "Háček před odstraněním počítače"
 
 #: hook.php:378
 msgid "Purge Computer Hook"
-msgstr ""
+msgstr "Háček odstranění počítače"
 
 #: hook.php:386
 msgid "Pre Restore Computer Hook"
-msgstr ""
+msgstr "Háček před obnovením počítače"
 
 #: hook.php:393
 msgid "Pre Restore Phone Hook"
-msgstr ""
+msgstr "Háček před obnovením telefonu"
 
 #: hook.php:399
 msgid "Restore Computer Hook"
-msgstr ""
+msgstr "Háček obnovení počítače"
 
 #. TRANS: %1$s is the source type, %2$d is the source ID, %3$d is the
 #. destination ID
 #: hook.php:407
 #, php-format
 msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
-msgstr ""
+msgstr "Háček přenesení počítače %1$s%2$d -> %3$d"
 
 #: hook.php:589
 msgid "Example event"
-msgstr ""
+msgstr "Příklad události"
 
 #: hook.php:594
 msgid "Example datas"
-msgstr ""
+msgstr "Příklad dat"
 
 #: hook.php:651
 msgid "Plugin example displays on central page"
-msgstr ""
+msgstr "Zásuvný modul pro ukázku zobrazuje na centrální stránce"
 
 #: hook.php:658
 msgid "Plugin example displays on login page"
-msgstr ""
+msgstr "Zásuvný modul pro ukázku zobrazuje na přihlašovací stránce"
 
 #: setup.php:210
 msgid "Installed / not configured"
-msgstr ""
+msgstr "Nainstalováno/nenastaveno"
 
 #: inc/dropdown.class.php:42 inc/dropdown.class.php:44
 msgid "Plugin Example Dropdowns"
-msgstr ""
+msgstr "Rozbalovací nabídky zásuvného modulu pro ukázku"
 
 #: inc/example.class.php:80
 msgid "Test link"
-msgstr ""
+msgstr "Testovací odkaz"
 
 #: inc/example.class.php:124
 msgid "Cron description for example"
-msgstr ""
+msgstr "Popis naplánované úlohy (cron) pro ukázku"
 
 #: inc/example.class.php:125
 msgid "Cron parameter for example"
-msgstr ""
+msgstr "Parametr naplánované úlohy (cron) pro ukázku"
 
 #: inc/example.class.php:182 inc/example.class.php:188
 #: inc/example.class.php:191 inc/notificationtargetexample.class.php:44
 msgid "Example"
-msgstr ""
+msgstr "Příklad"
 
 #: inc/example.class.php:195 inc/example.class.php:202
 msgid "Test Plugin"
-msgstr ""
+msgstr "Testovací zásuvný modul"
 
 #: inc/example.class.php:196
 msgid "Test Plugin 2"
-msgstr ""
+msgstr "Testovací zásuvný modul 2"
 
 #: inc/example.class.php:214
 msgid "Plugin Example on Phone"
-msgstr ""
+msgstr "Zásuvný modul pro ukázku na telefonu"
 
 #: inc/example.class.php:218
 msgid "Plugin central action"
-msgstr ""
+msgstr "Centrální akce zásuvného modulu"
 
 #: inc/example.class.php:241
 msgid "Plugin mailing action"
-msgstr ""
+msgstr "E-mailová akce zásuvného modulu"
 
 #: inc/example.class.php:247
 msgid "First tab of Plugin example"
-msgstr ""
+msgstr "První panel zásuvného modulu pro ukázku"
 
 #: inc/example.class.php:249
 msgid "Second tab of Plugin example"
-msgstr ""
+msgstr "Druhý panel zásuvného modulu pro ukázku"
 
 #. TRANS: %1$s is a class name, %2$d is an item ID
 #: inc/example.class.php:255
 #, php-format
 msgid "Plugin example CLASS=%1$s id=%2$d"
-msgstr ""
+msgstr "Zásuvný modul pro ukázku CLASS=%1$s id=%2$d"
 
 #: inc/example.class.php:284
 msgid "test planning example 1"
-msgstr ""
+msgstr "Test příklad plánu 1"
 
 #: inc/example.class.php:344
 msgid "History from plugin example"
-msgstr ""
+msgstr "Historie ze zásuvného modulu pro ukázku"
 
 #: inc/example.class.php:367
 msgid "Do Nothing - just for fun"
-msgstr ""
+msgstr "Nedělat nic – jen pro pobavení"
 
 #: inc/example.class.php:384 inc/example.class.php:408
 msgid "Write in item history"
-msgstr ""
+msgstr "Zapsat do položky historie"
 
 #: inc/example.class.php:388
 msgid "but do nothing :)"
-msgstr ""
+msgstr "ale nic nedělat :)"
 
 #: inc/example.class.php:407 inc/example.class.php:429
 msgid "Right it is the type I want..."
-msgstr ""
+msgstr "Pravý je typ který chci…"
 
 #: inc/example.class.php:430
 msgid "But... I say I will do nothing for:"
-msgstr ""
+msgstr "Ale…Říkám že nebudu dělat nic pro:"
 
 #: inc/ruletest.class.php:77
 msgid "Category (class)"
-msgstr ""
+msgstr "Kategorie (třída)"
