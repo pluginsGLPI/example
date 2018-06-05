@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Alexander Salas <alexander.salas@gmail.com>, 2016
+# Alexander J. Salas B. <inactive+alexandersalas@transifex.com>, 2016
+# JAVIER ANDREU <jandreugx@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-02 14:54+0200\n"
-"PO-Revision-Date: 2016-06-02 12:54+0000\n"
-"Last-Translator: Alexandre DELAUNAY <delaunay.alexandre@gmail.com>\n"
+"PO-Revision-Date: 2018-05-02 16:03+0000\n"
+"Last-Translator: JAVIER ANDREU <jandreugx@gmail.com>\n"
 "Language-Team: Spanish (Spain) (http://www.transifex.com/teclib/glpi-plugin-example/language/es_ES/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,7 +50,7 @@ msgstr "Pre actualización del gancho o hook del ordenador "
 #: hook.php:340
 #, php-format
 msgid "Update Computer Hook (%s)"
-msgstr "Actualizar Gancho o Hook del Ordenador (%s)"
+msgstr "Actualizar Gancho o Hook del Ordenador (%s"
 
 #: hook.php:348
 msgid "Empty Computer Hook"
@@ -100,11 +101,11 @@ msgstr "Data ejemplo"
 
 #: hook.php:651
 msgid "Plugin example displays on central page"
-msgstr ""
+msgstr "El ejemplo del plugin se muestra en la página central"
 
 #: hook.php:658
 msgid "Plugin example displays on login page"
-msgstr ""
+msgstr "El ejemplo del plugin se muestra en la página de inicio de sesión"
 
 #: setup.php:210
 msgid "Installed / not configured"
@@ -133,11 +134,11 @@ msgstr "Ejemplo"
 
 #: inc/example.class.php:195 inc/example.class.php:202
 msgid "Test Plugin"
-msgstr ""
+msgstr "Test Plugin"
 
 #: inc/example.class.php:196
 msgid "Test Plugin 2"
-msgstr ""
+msgstr "Test Plugin 2"
 
 #: inc/example.class.php:214
 msgid "Plugin Example on Phone"

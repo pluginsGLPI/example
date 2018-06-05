@@ -3,20 +3,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Kaya Zeren <kayazeren@gmail.com>, 2015
+# Kaya Zeren <kayazeren@gmail.com>, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-02 14:54+0200\n"
-"PO-Revision-Date: 2016-06-02 12:54+0000\n"
-"Last-Translator: Alexandre DELAUNAY <delaunay.alexandre@gmail.com>\n"
+"PO-Revision-Date: 2017-09-23 21:40+0000\n"
+"Last-Translator: Kaya Zeren <kayazeren@gmail.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/teclib/glpi-plugin-example/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr_TR\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: config.php:48
 msgid "This is the plugin config page"
@@ -100,11 +100,11 @@ msgstr "Örnek veriler"
 
 #: hook.php:651
 msgid "Plugin example displays on central page"
-msgstr ""
+msgstr "Örnek uygulama eki merkez sayfada görüntülenir"
 
 #: hook.php:658
 msgid "Plugin example displays on login page"
-msgstr ""
+msgstr "Örnek uygulama eki oturum açma sayfasında görüntülenir"
 
 #: setup.php:210
 msgid "Installed / not configured"
@@ -133,11 +133,11 @@ msgstr "Örnek"
 
 #: inc/example.class.php:195 inc/example.class.php:202
 msgid "Test Plugin"
-msgstr ""
+msgstr "Deneme Uygulama Eki"
 
 #: inc/example.class.php:196
 msgid "Test Plugin 2"
-msgstr ""
+msgstr "Deneme Uygulama Eki 2"
 
 #: inc/example.class.php:214
 msgid "Plugin Example on Phone"

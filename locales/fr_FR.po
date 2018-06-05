@@ -5,13 +5,15 @@
 # Translators:
 # DOMBRE Julien <moyo@indepnet.net>, 2011-2012
 # Jérémy MOREAU <jmoreau.dev@gmail.com>, 2015
+# Johan Cwiklinski <jcwiklinski@teclib.com>, 2016
+# Yoann TERUEL <yoann.teruel@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-02 14:54+0200\n"
-"PO-Revision-Date: 2016-06-02 12:54+0000\n"
-"Last-Translator: Alexandre DELAUNAY <delaunay.alexandre@gmail.com>\n"
+"PO-Revision-Date: 2017-09-22 15:17+0000\n"
+"Last-Translator: Yoann TERUEL <yoann.teruel@gmail.com>\n"
 "Language-Team: French (France) (http://www.transifex.com/teclib/glpi-plugin-example/language/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,35 +56,35 @@ msgstr "Hook de mise à jour d'un Ordinateur (%s)"
 
 #: hook.php:348
 msgid "Empty Computer Hook"
-msgstr ""
+msgstr "Hook sur ordinateur vide"
 
 #: hook.php:358
 msgid "Pre Delete Computer Hook"
-msgstr ""
+msgstr "Hook de pré-suppression d'ordinateur"
 
 #: hook.php:364
 msgid "Delete Computer Hook"
-msgstr ""
+msgstr "Hook de suppression d'ordinateur"
 
 #: hook.php:372
 msgid "Pre Purge Computer Hook"
-msgstr ""
+msgstr "Hook de pré-purge d'ordinateur"
 
 #: hook.php:378
 msgid "Purge Computer Hook"
-msgstr ""
+msgstr "Hook de purge d'ordinateur"
 
 #: hook.php:386
 msgid "Pre Restore Computer Hook"
-msgstr ""
+msgstr "Hoo de pré-restauration d'ordinateur"
 
 #: hook.php:393
 msgid "Pre Restore Phone Hook"
-msgstr ""
+msgstr "Hook de pré-restauration de téléphone"
 
 #: hook.php:399
 msgid "Restore Computer Hook"
-msgstr ""
+msgstr "Hook de restauration de téléphone"
 
 #. TRANS: %1$s is the source type, %2$d is the source ID, %3$d is the
 #. destination ID
@@ -101,11 +103,11 @@ msgstr "Données d'exemple"
 
 #: hook.php:651
 msgid "Plugin example displays on central page"
-msgstr ""
+msgstr "Affichage sur la page centrale depuis le plugin exemple"
 
 #: hook.php:658
 msgid "Plugin example displays on login page"
-msgstr ""
+msgstr "Affichage sur la page de connexion depuis le plugin exemple"
 
 #: setup.php:210
 msgid "Installed / not configured"
@@ -134,11 +136,11 @@ msgstr "Exemple"
 
 #: inc/example.class.php:195 inc/example.class.php:202
 msgid "Test Plugin"
-msgstr ""
+msgstr "Test plugin"
 
 #: inc/example.class.php:196
 msgid "Test Plugin 2"
-msgstr ""
+msgstr "Test plugin 2"
 
 #: inc/example.class.php:214
 msgid "Plugin Example on Phone"
