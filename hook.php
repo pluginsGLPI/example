@@ -37,10 +37,10 @@
 function plugin_change_profile_example() {
    // For example : same right of computer
    if (Session::haveRight('computer', UPDATE)) {
-      $_SESSION["glpi_plugin_example_profile"] = array('example' => 'w');
+      $_SESSION["glpi_plugin_example_profile"] = ['example' => 'w'];
 
    } else if (Session::haveRight('computer', READ)) {
-      $_SESSION["glpi_plugin_example_profile"] = array('example' => 'r');
+      $_SESSION["glpi_plugin_example_profile"] = ['example' => 'r'];
 
    } else {
       unset($_SESSION["glpi_plugin_example_profile"]);
@@ -50,14 +50,14 @@ function plugin_change_profile_example() {
 
 // Define dropdown relations
 function plugin_example_getDatabaseRelations() {
-   return array("glpi_plugin_example_dropdowns" => array("glpi_plugin_example" => "plugin_example_dropdowns_id"));
+   return ["glpi_plugin_example_dropdowns" => ["glpi_plugin_example" => "plugin_example_dropdowns_id"]];
 }
 
 
 // Define Dropdown tables to be manage in GLPI :
 function plugin_example_getDropdown() {
    // Table => Name
-   return array('PluginExampleDropdown' => __("Plugin Example Dropdown", 'example'));
+   return ['PluginExampleDropdown' => __("Plugin Example Dropdown", 'example')];
 }
 
 
@@ -66,7 +66,7 @@ function plugin_example_getDropdown() {
 
 // Define Additionnal search options for types (other than the plugin ones)
 function plugin_example_getAddSearchOptions($itemtype) {
-   $sopt = array();
+   $sopt = [];
    if ($itemtype == 'Computer') {
          // Just for example, not working...
          $sopt[1001]['table']     = 'glpi_plugin_example_dropdowns';
@@ -93,7 +93,7 @@ function plugin_example_getAddSearchOptionsNew($itemtype) {
 }
 
 // See also PluginExampleExample::getSpecificValueToDisplay()
-function plugin_example_giveItem($type,$ID,$data,$num) {
+function plugin_example_giveItem($type, $ID, $data, $num) {
    $searchopt = &Search::getOptions($type);
    $table = $searchopt[$ID]["table"];
    $field = $searchopt[$ID]["field"];
@@ -231,7 +231,7 @@ function plugin_example_addHaving($link, $nott, $type, $ID, $val, $num) {
 }
 
 
-function plugin_example_addSelect($type,$ID,$num) {
+function plugin_example_addSelect($type, $ID, $num) {
    $searchopt = &Search::getOptions($type);
    $table     = $searchopt[$ID]["table"];
    $field     = $searchopt[$ID]["field"];
@@ -246,7 +246,7 @@ function plugin_example_addSelect($type,$ID,$num) {
 }
 
 
-function plugin_example_addOrderBy($type,$ID,$order,$key=0) {
+function plugin_example_addOrderBy($type, $ID, $order, $key = 0) {
    $searchopt = &Search::getOptions($type);
    $table     = $searchopt[$ID]["table"];
    $field     = $searchopt[$ID]["field"];
@@ -270,18 +270,18 @@ function plugin_example_MassiveActions($type) {
    switch ($type) {
       // New action for core and other plugin types : name = plugin_PLUGINNAME_actionname
       case 'Computer' :
-         return array('PluginExampleExample'.MassiveAction::CLASS_ACTION_SEPARATOR.'DoIt' =>
-                                                              __("plugin_example_DoIt", 'example'));
+         return ['PluginExampleExample'.MassiveAction::CLASS_ACTION_SEPARATOR.'DoIt' =>
+                                                              __("plugin_example_DoIt", 'example')];
 
       // Actions for types provided by the plugin are included inside the classes
    }
-   return array();
+   return [];
 }
 
 
 // How to display specific update fields ?
 // options must contain at least itemtype and options array
-function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
+function plugin_example_MassiveActionsFieldsDisplay($options = []) {
    //$type,$table,$field,$linkfield
 
    $table     = $options['options']['table'];
@@ -316,7 +316,7 @@ function plugin_example_MassiveActionsFieldsDisplay($options=array()) {
 // How to display specific search fields or dropdown ?
 // options must contain at least itemtype and options array
 // MUST Use a specific AddWhere & $tab[X]['searchtype'] = 'equals'; declaration
-function plugin_example_searchOptionsValues($options=array()) {
+function plugin_example_searchOptionsValues($options = []) {
    $table = $options['searchoption']['table'];
    $field = $options['searchoption']['field'];
 
@@ -325,9 +325,9 @@ function plugin_example_searchOptionsValues($options=array()) {
       case "glpi_plugin_example_examples.serial" :
             echo __("Not really specific - Use your own dropdown - Just for example", 'example');
             Dropdown::show(getItemTypeForTable($options['searchoption']['table']),
-                                               array('value'    => $options['value'],
-                                                     'name'     => $options['name'],
-                                                     'comments' => 0));
+                                               ['value'    => $options['value'],
+                                                'name'     => $options['name'],
+                                                'comments' => 0]);
             // Need to return true if specific display
             return true;
    }
@@ -447,9 +447,9 @@ function plugin_example_addParamFordynamicReport($itemtype) {
    if ($itemtype == 'PluginExampleExample') {
       // Return array data containing all params to add : may be single data or array data
       // Search config are available from session variable
-      return array('add1' => $_SESSION['glpisearch'][$itemtype]['order'],
-                   'add2' => array('tutu' => 'Second Add',
-                                   'Other Data'));
+      return ['add1' => $_SESSION['glpisearch'][$itemtype]['order'],
+              'add2' => ['tutu' => 'Second Add',
+                         'Other Data']];
    }
    // Return false or a non array data if not needed
    return false;
@@ -465,9 +465,9 @@ function plugin_example_install() {
    global $DB;
 
    $config = new Config();
-   $config->setConfigurationValues('plugin:Example', array('configuration' => false));
+   $config->setConfigurationValues('plugin:Example', ['configuration' => false]);
 
-   ProfileRight::addProfileRights(array('example:read'));
+   ProfileRight::addProfileRights(['example:read']);
 
    if (!$DB->tableExists("glpi_plugin_example_examples")) {
       $query = "CREATE TABLE `glpi_plugin_example_examples` (
@@ -546,7 +546,7 @@ function plugin_example_install() {
 
    // To be called for each task the plugin manage
    // task in class
-   CronTask::Register('PluginExampleExample', 'Sample', DAY_TIMESTAMP, array('param' => 50));
+   CronTask::Register('PluginExampleExample', 'Sample', DAY_TIMESTAMP, ['param' => 50]);
    return true;
 }
 
@@ -560,14 +560,14 @@ function plugin_example_uninstall() {
    global $DB;
 
    $config = new Config();
-   $config->deleteConfigurationValues('plugin:Example', array('configuration' => false));
+   $config->deleteConfigurationValues('plugin:Example', ['configuration' => false]);
 
-   ProfileRight::deleteProfileRights(array('example:read'));
+   ProfileRight::deleteProfileRights(['example:read']);
 
    $notif = new Notification();
-   $options = array('itemtype' => 'Ticket',
-                    'event'    => 'plugin_example',
-                    'FIELDS'   => 'id');
+   $options = ['itemtype' => 'Ticket',
+               'event'    => 'plugin_example',
+               'FIELDS'   => 'id'];
    foreach ($DB->request('glpi_notifications', $options) as $data) {
       $notif->delete($data);
    }

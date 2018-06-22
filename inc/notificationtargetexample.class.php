@@ -35,10 +35,10 @@ if (!defined('GLPI_ROOT')) {
 class PluginExampleNotificationTargetExample extends NotificationTarget {
 
    function getEvents() {
-      return array ('alert' => 'alert example');
+      return  ['alert' => 'alert example'];
    }
 
-   function addDataForTemplate($event, $options=array()) {
+   function addDataForTemplate($event, $options = []) {
       global $DB, $CFG_GLPI;
 
       $this->data['##example.name##'] = __('Example', 'example');

@@ -75,7 +75,7 @@ class PluginExampleExample extends CommonDBTM {
    **/
    static function getAdditionalMenuLinks() {
       global $CFG_GLPI;
-      $links = array();
+      $links = [];
 
       $links['config'] = '/plugins/example/index.php';
       $links["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".__s('Show all')."' alt='".__s('Show all')."'>"] = '/plugins/example/index.php';
@@ -84,16 +84,16 @@ class PluginExampleExample extends CommonDBTM {
       return $links;
    }
 
-   function defineTabs($options = array()) {
+   function defineTabs($options = []) {
 
-      $ong = array();
+      $ong = [];
       $this->addDefaultFormTab($ong);
       $this->addStandardTab('Link', $ong, $options);
 
       return $ong;
    }
 
-   function showForm($ID, $options = array()) {
+   function showForm($ID, $options = []) {
       global $CFG_GLPI;
 
       $this->initForm($ID, $options);
@@ -167,10 +167,10 @@ class PluginExampleExample extends CommonDBTM {
 
       switch ($name) {
          case 'Sample' :
-            return array('description' => __('Cron description for example', 'example'),
-                         'parameter'   => __('Cron parameter for example', 'example'));
+            return ['description' => __('Cron description for example', 'example'),
+                    'parameter'   => __('Cron parameter for example', 'example')];
       }
-      return array();
+      return [];
    }
 
 
@@ -206,20 +206,20 @@ class PluginExampleExample extends CommonDBTM {
    }
 
    // Hook done on before add item case (data altered by object prepareInputForAdd)
-   static function post_prepareadd_computer(Computer$item) {
+   static function post_prepareadd_computer(Computer $item) {
       Session::addMessageAfterRedirect("Post prepareAdd Computer Hook", true);
    }
 
 
    // Hook done on add item case
-   static function item_add_computer(Computer$item) {
+   static function item_add_computer(Computer $item) {
 
       Session::addMessageAfterRedirect("Add Computer Hook, ID=".$item->getID(), true);
       return true;
    }
 
 
-   function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
+   function getTabNameForItem(CommonGLPI $item, $withtemplate = 0) {
 
       if (!$withtemplate) {
          switch ($item->getType()) {
@@ -238,14 +238,14 @@ class PluginExampleExample extends CommonDBTM {
 
             case 'ComputerDisk' :
             case 'Supplier' :
-               return array(1 => __("Test Plugin", 'example'),
-                            2 => __("Test Plugin 2", 'example'));
+               return [1 => __("Test Plugin", 'example'),
+                       2 => __("Test Plugin 2", 'example')];
 
             case 'Computer' :
             case 'Central' :
             case 'Preference':
             case 'Notification':
-               return array(1 => __("Test Plugin", 'example'));
+               return [1 => __("Test Plugin", 'example')];
 
          }
       }
@@ -253,7 +253,7 @@ class PluginExampleExample extends CommonDBTM {
    }
 
 
-   static function displayTabContentForItem(CommonGLPI $item, $tabnum=1, $withtemplate=0) {
+   static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0) {
 
       switch ($item->getType()) {
          case 'Phone' :
@@ -304,10 +304,10 @@ class PluginExampleExample extends CommonDBTM {
       return true;
    }
 
-   static function getSpecificValueToDisplay($field, $values, array $options=array()) {
+   static function getSpecificValueToDisplay($field, $values, array $options = []) {
 
       if (!is_array($values)) {
-         $values = array($field => $values);
+         $values = [$field => $values];
       }
       switch ($field) {
          case 'serial' :
@@ -323,7 +323,7 @@ class PluginExampleExample extends CommonDBTM {
       // Add items in the output array
       // Items need to have an unique index beginning by the begin date of the item to display
       // needed to be correcly displayed
-      $output = array();
+      $output = [];
       $key = $parm["begin"]."$$$"."plugin_example1";
       $output[$key]["begin"]  = date("Y-m-d 17:00:00");
       $output[$key]["end"]    = date("Y-m-d 18:00:00");
@@ -345,7 +345,7 @@ class PluginExampleExample extends CommonDBTM {
     *
     * @return Nothing (display function)
     **/
-   static function displayPlanningItem(array $val, $who, $type="", $complete=0) {
+   static function displayPlanningItem(array $val, $who, $type = "", $complete = 0) {
 
       // $parm["type"] say begin end in or from type
       // Add items in the items fields of the parm array
@@ -401,7 +401,7 @@ class PluginExampleExample extends CommonDBTM {
     *
     * @see CommonDBTM::getSpecificMassiveActions()
    **/
-   function getSpecificMassiveActions($checkitem=NULL) {
+   function getSpecificMassiveActions($checkitem = null) {
 
       $actions = parent::getSpecificMassiveActions($checkitem);
 
@@ -424,11 +424,11 @@ class PluginExampleExample extends CommonDBTM {
       switch ($ma->getAction()) {
          case 'DoIt':
             echo "&nbsp;<input type='hidden' name='toto' value='1'>".
-                 Html::submit(_x('button', 'Post'), array('name' => 'massiveaction')).
+                 Html::submit(_x('button', 'Post'), ['name' => 'massiveaction']).
                  " ".__('Write in item history', 'example');
             return true;
          case 'do_nothing' :
-            echo "&nbsp;".Html::submit(_x('button', 'Post'), array('name' => 'massiveaction')).
+            echo "&nbsp;".Html::submit(_x('button', 'Post'), ['name' => 'massiveaction']).
                  " ".__('but do nothing :)', 'example');
             return true;
       }
@@ -450,7 +450,7 @@ class PluginExampleExample extends CommonDBTM {
             if ($item->getType() == 'Computer') {
                Session::addMessageAfterRedirect(__("Right it is the type I want...", 'example'));
                Session::addMessageAfterRedirect(__('Write in item history', 'example'));
-               $changes = array(0, 'old value', 'new value');
+               $changes = [0, 'old value', 'new value'];
                foreach ($ids as $id) {
                   if ($item->getFromDB($id)) {
                      Session::addMessageAfterRedirect("- ".$item->getField("name"));
@@ -494,7 +494,7 @@ class PluginExampleExample extends CommonDBTM {
 
       if (strstr($link, "[EXAMPLE_ID]")) {
          $link = str_replace("[EXAMPLE_ID]", $item->getID(), $link);
-         return array($link);
+         return [$link];
       }
 
       return parent::generateLinkContents($link, $item);
