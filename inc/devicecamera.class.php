@@ -41,7 +41,7 @@ if (!defined('GLPI_ROOT')) {
 /// Class DeviceCamera
 class PluginExampleDeviceCamera extends CommonDevice {
 
-   static function getTypeName($nb=0) {
+   static function getTypeName($nb = 0) {
       return _n('Camera', 'Cameras', $nb);
    }
 
