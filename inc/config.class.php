@@ -31,7 +31,7 @@ class PluginExampleConfig extends CommonDBTM {
 
    static protected $notable = true;
 
-   function getTabNameForItem(CommonGLPI $item, $withtemplate=0) {
+   function getTabNameForItem(CommonGLPI $item, $withtemplate = 0) {
 
       if (!$withtemplate) {
          if ($item->getType() == 'Config') {
@@ -75,7 +75,7 @@ class PluginExampleConfig extends CommonDBTM {
       Html::closeForm();
    }
 
-   static function displayTabContentForItem(CommonGLPI $item, $tabnum=1, $withtemplate=0) {
+   static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0) {
 
       if ($item->getType() == 'Config') {
          $config = new self();

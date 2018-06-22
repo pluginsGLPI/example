@@ -62,7 +62,7 @@ class PluginExampleRuleTest extends Rule {
 
    function getCriterias() {
 
-      $criterias = array();
+      $criterias = [];
       $criterias['name']['field'] = 'name';
       $criterias['name']['name']  = __('Software');
       $criterias['name']['table'] = 'glpi_softwares';
@@ -73,7 +73,7 @@ class PluginExampleRuleTest extends Rule {
 
    function getActions() {
 
-      $actions = array();
+      $actions = [];
       $actions['softwarecategories_id']['name']  = __('Category (class)', 'example');
       $actions['softwarecategories_id']['type']  = 'dropdown';
       $actions['softwarecategories_id']['table'] = 'glpi_softwarecategories';
