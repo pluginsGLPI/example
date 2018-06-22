@@ -1,198 +1,203 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
-# Translators:
-# Kaya Zeren <kayazeren@gmail.com>, 2015-2016
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: GLPI Plugin - Example\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-02 14:54+0200\n"
-"PO-Revision-Date: 2017-09-23 21:40+0000\n"
-"Last-Translator: Kaya Zeren <kayazeren@gmail.com>\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/teclib/glpi-plugin-example/language/tr_TR/)\n"
+"POT-Creation-Date: 2018-06-22 10:23+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Cédric Anne, 2018\n"
+"Language-Team: Turkish (Turkey) (https://www.transifex.com/teclib/teams/28042/tr_TR/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: config.php:48
-msgid "This is the plugin config page"
-msgstr "Uygulama eki ayarları bölümü"
-
-#: hook.php:61
+#: hook.php:60
 msgid "Plugin Example Dropdown"
 msgstr "Uygulama Eki Örnek Açılan Kutu"
 
-#: hook.php:76
+#: hook.php:75
 msgid "Example plugin"
 msgstr "Örnek uygulama eki"
 
-#: hook.php:260
+#: hook.php:89
+msgid "Example plugin new"
+msgstr ""
+
+#: hook.php:274
 msgid "plugin_example_DoIt"
 msgstr "uygulamaeki_ornek_Yap"
 
-#: hook.php:281 hook.php:292
+#: hook.php:295 hook.php:306
 msgid "Not really specific - Just for example"
 msgstr "Özel bir şey değil - Yalnız örnek olarak"
 
-#: hook.php:312
+#: hook.php:326
 msgid "Not really specific - Use your own dropdown - Just for example"
-msgstr "Özel bir şey değil - Kendi açılan kutunuzu kullanın - Yalnız örnek olarak"
+msgstr ""
+"Özel bir şey değil - Kendi açılan kutunuzu kullanın - Yalnız örnek olarak"
 
-#: hook.php:334
+#: hook.php:348
 msgid "Pre Update Computer Hook"
 msgstr "Bilgisayar Kancasını Önceden Güncelle"
 
-#: hook.php:340
+#: hook.php:354
 #, php-format
 msgid "Update Computer Hook (%s)"
 msgstr "Bilgisayar Kancasını Güncelle (%s)"
 
-#: hook.php:348
+#: hook.php:362
 msgid "Empty Computer Hook"
 msgstr "Bilgisayar Kancasını Boşalt"
 
-#: hook.php:358
+#: hook.php:372
 msgid "Pre Delete Computer Hook"
 msgstr "Bilgisayar Kancasını Önceden Sil"
 
-#: hook.php:364
+#: hook.php:378
 msgid "Delete Computer Hook"
 msgstr "Bilgisayar Kancasını Sil"
 
-#: hook.php:372
+#: hook.php:386
 msgid "Pre Purge Computer Hook"
 msgstr "Bilgisayar Kancasını Önceden Boşalt"
 
-#: hook.php:378
+#: hook.php:392
 msgid "Purge Computer Hook"
 msgstr "Bilgisayar Kancasını Boşalt"
 
-#: hook.php:386
+#: hook.php:400
 msgid "Pre Restore Computer Hook"
 msgstr "Bilgisayar Kancasını Önceden Geri Yükle"
 
-#: hook.php:393
+#: hook.php:407
 msgid "Pre Restore Phone Hook"
 msgstr "Telefon Kancasını Önceden Geri Yükle"
 
-#: hook.php:399
+#: hook.php:413
 msgid "Restore Computer Hook"
 msgstr "Bilgisayar Kancasını Geri Yükle"
 
 #. TRANS: %1$s is the source type, %2$d is the source ID, %3$d is the
 #. destination ID
-#: hook.php:407
+#: hook.php:421
 #, php-format
 msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
 msgstr "Bilgisayar Kancasını Aktar %1$s %2$d -> %3$d"
 
-#: hook.php:589
+#: hook.php:611
 msgid "Example event"
 msgstr "Örnek etkinlik"
 
-#: hook.php:594
+#: hook.php:616
 msgid "Example datas"
 msgstr "Örnek veriler"
 
-#: hook.php:651
+#: hook.php:673 hook.php:686
 msgid "Plugin example displays on central page"
 msgstr "Örnek uygulama eki merkez sayfada görüntülenir"
 
-#: hook.php:658
+#: hook.php:680
 msgid "Plugin example displays on login page"
 msgstr "Örnek uygulama eki oturum açma sayfasında görüntülenir"
 
-#: setup.php:210
-msgid "Installed / not configured"
-msgstr "Yüklenmiş / ayarlanmamış"
-
-#: inc/dropdown.class.php:42 inc/dropdown.class.php:44
-msgid "Plugin Example Dropdowns"
-msgstr "Örnek Uygulama Eki Açılan Kutular"
-
-#: inc/example.class.php:80
+#: inc/example.class.php:82
 msgid "Test link"
 msgstr "Deneeme bağlantısı"
 
-#: inc/example.class.php:124
+#: inc/example.class.php:170
 msgid "Cron description for example"
 msgstr "Örnek zamanlanmış görev açıklaması"
 
-#: inc/example.class.php:125
+#: inc/example.class.php:171
 msgid "Cron parameter for example"
 msgstr "Örnek zamanlanmış görev parametresi"
 
-#: inc/example.class.php:182 inc/example.class.php:188
-#: inc/example.class.php:191 inc/notificationtargetexample.class.php:44
+#: inc/example.class.php:228 inc/example.class.php:234
+#: inc/example.class.php:237 inc/notificationtargetexample.class.php:44
 msgid "Example"
 msgstr "Örnek"
 
-#: inc/example.class.php:195 inc/example.class.php:202
+#: inc/example.class.php:241 inc/example.class.php:248
 msgid "Test Plugin"
 msgstr "Deneme Uygulama Eki"
 
-#: inc/example.class.php:196
+#: inc/example.class.php:242
 msgid "Test Plugin 2"
 msgstr "Deneme Uygulama Eki 2"
 
-#: inc/example.class.php:214
+#: inc/example.class.php:260
 msgid "Plugin Example on Phone"
 msgstr "Telefon için örnek uygulama eki"
 
-#: inc/example.class.php:218
+#: inc/example.class.php:264
 msgid "Plugin central action"
 msgstr "Uygulama eki temel işlemi"
 
-#: inc/example.class.php:241
+#: inc/example.class.php:287
 msgid "Plugin mailing action"
 msgstr "Uygulama eki postalama işlemi"
 
-#: inc/example.class.php:247
+#: inc/example.class.php:293
 msgid "First tab of Plugin example"
 msgstr "Örnek uygulama ekinin ilk sekmesi"
 
-#: inc/example.class.php:249
+#: inc/example.class.php:295
 msgid "Second tab of Plugin example"
 msgstr "Örnek uygulama ekinin ikinci sekmesi"
 
 #. TRANS: %1$s is a class name, %2$d is an item ID
-#: inc/example.class.php:255
+#: inc/example.class.php:301
 #, php-format
 msgid "Plugin example CLASS=%1$s id=%2$d"
 msgstr "Örnek uygulama eki SINIF=%1$s Kod=%2$d"
 
-#: inc/example.class.php:284
+#: inc/example.class.php:330
 msgid "test planning example 1"
 msgstr "örnek deneme planı 1"
 
-#: inc/example.class.php:344
+#: inc/example.class.php:390
 msgid "History from plugin example"
 msgstr "Örnek uygulama eki geçmişi"
 
-#: inc/example.class.php:367
+#: inc/example.class.php:411
 msgid "Do Nothing - just for fun"
 msgstr "Hiç bir işlem yapma - yalnız eğlence için"
 
-#: inc/example.class.php:384 inc/example.class.php:408
+#: inc/example.class.php:428 inc/example.class.php:452
 msgid "Write in item history"
 msgstr "Öge geçmişine yaz"
 
-#: inc/example.class.php:388
+#: inc/example.class.php:432
 msgid "but do nothing :)"
 msgstr "ama hiç bir şey yapma :)"
 
-#: inc/example.class.php:407 inc/example.class.php:429
+#: inc/example.class.php:451 inc/example.class.php:473
 msgid "Right it is the type I want..."
 msgstr "Doğru bu benim istediğim tip..."
 
-#: inc/example.class.php:430
+#: inc/example.class.php:474
 msgid "But... I say I will do nothing for:"
 msgstr "Ancak... Şunun için hiç bir şey yapma diyeceğim:"
 
 #: inc/ruletest.class.php:77
 msgid "Category (class)"
 msgstr "Kategori (sınıf)"
+
+#: inc/dropdown.class.php:42 inc/dropdown.class.php:44
+msgid "Plugin Example Dropdowns"
+msgstr "Örnek Uygulama Eki Açılan Kutular"
+
+#: setup.php:268
+msgid "Installed / not configured"
+msgstr "Yüklenmiş / ayarlanmamış"
+
+#: config.php:48
+msgid "This is the plugin config page"
+msgstr "Uygulama eki ayarları bölümü"
