@@ -5,10 +5,12 @@
       <logo>https://raw.githubusercontent.com/pluginsGLPI/example/master/misc/logo.png</logo>
       <description>
          <short>
+            <cs>GLPI zásuvný modul pro ukázku, užitečný jako základ pro nějaký nový</cs>
             <en>GLPI example plugin useful to bootstrap a new one</en>
             <fr>Plugin GLPI d'example utile pour en démarrer un</fr>
          </short>
          <long>
+            <cs>GLPI zásuvný modul pro ukázku, užitečný jako základ pro nějaký nový, pokud z něho vycházíte, měli byste přitom upravit každou z kolonek tohoto souboru a přečíst si obsah README.md</cs>
             <en>GLPI example plugin useful to bootstrap a new one, you should edit every field of this file, and see README.md</en>
             <fr>Plugin GLPI d'example utile pour en démarrer un, vous devriez editer tous les champs de ce fichier, et voir README.md</fr>
          </long>
@@ -28,17 +30,21 @@
          </version>
       </versions>
       <langs>
+         <lang>cs_CZ</lang>
          <lang>en_GB</lang>
          <lang>fr_FR</lang>
       </langs>
       <license>GPL v2+</license>
       <tags>
-         <fr>
-            <tag>exemple</tag>
-         </fr>
+         <cs>
+            <tag>ukázka</tag>
+         </cs>
          <en>
             <tag>example</tag>
          </en>
+         <fr>
+            <tag>exemple</tag>
+         </fr>
       </tags>
       <screenshots>
          <screenshot>https://raw.githubusercontent.com/pluginsGLPI/example/master/misc/screenshots/first.png</screenshot>
