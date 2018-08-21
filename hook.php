@@ -479,7 +479,7 @@ function plugin_example_install() {
                   `is_template` tinyint(1) NOT NULL default '0',
                   `template_name` varchar(255) collate utf8_unicode_ci default NULL,
                 PRIMARY KEY (`id`)
-               ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
+               ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
 
       $DB->query($query) or die("error creating glpi_plugin_example_examples ". $DB->error());
 
@@ -499,7 +499,7 @@ function plugin_example_install() {
                   `comment` text collate utf8_unicode_ci,
                 PRIMARY KEY  (`id`),
                 KEY `name` (`name`)
-               ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
+               ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
 
       $DB->query($query) or die("error creating glpi_plugin_example_dropdowns". $DB->error());
 
@@ -521,7 +521,7 @@ function plugin_example_install() {
                   PRIMARY KEY (`id`),
                   KEY `designation` (`designation`),
                   KEY `manufacturers_id` (`manufacturers_id`)
-                ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
 
       $DB->query($query) or die("error creating glpi_plugin_example_examples ". $DB->error());
    }
@@ -539,7 +539,7 @@ function plugin_example_install() {
                   KEY `plugin_example_devicecameras_id` (`plugin_example_devicecameras_id`),
                   KEY `is_deleted` (`is_deleted`),
                   KEY `is_dynamic` (`is_dynamic`)
-                ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
 
       $DB->query($query) or die("error creating glpi_plugin_example_examples ". $DB->error());
    }
