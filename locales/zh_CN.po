@@ -1,0 +1,202 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# liAnGjiA <liangjia@qq.com>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: GLPI Plugin - Example\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-22 10:23+0000\n"
+"PO-Revision-Date: 2018-08-21 14:34+0000\n"
+"Last-Translator: Cédric Anne\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/teclib/glpi-plugin-example/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: hook.php:60
+msgid "Plugin Example Dropdown"
+msgstr "插件下拉列表示例"
+
+#: hook.php:75
+msgid "Example plugin"
+msgstr "示例插件"
+
+#: hook.php:89
+msgid "Example plugin new"
+msgstr ""
+
+#: hook.php:274
+msgid "plugin_example_DoIt"
+msgstr "plugin_example_DoIt"
+
+#: hook.php:295 hook.php:306
+msgid "Not really specific - Just for example"
+msgstr ""
+
+#: hook.php:326
+msgid "Not really specific - Use your own dropdown - Just for example"
+msgstr ""
+
+#: hook.php:348
+msgid "Pre Update Computer Hook"
+msgstr ""
+
+#: hook.php:354
+#, php-format
+msgid "Update Computer Hook (%s)"
+msgstr ""
+
+#: hook.php:362
+msgid "Empty Computer Hook"
+msgstr ""
+
+#: hook.php:372
+msgid "Pre Delete Computer Hook"
+msgstr ""
+
+#: hook.php:378
+msgid "Delete Computer Hook"
+msgstr ""
+
+#: hook.php:386
+msgid "Pre Purge Computer Hook"
+msgstr ""
+
+#: hook.php:392
+msgid "Purge Computer Hook"
+msgstr ""
+
+#: hook.php:400
+msgid "Pre Restore Computer Hook"
+msgstr ""
+
+#: hook.php:407
+msgid "Pre Restore Phone Hook"
+msgstr ""
+
+#: hook.php:413
+msgid "Restore Computer Hook"
+msgstr ""
+
+#. TRANS: %1$s is the source type, %2$d is the source ID, %3$d is the
+#. destination ID
+#: hook.php:421
+#, php-format
+msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
+msgstr ""
+
+#: hook.php:611
+msgid "Example event"
+msgstr "示例事件"
+
+#: hook.php:616
+msgid "Example datas"
+msgstr "示例数据"
+
+#: hook.php:673 hook.php:686
+msgid "Plugin example displays on central page"
+msgstr "在后台管理面板显示示例插件"
+
+#: hook.php:680
+msgid "Plugin example displays on login page"
+msgstr "在登陆界面显示示例插件"
+
+#: inc/example.class.php:82
+msgid "Test link"
+msgstr "测试关联"
+
+#: inc/example.class.php:170
+msgid "Cron description for example"
+msgstr ""
+
+#: inc/example.class.php:171
+msgid "Cron parameter for example"
+msgstr ""
+
+#: inc/example.class.php:228 inc/example.class.php:234
+#: inc/example.class.php:237 inc/notificationtargetexample.class.php:44
+msgid "Example"
+msgstr "示例"
+
+#: inc/example.class.php:241 inc/example.class.php:248
+msgid "Test Plugin"
+msgstr "测试插件"
+
+#: inc/example.class.php:242
+msgid "Test Plugin 2"
+msgstr "测试插件 2"
+
+#: inc/example.class.php:260
+msgid "Plugin Example on Phone"
+msgstr ""
+
+#: inc/example.class.php:264
+msgid "Plugin central action"
+msgstr ""
+
+#: inc/example.class.php:287
+msgid "Plugin mailing action"
+msgstr ""
+
+#: inc/example.class.php:293
+msgid "First tab of Plugin example"
+msgstr ""
+
+#: inc/example.class.php:295
+msgid "Second tab of Plugin example"
+msgstr ""
+
+#. TRANS: %1$s is a class name, %2$d is an item ID
+#: inc/example.class.php:301
+#, php-format
+msgid "Plugin example CLASS=%1$s id=%2$d"
+msgstr ""
+
+#: inc/example.class.php:330
+msgid "test planning example 1"
+msgstr ""
+
+#: inc/example.class.php:390
+msgid "History from plugin example"
+msgstr ""
+
+#: inc/example.class.php:411
+msgid "Do Nothing - just for fun"
+msgstr ""
+
+#: inc/example.class.php:428 inc/example.class.php:452
+msgid "Write in item history"
+msgstr ""
+
+#: inc/example.class.php:432
+msgid "but do nothing :)"
+msgstr ""
+
+#: inc/example.class.php:451 inc/example.class.php:473
+msgid "Right it is the type I want..."
+msgstr ""
+
+#: inc/example.class.php:474
+msgid "But... I say I will do nothing for:"
+msgstr ""
+
+#: inc/ruletest.class.php:77
+msgid "Category (class)"
+msgstr ""
+
+#: inc/dropdown.class.php:42 inc/dropdown.class.php:44
+msgid "Plugin Example Dropdowns"
+msgstr "插件下拉列表示例"
+
+#: setup.php:268
+msgid "Installed / not configured"
+msgstr "已安装 / 不配置"
+
+#: config.php:48
+msgid "This is the plugin config page"
+msgstr "此插件配置界面"
