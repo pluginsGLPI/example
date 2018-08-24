@@ -57,7 +57,7 @@ class PluginExampleComputer extends CommonDBTM {
 
    static function item_can($item) {
 
-      if (($item-getType() == 'Computer')
+      if (($item->getType() == 'Computer')
           && ($item->right == READ)
           && ($item->fields['groups_id'] > 0)
           && !in_array($item->fields['groups_id'], $_SESSION["glpigroups"])) {
