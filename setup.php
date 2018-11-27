@@ -227,8 +227,7 @@ function plugin_version_example() {
       'homepage'       => 'https://github.com/pluginsGLPI/example',
       'requirements'   => [
          'glpi' => [
-            'min' => '9.3',
-            'dev' => true
+            'min' => '9.4',
          ]
       ]
    ];
@@ -243,12 +242,12 @@ function plugin_version_example() {
  */
 function plugin_example_check_prerequisites() {
 
-   $version = rtrim(GLPI_VERSION, '-dev');
-   if (version_compare($version, '9.3', 'lt')) {
-      echo "This plugin requires GLPI 9.3";
+   //Version check is not done by core in GLPI < 9.2 but has to be delegated to core in GLPI >= 9.2.
+   $version = preg_replace('/^((\d+\.?)+).*$/', '$1', GLPI_VERSION);
+   if (version_compare($version, '9.2', '<')) {
+      echo "This plugin requires GLPI >= 9.4";
       return false;
    }
-
    return true;
 }
 
