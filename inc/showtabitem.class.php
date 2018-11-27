@@ -36,7 +36,7 @@ along with GLPI. If not, see <http://www.gnu.org/licenses/>.
  *    ex: when viewing a ticket, change, computer,...
  *
  *    will be fired at each sub-item
- *    ex: for each TicketTask, TicketFollowup, ...
+ *    ex: for each TicketTask, ITILFollowup, ...
  *
  * post_show_item will be fired after the item show
  *
@@ -58,7 +58,7 @@ class PluginExampleShowtabitem {
     *                and 'options' are options like following
     *                  array( 'tabnum', 'itemtype')
     *                  where 'tabnum' is the internal name of the tab that will be shown
-    *                  and 'itemtype' is the type of the tab (ex: 'TicketFollowup' when showing followup tab in a ticket)
+    *                  and 'itemtype' is the type of the tab (ex: 'ITILFollowup' when showing followup tab in a ticket)
     * Note: you may pass datas to post_show_tab using the $param['options'] array (see example below)
     */
    static function pre_show_tab($params) {
@@ -135,7 +135,7 @@ class PluginExampleShowtabitem {
     *                  where 'id' is the id of object that will be shown (same than $param['item']->fields['id'])
     *                or if item contains a sub-object like followup, task, ... then it contains
     *                  array( 'parent', 'rand', 'showprivate')
-    *                  where 'parent' is the main object related to the current item (ex: if 'item' is TicketFollowup then it will be the related Ticket)
+    *                  where 'parent' is the main object related to the current item (ex: if 'item' is ITILFollowup then it will be the related Ticket)
     *                  and 'rand' contains the random number that will be used to render the item
     *                  and 'showprivate' is the right to show private items
     * Note: you may pass datas to post_show_item using the $param['options'] array
@@ -149,7 +149,7 @@ class PluginExampleShowtabitem {
             case 'TicketTask' :
                //echo 'test' ;
                break;
-            case 'TicketFollowup' :
+            case 'ITILFollowup' :
                //echo 'test' ;
                break;
          }
@@ -170,7 +170,7 @@ class PluginExampleShowtabitem {
     *                  where 'id' is the id of object that will be shown (same than $param['item']->fields['id'])
     *                or if item contains a sub-object like followup, task, ... then it contains
     *                  array( 'parent', 'rand', 'showprivate')
-    *                  where 'parent' is the main object related to the current item (ex: if 'item' is TicketFollowup then it will be the related Ticket)
+    *                  where 'parent' is the main object related to the current item (ex: if 'item' is ITILFollowup then it will be the related Ticket)
     *                  and 'rand' contains the random number that will be used to render the item
     *                  and 'showprivate' is the right to show private items
     * Note: you may get datas from pre_show_item using the $param['options'] array
@@ -184,7 +184,7 @@ class PluginExampleShowtabitem {
             case 'TicketTask' :
                //echo 'test' ;
                break;
-            case 'TicketFollowup' :
+            case 'ITILFollowup' :
                //echo 'test' ;
                break;
          }
