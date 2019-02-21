@@ -201,6 +201,11 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['pre_item_form']['example']    = ['PluginExampleItemForm', 'preItemForm'];
    $PLUGIN_HOOKS['post_item_form']['example']   = ['PluginExampleItemForm', 'postItemForm'];
 
+   // Add new actions to timeline
+   $PLUGIN_HOOKS['timeline_actions']['example'] = [
+      'PluginExampleItemForm', 'timelineActions'
+   ];
+
    // declare this plugin as an import plugin for Computer itemtype
    $PLUGIN_HOOKS['import_item']['exemple'] = ['Computer' => ['Plugin']];
 

@@ -117,4 +117,28 @@ class PluginExampleItemForm {
 
       echo $out;
    }
+
+   static public function timelineActions($params = []) {
+      $rand   = $params['rand'];
+      $ticket = $params['item'];
+
+      if (get_class($ticket) !== "Ticket") {
+         return false;
+      }
+
+      $edit_panel = "viewitem".$ticket->fields['id'].$rand;
+      $JS = <<<JAVASCRIPT
+      $(function() {
+         $(document).on('click', '#email_transfer_{$rand}', function(event) {
+            $('#{$edit_panel}').html('email send');
+         });
+      });
+JAVASCRIPT;
+
+      echo "<li class='followup' id='email_transfer_$rand'>
+            <i class='far fa-envelope'></i>".
+            __("Send a notification").
+            Html::scriptBlock($JS)."
+        </li>";
+   }
 }
