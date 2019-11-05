@@ -207,13 +207,16 @@ function plugin_init_example() {
    ];
 
    // declare this plugin as an import plugin for Computer itemtype
-   $PLUGIN_HOOKS['import_item']['exemple'] = ['Computer' => ['Plugin']];
+   $PLUGIN_HOOKS['import_item']['example'] = ['Computer' => ['Plugin']];
 
    // add additional informations on Computer::showForm
-   $PLUGIN_HOOKS['autoinventory_information']['exemple'] =  [
+   $PLUGIN_HOOKS['autoinventory_information']['example'] =  [
       'Computer' =>  ['PluginExampleComputer', 'showInfo']
    ];
 
+   // add new cards to dashboard grid
+   $PLUGIN_HOOKS['dashboard_types']['example'] = ['PluginExampleExample', 'dashboardTypes'];
+   $PLUGIN_HOOKS['dashboard_cards']['example'] = ['PluginExampleExample', 'dashboardCards'];
 }
 
 

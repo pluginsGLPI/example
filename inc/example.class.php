@@ -500,4 +500,101 @@ class PluginExampleExample extends CommonDBTM {
       return parent::generateLinkContents($link, $item);
    }
 
+
+   static function dashboardTypes() {
+      return [
+         'example'        => __("Plugin Example", 'example'),
+         'example_static' => __("Plugin Example (static)", 'example')
+      ];
+   }
+
+
+   static function dashboardCards() {
+      return [
+         'plugin_example_card' => [
+            'widgettype'   => "example",
+            'label'        => __("Plugin Example card"),
+            'function'     => "PluginExampleExample::cardWidget",
+            'provider'     => "PluginExampleExample::cardDataProvider",
+            'card_options' => [
+               'content' => __("Toggle edit mode to edit content"),
+            ]
+         ],
+         'plugin_example_card_without_provider' => [
+            'widgettype'   => "example_static",
+            'label'        => __("Plugin Example card without provider"),
+            'function'     => "PluginExampleExample::cardWidgetWithoutProvider",
+         ],
+         'plugin_example_card_with_core_widget' => [
+            'widgettype'   => "bigNumber",
+            'label'        => __("Plugin Example card without provider"),
+            'function'     => "Glpi\\Dashboard\\Widget::bigNumber",
+            'provider'     => "PluginExampleExample::cardBigNumberProvider",
+         ],
+      ];
+   }
+
+
+   static function cardWidget(array $params = []) {
+      $default = [
+         'data'  => [],
+         'title' => '',
+         // this property is "pretty" mandatory,
+         // as it contains the colors selected when adding widget on the grid send
+         // without it, your card will be transparent
+         'color' => '',
+      ];
+      $p = array_merge($default, $params);
+
+      // you need to encapsulate your html in div.card to benefit core style
+      $html = "<div class='card' style='background-color: {$p["color"]};'>";
+      $html.= "<h2>{$p['title']}</h2>";
+      $html.= "<ul>";
+      foreach ($p['data'] as $line) {
+         $html.= "<li>$line</li>";
+      }
+      $html.= "</ul>";
+      $html.= "</div>";
+
+      return $html;
+   }
+
+   static function cardDataProvider() {
+      return [
+         'title' => "Plugin example dashboard cards",
+         'data' => [
+            'test1',
+            'test2',
+            'test3',
+         ]
+      ];
+   }
+
+   static function cardWidgetWithoutProvider(array $params = []) {
+      $default = [
+         // this property is "pretty" mandatory,
+         // as it contains the colors selected when adding widget on the grid send
+         // without it, your card will be transparent
+         'color' => '',
+      ];
+      $p = array_merge($default, $params);
+
+      // you need to encapsulate your html in div.card to benefit core style
+      $html = "<div class='card' style='background-color: {$p["color"]};'>
+                  static html (+optional javascript) as card is not matched with a data provider
+
+                  <img src='https://www.linux.org/images/logo.png'>
+               </div>";
+
+      return $html;
+   }
+
+   static function cardBigNumberProvider() {
+      return [
+         'number' => rand(),
+         'url'    => "https://www.linux.org/",
+         'label'  => "plugin example - some text",
+         'icon'   => "fab fa-linux", // font awesome icon
+      ];
+   }
 }
