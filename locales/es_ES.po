@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-22 10:23+0000\n"
+"POT-Creation-Date: 2019-11-08 14:54+0000\n"
 "PO-Revision-Date: 2018-08-21 14:34+0000\n"
 "Last-Translator: Cédric Anne\n"
 "Language-Team: Spanish (Spain) (http://www.transifex.com/teclib/glpi-plugin-example/language/es_ES/)\n"
@@ -18,6 +18,101 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es_ES\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: config.php:48
+msgid "This is the plugin config page"
+msgstr "Esta es la página de configuración del plugin"
+
+#: inc/dropdown.class.php:42 inc/dropdown.class.php:44
+msgid "Plugin Example Dropdowns"
+msgstr "Menús desplegables del Plugin Ejemplo"
+
+#: inc/example.class.php:82
+msgid "Test link"
+msgstr "Vinculo de prueba"
+
+#: inc/example.class.php:170
+msgid "Cron description for example"
+msgstr "Descripción del cron para ejemplo"
+
+#: inc/example.class.php:171
+msgid "Cron parameter for example"
+msgstr "Parametro cron para ejemplo"
+
+#: inc/example.class.php:228 inc/example.class.php:234
+#: inc/example.class.php:237 inc/notificationtargetexample.class.php:44
+msgid "Example"
+msgstr "Ejemplo"
+
+#: inc/example.class.php:241 inc/example.class.php:248
+msgid "Test Plugin"
+msgstr "Test Plugin"
+
+#: inc/example.class.php:242
+msgid "Test Plugin 2"
+msgstr "Test Plugin 2"
+
+#: inc/example.class.php:260
+msgid "Plugin Example on Phone"
+msgstr "Plugin ejemplo en el teléfono"
+
+#: inc/example.class.php:264
+msgid "Plugin central action"
+msgstr "Acción del plugin central"
+
+#: inc/example.class.php:287
+msgid "Plugin mailing action"
+msgstr "Acción de correo del plugin"
+
+#: inc/example.class.php:293
+msgid "First tab of Plugin example"
+msgstr "Primera pestaña del Plugin ejemplo"
+
+#: inc/example.class.php:295
+msgid "Second tab of Plugin example"
+msgstr "Segunda pestaña del Plugin ejemplo"
+
+#. TRANS: %1$s is a class name, %2$d is an item ID
+#: inc/example.class.php:301
+#, php-format
+msgid "Plugin example CLASS=%1$s id=%2$d"
+msgstr "Plugin ejemplo CLASS=%1$s id=%2$d"
+
+#: inc/example.class.php:330
+msgid "test planning example 1"
+msgstr "prueba de planificación del ejemplo 1"
+
+#: inc/example.class.php:390
+msgid "History from plugin example"
+msgstr "Historial para el plugin ejemplo"
+
+#: inc/example.class.php:411
+msgid "Do Nothing - just for fun"
+msgstr "No hace nada - solo para diversión"
+
+#: inc/example.class.php:428 inc/example.class.php:452
+msgid "Write in item history"
+msgstr "Escribir como item del historial"
+
+#: inc/example.class.php:432
+msgid "but do nothing :)"
+msgstr "pero no hace nada :)"
+
+#: inc/example.class.php:451 inc/example.class.php:473
+msgid "Right it is the type I want..."
+msgstr "Correcto este es el tipo que yo quiero..."
+
+#: inc/example.class.php:474
+msgid "But... I say I will do nothing for:"
+msgstr "Pero... Yo digo que no voy hacer nada para:"
+
+#: inc/ruletest.class.php:77
+msgid "Category (class)"
+msgstr "Categoría (clase)"
+
+#: setup.php:272
+msgid "Installed / not configured"
+msgstr "Instalado / no configurado"
 
 #: hook.php:60
 msgid "Plugin Example Dropdown"
@@ -106,98 +201,3 @@ msgstr "El ejemplo del plugin se muestra en la página central"
 #: hook.php:680
 msgid "Plugin example displays on login page"
 msgstr "El ejemplo del plugin se muestra en la página de inicio de sesión"
-
-#: inc/example.class.php:82
-msgid "Test link"
-msgstr "Vinculo de prueba"
-
-#: inc/example.class.php:170
-msgid "Cron description for example"
-msgstr "Descripción del cron para ejemplo"
-
-#: inc/example.class.php:171
-msgid "Cron parameter for example"
-msgstr "Parametro cron para ejemplo"
-
-#: inc/example.class.php:228 inc/example.class.php:234
-#: inc/example.class.php:237 inc/notificationtargetexample.class.php:44
-msgid "Example"
-msgstr "Ejemplo"
-
-#: inc/example.class.php:241 inc/example.class.php:248
-msgid "Test Plugin"
-msgstr "Test Plugin"
-
-#: inc/example.class.php:242
-msgid "Test Plugin 2"
-msgstr "Test Plugin 2"
-
-#: inc/example.class.php:260
-msgid "Plugin Example on Phone"
-msgstr "Plugin ejemplo en el teléfono"
-
-#: inc/example.class.php:264
-msgid "Plugin central action"
-msgstr "Acción del plugin central"
-
-#: inc/example.class.php:287
-msgid "Plugin mailing action"
-msgstr "Acción de correo del plugin"
-
-#: inc/example.class.php:293
-msgid "First tab of Plugin example"
-msgstr "Primera pestaña del Plugin ejemplo"
-
-#: inc/example.class.php:295
-msgid "Second tab of Plugin example"
-msgstr "Segunda pestaña del Plugin ejemplo"
-
-#. TRANS: %1$s is a class name, %2$d is an item ID
-#: inc/example.class.php:301
-#, php-format
-msgid "Plugin example CLASS=%1$s id=%2$d"
-msgstr "Plugin ejemplo CLASS=%1$s id=%2$d"
-
-#: inc/example.class.php:330
-msgid "test planning example 1"
-msgstr "prueba de planificación del ejemplo 1"
-
-#: inc/example.class.php:390
-msgid "History from plugin example"
-msgstr "Historial para el plugin ejemplo"
-
-#: inc/example.class.php:411
-msgid "Do Nothing - just for fun"
-msgstr "No hace nada - solo para diversión"
-
-#: inc/example.class.php:428 inc/example.class.php:452
-msgid "Write in item history"
-msgstr "Escribir como item del historial"
-
-#: inc/example.class.php:432
-msgid "but do nothing :)"
-msgstr "pero no hace nada :)"
-
-#: inc/example.class.php:451 inc/example.class.php:473
-msgid "Right it is the type I want..."
-msgstr "Correcto este es el tipo que yo quiero..."
-
-#: inc/example.class.php:474
-msgid "But... I say I will do nothing for:"
-msgstr "Pero... Yo digo que no voy hacer nada para:"
-
-#: inc/ruletest.class.php:77
-msgid "Category (class)"
-msgstr "Categoría (clase)"
-
-#: inc/dropdown.class.php:42 inc/dropdown.class.php:44
-msgid "Plugin Example Dropdowns"
-msgstr "Menús desplegables del Plugin Ejemplo"
-
-#: setup.php:268
-msgid "Installed / not configured"
-msgstr "Instalado / no configurado"
-
-#: config.php:48
-msgid "This is the plugin config page"
-msgstr "Esta es la página de configuración del plugin"

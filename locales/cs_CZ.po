@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-22 10:23+0000\n"
+"POT-Creation-Date: 2019-11-08 14:54+0000\n"
 "PO-Revision-Date: 2018-08-21 18:10+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/teclib/glpi-plugin-example/language/cs_CZ/)\n"
@@ -18,6 +18,101 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: config.php:48
+msgid "This is the plugin config page"
+msgstr "Toto je stránka s nastaveními zásuvného modulu"
+
+#: inc/dropdown.class.php:42 inc/dropdown.class.php:44
+msgid "Plugin Example Dropdowns"
+msgstr "Rozbalovací nabídky zásuvného modulu pro ukázku"
+
+#: inc/example.class.php:82
+msgid "Test link"
+msgstr "Testovací odkaz"
+
+#: inc/example.class.php:170
+msgid "Cron description for example"
+msgstr "Popis naplánované úlohy (cron) pro ukázku"
+
+#: inc/example.class.php:171
+msgid "Cron parameter for example"
+msgstr "Parametr naplánované úlohy (cron) pro ukázku"
+
+#: inc/example.class.php:228 inc/example.class.php:234
+#: inc/example.class.php:237 inc/notificationtargetexample.class.php:44
+msgid "Example"
+msgstr "Příklad"
+
+#: inc/example.class.php:241 inc/example.class.php:248
+msgid "Test Plugin"
+msgstr "Testovací zásuvný modul"
+
+#: inc/example.class.php:242
+msgid "Test Plugin 2"
+msgstr "Testovací zásuvný modul 2"
+
+#: inc/example.class.php:260
+msgid "Plugin Example on Phone"
+msgstr "Zásuvný modul pro ukázku na telefonu"
+
+#: inc/example.class.php:264
+msgid "Plugin central action"
+msgstr "Centrální akce zásuvného modulu"
+
+#: inc/example.class.php:287
+msgid "Plugin mailing action"
+msgstr "E-mailová akce zásuvného modulu"
+
+#: inc/example.class.php:293
+msgid "First tab of Plugin example"
+msgstr "První panel zásuvného modulu pro ukázku"
+
+#: inc/example.class.php:295
+msgid "Second tab of Plugin example"
+msgstr "Druhý panel zásuvného modulu pro ukázku"
+
+#. TRANS: %1$s is a class name, %2$d is an item ID
+#: inc/example.class.php:301
+#, php-format
+msgid "Plugin example CLASS=%1$s id=%2$d"
+msgstr "Zásuvný modul pro ukázku CLASS=%1$s id=%2$d"
+
+#: inc/example.class.php:330
+msgid "test planning example 1"
+msgstr "Test příklad plánu 1"
+
+#: inc/example.class.php:390
+msgid "History from plugin example"
+msgstr "Historie ze zásuvného modulu pro ukázku"
+
+#: inc/example.class.php:411
+msgid "Do Nothing - just for fun"
+msgstr "Nedělat nic – jen pro pobavení"
+
+#: inc/example.class.php:428 inc/example.class.php:452
+msgid "Write in item history"
+msgstr "Zapsat do historie položky"
+
+#: inc/example.class.php:432
+msgid "but do nothing :)"
+msgstr "ale nic nedělat :)"
+
+#: inc/example.class.php:451 inc/example.class.php:473
+msgid "Right it is the type I want..."
+msgstr "Právě toto je typ který chci…"
+
+#: inc/example.class.php:474
+msgid "But... I say I will do nothing for:"
+msgstr "Ale… Říkám že nebudu dělat nic pro:"
+
+#: inc/ruletest.class.php:77
+msgid "Category (class)"
+msgstr "Kategorie (třída)"
+
+#: setup.php:272
+msgid "Installed / not configured"
+msgstr "Nainstalováno/nenastaveno"
 
 #: hook.php:60
 msgid "Plugin Example Dropdown"
@@ -106,98 +201,3 @@ msgstr "Zásuvný modul pro ukázku zobrazuje na centrální stránce"
 #: hook.php:680
 msgid "Plugin example displays on login page"
 msgstr "Zásuvný modul pro ukázku zobrazuje na přihlašovací stránce"
-
-#: inc/example.class.php:82
-msgid "Test link"
-msgstr "Testovací odkaz"
-
-#: inc/example.class.php:170
-msgid "Cron description for example"
-msgstr "Popis naplánované úlohy (cron) pro ukázku"
-
-#: inc/example.class.php:171
-msgid "Cron parameter for example"
-msgstr "Parametr naplánované úlohy (cron) pro ukázku"
-
-#: inc/example.class.php:228 inc/example.class.php:234
-#: inc/example.class.php:237 inc/notificationtargetexample.class.php:44
-msgid "Example"
-msgstr "Příklad"
-
-#: inc/example.class.php:241 inc/example.class.php:248
-msgid "Test Plugin"
-msgstr "Testovací zásuvný modul"
-
-#: inc/example.class.php:242
-msgid "Test Plugin 2"
-msgstr "Testovací zásuvný modul 2"
-
-#: inc/example.class.php:260
-msgid "Plugin Example on Phone"
-msgstr "Zásuvný modul pro ukázku na telefonu"
-
-#: inc/example.class.php:264
-msgid "Plugin central action"
-msgstr "Centrální akce zásuvného modulu"
-
-#: inc/example.class.php:287
-msgid "Plugin mailing action"
-msgstr "E-mailová akce zásuvného modulu"
-
-#: inc/example.class.php:293
-msgid "First tab of Plugin example"
-msgstr "První panel zásuvného modulu pro ukázku"
-
-#: inc/example.class.php:295
-msgid "Second tab of Plugin example"
-msgstr "Druhý panel zásuvného modulu pro ukázku"
-
-#. TRANS: %1$s is a class name, %2$d is an item ID
-#: inc/example.class.php:301
-#, php-format
-msgid "Plugin example CLASS=%1$s id=%2$d"
-msgstr "Zásuvný modul pro ukázku CLASS=%1$s id=%2$d"
-
-#: inc/example.class.php:330
-msgid "test planning example 1"
-msgstr "Test příklad plánu 1"
-
-#: inc/example.class.php:390
-msgid "History from plugin example"
-msgstr "Historie ze zásuvného modulu pro ukázku"
-
-#: inc/example.class.php:411
-msgid "Do Nothing - just for fun"
-msgstr "Nedělat nic – jen pro pobavení"
-
-#: inc/example.class.php:428 inc/example.class.php:452
-msgid "Write in item history"
-msgstr "Zapsat do historie položky"
-
-#: inc/example.class.php:432
-msgid "but do nothing :)"
-msgstr "ale nic nedělat :)"
-
-#: inc/example.class.php:451 inc/example.class.php:473
-msgid "Right it is the type I want..."
-msgstr "Právě toto je typ který chci…"
-
-#: inc/example.class.php:474
-msgid "But... I say I will do nothing for:"
-msgstr "Ale… Říkám že nebudu dělat nic pro:"
-
-#: inc/ruletest.class.php:77
-msgid "Category (class)"
-msgstr "Kategorie (třída)"
-
-#: inc/dropdown.class.php:42 inc/dropdown.class.php:44
-msgid "Plugin Example Dropdowns"
-msgstr "Rozbalovací nabídky zásuvného modulu pro ukázku"
-
-#: setup.php:268
-msgid "Installed / not configured"
-msgstr "Nainstalováno/nenastaveno"
-
-#: config.php:48
-msgid "This is the plugin config page"
-msgstr "Toto je stránka s nastaveními zásuvného modulu"
