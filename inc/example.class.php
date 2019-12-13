@@ -503,8 +503,16 @@ class PluginExampleExample extends CommonDBTM {
 
    static function dashboardTypes() {
       return [
-         'example'        => __("Plugin Example", 'example'),
-         'example_static' => __("Plugin Example (static)", 'example')
+         'example' => [
+            'label'    => __("Plugin Example", 'example'),
+            'function' => "PluginExampleExample::cardWidget",
+            'image'    => "https://via.placeholder.com/100x86?text=example",
+         ],
+         'example_static' => [
+            'label'    => __("Plugin Example (static)", 'example'),
+            'function' => "PluginExampleExample::cardWidgetWithoutProvider",
+            'image'    => "https://via.placeholder.com/100x86?text=example+static",
+         ],
       ];
    }
 
@@ -512,23 +520,17 @@ class PluginExampleExample extends CommonDBTM {
    static function dashboardCards() {
       return [
          'plugin_example_card' => [
-            'widgettype'   => "example",
+            'widgettype'   => ["example"],
             'label'        => __("Plugin Example card"),
-            'function'     => "PluginExampleExample::cardWidget",
             'provider'     => "PluginExampleExample::cardDataProvider",
-            'card_options' => [
-               'content' => __("Toggle edit mode to edit content"),
-            ]
          ],
          'plugin_example_card_without_provider' => [
-            'widgettype'   => "example_static",
+            'widgettype'   => ["example_static"],
             'label'        => __("Plugin Example card without provider"),
-            'function'     => "PluginExampleExample::cardWidgetWithoutProvider",
          ],
          'plugin_example_card_with_core_widget' => [
-            'widgettype'   => "bigNumber",
-            'label'        => __("Plugin Example card without provider"),
-            'function'     => "Glpi\\Dashboard\\Widget::bigNumber",
+            'widgettype'   => ["bigNumber"],
+            'label'        => __("Plugin Example card with core provider"),
             'provider'     => "PluginExampleExample::cardBigNumberProvider",
          ],
       ];
@@ -559,10 +561,17 @@ class PluginExampleExample extends CommonDBTM {
       return $html;
    }
 
-   static function cardDataProvider() {
+   static function cardDataProvider(array $params = []) {
+      $default_params = [
+         'label' => null,
+         'icon'  => "fas fa-smile-wink",
+      ];
+      $params = array_merge($default_params, $params);
+
       return [
-         'title' => "Plugin example dashboard cards",
-         'data' => [
+         'title' => $params['label'],
+         'icon'  => $params['icon'],
+         'data'  => [
             'test1',
             'test2',
             'test3',
@@ -589,7 +598,13 @@ class PluginExampleExample extends CommonDBTM {
       return $html;
    }
 
-   static function cardBigNumberProvider() {
+   static function cardBigNumberProvider(array $params = []) {
+      $default_params = [
+         'label' => null,
+         'icon'  => null,
+      ];
+      $params = array_merge($default_params, $params);
+
       return [
          'number' => rand(),
          'url'    => "https://www.linux.org/",
