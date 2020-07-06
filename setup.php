@@ -219,6 +219,9 @@ function plugin_init_example() {
 
     $PLUGIN_HOOKS[Hooks::FILTER_ACTORS]['example'] = "plugin_example_filter_actors";
 
+   // add new cards to dashboard grid
+   $PLUGIN_HOOKS['dashboard_types']['example'] = ['PluginExampleExample', 'dashboardTypes'];
+   $PLUGIN_HOOKS['dashboard_cards']['example'] = ['PluginExampleExample', 'dashboardCards'];
 }
 
 
