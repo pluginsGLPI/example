@@ -517,8 +517,11 @@ class PluginExampleExample extends CommonDBTM {
    }
 
 
-   static function dashboardCards() {
-      return [
+   static function dashboardCards($cards = []) {
+      if (is_null($cards)) {
+         $cards = [];
+      }
+      $new_cards =  [
          'plugin_example_card' => [
             'widgettype'   => ["example"],
             'label'        => __("Plugin Example card"),
@@ -534,6 +537,8 @@ class PluginExampleExample extends CommonDBTM {
             'provider'     => "PluginExampleExample::cardBigNumberProvider",
          ],
       ];
+
+      return array_merge($cards, $new_cards);
    }
 
 
