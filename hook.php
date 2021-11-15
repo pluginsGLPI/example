@@ -295,7 +295,6 @@ function plugin_example_MassiveActionsFieldsDisplay($options = []) {
       switch ($table.".".$field) {
          case 'glpi_plugin_example_examples.serial' :
             echo __("Not really specific - Just for example", 'example');
-            //Html::autocompletionTextField($linkfield,$table,$field);
             // Dropdown::showYesNo($linkfield);
             // Need to return true if specific display
             return true;
