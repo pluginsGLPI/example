@@ -470,17 +470,20 @@ function plugin_example_install() {
 
    ProfileRight::addProfileRights(['example:read']);
 
+   $default_charset = DBConnection::getDefaultCharset();
+   $default_collation = DBConnection::getDefaultCollation();
+
    if (!$DB->tableExists("glpi_plugin_example_examples")) {
       $query = "CREATE TABLE `glpi_plugin_example_examples` (
                   `id` int NOT NULL auto_increment,
-                  `name` varchar(255) collate utf8_unicode_ci default NULL,
-                  `serial` varchar(255) collate utf8_unicode_ci NOT NULL,
+                  `name` varchar(255) default NULL,
+                  `serial` varchar(255) NOT NULL,
                   `plugin_example_dropdowns_id` int NOT NULL default '0',
                   `is_deleted` tinyint NOT NULL default '0',
                   `is_template` tinyint NOT NULL default '0',
-                  `template_name` varchar(255) collate utf8_unicode_ci default NULL,
+                  `template_name` varchar(255) default NULL,
                 PRIMARY KEY (`id`)
-               ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
+               ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation}";
 
       $DB->query($query) or die("error creating glpi_plugin_example_examples ". $DB->error());
 
@@ -496,11 +499,11 @@ function plugin_example_install() {
    if (!$DB->tableExists("glpi_plugin_example_dropdowns")) {
       $query = "CREATE TABLE `glpi_plugin_example_dropdowns` (
                   `id` int NOT NULL auto_increment,
-                  `name` varchar(255) collate utf8_unicode_ci default NULL,
-                  `comment` text collate utf8_unicode_ci,
+                  `name` varchar(255) default NULL,
+                  `comment` text,
                 PRIMARY KEY  (`id`),
                 KEY `name` (`name`)
-               ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
+               ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation}";
 
       $DB->query($query) or die("error creating glpi_plugin_example_dropdowns". $DB->error());
 
@@ -516,13 +519,13 @@ function plugin_example_install() {
    if (!$DB->tableExists('glpi_plugin_example_devicecameras')) {
       $query = "CREATE TABLE `glpi_plugin_example_devicecameras` (
                   `id` int NOT NULL AUTO_INCREMENT,
-                  `designation` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-                  `comment` text COLLATE utf8_unicode_ci,
+                  `designation` varchar(255) DEFAULT NULL,
+                  `comment` text,
                   `manufacturers_id` int NOT NULL DEFAULT '0',
                   PRIMARY KEY (`id`),
                   KEY `designation` (`designation`),
                   KEY `manufacturers_id` (`manufacturers_id`)
-                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
+               ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation}";
 
       $DB->query($query) or die("error creating glpi_plugin_example_examples ". $DB->error());
    }
@@ -531,7 +534,7 @@ function plugin_example_install() {
       $query = "CREATE TABLE `glpi_plugin_example_items_devicecameras` (
                   `id` int NOT NULL AUTO_INCREMENT,
                   `items_id` int NOT NULL DEFAULT '0',
-                  `itemtype` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                  `itemtype` varchar(255) DEFAULT NULL,
                   `plugin_example_devicecameras_id` int NOT NULL DEFAULT '0',
                   `is_deleted` tinyint NOT NULL DEFAULT '0',
                   `is_dynamic` tinyint NOT NULL DEFAULT '0',
@@ -540,7 +543,7 @@ function plugin_example_install() {
                   KEY `plugin_example_devicecameras_id` (`plugin_example_devicecameras_id`),
                   KEY `is_deleted` (`is_deleted`),
                   KEY `is_dynamic` (`is_dynamic`)
-                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
+               ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation}";
 
       $DB->query($query) or die("error creating glpi_plugin_example_examples ". $DB->error());
    }
