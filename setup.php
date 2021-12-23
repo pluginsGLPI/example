@@ -31,6 +31,8 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
+use Glpi\Plugin\Hooks;
+
 define ('PLUGIN_EXAMPLE_VERSION', '7.1');
 
 /**
@@ -202,12 +204,14 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['post_item_form']['example']   = ['PluginExampleItemForm', 'postItemForm'];
 
    // declare this plugin as an import plugin for Computer itemtype
-   $PLUGIN_HOOKS['import_item']['exemple'] = ['Computer' => ['Plugin']];
+   $PLUGIN_HOOKS['import_item']['example'] = ['Computer' => ['Plugin']];
 
    // add additional informations on Computer::showForm
-   $PLUGIN_HOOKS['autoinventory_information']['exemple'] =  [
+   $PLUGIN_HOOKS['autoinventory_information']['example'] =  [
       'Computer' =>  ['PluginExampleComputer', 'showInfo']
    ];
+
+    $PLUGIN_HOOKS[Hooks::FILTER_ACTORS]['example'] = "plugin_example_filter_actors";
 
 }
 
