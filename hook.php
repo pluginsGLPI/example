@@ -700,5 +700,5 @@ function plugin_example_filter_actors(array $params = []): array {
         }
     }
 
-    return $params['actors'];
+    return $params;
 }
