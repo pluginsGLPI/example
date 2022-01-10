@@ -686,3 +686,19 @@ function plugin_example_infocom_hook($params) {
    echo __("Plugin example displays on central page", "example");
    echo "</th></tr>";
 }
+
+function plugin_example_filter_actors(array $params = []): array {
+    $itemtype = $params['params']['itemtype'];
+    $items_id = $params['params']['items_id'];
+
+    // remove users_id = 1 for assignee list
+    if ($itemtype == 'Ticket' && $params['params']['actortype'] == 'assign') {
+        foreach ($params['actors'] as $index => &$actor) {
+            if ($actor['type'] == 'user' && $actor['items_id'] == 1) {
+                unset($params['actors'][$index]);
+            }
+        }
+    }
+
+    return $params;
+}
