@@ -91,6 +91,7 @@ function plugin_init_example() {
       //       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links'][__s('Test link', 'example')] = '/plugins/example/index.php';
 
       $PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
+      $PLUGIN_HOOKS["helpdesk_menu_entry_icon"]['example'] = 'fas fa-puzzle-piece';
    }
 
    // Config page
