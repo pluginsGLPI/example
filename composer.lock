@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1780e587040d1a21844800dc378c2f2e",
+    "content-hash": "469eca19f475207181e67a99b51f34a4",
     "packages": [],
     "packages-dev": [
         {
@@ -101,6 +101,10 @@
                 }
             ],
             "description": "Initialize Symfony Console commands from annotated command class methods.",
+            "support": {
+                "issues": "https://github.com/consolidation/annotated-command/issues",
+                "source": "https://github.com/consolidation/annotated-command/tree/master"
+            },
             "time": "2019-03-08T16:55:03+00:00"
         },
         {
@@ -182,6 +186,10 @@
                 }
             ],
             "description": "Provide configuration services for a commandline tool.",
+            "support": {
+                "issues": "https://github.com/consolidation/config/issues",
+                "source": "https://github.com/consolidation/config/tree/master"
+            },
             "time": "2019-03-03T19:37:04+00:00"
         },
         {
@@ -272,6 +280,10 @@
                 }
             ],
             "description": "Improved Psr-3 / Psr\\Log logger based on Symfony Console components.",
+            "support": {
+                "issues": "https://github.com/consolidation/log/issues",
+                "source": "https://github.com/consolidation/log/tree/master"
+            },
             "time": "2019-01-01T17:30:51+00:00"
         },
         {
@@ -373,6 +385,10 @@
                 }
             ],
             "description": "Format text by applying transformations provided by plug-in formatters.",
+            "support": {
+                "issues": "https://github.com/consolidation/output-formatters/issues",
+                "source": "https://github.com/consolidation/output-formatters/tree/master"
+            },
             "time": "2019-05-30T23:16:01+00:00"
         },
         {
@@ -482,6 +498,10 @@
                 }
             ],
             "description": "Modern task runner",
+            "support": {
+                "issues": "https://github.com/consolidation/Robo/issues",
+                "source": "https://github.com/consolidation/Robo/tree/1.x"
+            },
             "time": "2019-10-29T15:50:02+00:00"
         },
         {
@@ -532,6 +552,10 @@
                 }
             ],
             "description": "Provides a self:update command for Symfony Console applications.",
+            "support": {
+                "issues": "https://github.com/consolidation/self-update/issues",
+                "source": "https://github.com/consolidation/self-update/tree/1.1.5"
+            },
             "time": "2018-10-28T01:52:03+00:00"
         },
         {
@@ -563,6 +587,11 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
+            "support": {
+                "issues": "https://github.com/container-interop/container-interop/issues",
+                "source": "https://github.com/container-interop/container-interop/tree/master"
+            },
+            "abandoned": "psr/container",
             "time": "2017-02-14T19:40:03+00:00"
         },
         {
@@ -622,6 +651,10 @@
                 "dot",
                 "notation"
             ],
+            "support": {
+                "issues": "https://github.com/dflydev/dflydev-dot-access-data/issues",
+                "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/master"
+            },
             "time": "2017-01-20T21:14:22+00:00"
         },
         {
@@ -659,6 +692,10 @@
                 "glpi",
                 "phpcs"
             ],
+            "support": {
+                "issues": "https://github.com/glpi-project/coding-standard/issues",
+                "source": "https://github.com/glpi-project/coding-standard"
+            },
             "time": "2019-10-31T10:30:33+00:00"
         },
         {
@@ -709,6 +746,10 @@
                 "plugins",
                 "tools"
             ],
+            "support": {
+                "issues": "https://github.com/glpi-project/tools/issues",
+                "source": "https://github.com/glpi-project/tools"
+            },
             "time": "2019-06-07T09:46:17+00:00"
         },
         {
@@ -756,6 +797,10 @@
                 }
             ],
             "description": "Expands internal property references in PHP arrays file.",
+            "support": {
+                "issues": "https://github.com/grasmash/expander/issues",
+                "source": "https://github.com/grasmash/expander/tree/master"
+            },
             "time": "2017-12-21T22:14:55+00:00"
         },
         {
@@ -804,6 +849,10 @@
                 }
             ],
             "description": "Expands internal property references in a yaml file.",
+            "support": {
+                "issues": "https://github.com/grasmash/yaml-expander/issues",
+                "source": "https://github.com/grasmash/yaml-expander/tree/master"
+            },
             "time": "2017-12-16T16:06:03+00:00"
         },
         {
@@ -869,10 +918,14 @@
                 "provider",
                 "service"
             ],
+            "support": {
+                "issues": "https://github.com/thephpleague/container/issues",
+                "source": "https://github.com/thephpleague/container/tree/2.x"
+            },
             "time": "2017-05-10T09:20:27+00:00"
         },
         {
-            "name": "natxet/CssMin",
+            "name": "natxet/cssmin",
             "version": "v3.0.6",
             "source": {
                 "type": "git",
@@ -916,6 +969,10 @@
                 "css",
                 "minify"
             ],
+            "support": {
+                "issues": "https://github.com/natxet/CssMin/issues",
+                "source": "https://github.com/natxet/CssMin/tree/master"
+            },
             "time": "2018-01-09T11:15:01+00:00"
         },
         {
@@ -958,6 +1015,11 @@
                 "javascript",
                 "minification"
             ],
+            "support": {
+                "issues": "https://github.com/tchwork/jsqueeze/issues",
+                "source": "https://github.com/tchwork/jsqueeze/tree/v1.0.7"
+            },
+            "abandoned": true,
             "time": "2015-03-25T10:11:08+00:00"
         },
         {
@@ -1007,6 +1069,10 @@
                 "container-interop",
                 "psr"
             ],
+            "support": {
+                "issues": "https://github.com/php-fig/container/issues",
+                "source": "https://github.com/php-fig/container/tree/master"
+            },
             "time": "2017-02-14T16:28:37+00:00"
         },
         {
@@ -1054,6 +1120,9 @@
                 "psr",
                 "psr-3"
             ],
+            "support": {
+                "source": "https://github.com/php-fig/log/tree/1.1.2"
+            },
             "time": "2019-11-01T11:05:21+00:00"
         },
         {
@@ -1105,6 +1174,11 @@
                 "phpcs",
                 "standards"
             ],
+            "support": {
+                "issues": "https://github.com/squizlabs/PHP_CodeSniffer/issues",
+                "source": "https://github.com/squizlabs/PHP_CodeSniffer",
+                "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
+            },
             "time": "2019-10-28T04:36:32+00:00"
         },
         {
@@ -1177,6 +1251,9 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/console/tree/v3.4.33"
+            },
             "time": "2019-10-24T15:33:53+00:00"
         },
         {
@@ -1233,6 +1310,9 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/debug/tree/3.4"
+            },
             "time": "2019-10-24T15:33:53+00:00"
         },
         {
@@ -1296,6 +1376,9 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/event-dispatcher/tree/3.4"
+            },
             "time": "2019-10-24T15:33:53+00:00"
         },
         {
@@ -1346,6 +1429,9 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/filesystem/tree/v3.4.31"
+            },
             "time": "2019-08-20T13:31:17+00:00"
         },
         {
@@ -1395,6 +1481,9 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/finder/tree/v3.4.33"
+            },
             "time": "2019-10-30T12:43:22+00:00"
         },
         {
@@ -1453,6 +1542,9 @@
                 "polyfill",
                 "portable"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.12.0"
+            },
             "time": "2019-08-06T08:03:45+00:00"
         },
         {
@@ -1512,6 +1604,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.12.0"
+            },
             "time": "2019-08-06T08:03:45+00:00"
         },
         {
@@ -1561,6 +1656,9 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/process/tree/v3.4.33"
+            },
             "time": "2019-10-24T15:33:53+00:00"
         },
         {
@@ -1620,6 +1718,9 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/yaml/tree/3.4"
+            },
             "time": "2019-10-24T15:33:53+00:00"
         }
     ],
@@ -1628,9 +1729,12 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": "^7.2"
+    },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "5.6"
-    }
+        "php": "7.2.0"
+    },
+    "plugin-api-version": "2.1.0"
 }

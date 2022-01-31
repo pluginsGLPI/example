@@ -26,14 +26,14 @@
  --------------------------------------------------------------------------
  */
 
-// ----------------------------------------------------------------------
-// Original Author of file:
-// Purpose of file:
-// ----------------------------------------------------------------------
-
 use Glpi\Plugin\Hooks;
 
-define ('PLUGIN_EXAMPLE_VERSION', '7.1');
+define('PLUGIN_EXAMPLE_VERSION', '7.2');
+
+// Minimal GLPI version, inclusive
+define('PLUGIN_EXAMPLE_MIN_GLPI', '9.5.0');
+// Maximum GLPI version, exclusive
+define('PLUGIN_EXAMPLE_MAX_GLPI', '9.5.99');
 
 /**
  * Init hooks of the plugin.
@@ -235,12 +235,13 @@ function plugin_version_example() {
    return [
       'name'           => 'Plugin Example',
       'version'        => PLUGIN_EXAMPLE_VERSION,
-      'author'         => 'GLPI developer team',
+      'author'         => 'Example plugin team',
       'license'        => 'GPLv2+',
       'homepage'       => 'https://github.com/pluginsGLPI/example',
       'requirements'   => [
          'glpi' => [
-            'min' => '9.4',
+            'min' => PLUGIN_EXAMPLE_MIN_GLPI,
+            'max' => PLUGIN_EXAMPLE_MAX_GLPI,
          ]
       ]
    ];
@@ -254,11 +255,7 @@ function plugin_version_example() {
  * @return boolean
  */
 function plugin_example_check_prerequisites() {
-
-   //Version check is not done by core in GLPI < 9.2 but has to be delegated to core in GLPI >= 9.2.
-   $version = preg_replace('/^((\d+\.?)+).*$/', '$1', GLPI_VERSION);
-   if (version_compare($version, '9.2', '<')) {
-      echo "This plugin requires GLPI >= 9.4";
+   if (false) {
       return false;
    }
    return true;
