@@ -30,7 +30,7 @@
 
 use Glpi\Plugin\Hooks;
 
-define('PLUGIN_EXAMPLE_VERSION', '7.2');
+define('PLUGIN_EXAMPLE_VERSION', '0.0.1');
 
 // Minimal GLPI version, inclusive
 define('PLUGIN_EXAMPLE_MIN_GLPI', '9.5.0');
