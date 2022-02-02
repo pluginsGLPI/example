@@ -472,10 +472,11 @@ function plugin_example_install() {
 
    $default_charset = DBConnection::getDefaultCharset();
    $default_collation = DBConnection::getDefaultCollation();
+   $default_key_sign = DBConnection::getDefaultPrimaryKeySignOption();
 
    if (!$DB->tableExists("glpi_plugin_example_examples")) {
       $query = "CREATE TABLE `glpi_plugin_example_examples` (
-                  `id` int NOT NULL auto_increment,
+                  `id` int {$default_key_sign} NOT NULL auto_increment,
                   `name` varchar(255) default NULL,
                   `serial` varchar(255) NOT NULL,
                   `plugin_example_dropdowns_id` int NOT NULL default '0',
@@ -498,7 +499,7 @@ function plugin_example_install() {
 
    if (!$DB->tableExists("glpi_plugin_example_dropdowns")) {
       $query = "CREATE TABLE `glpi_plugin_example_dropdowns` (
-                  `id` int NOT NULL auto_increment,
+                  `id` int {$default_key_sign} NOT NULL auto_increment,
                   `name` varchar(255) default NULL,
                   `comment` text,
                 PRIMARY KEY  (`id`),
@@ -518,10 +519,10 @@ function plugin_example_install() {
 
    if (!$DB->tableExists('glpi_plugin_example_devicecameras')) {
       $query = "CREATE TABLE `glpi_plugin_example_devicecameras` (
-                  `id` int NOT NULL AUTO_INCREMENT,
+                  `id` int {$default_key_sign} NOT NULL AUTO_INCREMENT,
                   `designation` varchar(255) DEFAULT NULL,
                   `comment` text,
-                  `manufacturers_id` int NOT NULL DEFAULT '0',
+                  `manufacturers_id` int {$default_key_sign} NOT NULL DEFAULT '0',
                   PRIMARY KEY (`id`),
                   KEY `designation` (`designation`),
                   KEY `manufacturers_id` (`manufacturers_id`)
@@ -532,10 +533,10 @@ function plugin_example_install() {
 
    if (!$DB->tableExists('glpi_plugin_example_items_devicecameras')) {
       $query = "CREATE TABLE `glpi_plugin_example_items_devicecameras` (
-                  `id` int NOT NULL AUTO_INCREMENT,
-                  `items_id` int NOT NULL DEFAULT '0',
+                  `id` int {$default_key_sign} NOT NULL AUTO_INCREMENT,
+                  `items_id` int {$default_key_sign} NOT NULL DEFAULT '0',
                   `itemtype` varchar(255) DEFAULT NULL,
-                  `plugin_example_devicecameras_id` int NOT NULL DEFAULT '0',
+                  `plugin_example_devicecameras_id` int {$default_key_sign} NOT NULL DEFAULT '0',
                   `is_deleted` tinyint NOT NULL DEFAULT '0',
                   `is_dynamic` tinyint NOT NULL DEFAULT '0',
                   PRIMARY KEY (`id`),
