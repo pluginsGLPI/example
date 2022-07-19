@@ -29,6 +29,14 @@
  */
 
 use Glpi\Plugin\Hooks;
+use GlpiPlugin\Example\Computer;
+use GlpiPlugin\Example\Config;
+use GlpiPlugin\Example\Dropdown;
+use GlpiPlugin\Example\DeviceCamera;
+use GlpiPlugin\Example\Example;
+use GlpiPlugin\Example\ItemForm;
+use GlpiPlugin\Example\RuleTestCollection;
+use GlpiPlugin\Example\Showtabitem;
 
 define('PLUGIN_EXAMPLE_VERSION', '0.0.1');
 
@@ -48,38 +56,38 @@ function plugin_init_example() {
 
    // Params : plugin name - string type - ID - Array of attributes
    // No specific information passed so not needed
-   //Plugin::registerClass('PluginExampleExample',
-   //                      array('classname'              => 'PluginExampleExample',
+   //Plugin::registerClass(Example::getType(),
+   //                      array('classname'              => Example::class,
    //                        ));
 
-   Plugin::registerClass('PluginExampleConfig', ['addtabon' => 'Config']);
+   Plugin::registerClass(Config::class, ['addtabon' => 'Config']);
 
    // Params : plugin name - string type - ID - Array of attributes
-   Plugin::registerClass('PluginExampleDropdown');
+   Plugin::registerClass(Dropdown::class);
 
    $types = ['Central', 'Computer', 'ComputerDisk', 'Notification', 'Phone',
              'Preference', 'Profile', 'Supplier'];
-   Plugin::registerClass('PluginExampleExample',
+   Plugin::registerClass(Example::class,
                          ['notificationtemplates_types' => true,
                           'addtabon'                    => $types,
                           'link_types' => true]);
 
-   Plugin::registerClass('PluginExampleRuleTestCollection',
+   Plugin::registerClass(RuleTestCollection::class,
                          ['rulecollections_types' => true]);
 
-   Plugin::registerClass('PluginExampleDeviceCamera',
+   Plugin::registerClass(DeviceCamera::class,
                          ['device_types' => true]);
 
    if (version_compare(GLPI_VERSION, '9.1', 'ge')) {
-      if (class_exists('PluginExampleExample')) {
-         Link::registerTag(PluginExampleExample::$tags);
+      if (class_exists(Example::class)) {
+         Link::registerTag(Example::$tags);
       }
    }
    // Display a menu entry ?
    $_SESSION["glpi_plugin_example_profile"]['example'] = 'w';
    if (isset($_SESSION["glpi_plugin_example_profile"])) { // Right set in change_profile hook
-      $PLUGIN_HOOKS['menu_toadd']['example'] = ['plugins' => 'PluginExampleExample',
-                                                'tools'   => 'PluginExampleExample'];
+      $PLUGIN_HOOKS['menu_toadd']['example'] = ['plugins' => Example::class,
+                                                'tools'   => Example::class];
 
       // Old menu style
       //       $PLUGIN_HOOKS['menu_entry']['example'] = 'front/example.php';
@@ -92,13 +100,13 @@ function plugin_init_example() {
       //       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links']["<img  src='".$CFG_GLPI["root_doc"]."/pics/menu_showall.png' title='".__s('Show all')."' alt='".__s('Show all')."'>"] = '/plugins/example/index.php';
       //       $PLUGIN_HOOKS['submenu_entry']['example']['options']['optionname']['links'][__s('Test link', 'example')] = '/plugins/example/index.php';
 
-      $PLUGIN_HOOKS["helpdesk_menu_entry"]['example'] = true;
-      $PLUGIN_HOOKS["helpdesk_menu_entry_icon"]['example'] = 'fas fa-puzzle-piece';
+      $PLUGIN_HOOKS[Hooks::HELPDESK_MENU_ENTRY]['example'] = true;
+      $PLUGIN_HOOKS[Hooks::HELPDESK_MENU_ENTRY_ICON]['example'] = 'fas fa-puzzle-piece';
    }
 
    // Config page
    if (Session::haveRight('config', UPDATE)) {
-      $PLUGIN_HOOKS['config_page']['example'] = 'config.php';
+      $PLUGIN_HOOKS['config_page']['example'] = 'front/config.php';
    }
 
    // Init session
@@ -109,53 +117,53 @@ function plugin_init_example() {
    //$PLUGIN_HOOKS['change_entity']['example'] = 'plugin_change_entity_example';
 
    // Item action event // See define.php for defined ITEM_TYPE
-   $PLUGIN_HOOKS['pre_item_update']['example'] = ['Computer' => 'plugin_pre_item_update_example'];
-   $PLUGIN_HOOKS['item_update']['example']     = ['Computer' => 'plugin_item_update_example'];
+   $PLUGIN_HOOKS[Hooks::PRE_ITEM_UPDATE]['example'] = [Computer::class => 'plugin_pre_item_update_example'];
+   $PLUGIN_HOOKS[hooks::ITEM_UPDATE]['example']     = [Computer::class => 'plugin_item_update_example'];
 
-   $PLUGIN_HOOKS['item_empty']['example']      = ['Computer' => 'plugin_item_empty_example'];
+   $PLUGIN_HOOKS[Hooks::ITEM_EMPTY]['example']      = [Computer::class => 'plugin_item_empty_example'];
 
    // Restrict right
-   $PLUGIN_HOOKS['item_can']['example']          = ['Computer' => ['PluginExampleComputer', 'item_can']];
-   $PLUGIN_HOOKS['add_default_where']['example'] = ['Computer' => ['PluginExampleComputer', 'add_default_where']];
+   $PLUGIN_HOOKS[Hooks::ITEM_CAN]['example']          = [Computer::class => [Example::class, 'item_can']];
+   $PLUGIN_HOOKS['add_default_where']['example'] = [Computer::class => [Example::class, 'add_default_where']];
 
    // Example using a method in class
-   $PLUGIN_HOOKS['pre_item_add']['example']    = ['Computer' => ['PluginExampleExample',
+   $PLUGIN_HOOKS[Hooks::PRE_ITEM_ADD]['example']    = [Computer::class => [Example::class,
                                                                  'pre_item_add_computer']];
-   $PLUGIN_HOOKS['post_prepareadd']['example'] = ['Computer' => ['PluginExampleExample',
+   $PLUGIN_HOOKS[Hooks::POST_PREPAREADD]['example'] = [Computer::class => [Example::class,
                                                                  'post_prepareadd_computer']];
-   $PLUGIN_HOOKS['item_add']['example']        = ['Computer' => ['PluginExampleExample',
+   $PLUGIN_HOOKS[Hooks::ITEM_ADD]['example']        = [Computer::class => [Example::class,
                                                                  'item_add_computer']];
 
-   $PLUGIN_HOOKS['pre_item_delete']['example'] = ['Computer' => 'plugin_pre_item_delete_example'];
-   $PLUGIN_HOOKS['item_delete']['example']     = ['Computer' => 'plugin_item_delete_example'];
+   $PLUGIN_HOOKS[Hooks::PRE_ITEM_DELETE]['example'] = [Computer::class => 'plugin_pre_item_delete_example'];
+   $PLUGIN_HOOKS[Hooks::ITEM_DELETE]['example']     = [Computer::class => 'plugin_item_delete_example'];
 
    // Example using the same function
-   $PLUGIN_HOOKS['pre_item_purge']['example'] = ['Computer' => 'plugin_pre_item_purge_example',
+   $PLUGIN_HOOKS[Hooks::PRE_ITEM_PURGE]['example'] = [Computer::class => 'plugin_pre_item_purge_example',
                                                  'Phone'    => 'plugin_pre_item_purge_example'];
-   $PLUGIN_HOOKS['item_purge']['example']     = ['Computer' => 'plugin_item_purge_example',
+   $PLUGIN_HOOKS[Hooks::ITEM_PURGE]['example']     = [Computer::class => 'plugin_item_purge_example',
                                                  'Phone'    => 'plugin_item_purge_example'];
 
    // Example with 2 different functions
-   $PLUGIN_HOOKS['pre_item_restore']['example'] = ['Computer' => 'plugin_pre_item_restore_example',
+   $PLUGIN_HOOKS[Hooks::PRE_ITEM_RESTORE]['example'] = [Computer::class => 'plugin_pre_item_restore_example',
                                                    'Phone'    => 'plugin_pre_item_restore_example2'];
-   $PLUGIN_HOOKS['item_restore']['example']     = ['Computer' => 'plugin_item_restore_example'];
+   $PLUGIN_HOOKS[Hooks::ITEM_RESTORE]['example']     = [Computer::class => 'plugin_item_restore_example'];
 
    // Add event to GLPI core itemtype, event will be raised by the plugin.
    // See plugin_example_uninstall for cleanup of notification
-   $PLUGIN_HOOKS['item_get_events']['example']
+   $PLUGIN_HOOKS[Hooks::ITEM_GET_EVENTS]['example']
                                  = ['NotificationTargetTicket' => 'plugin_example_get_events'];
 
    // Add datas to GLPI core itemtype for notifications template.
-   $PLUGIN_HOOKS['item_get_datas']['example']
+   $PLUGIN_HOOKS[Hooks::ITEM_GET_DATA]['example']
                                  = ['NotificationTargetTicket' => 'plugin_example_get_datas'];
 
-   $PLUGIN_HOOKS['item_transfer']['example'] = 'plugin_item_transfer_example';
+   $PLUGIN_HOOKS[Hooks::ITEM_TRANSFER]['example'] = 'plugin_item_transfer_example';
 
    // function to populate planning
    // No more used since GLPI 0.84
    // $PLUGIN_HOOKS['planning_populate']['example'] = 'plugin_planning_populate_example';
    // Use instead : add class to planning types and define populatePlanning in class
-   $CFG_GLPI['planning_types'][] = 'PluginExampleExample';
+   $CFG_GLPI['planning_types'][] = Example::class;
 
    //function to display planning items
    // No more used sinc GLPi 0.84
@@ -168,8 +176,8 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['assign_to_ticket']['example'] = 1;
 
    // Add specific files to add to the header : javascript or css
-   $PLUGIN_HOOKS['add_javascript']['example'] = 'example.js';
-   $PLUGIN_HOOKS['add_css']['example']        = 'example.css';
+   $PLUGIN_HOOKS[Hooks::ADD_JAVASCRIPT]['example'] = 'example.js';
+   $PLUGIN_HOOKS[Hooks::ADD_CSS]['example']        = 'example.css';
 
    // request more attributes from ldap
    //$PLUGIN_HOOKS['retrieve_more_field_from_ldap']['example']="plugin_retrieve_more_field_from_ldap_example";
@@ -185,45 +193,45 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['stats']['example'] = ['stat.php'       => 'New stat',
                                         'stat.php?other' => 'New stats 2',];
 
-   $PLUGIN_HOOKS['post_init']['example'] = 'plugin_example_postinit';
+   $PLUGIN_HOOKS[Hooks::POST_INIT]['example'] = 'plugin_example_postinit';
 
    $PLUGIN_HOOKS['status']['example'] = 'plugin_example_Status';
 
    // CSRF compliance : All actions must be done via POST and forms closed by Html::closeForm();
-   $PLUGIN_HOOKS['csrf_compliant']['example'] = true;
+   $PLUGIN_HOOKS[Hooks::CSRF_COMPLIANT]['example'] = true;
 
-   $PLUGIN_HOOKS['display_central']['example'] = "plugin_example_display_central";
-   $PLUGIN_HOOKS['display_login']['example'] = "plugin_example_display_login";
-   $PLUGIN_HOOKS['infocom']['example'] = "plugin_example_infocom_hook";
+   $PLUGIN_HOOKS[Hooks::DISPLAY_CENTRAL]['example'] = "plugin_example_display_central";
+   $PLUGIN_HOOKS[Hooks::DISPLAY_LOGIN]['example'] = "plugin_example_display_login";
+   $PLUGIN_HOOKS[Hooks::INFOCOM]['example'] = "plugin_example_infocom_hook";
 
    // pre_show and post_show for tabs and items,
-   // see PluginExampleShowtabitem class for implementation explanations
-   $PLUGIN_HOOKS['pre_show_tab']['example']     = ['PluginExampleShowtabitem', 'pre_show_tab'];
-   $PLUGIN_HOOKS['post_show_tab']['example']    = ['PluginExampleShowtabitem', 'post_show_tab'];
-   $PLUGIN_HOOKS['pre_show_item']['example']    = ['PluginExampleShowtabitem', 'pre_show_item'];
-   $PLUGIN_HOOKS['post_show_item']['example']   = ['PluginExampleShowtabitem', 'post_show_item'];
+   // see GlpiPlugin\Example\Showtabitem class for implementation explanations
+   $PLUGIN_HOOKS[Hooks::PRE_SHOW_TAB]['example']     = [Showtabitem::class, 'pre_show_tab'];
+   $PLUGIN_HOOKS[Hooks::POST_SHOW_TAB]['example']    = [Showtabitem::class, 'post_show_tab'];
+   $PLUGIN_HOOKS[Hooks::PRE_SHOW_ITEM]['example']    = [Showtabitem::class, 'pre_show_item'];
+   $PLUGIN_HOOKS[Hooks::POST_SHOW_ITEM]['example']   = [Showtabitem::class, 'post_show_item'];
 
-   $PLUGIN_HOOKS['pre_item_form']['example']    = ['PluginExampleItemForm', 'preItemForm'];
-   $PLUGIN_HOOKS['post_item_form']['example']   = ['PluginExampleItemForm', 'postItemForm'];
+   $PLUGIN_HOOKS[Hooks::PRE_ITEM_FORM]['example']    = [ItemForm::class, 'preItemForm'];
+   $PLUGIN_HOOKS[Hooks::POST_ITEM_FORM]['example']   = [ItemForm::class, 'postItemForm'];
 
    // Add new actions to timeline
-   $PLUGIN_HOOKS['timeline_actions']['example'] = [
-      'PluginExampleItemForm', 'timelineActions'
+   $PLUGIN_HOOKS[Hooks::TIMELINE_ACTIONS]['example'] = [
+      ItemForm::class, 'timelineActions'
    ];
 
    // declare this plugin as an import plugin for Computer itemtype
-   $PLUGIN_HOOKS['import_item']['example'] = ['Computer' => ['Plugin']];
+   $PLUGIN_HOOKS['import_item']['example'] = [Computer::class => ['Plugin']];
 
    // add additional informations on Computer::showForm
-   $PLUGIN_HOOKS['autoinventory_information']['example'] =  [
-      'Computer' =>  ['PluginExampleComputer', 'showInfo']
+   $PLUGIN_HOOKS[Hooks::AUTOINVENTORY_INFORMATION]['example'] =  [
+      Computer::class =>  [Computer::class, 'showInfo']
    ];
 
     $PLUGIN_HOOKS[Hooks::FILTER_ACTORS]['example'] = "plugin_example_filter_actors";
 
    // add new cards to dashboard grid
-   $PLUGIN_HOOKS['dashboard_types']['example'] = ['PluginExampleExample', 'dashboardTypes'];
-   $PLUGIN_HOOKS['dashboard_cards']['example'] = ['PluginExampleExample', 'dashboardCards'];
+   $PLUGIN_HOOKS['dashboard_types']['example'] = [Example::class, 'dashboardTypes'];
+   $PLUGIN_HOOKS['dashboard_cards']['example'] = [Example::class, 'dashboardCards'];
 }
 
 

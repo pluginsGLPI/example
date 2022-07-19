@@ -33,13 +33,17 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
+namespace GlpiPlugin\Example;
+use CommonDBChild;
+use Session;
+
 // Sample of class that inherit from CommonDBChild. The behaviour of CommonRelation is similar.
 // The main evolution introduced by 0.84 version of GLPI is a stronger control and log of
 // interactions.  We suggest you to refer to the header of CommonDBConnexity class to see these
 // enhancements.
 // For CommonDBRelation, the variable are quiet equivalent, but they use _1 and _2 for each side
 // parent
-class PluginExampleChild extends CommonDBChild {
+class Child extends CommonDBChild {
 
    // A child rely on an item. If $itemtype=='itemtype', then that is a variable item.
    static public $itemtype = 'itemtype';

@@ -28,7 +28,16 @@
  * -------------------------------------------------------------------------
  */
 
-class PluginExampleConfig extends CommonDBTM {
+namespace GlpiPlugin\Example;
+use CommonDBTM;
+use CommonGLPI;
+use Config as GlpiConfig;
+use Dropdown;
+use Html;
+use Session;
+use Toolbox;
+
+class Config extends CommonDBTM {
 
    static protected $notable = true;
 
@@ -54,7 +63,7 @@ class PluginExampleConfig extends CommonDBTM {
          return false;
       }
 
-      $my_config = Config::getConfigurationValues('plugin:Example');
+      $my_config = GlpiConfig::getConfigurationValues('plugin:Example');
 
       echo "<form name='form' action=\"".Toolbox::getItemTypeFormURL('Config')."\" method='post'>";
       echo "<div class='center' id='tabsbody'>";

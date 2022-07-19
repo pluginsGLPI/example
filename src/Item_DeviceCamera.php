@@ -28,20 +28,29 @@
  * -------------------------------------------------------------------------
  */
 
+// ----------------------------------------------------------------------
+// Original Author of file:
+// Purpose of file:
+// ----------------------------------------------------------------------
+
+// Class of the defined type
+
+namespace GlpiPlugin\Example;
+use GlpiPlugin\Example\DeviceCamera;
+use Item_Devices;
+
 if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
 
-// Class NotificationTarget
-class PluginExampleNotificationTargetExample extends NotificationTarget {
+/**
+ * Relation between item and devices
+**/
+class Item_DeviceCamera extends Item_Devices {
 
-   function getEvents() {
-      return  ['alert' => 'alert example'];
-   }
+   static public $itemtype_2 = DeviceCamera::class;
+   static public $items_id_2 = 'plugin_example_devicecameras_id';
 
-   function addDataForTemplate($event, $options = []) {
-      global $DB, $CFG_GLPI;
+   static protected $notable = false;
 
-      $this->data['##example.name##'] = __('Example', 'example');
-   }
 }

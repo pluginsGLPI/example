@@ -33,6 +33,10 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
+use GlpiPlugin\Example\Dropdown;
+use GlpiPlugin\Example\Example;
+use Dropdown as GlpiDropdown;
+
 // Hook called on profile change
 // Good place to evaluate the user right on this plugin
 // And to save it in the session
@@ -59,7 +63,7 @@ function plugin_example_getDatabaseRelations() {
 // Define Dropdown tables to be manage in GLPI :
 function plugin_example_getDropdown() {
    // Table => Name
-   return ['PluginExampleDropdown' => __("Plugin Example Dropdown", 'example')];
+   return [Dropdown::class => __("Plugin Example Dropdown", 'example')];
 }
 
 
@@ -94,7 +98,7 @@ function plugin_example_getAddSearchOptionsNew($itemtype) {
    return $options;
 }
 
-// See also PluginExampleExample::getSpecificValueToDisplay()
+// See also GlpiPlugin\Example\Example::getSpecificValueToDisplay()
 function plugin_example_giveItem($type, $ID, $data, $num) {
    $searchopt = &Search::getOptions($type);
    $table = $searchopt[$ID]["table"];
@@ -102,7 +106,7 @@ function plugin_example_giveItem($type, $ID, $data, $num) {
 
    switch ($table.'.'.$field) {
       case "glpi_plugin_example_examples.name" :
-         $out = "<a href='".Toolbox::getItemTypeFormURL('PluginExampleExample')."?id=".$data['id']."'>";
+         $out = "<a href='".Toolbox::getItemTypeFormURL(Example::class)."?id=".$data['id']."'>";
          $out .= $data[$num][0]['name'];
          if ($_SESSION["glpiis_ids_visible"] || empty($data[$num][0]['name'])) {
             $out .= " (".$data["id"].")";
@@ -133,7 +137,7 @@ function plugin_example_addDefaultJoin($type, $ref_table, &$already_link_tables)
    // Example of default JOIN clause
    // No need of the function if you do not have specific cases
    switch ($type) {
-      //       case "PluginExampleExample" :
+      //       case Example::class :
       case "MyType" :
          return Search::addLeftJoin($type, $ref_table, $already_link_tables,
                                     "newtable", "linkfield");
@@ -146,7 +150,7 @@ function plugin_example_addDefaultSelect($type) {
    // Example of default SELECT item to be added
    // No need of the function if you do not have specific cases
    switch ($type) {
-      //       case "PluginExampleExample" :
+      //       case Example::class :
       case "MyType" :
          return "`mytable`.`myfield` = 'myvalue' AS MYNAME, ";
    }
@@ -158,7 +162,7 @@ function plugin_example_addDefaultWhere($type) {
    // Example of default WHERE item to be added
    // No need of the function if you do not have specific cases
    switch ($type) {
-      //       case "PluginExampleExample" :
+      //       case Example::class :
       case "MyType" :
          return " `mytable`.`myfield` = 'myvalue' ";
    }
@@ -179,7 +183,7 @@ function plugin_example_addLeftJoin($type, $ref_table, $new_table, $linkfield) {
 
 function plugin_example_forceGroupBy($type) {
    switch ($type) {
-      case 'PluginExampleExample' :
+      case Example::class :
          // Force add GROUP BY IN REQUEST
          return true;
    }
@@ -272,7 +276,7 @@ function plugin_example_MassiveActions($type) {
    switch ($type) {
       // New action for core and other plugin types : name = plugin_PLUGINNAME_actionname
       case 'Computer' :
-         return ['PluginExampleExample'.MassiveAction::CLASS_ACTION_SEPARATOR.'DoIt' =>
+         return [Example::class . MassiveAction::CLASS_ACTION_SEPARATOR . 'DoIt' =>
                                                               __("plugin_example_DoIt", 'example')];
 
       // Actions for types provided by the plugin are included inside the classes
@@ -325,7 +329,7 @@ function plugin_example_searchOptionsValues($options = []) {
    switch ($table.".".$field) {
       case "glpi_plugin_example_examples.serial" :
             echo __("Not really specific - Use your own dropdown - Just for example", 'example');
-            Dropdown::show(getItemTypeForTable($options['searchoption']['table']),
+            GlpiDropdown::show(getItemTypeForTable($options['searchoption']['table']),
                                                ['value'    => $options['value'],
                                                 'name'     => $options['name'],
                                                 'comments' => 0]);
@@ -427,7 +431,7 @@ function plugin_item_transfer_example($parm) {
 
 // Do special actions for dynamic report
 function plugin_example_dynamicReport($parm) {
-   if ($parm["item_type"] == 'PluginExampleExample') {
+   if ($parm["item_type"] == Example::class) {
       // Do all what you want for export depending on $parm
       echo "Personalized export for type ".$parm["display_type"];
       echo 'with additional datas : <br>';
@@ -445,7 +449,7 @@ function plugin_example_dynamicReport($parm) {
 
 // Add parameters to Html::printPager in search system
 function plugin_example_addParamFordynamicReport($itemtype) {
-   if ($itemtype == 'PluginExampleExample') {
+   if ($itemtype == Example::class) {
       // Return array data containing all params to add : may be single data or array data
       // Search config are available from session variable
       return ['add1' => $_SESSION['glpisearch'][$itemtype]['order'],
@@ -551,7 +555,7 @@ function plugin_example_install() {
 
    // To be called for each task the plugin manage
    // task in class
-   CronTask::Register('PluginExampleExample', 'Sample', DAY_TIMESTAMP, ['param' => 50]);
+   CronTask::Register(Example::class, 'Sample', DAY_TIMESTAMP, ['param' => 50]);
    return true;
 }
 
@@ -607,7 +611,7 @@ function plugin_example_uninstall() {
 
 
 function plugin_example_AssignToTicket($types) {
-   $types['PluginExampleExample'] = "Example";
+   $types[Example::class] = "Example";
    return $types;
 }
 

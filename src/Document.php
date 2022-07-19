@@ -54,11 +54,14 @@ along with GLPI. If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
+namespace GlpiPlugin\Example;
+use Document as GlpiDocument;
+
 if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access this file directly");
 }
 
-class PluginExampleDocument extends Document {
+class Document extends GlpiDocument {
 
     /**
      * Return the table used to store this object. Overloads the implementation in CommonDBTM

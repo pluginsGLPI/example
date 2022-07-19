@@ -28,20 +28,23 @@
  * -------------------------------------------------------------------------
  */
 
-// ----------------------------------------------------------------------
-// Original Author of file:
-// Purpose of file:
-// ----------------------------------------------------------------------
+namespace GlpiPlugin\Example;
+use NotificationTarget;
 
-// Class for a Dropdown
-class PluginExampleDropdown extends CommonDropdown {
+if (!defined('GLPI_ROOT')) {
+   die("Sorry. You can't access directly to this file");
+}
 
+// Class NotificationTarget
+class NotificationTargetExample extends NotificationTarget {
 
-   static function getTypeName($nb = 0) {
+   function getEvents() {
+      return  ['alert' => 'alert example'];
+   }
 
-      if ($nb > 0) {
-         return __('Plugin Example Dropdowns', 'example');
-      }
-      return __('Plugin Example Dropdowns', 'example');
+   function addDataForTemplate($event, $options = []) {
+      global $DB, $CFG_GLPI;
+
+      $this->data['##example.name##'] = __('Example', 'example');
    }
 }

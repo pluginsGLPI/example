@@ -33,9 +33,10 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
+use GlpiPlugin\Example\RuleTestCollection;
 
 include ('../../../inc/includes.php');
 
-$rulecollection = new PluginExampleRuleTestCollection();
+$rulecollection = new RuleTestCollection();
 
 include (GLPI_ROOT . "/front/rule.common.php");

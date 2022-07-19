@@ -33,15 +33,17 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
+use GlpiPlugin\Example\Example;
+
 include ('../../../inc/includes.php');
 
 if ($_SESSION["glpiactiveprofile"]["interface"] == "central") {
-   Html::header("TITRE", $_SERVER['PHP_SELF'], "plugins", "pluginexampleexample", "");
+   Html::header("TITRE", $_SERVER['PHP_SELF'], "plugins", Example::class, "");
 } else {
    Html::helpHeader("TITRE", $_SERVER['PHP_SELF']);
 }
 
-$example = new PluginExampleExample();
+$example = new Example();
 $example->display($_GET);
 
 Html::footer();

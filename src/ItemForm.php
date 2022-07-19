@@ -28,12 +28,16 @@
  * -------------------------------------------------------------------------
  */
 
+namespace GlpiPlugin\Example;
+use Html;
+use Ticket;
+
 /**
- * Summary of PluginExampleItemForm
+ * Summary of GlpiPlugin\Example\ItemForm
  * Example of *_item_form implementation
  * @see http://glpi-developer-documentation.rtfd.io/en/master/plugins/hooks.html#items-display-related
  * */
-class PluginExampleItemForm {
+class ItemForm {
 
    /**
     * Display contents at the begining of item forms.
@@ -46,7 +50,7 @@ class PluginExampleItemForm {
       $item = $params['item'];
       $options = $params['options'];
 
-      $firstelt = ($item::getType() == Ticket::getType() ? 'th' : 'td');
+      $firstelt = ($item::getType() == Ticket::class ? 'th' : 'td');
 
       $out = '<tr><th colspan="' . (isset($options['colspan']) ? $options['colspan'] * 2 : '4') . '">';
       $out .= sprintf(
@@ -88,7 +92,7 @@ class PluginExampleItemForm {
       $item = $params['item'];
       $options = $params['options'];
 
-      $firstelt = ($item::getType() == Ticket::getType() ? 'th' : 'td');
+      $firstelt = ($item::getType() == Ticket::class ? 'th' : 'td');
 
       $out = '<tr><th colspan="' . (isset($options['colspan']) ? $options['colspan'] * 2 : '4') . '">';
       $out .= sprintf(
