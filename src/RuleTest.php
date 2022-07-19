@@ -32,6 +32,10 @@
 // Original Author of file: Walid Nouh
 // Purpose of file:
 // ----------------------------------------------------------------------
+
+namespace GlpiPlugin\Example;
+use Rule;
+
 if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
@@ -44,10 +48,10 @@ if (!defined('GLPI_ROOT')) {
 *   - actions
 *
 **/
-class PluginExampleRuleTest extends Rule {
+class RuleTest extends Rule {
 
    // From Rule
-   static public $right     = 'rule_import';
+   public $rightname = 'rule_import';
    public $can_sort  = true;
 
 

@@ -28,8 +28,10 @@
  * -------------------------------------------------------------------------
  */
 
+namespace GlpiPlugin\Example;
+
 /**
- * Summary of PluginExampleShowtabitem
+ * Summary of GlpiPlugin\Example\Showtabitem
  * Example of pre_show_xxx and post_show_xxx implementation
  *
  *
@@ -49,7 +51,7 @@
  * post_show_tab will be fired after the tab show
  *
  * */
-class PluginExampleShowtabitem {
+class Showtabitem {
 
    /**
     * Summary of pre_show_tab
@@ -65,7 +67,7 @@ class PluginExampleShowtabitem {
    static function pre_show_tab($params) {
       switch ($params['item']->getType()) {
          case 'Ticket':
-            if ($params['options']['itemtype']=='Ticket' && $params['options']['tabnum']==2) {
+            if ($params['options']['itemtype']=='TicketValidation' && $params['options']['tabnum']==2) {
                // if tasks are not all done
                // then prevent solution div to show
                // this is an example to prevent solving of ticket

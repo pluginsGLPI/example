@@ -29,22 +29,26 @@
  */
 
 // ----------------------------------------------------------------------
-// Original Author of file:
+// Original Author of file: Walid Nouh
 // Purpose of file:
 // ----------------------------------------------------------------------
 
-// Non menu entry case
-//header("Location:../../central.php");
+namespace GlpiPlugin\Example;
+use RuleCollection;
 
-// Entry menu case
-define('GLPI_ROOT', '../..');
-include (GLPI_ROOT . "/inc/includes.php");
+if (!defined('GLPI_ROOT')) {
+   die("Sorry. You can't access directly to this file");
+}
 
-Session::checkRight("config", UPDATE);
 
-// To be available when plugin in not activated
-Plugin::load('example');
+class RuleTestCollection extends RuleCollection {
 
-Html::header("TITRE", $_SERVER['PHP_SELF'], "config", "plugins");
-echo __("This is the plugin config page", 'example');
-Html::footer();
+   // From RuleCollection
+   public $stop_on_first_match = true;
+   public static $rightname    = 'rule_import';
+   public $menu_option         = 'test';
+
+   function getTitle() {
+      return 'Rulesengine test';
+   }
+}

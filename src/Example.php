@@ -33,8 +33,17 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
+namespace GlpiPlugin\Example;
+use CommonDBTM;
+use CommonGLPI;
+use Computer;
+use Html;
+use Log;
+use MassiveAction;
+use Session;
+
 // Class of the defined type
-class PluginExampleExample extends CommonDBTM {
+class Example extends CommonDBTM {
 
    static $tags = '[EXAMPLE_ID]';
 
@@ -330,9 +339,9 @@ class PluginExampleExample extends CommonDBTM {
       $output[$key]["end"]    = date("Y-m-d 18:00:00");
       $output[$key]["name"]   = __("test planning example 1", 'example');
       // Specify the itemtype to be able to use specific display system
-      $output[$key]["itemtype"] = "PluginExampleExample";
+      $output[$key]["itemtype"] = Example::class;
       // Set the ID using the ID of the item in the database to have unique ID
-      $output[$key][getForeignKeyFieldForItemType('PluginExampleExample')] = 1;
+      $output[$key][getForeignKeyFieldForItemType(Example::class)] = 1;
       return $output;
    }
 
@@ -455,7 +464,7 @@ class PluginExampleExample extends CommonDBTM {
                foreach ($ids as $id) {
                   if ($item->getFromDB($id)) {
                      Session::addMessageAfterRedirect("- ".$item->getField("name"));
-                     Log::history($id, 'Computer', $changes, 'PluginExampleExample',
+                     Log::history($id, 'Computer', $changes, Example::class,
                                   Log::HISTORY_PLUGIN);
                      $ma->itemDone($item->getType(), $id, MassiveAction::ACTION_OK);
                   } else {
@@ -470,7 +479,7 @@ class PluginExampleExample extends CommonDBTM {
             return;
 
          case 'do_nothing' :
-            If ($item->getType() == 'PluginExampleExample') {
+            If ($item->getType() == Example::class) {
                Session::addMessageAfterRedirect(__("Right it is the type I want...", 'example'));
                Session::addMessageAfterRedirect(__("But... I say I will do nothing for:",
                                                    'example'));
@@ -506,12 +515,12 @@ class PluginExampleExample extends CommonDBTM {
       return [
          'example' => [
             'label'    => __("Plugin Example", 'example'),
-            'function' => "PluginExampleExample::cardWidget",
+            'function' => Example::class . "::cardWidget",
             'image'    => "https://via.placeholder.com/100x86?text=example",
          ],
          'example_static' => [
             'label'    => __("Plugin Example (static)", 'example'),
-            'function' => "PluginExampleExample::cardWidgetWithoutProvider",
+            'function' => Example::class . "::cardWidgetWithoutProvider",
             'image'    => "https://via.placeholder.com/100x86?text=example+static",
          ],
       ];
@@ -526,7 +535,7 @@ class PluginExampleExample extends CommonDBTM {
          'plugin_example_card' => [
             'widgettype'   => ["example"],
             'label'        => __("Plugin Example card"),
-            'provider'     => "PluginExampleExample::cardDataProvider",
+            'provider'     => Example::class . "::cardDataProvider",
          ],
          'plugin_example_card_without_provider' => [
             'widgettype'   => ["example_static"],
@@ -535,7 +544,7 @@ class PluginExampleExample extends CommonDBTM {
          'plugin_example_card_with_core_widget' => [
             'widgettype'   => ["bigNumber"],
             'label'        => __("Plugin Example card with core provider"),
-            'provider'     => "PluginExampleExample::cardBigNumberProvider",
+            'provider'     => Example::class . "::cardBigNumberProvider",
          ],
       ];
 

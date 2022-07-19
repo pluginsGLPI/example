@@ -33,10 +33,11 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
+use GlpiPlugin\Example\Dropdown;
 
 include ('../../../inc/includes.php');
 
 Plugin::load('example', true);
 
-$dropdown = new PluginExampleDropdown();
+$dropdown = new Dropdown();
 include (GLPI_ROOT . "/front/dropdown.common.php");

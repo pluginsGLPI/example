@@ -33,7 +33,9 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
+use GlpiPlugin\Example\DeviceCamera;
+
 include ('../../../inc/includes.php');
 
-$dropdown = new PluginExampleDeviceCamera();
+$dropdown = new DeviceCamera();
 include (GLPI_ROOT . "/front/dropdown.common.form.php");

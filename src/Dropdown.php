@@ -29,22 +29,21 @@
  */
 
 // ----------------------------------------------------------------------
-// Original Author of file: Walid Nouh
+// Original Author of file:
 // Purpose of file:
 // ----------------------------------------------------------------------
-if (!defined('GLPI_ROOT')) {
-   die("Sorry. You can't access directly to this file");
-}
+namespace GlpiPlugin\Example;
+use CommonDropdown;
+
+// Class for a Dropdown
+class Dropdown extends CommonDropdown {
 
 
-class PluginExampleRuleTestCollection extends RuleCollection {
+   static function getTypeName($nb = 0) {
 
-   // From RuleCollection
-   public $stop_on_first_match = true;
-   static public  $right       = 'rule_import';
-   public $menu_option         = 'test';
-
-   function getTitle() {
-      return 'Rulesengine test';
+      if ($nb > 0) {
+         return __('Plugin Example Dropdowns', 'example');
+      }
+      return __('Plugin Example Dropdowns', 'example');
    }
 }
