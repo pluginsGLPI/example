@@ -31,10 +31,26 @@ along with GLPI. If not, see <http://www.gnu.org/licenses/>.
  * Show how to dowload a file (or any stream) from the REST API
  * as well as metatadata stored in DB
  *
- * This itemtype is designed to be the same as Document in GLPi Core
+ * This itemtype is designed to be the same as Document in GLPI Core
  * to focus on the file dowload and upload features
  *
+ * Example to download a file with cURL
  *
+ * $ curl -X GET \
+ * -H 'Content-Type: application/json' \
+ * -H 'Session-Token: s6f3jik227ttrsat7d8ap9laal' \
+ * -H 'Accept: application/octet-stream' \
+ * 'http://path/to/glpi/apirest.php/PluginExampleDocument/1' \
+ * --output /tmp/test_download
+ *
+ * Example to upload a file with cURL
+ *
+ * $ curl -X POST \
+ * -H 'Content-Type: multipart/form-data' \
+ * -H "Session-Token: s6f3jik227ttrsat7d8ap9laal" \
+ * -F 'uploadManifest={"input": {"name": "Uploaded document", "_filename" : ["file.txt"]}}' \
+ * -F 'file[]=@/tmp/test.txt' \
+ * 'http://path/to/glpi/apirest.php/PluginExampleDocument/'
  *
  */
 
@@ -44,36 +60,64 @@ if (!defined('GLPI_ROOT')) {
 
 class PluginExampleDocument extends Document {
 
-   /**
-    * Return the table used to stor this object
-    * @return string
-    */
-   public static function getTable() {
-      if (empty($_SESSION['glpi_table_of'][get_called_class()])) {
-         $_SESSION['glpi_table_of'][get_called_class()] = Document::getTable();
+    /**
+     * Return the table used to store this object. Overloads the implementation in CommonDBTM
+     *
+     * @param string $classname Force class (to avoid late_binding on inheritance)
+     *
+     * @return string
+     **/
+    public static function getTable($classname = null) {
+      if ($classname === null) {
+         $classname = get_called_class();
+      }
+      if ($classname == get_called_class()) {
+         return parent::getTable(Document::class);
       }
 
-      return $_SESSION['glpi_table_of'][get_called_class()];
+      return parent::getTable($classname);
    }
 
+   /**
+    * Prepare creation of an item
+    *
+    * @param array $input
+    * @return array|false
+    */
    public function prepareInputForAdd($input) {
       $input['_only_if_upload_succeed'] = true;
-      if (isset($_FILES['file'])) {
-         // Move the uploaded file to GLPi's tmp dir
-         $destination = GLPI_TMP_DIR."/".$_FILES['file']['name'];
-         move_uploaded_file($_FILES['file']['tmp_name'], $destination);
-         $input['_filename'][] = $_FILES['file']['name'];
-      } else {
+      if (!isset($_FILES['file'])) {
          return false;
       }
+
+      // Move the uploaded file to GLPi's tmp dir
+      while (count($_FILES['file']['name']) > 0) {
+         $source = array_pop($_FILES['file']['name']);
+         $destination = GLPI_TMP_DIR . '/' . $source;
+         move_uploaded_file($source, $destination);
+         $input['_filename'][] = $source;
+      }
+
       return parent::prepareInputForAdd($input);
    }
 
+   /**
+    * Prepare update of an item
+    *
+    * @param array $input
+    * @return array|false
+    */
    public function prepareInputForUpdate($input) {
       // Do not allow update of document
       return false;
    }
 
+   /**
+    * Process required after loading an object from DB
+    * In this example, a file is sent as a byte strem then stops execution.
+    *
+    * @return void
+    */
    public function post_getFromDB() {
       // Check the user can view this itemtype and can view this item
       if ($this->canView() && $this->canViewItem()) {
@@ -84,8 +128,13 @@ class PluginExampleDocument extends Document {
       }
    }
 
+   /**
+    * Send a byte stream to the HTTP client and stops execution
+    *
+    * @return void
+    */
    protected function sendFile() {
-      $streamSource = GLPI_DOC_DIR."/".$this->fields['filepath'];
+      $streamSource = GLPI_DOC_DIR . '/' . $this->fields['filepath'];
 
       // Ensure the file exists
       if (!file_exists($streamSource) || !is_file($streamSource)) {
