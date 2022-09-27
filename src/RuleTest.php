@@ -51,7 +51,7 @@ if (!defined('GLPI_ROOT')) {
 class RuleTest extends Rule {
 
    // From Rule
-   public $rightname = 'rule_import';
+   public static $rightname = 'rule_import';
    public $can_sort  = true;
 
 
