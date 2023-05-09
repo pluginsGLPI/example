@@ -34,6 +34,7 @@ use GlpiPlugin\Example\Config;
 use GlpiPlugin\Example\Dropdown;
 use GlpiPlugin\Example\DeviceCamera;
 use GlpiPlugin\Example\Example;
+use GlpiPlugin\Example\Filters\ComputerModelFilter;
 use GlpiPlugin\Example\ItemForm;
 use GlpiPlugin\Example\RuleTestCollection;
 use GlpiPlugin\Example\Showtabitem;
@@ -232,6 +233,11 @@ function plugin_init_example() {
    // add new cards to dashboard grid
    $PLUGIN_HOOKS['dashboard_types']['example'] = [Example::class, 'dashboardTypes'];
    $PLUGIN_HOOKS['dashboard_cards']['example'] = [Example::class, 'dashboardCards'];
+
+   // Dashboard filter
+   $PLUGIN_HOOKS[Hooks::DASHBOARD_FILTERS]['example'] = [
+      ComputerModelFilter::class
+   ];
 }
 
 
