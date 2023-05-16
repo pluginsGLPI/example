@@ -46,6 +46,13 @@ class ComputerModelFilter extends AbstractFilter
         return "plugin_example_computer_model";
     }
 
+    public static function canBeApplied(string $table): bool
+    {
+        global $DB;
+
+        return $DB->fieldExists($table, ComputerModel::getForeignKeyField());
+    }
+
     public static function getHtml($value): string
     {
         return self::displayList(
@@ -56,19 +63,13 @@ class ComputerModelFilter extends AbstractFilter
         );
     }
 
-    public static function getCriteria(
-        DBmysql $DB,
-        string $table,
-        $value
-    ): array {
-        $field = ComputerModel::getForeignKeyField();
-
-        if (
-            $DB->fieldExists($table, $field)
-        ) {
+    public static function getCriteria(string $table, $value): array
+    {
+        if ((int) $value > 0) {
+            $field = ComputerModel::getForeignKeyField();
             return [
                 "WHERE" => [
-                    "$table.$field" => $value
+                    "$table.$field" => (int) $value
                 ]
             ];
         }
@@ -76,30 +77,23 @@ class ComputerModelFilter extends AbstractFilter
         return [];
     }
 
-    public static function getSearchCriteria(
-        DBmysql $DB,
-        string $table,
-        $value
-    ): array {
-        $criteria = [];
-        $field = ComputerModel::getForeignKeyField();
-
-        if (
-            $DB->fieldExists($table, ComputerModel::getForeignKeyField())
-        ) {
-            $criteria[] = [
-                'link'       => 'AND',
-                'searchtype' => 'equals',
-                'value'      => (int) $value,
-                'field'      => self::getSearchOptionID(
-                    $table,
-                    $field,
-                    ComputerModel::getTable()
-                ),
+    public static function getSearchCriteria(string $table, $value): array
+    {
+        if ((int) $value > 0) {
+            return [
+                [
+                    'link'       => 'AND',
+                    'searchtype' => 'equals',
+                    'value'      => (int) $value,
+                    'field'      => self::getSearchOptionID(
+                        $table,
+                        ComputerModel::getForeignKeyField(),
+                        ComputerModel::getTable()
+                    ),
+                ]
             ];
         }
 
-
-        return $criteria;
+        return [];
     }
 }
