@@ -46,11 +46,11 @@ class ComputerModelFilter extends AbstractFilter
         return "plugin_example_computer_model";
     }
 
-    public static function getHtml(string $values = ""): string
+    public static function getHtml($value): string
     {
         return self::displayList(
             self::getName(),
-            $values,
+            is_string($value) ? $value : "",
             self::getId(),
             ComputerModel::class
         );
@@ -58,18 +58,17 @@ class ComputerModelFilter extends AbstractFilter
 
     public static function getCriteria(
         DBmysql $DB,
-        string $table = "",
-        array $apply_filters = []
+        string $table,
+        $value
     ): array {
         $field = ComputerModel::getForeignKeyField();
 
         if (
             $DB->fieldExists($table, $field)
-            && isset($apply_filters[self::getId()])
         ) {
             return [
                 "WHERE" => [
-                    "$table.$field" => $apply_filters[self::getId()]
+                    "$table.$field" => $value
                 ]
             ];
         }
@@ -79,20 +78,19 @@ class ComputerModelFilter extends AbstractFilter
 
     public static function getSearchCriteria(
         DBmysql $DB,
-        string $table = "",
-        array $apply_filters = []
+        string $table,
+        $value
     ): array {
         $criteria = [];
         $field = ComputerModel::getForeignKeyField();
 
         if (
             $DB->fieldExists($table, ComputerModel::getForeignKeyField())
-            && isset($apply_filters[self::getId()])
         ) {
             $criteria[] = [
                 'link'       => 'AND',
                 'searchtype' => 'equals',
-                'value'      => (int) $apply_filters[self::getId()],
+                'value'      => (int) $value,
                 'field'      => self::getSearchOptionID(
                     $table,
                     $field,
