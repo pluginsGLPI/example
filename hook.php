@@ -483,7 +483,7 @@ function plugin_example_install() {
                   `id` int {$default_key_sign} NOT NULL auto_increment,
                   `name` varchar(255) default NULL,
                   `serial` varchar(255) NOT NULL,
-                  `plugin_example_dropdowns_id` int NOT NULL default '0',
+                  `plugin_example_dropdowns_id` int {$default_key_sign} NOT NULL default '0',
                   `is_deleted` tinyint NOT NULL default '0',
                   `is_template` tinyint NOT NULL default '0',
                   `template_name` varchar(255) default NULL,
