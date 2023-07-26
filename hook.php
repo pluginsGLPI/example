@@ -36,6 +36,7 @@
 use GlpiPlugin\Example\Dropdown;
 use GlpiPlugin\Example\Example;
 use Dropdown as GlpiDropdown;
+use GlpiPlugin\Example\RuleCriteria\RandomCriteria;
 
 // Hook called on profile change
 // Good place to evaluate the user right on this plugin
@@ -710,4 +711,12 @@ function plugin_example_filter_actors(array $params = []): array {
     }
 
     return $params;
+}
+
+function plugin_example_getRuleCriteria() {
+   return RandomCriteria::getRuleCriteria();
+}
+
+function plugin_example_ruleCollectionPrepareInputDataForProcess(array $params) {
+   return RandomCriteria::ruleCollectionPrepareInputDataForProcess($params);
 }

@@ -238,6 +238,9 @@ function plugin_init_example() {
    $PLUGIN_HOOKS[Hooks::DASHBOARD_FILTERS]['example'] = [
       ComputerModelFilter::class
    ];
+
+   // Enable rule hooks
+   $PLUGIN_HOOKS['use_rules']['example'] = [RuleTicket::class];
 }
 
 
