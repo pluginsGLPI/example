@@ -85,8 +85,8 @@ function plugin_init_example() {
       }
    }
    // Display a menu entry ?
-   $_SESSION["glpi_plugin_example_profile"]['example'] = 'w';
-   if (isset($_SESSION["glpi_plugin_example_profile"])) { // Right set in change_profile hook
+   Plugin::registerClass(\GlpiPlugin\Example\Profile::class, ['addtabon' => ['Profile']]);
+   if (Example::canView()) { // Right set in change_profile hook
       $PLUGIN_HOOKS['menu_toadd']['example'] = ['plugins' => Example::class,
                                                 'tools'   => Example::class];
 

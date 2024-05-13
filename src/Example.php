@@ -46,43 +46,17 @@ use Session;
 class Example extends CommonDBTM {
 
    static $tags = '[EXAMPLE_ID]';
+   public static $rightname = 'plugin_example';
 
    // Should return the localized name of the type
    static function getTypeName($nb = 0) {
       return 'Example Type';
    }
 
-
-   static function canCreate() {
-
-      if (isset($_SESSION["glpi_plugin_example_profile"])) {
-         return ($_SESSION["glpi_plugin_example_profile"]['example'] == 'w');
-      }
-      return false;
-   }
-
-
-   static function canView() {
-
-      if (isset($_SESSION["glpi_plugin_example_profile"])) {
-         return ($_SESSION["glpi_plugin_example_profile"]['example'] == 'w'
-                 || $_SESSION["glpi_plugin_example_profile"]['example'] == 'r');
-      }
-      return false;
-   }
-
-
-   /**
-    * @see CommonGLPI::getMenuName()
-   **/
    static function getMenuName() {
       return __('Example plugin');
    }
 
-
-   /**
-    * @see CommonGLPI::getAdditionalMenuLinks()
-   **/
    static function getAdditionalMenuLinks() {
       global $CFG_GLPI;
       $links = [];
@@ -406,11 +380,6 @@ class Example extends CommonDBTM {
 
    //////////////////////////////
    ////// SPECIFIC MODIF MASSIVE FUNCTIONS ///////
-   /**
-    * @since version 0.85
-    *
-    * @see CommonDBTM::getSpecificMassiveActions()
-   **/
    function getSpecificMassiveActions($checkitem = null) {
 
       $actions = parent::getSpecificMassiveActions($checkitem);
@@ -423,12 +392,6 @@ class Example extends CommonDBTM {
       return $actions;
    }
 
-
-   /**
-    * @since version 0.85
-    *
-    * @see CommonDBTM::showMassiveActionsSubForm()
-   **/
    static function showMassiveActionsSubForm(MassiveAction $ma) {
 
       switch ($ma->getAction()) {
