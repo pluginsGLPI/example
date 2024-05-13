@@ -37,20 +37,8 @@ use GlpiPlugin\Example\Dropdown;
 use GlpiPlugin\Example\Example;
 use Dropdown as GlpiDropdown;
 
-// Hook called on profile change
-// Good place to evaluate the user right on this plugin
-// And to save it in the session
 function plugin_change_profile_example() {
-   // For example : same right of computer
-   if (Session::haveRight('computer', UPDATE)) {
-      $_SESSION["glpi_plugin_example_profile"] = ['example' => 'w'];
-
-   } else if (Session::haveRight('computer', READ)) {
-      $_SESSION["glpi_plugin_example_profile"] = ['example' => 'r'];
-
-   } else {
-      unset($_SESSION["glpi_plugin_example_profile"]);
-   }
+   // Some logic that runs when the profile is changed
 }
 
 
@@ -469,10 +457,14 @@ function plugin_example_addParamFordynamicReport($itemtype) {
 function plugin_example_install() {
    global $DB;
 
-   $config = new Config();
-   $config->setConfigurationValues('plugin:Example', ['configuration' => false]);
+   $migration = new Migration(PLUGIN_EXAMPLE_VERSION);
+   Config::setConfigurationValues('plugin:Example', ['configuration' => false]);
 
-   ProfileRight::addProfileRights(['example:read']);
+   // Adds the right(s) to all pre-existing profiles with no access by default
+   ProfileRight::addProfileRights([Example::$rightname]);
+
+   // Grants full access to profiles that can update the Config (super-admins)
+   $migration->addRight(Example::$rightname, ALLSTANDARDRIGHT, [Config::$rightname => UPDATE]);
 
    $default_charset = DBConnection::getDefaultCharset();
    $default_collation = DBConnection::getDefaultCollation();
@@ -571,7 +563,7 @@ function plugin_example_uninstall() {
    $config = new Config();
    $config->deleteConfigurationValues('plugin:Example', ['configuration' => false]);
 
-   ProfileRight::deleteProfileRights(['example:read']);
+   ProfileRight::deleteProfileRights([Example::$rightname]);
 
    $notif = new Notification();
    $options = ['itemtype' => 'Ticket',
