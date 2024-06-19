@@ -180,6 +180,26 @@ function plugin_init_example() {
    $PLUGIN_HOOKS[Hooks::ADD_JAVASCRIPT]['example'] = 'example.js';
    $PLUGIN_HOOKS[Hooks::ADD_CSS]['example']        = 'example.css';
 
+   // Add specific tags to the header
+   $PLUGIN_HOOKS[Hooks::ADD_HEADER_TAG]['example'] = [
+      [
+         'tag' => 'meta',
+         'properties' => [
+            'name'    => 'robots',
+            'content' => 'noindex, nofollow',
+         ]
+      ],
+      [
+         'tag' => 'link',
+         'properties' => [
+            'rel'   => 'alternate',
+            'type'  => 'application/rss+xml',
+            'title' => 'The company RSS feed',
+            'href'  => 'https://example.org/feed.xml',
+         ]
+      ],
+   ];
+
    // request more attributes from ldap
    //$PLUGIN_HOOKS['retrieve_more_field_from_ldap']['example']="plugin_retrieve_more_field_from_ldap_example";
 
