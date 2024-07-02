@@ -258,6 +258,9 @@ function plugin_init_example() {
    $PLUGIN_HOOKS[Hooks::DASHBOARD_FILTERS]['example'] = [
       ComputerModelFilter::class
    ];
+
+   // Icon in the impact analysis
+   $PLUGIN_HOOKS[Hooks::SET_ITEM_IMPACT_ICON]['example'] = 'plugin_example_set_impact_icon';
 }
 
 
