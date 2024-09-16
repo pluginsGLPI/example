@@ -235,8 +235,8 @@ function plugin_init_example() {
    $PLUGIN_HOOKS[Hooks::PRE_ITEM_FORM]['example']    = [ItemForm::class, 'preItemForm'];
    $PLUGIN_HOOKS[Hooks::POST_ITEM_FORM]['example']   = [ItemForm::class, 'postItemForm'];
 
-   $PLUGIN_HOOKS[Hooks::PRE_SECTION]['example']    = [ItemForm::class, 'preSection'];
-   $PLUGIN_HOOKS[Hooks::POST_SECTION]['example']   = [ItemForm::class, 'postSection'];
+   $PLUGIN_HOOKS[Hooks::PRE_ITIL_INFO_SECTION]['example']    = [ItemForm::class, 'preSection'];
+   $PLUGIN_HOOKS[Hooks::POST_ITIL_INFO_SECTION]['example']   = [ItemForm::class, 'postSection'];
 
    // Add new actions to timeline
    $PLUGIN_HOOKS[Hooks::TIMELINE_ACTIONS]['example'] = [
