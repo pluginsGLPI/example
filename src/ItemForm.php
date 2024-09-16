@@ -29,6 +29,8 @@
  */
 
 namespace GlpiPlugin\Example;
+
+use Glpi\Application\View\TemplateRenderer;
 use Html;
 use Ticket;
 
@@ -38,6 +40,72 @@ use Ticket;
  * @see http://glpi-developer-documentation.rtfd.io/en/master/plugins/hooks.html#items-display-related
  * */
 class ItemForm {
+
+
+   /**
+    * Display contents at the begining of ITILObject section (right panel).
+    *
+    * @param array $params Array with "item" and "options" keys
+    *
+    * @return void
+    */
+    static public function preSection($params) {
+      $item = $params['item'];
+      $options = $params['options'];
+
+      echo TemplateRenderer::getInstance()->renderFromStringTemplate(<<<TWIG
+      <section class="accordion-item" aria-label="a label">
+      <h2 class="accordion-header" id="example-heading" title="example-heading-id" data-bs-toggle="tooltip">
+         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#example-pre-content" aria-expanded="true" aria-controls="example-pre-content">
+            <i class="ti ti-world me-1"></i>
+            <span class="item-title">
+               Example pre section
+            </span>
+         </button>
+      </h2>
+      <div id="example-pre-content" class="accordion-collapse collapse" aria-labelledby="example-pre-content-heading">
+         <div class="accordion-body">
+            Example pre section
+         </div>
+      </div>
+   </section>
+TWIG, []);
+
+   }
+
+   /**
+    * Display contents at the end of ITILObject section (right panel).
+    *
+    * @param array $params Array with "item" and "options" keys
+    *
+    * @return void
+    */
+   static public function postSection($params) {
+      $item = $params['item'];
+      $options = $params['options'];
+
+      echo TemplateRenderer::getInstance()->renderFromStringTemplate(<<<TWIG
+      <section class="accordion-item" aria-label="a label">
+      <h2 class="accordion-header" id="example-heading" title="example-heading-id" data-bs-toggle="tooltip">
+         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#example-post-content" aria-expanded="true" aria-controls="example-post-content">
+            <i class="ti ti-world me-1"></i>
+            <span class="item-title">
+               Example post section
+            </span>
+         </button>
+      </h2>
+      <div id="example-post-content" class="accordion-collapse collapse" aria-labelledby="example-post-content-heading">
+         <div class="accordion-body">
+            Example post section
+         </div>
+      </div>
+   </section>
+TWIG, []);
+   }
+
+
+
+
 
    /**
     * Display contents at the begining of item forms.
