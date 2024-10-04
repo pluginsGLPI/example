@@ -703,3 +703,14 @@ function plugin_example_filter_actors(array $params = []): array {
 
     return $params;
 }
+
+function plugin_example_set_impact_icon(array $params) {
+    $itemtype = $params['itemtype'];
+    $items_id = $params['items_id'];
+
+    $item = getItemForItemtype($itemtype);
+    if ($item instanceof Computer && $item->getFromDB($items_id)) {
+        return Plugin::getWebDir('example', true, false) . '/public/computer_icon.svg';
+    }
+    return null;
+}
