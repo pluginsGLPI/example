@@ -177,8 +177,9 @@ function plugin_init_example() {
    $PLUGIN_HOOKS['assign_to_ticket']['example'] = 1;
 
    // Add specific files to add to the header : javascript or css
-   $PLUGIN_HOOKS[Hooks::ADD_JAVASCRIPT]['example'] = 'example.js';
-   $PLUGIN_HOOKS[Hooks::ADD_CSS]['example']        = 'example.css';
+   $PLUGIN_HOOKS[Hooks::ADD_JAVASCRIPT]['example']        = 'js/example.js';
+   $PLUGIN_HOOKS[Hooks::ADD_JAVASCRIPT_MODULE]['example'] = 'js/modules/mymodule.js';
+   $PLUGIN_HOOKS[Hooks::ADD_CSS]['example']               = 'css/example.css';
 
    // Add specific tags to the header
    $PLUGIN_HOOKS[Hooks::ADD_HEADER_TAG]['example'] = [
