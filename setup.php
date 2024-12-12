@@ -200,6 +200,13 @@ function plugin_init_example() {
       ],
    ];
 
+   // Add specific files to add to the header into anonymous page : javascript or css
+   $PLUGIN_HOOKS[Hooks::ADD_CSS_ANONYMOUS_PAGE]['example']        = 'example_anonymous.css';
+   $PLUGIN_HOOKS[Hooks::ADD_JAVASCRIPT_ANONYMOUS_PAGE]['example']        = 'example_anonymous.js';
+
+   // Add specific tags to the header into anonymous page
+   $PLUGIN_HOOKS[Hooks::ADD_HEADER_TAG_ANONYMOUS_PAGE]['example'] = [];
+
    // request more attributes from ldap
    //$PLUGIN_HOOKS['retrieve_more_field_from_ldap']['example']="plugin_retrieve_more_field_from_ldap_example";
 
