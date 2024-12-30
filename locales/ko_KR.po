@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-19 01:24+0000\n"
+"POT-Creation-Date: 2024-12-20 01:27+0000\n"
 "PO-Revision-Date: 2015-09-18 12:02+0000\n"
 "Last-Translator: 조성현 (jaymz9634) <jaymz9634@gmail.com>, 2020\n"
 "Language-Team: Korean (Korea) (http://app.transifex.com/teclib/glpi-plugin-example/language/ko_KR/)\n"
@@ -75,7 +75,7 @@ msgstr "플러그인 예제의 첫번째 탭"
 msgid "History from plugin example"
 msgstr "플러그인 예제 이력"
 
-#: setup.php:313
+#: setup.php:341
 msgid "Installed / not configured"
 msgstr "설치됨 / 구성 안됨"
 
