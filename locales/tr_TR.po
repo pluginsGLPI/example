@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-19 01:24+0000\n"
+"POT-Creation-Date: 2024-12-30 01:37+0000\n"
 "PO-Revision-Date: 2015-09-18 12:02+0000\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2015-2016,2018-2019,2021,2023-2024\n"
 "Language-Team: Turkish (Turkey) (http://app.transifex.com/teclib/glpi-plugin-example/language/tr_TR/)\n"
@@ -61,21 +61,21 @@ msgstr "Örnek etkinlik"
 
 #: hook.php:69
 msgid "Example plugin"
-msgstr "Örnek uygulama eki"
+msgstr "Örnek eklenti"
 
 #: hook.php:83
 msgid "Example plugin new"
-msgstr "Örnek uygulama eki yeni"
+msgstr "Örnek eklenti yeni"
 
 #: src/Example.php:277
 msgid "First tab of Plugin example"
-msgstr "Örnek uygulama ekinin ilk sekmesi"
+msgstr "Örnek eklentinin ilk sekmesi"
 
 #: src/Example.php:374
 msgid "History from plugin example"
-msgstr "Örnek uygulama eki geçmişi"
+msgstr "Örnek eklenti geçmişi"
 
-#: setup.php:313
+#: setup.php:341
 msgid "Installed / not configured"
 msgstr "Kurulmuş / yapılandırılmamış"
 
@@ -89,45 +89,45 @@ msgstr "Özel bir şey değil - Kendi açılan kutunuzu kullanın - Yalnız örn
 
 #: src/Example.php:480
 msgid "Plugin Example"
-msgstr "Uygulama eki örneği"
+msgstr "Örnek eklenti"
 
 #: src/Example.php:485
 msgid "Plugin Example (static)"
-msgstr "Uygulama eki örneği (sabit)"
+msgstr "Örnek eklenti (sabit)"
 
 #: hook.php:54
 msgid "Plugin Example Dropdown"
-msgstr "Uygulama eki örnek açılan kutu"
+msgstr "Örnek eklenti açılan kutu"
 
 #: src/Dropdown.php:45 src/Dropdown.php:47
 msgid "Plugin Example Dropdowns"
-msgstr "Örnek uygulama eki açılan kutular"
+msgstr "Örnek eklenti açılan kutular"
 
 #: src/Example.php:244
 msgid "Plugin Example on Phone"
-msgstr "Telefon için örnek uygulama eki"
+msgstr "Telefon için örnek eklenti"
 
 #: src/Example.php:248
 msgid "Plugin central action"
-msgstr "Uygulama eki temel işlemi"
+msgstr "Eklenti temel işlemi"
 
 #. TRANS: %1$s is a class name, %2$d is an item ID
 #: src/Example.php:285
 #, php-format
 msgid "Plugin example CLASS=%1$s id=%2$d"
-msgstr "Örnek uygulama eki CLASS=%1$s id=%2$d"
+msgstr "Örnek eklenti CLASS=%1$s id=%2$d"
 
 #: hook.php:674 hook.php:687
 msgid "Plugin example displays on central page"
-msgstr "Örnek uygulama eki merkez sayfada görüntülenir"
+msgstr "Örnek eklenti merkez sayfada görüntülenir"
 
 #: hook.php:681
 msgid "Plugin example displays on login page"
-msgstr "Örnek uygulama eki oturum açma sayfasında görüntülenir"
+msgstr "Örnek eklenti oturum açma sayfasında görüntülenir"
 
 #: src/Example.php:271
 msgid "Plugin mailing action"
-msgstr "Uygulama eki postalama işlemi"
+msgstr "Eklenti postalama işlemi"
 
 #: hook.php:365
 msgid "Pre Delete Computer Hook"
@@ -163,15 +163,15 @@ msgstr "Doğru bu benim istediğim tür..."
 
 #: src/Example.php:279
 msgid "Second tab of Plugin example"
-msgstr "Örnek uygulama ekinin ikinci sekmesi"
+msgstr "Örnek eklentinin ikinci sekmesi"
 
 #: src/Example.php:225 src/Example.php:232
 msgid "Test Plugin"
-msgstr "Deneme uygulama eki"
+msgstr "Deneme eklentisi"
 
 #: src/Example.php:226
 msgid "Test Plugin 2"
-msgstr "Deneme uygulama eki 2"
+msgstr "Deneme eklentisi 2"
 
 #: src/Example.php:66
 msgid "Test link"
@@ -179,7 +179,7 @@ msgstr "Deneme bağlantısı"
 
 #: front/config.php:48
 msgid "This is the plugin config page"
-msgstr "Uygulama eki yapılandırması"
+msgstr "Eklenti yapılandırması"
 
 #. TRANS: %1$s is the source type, %2$d is the source ID, %3$d is the
 #. destination ID
@@ -203,7 +203,7 @@ msgstr "Ama hiç bir şey yapma :)"
 
 #: hook.php:268
 msgid "plugin_example_DoIt"
-msgstr "uygulamaeki_ornek_Yap"
+msgstr "eklenti_ornek_Yap"
 
 #: src/Example.php:314
 msgid "test planning example 1"

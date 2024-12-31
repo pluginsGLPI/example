@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-19 01:24+0000\n"
+"POT-Creation-Date: 2024-12-20 01:27+0000\n"
 "PO-Revision-Date: 2015-09-18 12:02+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2018\n"
 "Language-Team: Czech (Czech Republic) (http://app.transifex.com/teclib/glpi-plugin-example/language/cs_CZ/)\n"
@@ -76,7 +76,7 @@ msgstr "První panel zásuvného modulu pro ukázku"
 msgid "History from plugin example"
 msgstr "Historie ze zásuvného modulu pro ukázku"
 
-#: setup.php:313
+#: setup.php:341
 msgid "Installed / not configured"
 msgstr "Nainstalováno/nenastaveno"
 
