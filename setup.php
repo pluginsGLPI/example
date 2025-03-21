@@ -260,8 +260,11 @@ function plugin_init_example() {
    $PLUGIN_HOOKS[Hooks::PRE_ITEM_FORM]['example']    = [ItemForm::class, 'preItemForm'];
    $PLUGIN_HOOKS[Hooks::POST_ITEM_FORM]['example']   = [ItemForm::class, 'postItemForm'];
 
-   $PLUGIN_HOOKS[Hooks::PRE_ITIL_INFO_SECTION]['example']    = [ItemForm::class, 'preSection'];
-   $PLUGIN_HOOKS[Hooks::POST_ITIL_INFO_SECTION]['example']   = [ItemForm::class, 'postSection'];
+   //TODO: remove check when GLPI 11.0.0 is released
+   if (version_compare(GLPI_VERSION, '11.0.0') >= 0) {
+      $PLUGIN_HOOKS[Hooks::PRE_ITIL_INFO_SECTION]['example']    = [ItemForm::class, 'preSection'];
+      $PLUGIN_HOOKS[Hooks::POST_ITIL_INFO_SECTION]['example']   = [ItemForm::class, 'postSection'];
+   }
 
    // Add new actions to timeline
    $PLUGIN_HOOKS[Hooks::TIMELINE_ACTIONS]['example'] = [
@@ -287,8 +290,11 @@ function plugin_init_example() {
       ComputerModelFilter::class
    ];
 
-   // Icon in the impact analysis
-   $PLUGIN_HOOKS[Hooks::SET_ITEM_IMPACT_ICON]['example'] = 'plugin_example_set_impact_icon';
+   //TODO: remove check when GLPI 11.0.0 is released
+   if (version_compare(GLPI_VERSION, '11.0.0') >= 0) {
+      // Icon in the impact analysis
+      $PLUGIN_HOOKS[Hooks::SET_ITEM_IMPACT_ICON]['example'] = 'plugin_example_set_impact_icon';
+   }
 }
 
 
