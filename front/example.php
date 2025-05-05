@@ -36,7 +36,7 @@
 use GlpiPlugin\Example\Example;
 
 include ('../../../inc/includes.php');
-Session::checkLoginUser();
+Session::checkRight(Example::$rightname, READ);
 
 if ($_SESSION["glpiactiveprofile"]["interface"] == "central") {
    Html::header("TITRE", $_SERVER['PHP_SELF'], "plugins", Example::class, "");
