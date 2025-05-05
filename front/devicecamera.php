@@ -34,6 +34,7 @@
 // ----------------------------------------------------------------------
 
 include ('../../../inc/includes.php');
+Session::checkLoginUser();
 
 $dropdown = new DeviceCamera();
 include (GLPI_ROOT . "/front/dropdown.common.php");

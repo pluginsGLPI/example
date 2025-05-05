@@ -36,6 +36,7 @@
 use GlpiPlugin\Example\Dropdown;
 
 include ('../../../inc/includes.php');
+Session::checkLoginUser();
 
 Plugin::load('example', true);
 
