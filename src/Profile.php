@@ -34,17 +34,27 @@ use CommonGLPI;
 use Html;
 use Session;
 
-final class Profile extends \Profile
+class Profile extends \Profile
 {
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
-        return __('Example plugin');
+        if (
+            $item instanceof \Profile
+            && $item->getField('id')
+        ) {
+            return self::createTabEntry(__('Example plugin'));
+        }
+
+        return '';
     }
 
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
-        $profile = new self();
-        $profile->showFormExample($item->getID());
+        if ($item instanceof self) {
+            $profile = new self();
+            $profile->showFormExample($item->getID());
+        }
+        return true;
     }
 
     public function showFormExample(int $profiles_id): void

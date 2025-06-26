@@ -40,10 +40,6 @@ namespace GlpiPlugin\Example;
 use GlpiPlugin\Example\DeviceCamera;
 use Item_Devices;
 
-if (!defined('GLPI_ROOT')) {
-    die("Sorry. You can't access directly to this file");
-}
-
 /**
  * Relation between item and devices
 **/

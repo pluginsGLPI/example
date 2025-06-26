@@ -37,11 +37,6 @@ namespace GlpiPlugin\Example;
 
 use RuleCollection;
 
-if (!defined('GLPI_ROOT')) {
-    die("Sorry. You can't access directly to this file");
-}
-
-
 class RuleTestCollection extends RuleCollection
 {
     // From RuleCollection
