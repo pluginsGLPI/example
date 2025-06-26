@@ -38,6 +38,7 @@ namespace GlpiPlugin\Example;
 use CommonDBTM;
 use CommonGLPI;
 use Computer;
+use DBmysql;
 use Html;
 use Log;
 use MassiveAction;
@@ -487,7 +488,7 @@ class Example extends CommonDBTM
         parent::processMassiveActionsForOneItemtype($ma, $item, $ids);
     }
 
-    public static function generateLinkContents($link, CommonDBTM $item)
+    public static function generateLinkContents($link, CommonDBTM $item, bool $safe_url = true)
     {
         if (strstr($link, '[EXAMPLE_ID]')) {
             $link = str_replace('[EXAMPLE_ID]', $item->getID(), $link);

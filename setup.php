@@ -42,9 +42,9 @@ use GlpiPlugin\Example\Showtabitem;
 define('PLUGIN_EXAMPLE_VERSION', '0.0.1');
 
 // Minimal GLPI version, inclusive
-define('PLUGIN_EXAMPLE_MIN_GLPI', '10.0.0');
+define('PLUGIN_EXAMPLE_MIN_GLPI', '11.0.0');
 // Maximum GLPI version, exclusive
-define('PLUGIN_EXAMPLE_MAX_GLPI', '10.0.99');
+define('PLUGIN_EXAMPLE_MAX_GLPI', '11.0.99');
 
 /**
  * Init hooks of the plugin.
@@ -340,7 +340,6 @@ function plugin_example_check_prerequisites()
     if (false) {
         return false;
     }
-
     return true;
 }
 
@@ -360,6 +359,5 @@ function plugin_example_check_config($verbose = false)
     if ($verbose) {
         echo __('Installed / not configured', 'example');
     }
-
     return false;
 }

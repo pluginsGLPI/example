@@ -33,9 +33,7 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
-use GlpiPlugin\Example\Dropdown;
 use GlpiPlugin\Example\Example;
-use Dropdown as GlpiDropdown;
 
 function plugin_change_profile_example()
 {
@@ -72,7 +70,6 @@ function plugin_example_getAddSearchOptions($itemtype)
         $sopt[1001]['linkfield'] = 'plugin_example_dropdowns_id';
         $sopt[1001]['name']      = __('Example plugin', 'example');
     }
-
     return $sopt;
 }
 
@@ -89,7 +86,6 @@ function plugin_example_getAddSearchOptionsNew($itemtype)
             'name'      => __('Example plugin new', 'example'),
         ];
     }
-
     return $options;
 }
 
@@ -201,7 +197,6 @@ function plugin_example_forceGroupBy($type)
             // Force add GROUP BY IN REQUEST
             return true;
     }
-
     return false;
 }
 
@@ -250,7 +245,7 @@ function plugin_example_addHaving($link, $nott, $type, $ID, $val, $num)
                 $ADD = " OR ITEM_$num IS NULL";
             }
 
-            return " $LINK ( ITEM_" . $num . $SEARCH . " $ADD ) ";
+            return " $link ( ITEM_" . $num . $SEARCH . " $ADD ) ";
     }
 
     return '';
@@ -338,7 +333,6 @@ function plugin_example_MassiveActionsFieldsDisplay($options = [])
                 return true;
         }
     }
-
     // Need to return false on non display item
     return false;
 }
@@ -616,7 +610,6 @@ function plugin_example_install()
     // To be called for each task the plugin manage
     // task in class
     CronTask::Register(Example::class, 'Sample', DAY_TIMESTAMP, ['param' => 50]);
-
     return true;
 }
 
@@ -710,7 +703,7 @@ function plugin_example_postinit()
  *
  * @param $datas   array
  *
- * @return un tableau
+ * @return array
  **/
 function plugin_retrieve_more_data_from_ldap_example(array $datas)
 {
@@ -723,7 +716,7 @@ function plugin_retrieve_more_data_from_ldap_example(array $datas)
  *
  * @param $fields   array
  *
- * @return un tableau
+ * @return array
  **/
 function plugin_retrieve_more_field_from_ldap_example($fields)
 {
@@ -744,7 +737,6 @@ function plugin_example_Status($param)
         $param['ok'] = false;
     }
     echo "\n";
-
     return $param;
 }
 
@@ -790,12 +782,15 @@ function plugin_example_filter_actors(array $params = []): array
 
 function plugin_example_set_impact_icon(array $params)
 {
+    /** @var array $CFG_GLPI */
+    global $CFG_GLPI;
+
     $itemtype = $params['itemtype'];
     $items_id = $params['items_id'];
 
     $item = getItemForItemtype($itemtype);
     if ($item instanceof Computer && $item->getFromDB($items_id)) {
-        return Plugin::getWebDir('example', true, false) . '/public/computer_icon.svg';
+        return $CFG_GLPI['root_doc'] . '/plugins/example/public/computer_icon.svg';
     }
 
     return null;
