@@ -34,21 +34,23 @@
 // ----------------------------------------------------------------------
 
 namespace GlpiPlugin\Example;
+
 use RuleCollection;
 
 if (!defined('GLPI_ROOT')) {
-   die("Sorry. You can't access directly to this file");
+    die("Sorry. You can't access directly to this file");
 }
 
 
-class RuleTestCollection extends RuleCollection {
+class RuleTestCollection extends RuleCollection
+{
+    // From RuleCollection
+    public $stop_on_first_match = true;
+    public static $rightname    = 'rule_import';
+    public $menu_option         = 'test';
 
-   // From RuleCollection
-   public $stop_on_first_match = true;
-   public static $rightname    = 'rule_import';
-   public $menu_option         = 'test';
-
-   function getTitle() {
-      return 'Rulesengine test';
-   }
+    public function getTitle()
+    {
+        return 'Rulesengine test';
+    }
 }

@@ -34,19 +34,20 @@
 // ----------------------------------------------------------------------
 
 namespace GlpiPlugin\Example;
+
 use CommonDevice;
 
 // Class of the defined type
 
 if (!defined('GLPI_ROOT')) {
-   die("Sorry. You can't access directly to this file");
+    die("Sorry. You can't access directly to this file");
 }
 
 /// Class DeviceCamera
-class DeviceCamera extends CommonDevice {
-
-   static function getTypeName($nb = 0) {
-      return _n('Camera', 'Cameras', $nb);
-   }
-
+class DeviceCamera extends CommonDevice
+{
+    public static function getTypeName($nb = 0)
+    {
+        return _n('Camera', 'Cameras', $nb);
+    }
 }

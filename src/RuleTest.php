@@ -34,10 +34,11 @@
 // ----------------------------------------------------------------------
 
 namespace GlpiPlugin\Example;
+
 use Rule;
 
 if (!defined('GLPI_ROOT')) {
-   die("Sorry. You can't access directly to this file");
+    die("Sorry. You can't access directly to this file");
 }
 
 
@@ -48,40 +49,39 @@ if (!defined('GLPI_ROOT')) {
 *   - actions
 *
 **/
-class RuleTest extends Rule {
+class RuleTest extends Rule
+{
+    // From Rule
+    public static $rightname = 'rule_import';
+    public $can_sort         = true;
 
-   // From Rule
-   public static $rightname = 'rule_import';
-   public $can_sort  = true;
+    public function getTitle()
+    {
+        return 'test';
+    }
 
+    public function maxActionsCount()
+    {
+        return 1;
+    }
 
-   function getTitle() {
-      return 'test';
-   }
+    public function getCriterias()
+    {
+        $criterias                  = [];
+        $criterias['name']['field'] = 'name';
+        $criterias['name']['name']  = __('Software');
+        $criterias['name']['table'] = 'glpi_softwares';
 
+        return $criterias;
+    }
 
-   function maxActionsCount() {
-      return 1;
-   }
+    public function getActions()
+    {
+        $actions                                   = [];
+        $actions['softwarecategories_id']['name']  = __('Category (class)', 'example');
+        $actions['softwarecategories_id']['type']  = 'dropdown';
+        $actions['softwarecategories_id']['table'] = 'glpi_softwarecategories';
 
-
-   function getCriterias() {
-
-      $criterias = [];
-      $criterias['name']['field'] = 'name';
-      $criterias['name']['name']  = __('Software');
-      $criterias['name']['table'] = 'glpi_softwares';
-
-      return $criterias;
-   }
-
-
-   function getActions() {
-
-      $actions = [];
-      $actions['softwarecategories_id']['name']  = __('Category (class)', 'example');
-      $actions['softwarecategories_id']['type']  = 'dropdown';
-      $actions['softwarecategories_id']['table'] = 'glpi_softwarecategories';
-      return $actions;
-   }
+        return $actions;
+    }
 }

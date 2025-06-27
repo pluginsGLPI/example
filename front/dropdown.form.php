@@ -35,10 +35,10 @@
 
 use GlpiPlugin\Example\Dropdown;
 
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 Session::checkLoginUser();
 
 Plugin::load('example', true);
 
 $dropdown = new Dropdown();
-include (GLPI_ROOT . "/front/dropdown.common.form.php");
+include(GLPI_ROOT . '/front/dropdown.common.form.php');

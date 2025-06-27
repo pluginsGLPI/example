@@ -38,12 +38,12 @@ class ComputerModelFilter extends AbstractFilter
 {
     public static function getName(): string
     {
-        return __("Computer model");
+        return __('Computer model');
     }
 
     public static function getId(): string
     {
-        return "plugin_example_computer_model";
+        return 'plugin_example_computer_model';
     }
 
     public static function canBeApplied(string $table): bool
@@ -57,9 +57,9 @@ class ComputerModelFilter extends AbstractFilter
     {
         return self::displayList(
             self::getName(),
-            is_string($value) ? $value : "",
+            is_string($value) ? $value : '',
             self::getId(),
-            ComputerModel::class
+            ComputerModel::class,
         );
     }
 
@@ -67,10 +67,11 @@ class ComputerModelFilter extends AbstractFilter
     {
         if ((int) $value > 0) {
             $field = ComputerModel::getForeignKeyField();
+
             return [
-                "WHERE" => [
-                    "$table.$field" => (int) $value
-                ]
+                'WHERE' => [
+                    "$table.$field" => (int) $value,
+                ],
             ];
         }
 
@@ -88,9 +89,9 @@ class ComputerModelFilter extends AbstractFilter
                     'field'      => self::getSearchOptionID(
                         $table,
                         ComputerModel::getForeignKeyField(),
-                        ComputerModel::getTable()
+                        ComputerModel::getTable(),
                     ),
-                ]
+                ],
             ];
         }
 

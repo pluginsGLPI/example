@@ -29,22 +29,25 @@
  */
 
 namespace GlpiPlugin\Example;
+
 use NotificationTarget;
 
 if (!defined('GLPI_ROOT')) {
-   die("Sorry. You can't access directly to this file");
+    die("Sorry. You can't access directly to this file");
 }
 
 // Class NotificationTarget
-class NotificationTargetExample extends NotificationTarget {
+class NotificationTargetExample extends NotificationTarget
+{
+    public function getEvents()
+    {
+        return  ['alert' => 'alert example'];
+    }
 
-   function getEvents() {
-      return  ['alert' => 'alert example'];
-   }
+    public function addDataForTemplate($event, $options = [])
+    {
+        global $DB, $CFG_GLPI;
 
-   function addDataForTemplate($event, $options = []) {
-      global $DB, $CFG_GLPI;
-
-      $this->data['##example.name##'] = __('Example', 'example');
-   }
+        $this->data['##example.name##'] = __('Example', 'example');
+    }
 }

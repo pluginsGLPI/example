@@ -3,7 +3,8 @@
         "php": ">=7.4"
     },
     "require-dev": {
-        "glpi-project/tools": "^0.5"
+        "friendsofphp/php-cs-fixer": "^3.75",
+        "glpi-project/tools": "^0.7.5"
     },
     "config": {
         "optimize-autoloader": true,

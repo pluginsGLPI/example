@@ -32,18 +32,20 @@
 // Original Author of file:
 // Purpose of file:
 // ----------------------------------------------------------------------
+
 namespace GlpiPlugin\Example;
+
 use CommonDropdown;
 
 // Class for a Dropdown
-class Dropdown extends CommonDropdown {
+class Dropdown extends CommonDropdown
+{
+    public static function getTypeName($nb = 0)
+    {
+        if ($nb > 0) {
+            return __('Plugin Example Dropdowns', 'example');
+        }
 
-
-   static function getTypeName($nb = 0) {
-
-      if ($nb > 0) {
-         return __('Plugin Example Dropdowns', 'example');
-      }
-      return __('Plugin Example Dropdowns', 'example');
-   }
+        return __('Plugin Example Dropdowns', 'example');
+    }
 }

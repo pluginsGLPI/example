@@ -35,8 +35,8 @@
 
 use GlpiPlugin\Example\DeviceCamera;
 
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 Session::checkLoginUser();
 
 $dropdown = new DeviceCamera();
-include (GLPI_ROOT . "/front/dropdown.common.form.php");
+include(GLPI_ROOT . '/front/dropdown.common.form.php');

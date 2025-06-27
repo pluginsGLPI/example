@@ -35,13 +35,13 @@
 
 use GlpiPlugin\Example\Example;
 
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 Session::checkLoginUser();
 
-if ($_SESSION["glpiactiveprofile"]["interface"] == "central") {
-   Html::header("TITRE", $_SERVER['PHP_SELF'], "plugins", Example::class, "");
+if ($_SESSION['glpiactiveprofile']['interface'] == 'central') {
+    Html::header('TITRE', $_SERVER['PHP_SELF'], 'plugins', Example::class, '');
 } else {
-   Html::helpHeader("TITRE", $_SERVER['PHP_SELF']);
+    Html::helpHeader('TITRE', $_SERVER['PHP_SELF']);
 }
 
 $example = new Example();
