@@ -6,8 +6,8 @@ parameters:
         - front
         - src
         - hook.php
-        - setup.php
         - report.php
+        - setup.php
         - stat.php
     scanDirectories:
         - ../../inc
