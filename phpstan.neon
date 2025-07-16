@@ -8,6 +8,7 @@ parameters:
         - hook.php
         - setup.php
         - report.php
+        - stat.php
     scanDirectories:
         - ../../inc
         - ../../src
