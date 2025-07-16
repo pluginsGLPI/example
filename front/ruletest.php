@@ -35,9 +35,9 @@
 
 use GlpiPlugin\Example\RuleTestCollection;
 
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 Session::checkLoginUser();
 
 $rulecollection = new RuleTestCollection();
 
-include (GLPI_ROOT . "/front/rule.common.php");
+include(GLPI_ROOT . '/front/rule.common.php');

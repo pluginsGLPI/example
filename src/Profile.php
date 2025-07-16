@@ -66,9 +66,9 @@ final class Profile extends \Profile
         $rights = [
             [
                 'itemtype' => Example::class,
-                'label' => Example::getTypeName(Session::getPluralNumber()),
-                'field' => Example::$rightname
-            ]
+                'label'    => Example::getTypeName(Session::getPluralNumber()),
+                'field'    => Example::$rightname,
+            ],
         ];
         $matrix_options['title'] = self::getTypeName(1);
         $this->displayRightsChoiceMatrix($rights, $matrix_options);

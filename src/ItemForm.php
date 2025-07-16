@@ -39,21 +39,21 @@ use Ticket;
  * Example of *_item_form implementation
  * @see http://glpi-developer-documentation.rtfd.io/en/master/plugins/hooks.html#items-display-related
  * */
-class ItemForm {
+class ItemForm
+{
+    /**
+     * Display contents at the begining of ITILObject section (right panel).
+     *
+     * @param array $params Array with "item" and "options" keys
+     *
+     * @return void
+     */
+    public static function preSection($params)
+    {
+        $item    = $params['item'];
+        $options = $params['options'];
 
-
-   /**
-    * Display contents at the begining of ITILObject section (right panel).
-    *
-    * @param array $params Array with "item" and "options" keys
-    *
-    * @return void
-    */
-    static public function preSection($params) {
-      $item = $params['item'];
-      $options = $params['options'];
-
-      echo TemplateRenderer::getInstance()->renderFromStringTemplate(<<<TWIG
+        echo TemplateRenderer::getInstance()->renderFromStringTemplate(<<<TWIG
       <section class="accordion-item" aria-label="a label">
       <h2 class="accordion-header" id="example-heading" title="example-heading-id" data-bs-toggle="tooltip">
          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#example-pre-content" aria-expanded="true" aria-controls="example-pre-content">
@@ -70,21 +70,21 @@ class ItemForm {
       </div>
    </section>
 TWIG, []);
+    }
 
-   }
+    /**
+     * Display contents at the end of ITILObject section (right panel).
+     *
+     * @param array $params Array with "item" and "options" keys
+     *
+     * @return void
+     */
+    public static function postSection($params)
+    {
+        $item    = $params['item'];
+        $options = $params['options'];
 
-   /**
-    * Display contents at the end of ITILObject section (right panel).
-    *
-    * @param array $params Array with "item" and "options" keys
-    *
-    * @return void
-    */
-   static public function postSection($params) {
-      $item = $params['item'];
-      $options = $params['options'];
-
-      echo TemplateRenderer::getInstance()->renderFromStringTemplate(<<<TWIG
+        echo TemplateRenderer::getInstance()->renderFromStringTemplate(<<<TWIG
       <section class="accordion-item" aria-label="a label">
       <h2 class="accordion-header" id="example-heading" title="example-heading-id" data-bs-toggle="tooltip">
          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#example-post-content" aria-expanded="true" aria-controls="example-post-content">
@@ -101,106 +101,105 @@ TWIG, []);
       </div>
    </section>
 TWIG, []);
-   }
+    }
 
+    /**
+     * Display contents at the begining of item forms.
+     *
+     * @param array $params Array with "item" and "options" keys
+     *
+     * @return void
+     */
+    public static function preItemForm($params)
+    {
+        $item    = $params['item'];
+        $options = $params['options'];
 
+        $firstelt = ($item::getType() == Ticket::class ? 'th' : 'td');
 
+        $out = '<tr><th colspan="' . (isset($options['colspan']) ? $options['colspan'] * 2 : '4') . '">';
+        $out .= sprintf(
+            __('Start %1$s hook call for %2$s type'),
+            'pre_item_form',
+            $item::getType(),
+        );
+        $out .= '</th></tr>';
 
+        $out .= "<tr><$firstelt>";
+        $out .= '<label for="example_pre_form_hook">' . __('First pre form hook') . '</label>';
+        $out .= "</$firstelt><td>";
+        $out .= '<input type="text" name="example_pre_form_hook" id="example_pre_form_hook"/>';
+        $out .= "</td><$firstelt>";
+        $out .= '<label for="example_pre_form_hook2">' . __('Second pre form hook') . '</label>';
+        $out .= "</$firstelt><td>";
+        $out .= '<input type="text" name="example_pre_form_hook2" id="example_pre_form_hook2"/>';
+        $out .= '</td></tr>';
 
-   /**
-    * Display contents at the begining of item forms.
-    *
-    * @param array $params Array with "item" and "options" keys
-    *
-    * @return void
-    */
-   static public function preItemForm($params) {
-      $item = $params['item'];
-      $options = $params['options'];
+        $out .= '<tr><th colspan="' . (isset($options['colspan']) ? $options['colspan'] * 2 : '4') . '">';
+        $out .= sprintf(
+            __('End %1$s hook call for %2$s type'),
+            'pre_item_form',
+            $item::getType(),
+        );
+        $out .= '</th></tr>';
 
-      $firstelt = ($item::getType() == Ticket::class ? 'th' : 'td');
+        echo $out;
+    }
 
-      $out = '<tr><th colspan="' . (isset($options['colspan']) ? $options['colspan'] * 2 : '4') . '">';
-      $out .= sprintf(
-         __('Start %1$s hook call for %2$s type'),
-         'pre_item_form',
-         $item::getType()
-      );
-      $out .= '</th></tr>';
+    /**
+     * Display contents at the begining of item forms.
+     *
+     * @param array $params Array with "item" and "options" keys
+     *
+     * @return void
+     */
+    public static function postItemForm($params)
+    {
+        $item    = $params['item'];
+        $options = $params['options'];
 
-      $out .= "<tr><$firstelt>";
-      $out .= '<label for="example_pre_form_hook">' . __('First pre form hook') . '</label>';
-      $out .= "</$firstelt><td>";
-      $out .= '<input type="text" name="example_pre_form_hook" id="example_pre_form_hook"/>';
-      $out .= "</td><$firstelt>";
-      $out .= '<label for="example_pre_form_hook2">' . __('Second pre form hook') . '</label>';
-      $out .= "</$firstelt><td>";
-      $out .= '<input type="text" name="example_pre_form_hook2" id="example_pre_form_hook2"/>';
-      $out .= '</td></tr>';
+        $firstelt = ($item::getType() == Ticket::class ? 'th' : 'td');
 
-      $out .= '<tr><th colspan="' . (isset($options['colspan']) ? $options['colspan'] * 2 : '4') . '">';
-      $out .= sprintf(
-         __('End %1$s hook call for %2$s type'),
-         'pre_item_form',
-         $item::getType()
-      );
-      $out .= '</th></tr>';
+        $out = '<tr><th colspan="' . (isset($options['colspan']) ? $options['colspan'] * 2 : '4') . '">';
+        $out .= sprintf(
+            __('Start %1$s hook call for %2$s type'),
+            'post_item_form',
+            $item::getType(),
+        );
+        $out .= '</th></tr>';
 
-      echo $out;
-   }
+        $out .= "<tr><$firstelt>";
+        $out .= '<label for="example_post_form_hook">' . __('First post form hook') . '</label>';
+        $out .= "</$firstelt><td>";
+        $out .= '<input type="text" name="example_post_form_hook" id="example_post_form_hook"/>';
+        $out .= "</td><$firstelt>";
+        $out .= '<label for="example_post_form_hook2">' . __('Second post form hook') . '</label>';
+        $out .= "</$firstelt><td>";
+        $out .= '<input type="text" name="example_post_form_hook2" id="example_post_form_hook2"/>';
+        $out .= '</td></tr>';
 
-   /**
-    * Display contents at the begining of item forms.
-    *
-    * @param array $params Array with "item" and "options" keys
-    *
-    * @return void
-    */
-   static public function postItemForm($params) {
-      $item = $params['item'];
-      $options = $params['options'];
+        $out .= '<tr><th colspan="' . (isset($options['colspan']) ? $options['colspan'] * 2 : '4') . '">';
+        $out .= sprintf(
+            __('End %1$s hook call for %2$s type'),
+            'post_item_form',
+            $item::getType(),
+        );
+        $out .= '</th></tr>';
 
-      $firstelt = ($item::getType() == Ticket::class ? 'th' : 'td');
+        echo $out;
+    }
 
-      $out = '<tr><th colspan="' . (isset($options['colspan']) ? $options['colspan'] * 2 : '4') . '">';
-      $out .= sprintf(
-         __('Start %1$s hook call for %2$s type'),
-         'post_item_form',
-         $item::getType()
-      );
-      $out .= '</th></tr>';
+    public static function timelineActions($params = [])
+    {
+        $rand   = $params['rand'];
+        $ticket = $params['item'];
 
-      $out .= "<tr><$firstelt>";
-      $out .= '<label for="example_post_form_hook">' . __('First post form hook') . '</label>';
-      $out .= "</$firstelt><td>";
-      $out .= '<input type="text" name="example_post_form_hook" id="example_post_form_hook"/>';
-      $out .= "</td><$firstelt>";
-      $out .= '<label for="example_post_form_hook2">' . __('Second post form hook') . '</label>';
-      $out .= "</$firstelt><td>";
-      $out .= '<input type="text" name="example_post_form_hook2" id="example_post_form_hook2"/>';
-      $out .= '</td></tr>';
+        if (get_class($ticket) !== 'Ticket') {
+            return false;
+        }
 
-      $out .= '<tr><th colspan="' . (isset($options['colspan']) ? $options['colspan'] * 2 : '4') . '">';
-      $out .= sprintf(
-         __('End %1$s hook call for %2$s type'),
-         'post_item_form',
-         $item::getType()
-      );
-      $out .= '</th></tr>';
-
-      echo $out;
-   }
-
-   static public function timelineActions($params = []) {
-      $rand   = $params['rand'];
-      $ticket = $params['item'];
-
-      if (get_class($ticket) !== "Ticket") {
-         return false;
-      }
-
-      $edit_panel = "viewitem".$ticket->fields['id'].$rand;
-      $JS = <<<JAVASCRIPT
+        $edit_panel = 'viewitem' . $ticket->fields['id'] . $rand;
+        $JS         = <<<JAVASCRIPT
       $(function() {
          $(document).on('click', '#email_transfer_{$rand}', function(event) {
             $('#{$edit_panel}').html('email send');
@@ -208,10 +207,10 @@ TWIG, []);
       });
 JAVASCRIPT;
 
-      echo "<li class='followup' id='email_transfer_$rand'>
-            <i class='far fa-envelope'></i>".
-            __("Send a notification").
-            Html::scriptBlock($JS)."
-        </li>";
-   }
+        echo "<li class='followup' id='email_transfer_$rand'>
+            <i class='far fa-envelope'></i>" .
+              __('Send a notification') .
+              Html::scriptBlock($JS) . '
+        </li>';
+    }
 }

@@ -38,12 +38,12 @@
 
 // Entry menu case
 define('GLPI_ROOT', '../..');
-include (GLPI_ROOT . "/inc/includes.php");
+include(GLPI_ROOT . '/inc/includes.php');
 
 Session::checkRight(Config::$rightname, UPDATE);
 
-Html::header("TITLE", $_SERVER['PHP_SELF'], "plugins");
+Html::header('TITLE', $_SERVER['PHP_SELF'], 'plugins');
 
-echo "This is the plugin stat page";
+echo 'This is the plugin stat page';
 
 Html::footer();

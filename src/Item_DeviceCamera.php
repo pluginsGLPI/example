@@ -36,21 +36,21 @@
 // Class of the defined type
 
 namespace GlpiPlugin\Example;
+
 use GlpiPlugin\Example\DeviceCamera;
 use Item_Devices;
 
 if (!defined('GLPI_ROOT')) {
-   die("Sorry. You can't access directly to this file");
+    die("Sorry. You can't access directly to this file");
 }
 
 /**
  * Relation between item and devices
 **/
-class Item_DeviceCamera extends Item_Devices {
+class Item_DeviceCamera extends Item_Devices
+{
+    public static $itemtype_2 = DeviceCamera::class;
+    public static $items_id_2 = 'plugin_example_devicecameras_id';
 
-   static public $itemtype_2 = DeviceCamera::class;
-   static public $items_id_2 = 'plugin_example_devicecameras_id';
-
-   static protected $notable = false;
-
+    protected static $notable = false;
 }
