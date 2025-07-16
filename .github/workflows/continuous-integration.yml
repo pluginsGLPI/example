@@ -29,7 +29,7 @@ jobs:
       matrix: ${{ fromJson(needs.generate-ci-matrix.outputs.matrix) }}
     uses: "glpi-project/plugin-ci-workflows/.github/workflows/continuous-integration.yml@v1"
     with:
-      plugin-key: "fields"
+      plugin-key: "example"
       glpi-version: "${{ matrix.glpi-version }}"
       php-version: "${{ matrix.php-version }}"
       db-image: "${{ matrix.db-image }}"
