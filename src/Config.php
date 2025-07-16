@@ -96,5 +96,6 @@ class Config extends CommonDBTM
             $config = new self();
             $config->showFormExample();
         }
+        return true;
     }
 }

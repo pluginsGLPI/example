@@ -250,9 +250,6 @@ function plugin_init_example()
 
     $PLUGIN_HOOKS['status']['example'] = 'plugin_example_Status';
 
-    // CSRF compliance : All actions must be done via POST and forms closed by Html::closeForm();
-    $PLUGIN_HOOKS[Hooks::CSRF_COMPLIANT]['example'] = true;
-
     $PLUGIN_HOOKS[Hooks::DISPLAY_CENTRAL]['example'] = 'plugin_example_display_central';
     $PLUGIN_HOOKS[Hooks::DISPLAY_LOGIN]['example']   = 'plugin_example_display_login';
     $PLUGIN_HOOKS[Hooks::INFOCOM]['example']         = 'plugin_example_infocom_hook';
@@ -267,11 +264,8 @@ function plugin_init_example()
     $PLUGIN_HOOKS[Hooks::PRE_ITEM_FORM]['example']  = [ItemForm::class, 'preItemForm'];
     $PLUGIN_HOOKS[Hooks::POST_ITEM_FORM]['example'] = [ItemForm::class, 'postItemForm'];
 
-    //TODO: remove check when GLPI 11.0.0 is released
-    if (version_compare(GLPI_VERSION, '11.0.0', 'ge')) {
-        $PLUGIN_HOOKS[Hooks::PRE_ITIL_INFO_SECTION]['example']  = [ItemForm::class, 'preSection'];
-        $PLUGIN_HOOKS[Hooks::POST_ITIL_INFO_SECTION]['example'] = [ItemForm::class, 'postSection'];
-    }
+    $PLUGIN_HOOKS[Hooks::PRE_ITIL_INFO_SECTION]['example']  = [ItemForm::class, 'preSection'];
+    $PLUGIN_HOOKS[Hooks::POST_ITIL_INFO_SECTION]['example'] = [ItemForm::class, 'postSection'];
 
     // Add new actions to timeline
     $PLUGIN_HOOKS[Hooks::TIMELINE_ACTIONS]['example'] = [
@@ -297,11 +291,8 @@ function plugin_init_example()
         ComputerModelFilter::class,
     ];
 
-    //TODO: remove check when GLPI 11.0.0 is released
-    if (version_compare(GLPI_VERSION, '11.0.0', 'ge')) {
-        // Icon in the impact analysis
-        $PLUGIN_HOOKS[Hooks::SET_ITEM_IMPACT_ICON]['example'] = 'plugin_example_set_impact_icon';
-    }
+    // Icon in the impact analysis
+    $PLUGIN_HOOKS[Hooks::SET_ITEM_IMPACT_ICON]['example'] = 'plugin_example_set_impact_icon';
 }
 
 
