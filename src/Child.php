@@ -59,25 +59,25 @@ class Child extends CommonDBChild
     //         - CommonDBConnexity::HAVE_SAME_RIGHT_ON_ITEM we must have at least update right
     //                                                      on the item
     // * $mustBeAttached: some CommonDBChild can be free, without any parent.
-    public static function canCreate()
+    public static function canCreate(): bool
     {
         return (Session::haveRight('internet', UPDATE)
                 && parent::canCreate());
     }
 
-    public static function canView()
+    public static function canView(): bool
     {
         return (Session::haveRight('internet', READ)
                 && parent::canView());
     }
 
-    public static function canUpdate()
+    public static function canUpdate(): bool
     {
         return (Session::haveRight('internet', UPDATE)
                 && parent::canUpdate());
     }
 
-    public static function canDelete()
+    public static function canDelete(): bool
     {
         return (Session::haveRight('internet', DELETE)
                 && parent::canDelete());

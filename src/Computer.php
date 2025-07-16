@@ -37,12 +37,6 @@ namespace GlpiPlugin\Example;
 
 use CommonDBTM;
 
-// Class of the defined type
-
-if (!defined('GLPI_ROOT')) {
-    die("Sorry. You can't access directly to this file");
-}
-
 class Computer extends CommonDBTM
 {
     public static function showInfo()

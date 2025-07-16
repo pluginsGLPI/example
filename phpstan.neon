@@ -1,0 +1,19 @@
+parameters:
+    parallel:
+        maximumNumberOfProcesses: 2
+    level: 5
+    paths:
+        - front
+        - src
+        - hook.php
+        - report.php
+        - setup.php
+        - stat.php
+    scanDirectories:
+        - ../../inc
+        - ../../src
+        - ../../front
+    bootstrapFiles:
+        - ../../stubs/glpi_constants.php
+        - ../../vendor/autoload.php
+
