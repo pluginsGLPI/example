@@ -350,7 +350,7 @@ function plugin_example_searchOptionsValues($options = [])
     switch ($table . '.' . $field) {
         case 'glpi_plugin_example_examples.serial':
             echo __('Not really specific - Use your own dropdown - Just for example', 'example');
-            GlpiDropdown::show(
+            Dropdown::show(
                 getItemTypeForTable($options['searchoption']['table']),
                 ['value'       => $options['value'],
                     'name'     => $options['name'],
@@ -729,6 +729,7 @@ function plugin_example_Status($param)
     // Do checks (no check for example)
     $ok = true;
     echo 'example plugin: example';
+
     if ($ok) {
         echo '_OK';
     } else {

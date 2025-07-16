@@ -35,14 +35,20 @@
 
 namespace GlpiPlugin\Example;
 
+use Central;
 use CommonDBTM;
 use CommonGLPI;
 use Computer;
 use DBmysql;
 use Html;
+use Item_Disk;
 use Log;
 use MassiveAction;
+use Notification;
+use Phone;
+use Preference;
 use Session;
+use Supplier;
 
 // Class of the defined type
 class Example extends CommonDBTM
@@ -168,7 +174,7 @@ class Example extends CommonDBTM
      *
      * @param $task Object of CronTask class for log / stat
      *
-     * @return interger
+     * @return int
      *    >0 : done
      *    <0 : to be run again (not finished)
      *     0 : nothing to do
@@ -212,33 +218,34 @@ class Example extends CommonDBTM
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
         if (!$withtemplate) {
-            switch ($item->getType()) {
-                case 'Profile':
-                    if ($item->getField('central')) {
-                        return __('Example', 'example');
-                    }
-                    break;
-
-                case 'Phone':
-                    if ($_SESSION['glpishow_count_on_tabs']) {
-                        return self::createTabEntry(
-                            __('Example', 'example'),
-                            countElementsInTable($this->getTable()),
-                        );
-                    }
-
+            if ($item instanceof Profile) {
+                if ($item->getField('central')) {
                     return __('Example', 'example');
+                }
 
-                case 'ComputerDisk':
-                case 'Supplier':
-                    return [1 => __('Test Plugin', 'example'),
-                        2     => __('Test Plugin 2', 'example')];
+            } elseif ($item instanceof Phone) {
+                if ($_SESSION['glpishow_count_on_tabs']) {
+                    return self::createTabEntry(
+                        __('Example', 'example'),
+                        countElementsInTable($this->getTable()),
+                    );
+                }
 
-                case 'Computer':
-                case 'Central':
-                case 'Preference':
-                case 'Notification':
-                    return [1 => __('Test Plugin', 'example')];
+                return __('Example', 'example');
+
+            } elseif ($item instanceof Item_Disk || $item instanceof Supplier) {
+                return [
+                    1 => __('Test Plugin', 'example'),
+                    2 => __('Test Plugin 2', 'example'),
+                ];
+
+            } elseif ($item instanceof Computer
+                    || $item instanceof Central
+                    || $item instanceof Preference
+                    || $item instanceof Notification) {
+                return [
+                    1 => __('Test Plugin', 'example'),
+                ];
             }
         }
 
@@ -247,52 +254,45 @@ class Example extends CommonDBTM
 
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
-        switch ($item->getType()) {
-            case 'Phone':
-                echo __('Plugin Example on Phone', 'example');
-                break;
+        if ($item instanceof Phone) {
+            echo __('Plugin Example on Phone', 'example');
 
-            case 'Central':
-                echo __('Plugin central action', 'example');
-                break;
+        } elseif ($item instanceof Central) {
+            echo __('Plugin central action', 'example');
 
-            case 'Preference':
-                // Complete form display
-                $data = plugin_version_example();
+        } elseif ($item instanceof Preference) {
+            // Complete form display
+            $data = plugin_version_example();
 
-                echo "<form action='Where to post form'>";
-                echo "<table class='tab_cadre_fixe'>";
-                echo "<tr><th colspan='3'>" . $data['name'] . ' - ' . $data['version'];
-                echo '</th></tr>';
+            echo "<form action='Where to post form'>";
+            echo "<table class='tab_cadre_fixe'>";
+            echo "<tr><th colspan='3'>" . $data['name'] . ' - ' . $data['version'];
+            echo '</th></tr>';
 
-                echo "<tr class='tab_bg_1'><td>Name of the pref</td>";
-                echo '<td>Input to set the pref</td>';
+            echo "<tr class='tab_bg_1'><td>Name of the pref</td>";
+            echo '<td>Input to set the pref</td>';
 
-                echo "<td><input class='submit' type='submit' name='submit' value='submit'></td>";
-                echo '</tr>';
+            echo "<td><input class='submit' type='submit' name='submit' value='submit'></td>";
+            echo '</tr>';
 
-                echo '</table>';
-                echo '</form>';
-                break;
+            echo '</table>';
+            echo '</form>';
 
-            case 'Notification':
-                echo __('Plugin mailing action', 'example');
-                break;
+        } elseif ($item instanceof Notification) {
+            echo __('Plugin mailing action', 'example');
 
-            case 'ComputerDisk':
-            case 'Supplier':
-                if ($tabnum == 1) {
-                    echo __('First tab of Plugin example', 'example');
-                } else {
-                    echo __('Second tab of Plugin example', 'example');
-                }
-                break;
+        } elseif ($item instanceof Item_Disk || $item instanceof Supplier) {
+            if ($tabnum == 1) {
+                echo __('First tab of Plugin example', 'example');
+            } else {
+                echo __('Second tab of Plugin example', 'example');
+            }
 
-            default:
-                //TRANS: %1$s is a class name, %2$d is an item ID
-                printf(__('Plugin example CLASS=%1$s id=%2$d', 'example'), $item->getType(), $item->getField('id'));
-                break;
+        } else {
+            //TRANS: %1$s is a class name, %2$d is an item ID
+            printf(__('Plugin example CLASS=%1$s', 'example'), get_class($item));
         }
+
 
         return true;
     }
@@ -338,7 +338,7 @@ class Example extends CommonDBTM
      * @param $type position of the item in the time block (in, through, begin or end)
      * @param $complete complete display (more details)
      *
-     * @return Nothing (display function)
+     * @return void (display function)
      **/
     public static function displayPlanningItem(array $val, $who, $type = '', $complete = 0)
     {
@@ -491,7 +491,7 @@ class Example extends CommonDBTM
     public static function generateLinkContents($link, CommonDBTM $item, bool $safe_url = true)
     {
         if (strstr($link, '[EXAMPLE_ID]')) {
-            $link = str_replace('[EXAMPLE_ID]', $item->getID(), $link);
+            $link = str_replace('[EXAMPLE_ID]', (string) $item->getID(), $link);
 
             return [$link];
         }

@@ -47,11 +47,6 @@ if (isset($_SESSION['glpipopup']['name'])) {
             Html::popHeader(__('Test rules engine'), $_SERVER['PHP_SELF']);
             include '../../../front/rulesengine.test.php';
             break;
-
-        case 'show_cache':
-            Html::popHeader(__('Cache information'), $_SERVER['PHP_SELF']);
-            include '../../../front/rule.cache.php';
-            break;
     }
     echo "<div class='center'><br><a href='javascript:window.close()'>" . __('Back') . '</a>';
     echo '</div>';
