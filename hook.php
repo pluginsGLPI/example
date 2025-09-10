@@ -545,7 +545,7 @@ function plugin_example_install()
                 PRIMARY KEY (`id`)
                ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
 
-        $DB->query($query) or die('error creating glpi_plugin_example_examples ' . $DB->error());
+        $DB->doQuery($query);
 
         $query = "INSERT INTO `glpi_plugin_example_examples`
                        (`id`, `name`, `serial`, `plugin_example_dropdowns_id`, `is_deleted`,
@@ -553,7 +553,7 @@ function plugin_example_install()
                 VALUES (1, 'example 1', 'serial 1', 1, 0, 0, NULL),
                        (2, 'example 2', 'serial 2', 2, 0, 0, NULL),
                        (3, 'example 3', 'serial 3', 1, 0, 0, NULL)";
-        $DB->query($query) or die('error populate glpi_plugin_example ' . $DB->error());
+        $DB->doQuery($query);
     }
 
     if (!$DB->tableExists('glpi_plugin_example_dropdowns')) {
@@ -565,14 +565,14 @@ function plugin_example_install()
                 KEY `name` (`name`)
                ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
 
-        $DB->query($query) or die('error creating glpi_plugin_example_dropdowns' . $DB->error());
+        $DB->doQuery($query);
 
         $query = "INSERT INTO `glpi_plugin_example_dropdowns`
                        (`id`, `name`, `comment`)
                 VALUES (1, 'dp 1', 'comment 1'),
                        (2, 'dp2', 'comment 2')";
 
-        $DB->query($query) or die('error populate glpi_plugin_example_dropdowns' . $DB->error());
+        $DB->doQuery($query);
     }
 
     if (!$DB->tableExists('glpi_plugin_example_devicecameras')) {
@@ -586,7 +586,7 @@ function plugin_example_install()
                   KEY `manufacturers_id` (`manufacturers_id`)
                ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
 
-        $DB->query($query) or die('error creating glpi_plugin_example_examples ' . $DB->error());
+        $DB->doQuery($query);
     }
 
     if (!$DB->tableExists('glpi_plugin_example_items_devicecameras')) {
@@ -604,7 +604,7 @@ function plugin_example_install()
                   KEY `is_dynamic` (`is_dynamic`)
                ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
 
-        $DB->query($query) or die('error creating glpi_plugin_example_examples ' . $DB->error());
+        $DB->doQuery($query);
     }
 
     // To be called for each task the plugin manage
