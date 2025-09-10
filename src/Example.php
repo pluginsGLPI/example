@@ -496,7 +496,7 @@ class Example extends CommonDBTM
             return [$link];
         }
 
-        return parent::generateLinkContents($link, $item);
+        return parent::generateLinkContents($link, $item, $safe_url);
     }
 
     public static function dashboardTypes()
