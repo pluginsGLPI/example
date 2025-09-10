@@ -638,28 +638,28 @@ function plugin_example_uninstall()
     // Old version tables
     if ($DB->tableExists('glpi_dropdown_plugin_example')) {
         $query = 'DROP TABLE `glpi_dropdown_plugin_example`';
-        $DB->query($query) or die('error deleting glpi_dropdown_plugin_example');
+        $DB->doQuery($query);
     }
     if ($DB->tableExists('glpi_plugin_example')) {
         $query = 'DROP TABLE `glpi_plugin_example`';
-        $DB->query($query) or die('error deleting glpi_plugin_example');
+        $DB->doQuery($query);
     }
     // Current version tables
     if ($DB->tableExists('glpi_plugin_example_example')) {
         $query = 'DROP TABLE `glpi_plugin_example_example`';
-        $DB->query($query) or die('error deleting glpi_plugin_example_example');
+        $DB->doQuery($query);
     }
     if ($DB->tableExists('glpi_plugin_example_dropdowns')) {
         $query = 'DROP TABLE `glpi_plugin_example_dropdowns`;';
-        $DB->query($query) or die('error deleting glpi_plugin_example_dropdowns');
+        $DB->doQuery($query);
     }
     if ($DB->tableExists('glpi_plugin_example_devicecameras')) {
         $query = 'DROP TABLE `glpi_plugin_example_devicecameras`;';
-        $DB->query($query) or die('error deleting glpi_plugin_example_devicecameras');
+        $DB->doQuery($query);
     }
     if ($DB->tableExists('glpi_plugin_example_items_devicecameras')) {
         $query = 'DROP TABLE `glpi_plugin_example_items_devicecameras`;';
-        $DB->query($query) or die('error deleting glpi_plugin_example_items_devicecameras');
+        $DB->doQuery($query);
     }
 
     return true;
