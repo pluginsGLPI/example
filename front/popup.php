@@ -28,7 +28,7 @@
  * -------------------------------------------------------------------------
  */
 
-include('../../../inc/includes.php');
+include(__DIR__ . '/../../../inc/includes.php');
 
 Session::checkLoginUser();
 
@@ -39,16 +39,16 @@ if (isset($_GET['popup'])) {
 if (isset($_SESSION['glpipopup']['name'])) {
     switch ($_SESSION['glpipopup']['name']) {
         case 'test_rule':
-            Html::popHeader(__('Test'), $_SERVER['PHP_SELF']);
-            include '../../../front/rule.test.php';
+            Html::popHeader(__s('Test'), $_SERVER['PHP_SELF']);
+            include __DIR__ . '/../../../front/rule.test.php';
             break;
 
         case 'test_all_rules':
-            Html::popHeader(__('Test rules engine'), $_SERVER['PHP_SELF']);
-            include '../../../front/rulesengine.test.php';
+            Html::popHeader(__s('Test rules engine'), $_SERVER['PHP_SELF']);
+            include __DIR__ . '/../../../front/rulesengine.test.php';
             break;
     }
-    echo "<div class='center'><br><a href='javascript:window.close()'>" . __('Back') . '</a>';
+    echo "<div class='center'><br><a href='javascript:window.close()'>" . __s('Back') . '</a>';
     echo '</div>';
     Html::popFooter();
 }

@@ -44,10 +44,8 @@ class Config extends CommonDBTM
 
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
-        if (!$withtemplate) {
-            if ($item->getType() == 'Config') {
-                return __('Example plugin');
-            }
+        if (!$withtemplate && $item->getType() == 'Config') {
+            return __s('Example plugin');
         }
 
         return '';
@@ -73,10 +71,10 @@ class Config extends CommonDBTM
         echo "<form name='form' action=\"" . Toolbox::getItemTypeFormURL('Config') . "\" method='post'>";
         echo "<div class='center' id='tabsbody'>";
         echo "<table class='tab_cadre_fixe'>";
-        echo "<tr><th colspan='4'>" . __('Example setup') . '</th></tr>';
-        echo '<td >' . __('My boolean choice :') . '</td>';
+        echo "<tr><th colspan='4'>" . __s('Example setup') . '</th></tr>';
+        echo '<td >' . __s('My boolean choice :') . '</td>';
         echo "<td colspan='3'>";
-        echo "<input type='hidden' name='config_class' value='" . __CLASS__ . "'>";
+        echo "<input type='hidden' name='config_class' value='" . self::class . "'>";
         echo "<input type='hidden' name='config_context' value='plugin:Example'>";
         Dropdown::showYesNo('configuration', $my_config['configuration']);
         echo '</td></tr>';

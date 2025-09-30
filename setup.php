@@ -27,15 +27,15 @@
  * @link      https://github.com/pluginsGLPI/example
  * -------------------------------------------------------------------------
  */
-
 use Glpi\Plugin\Hooks;
 use GlpiPlugin\Example\Computer;
 use GlpiPlugin\Example\Config;
-use GlpiPlugin\Example\Dropdown;
 use GlpiPlugin\Example\DeviceCamera;
+use GlpiPlugin\Example\Dropdown;
 use GlpiPlugin\Example\Example;
 use GlpiPlugin\Example\Filters\ComputerModelFilter;
 use GlpiPlugin\Example\ItemForm;
+use GlpiPlugin\Example\Profile;
 use GlpiPlugin\Example\RuleTestCollection;
 use GlpiPlugin\Example\Showtabitem;
 
@@ -86,13 +86,11 @@ function plugin_init_example()
         ['device_types' => true],
     );
 
-    if (version_compare(GLPI_VERSION, '9.1', 'ge')) {
-        if (class_exists(Example::class)) {
-            Link::registerTag(Example::$tags);
-        }
+    if (version_compare(GLPI_VERSION, '9.1', 'ge') && class_exists(Example::class)) {
+        Link::registerTag(Example::$tags);
     }
     // Display a menu entry ?
-    Plugin::registerClass(\GlpiPlugin\Example\Profile::class, ['addtabon' => ['Profile']]);
+    Plugin::registerClass(Profile::class, ['addtabon' => ['Profile']]);
     if (Example::canView()) { // Right set in change_profile hook
         $PLUGIN_HOOKS['menu_toadd']['example'] = ['plugins' => Example::class,
             'tools'                                         => Example::class];
@@ -328,10 +326,7 @@ function plugin_version_example()
  */
 function plugin_example_check_prerequisites()
 {
-    if (false) {
-        return false;
-    }
-    return true;
+    return !false;
 }
 
 /**
@@ -348,7 +343,7 @@ function plugin_example_check_config($verbose = false)
     }
 
     if ($verbose) {
-        echo __('Installed / not configured', 'example');
+        echo __s('Installed / not configured', 'example');
     }
     return false;
 }

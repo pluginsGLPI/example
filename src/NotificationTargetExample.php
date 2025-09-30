@@ -42,6 +42,6 @@ class NotificationTargetExample extends NotificationTarget
 
     public function addDataForTemplate($event, $options = [])
     {
-        $this->data['##example.name##'] = __('Example', 'example');
+        $this->data['##example.name##'] = __s('Example', 'example');
     }
 }

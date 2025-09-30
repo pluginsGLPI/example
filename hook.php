@@ -52,7 +52,7 @@ function plugin_example_getDatabaseRelations()
 function plugin_example_getDropdown()
 {
     // Table => Name
-    return [Dropdown::class => __('Plugin Example Dropdown', 'example')];
+    return [Dropdown::class => __s('Plugin Example Dropdown', 'example')];
 }
 
 
@@ -68,7 +68,7 @@ function plugin_example_getAddSearchOptions($itemtype)
         $sopt[1001]['table']     = 'glpi_plugin_example_dropdowns';
         $sopt[1001]['field']     = 'name';
         $sopt[1001]['linkfield'] = 'plugin_example_dropdowns_id';
-        $sopt[1001]['name']      = __('Example plugin', 'example');
+        $sopt[1001]['name']      = __s('Example plugin', 'example');
     }
     return $sopt;
 }
@@ -83,7 +83,7 @@ function plugin_example_getAddSearchOptionsNew($itemtype)
             'table'     => 'glpi_plugin_example_dropdowns',
             'field'     => 'name',
             'linkfield' => 'plugin_example_dropdowns_id',
-            'name'      => __('Example plugin new', 'example'),
+            'name'      => __s('Example plugin new', 'example'),
         ];
     }
     return $options;
@@ -207,7 +207,7 @@ function plugin_example_addWhere($link, $nott, $type, $ID, $val, $searchtype)
     $table     = $searchopt[$ID]['table'];
     $field     = $searchopt[$ID]['field'];
 
-    $SEARCH = Search::makeTextSearch($val, $nott);
+    Search::makeTextSearch($val, $nott);
 
     // Example of standard Where clause but use it ONLY for specific Where
     // No need of the function if you do not have specific cases
@@ -255,8 +255,6 @@ function plugin_example_addHaving($link, $nott, $type, $ID, $val, $num)
 function plugin_example_addSelect($type, $ID, $num)
 {
     $searchopt = &Search::getOptions($type);
-    $table     = $searchopt[$ID]['table'];
-    $field     = $searchopt[$ID]['field'];
 
     // Example of standard Select clause but use it ONLY for specific Select
     // No need of the function if you do not have specific cases
@@ -271,8 +269,6 @@ function plugin_example_addSelect($type, $ID, $num)
 function plugin_example_addOrderBy($type, $ID, $order, $key = 0)
 {
     $searchopt = &Search::getOptions($type);
-    $table     = $searchopt[$ID]['table'];
-    $field     = $searchopt[$ID]['field'];
 
     // Example of standard OrderBy clause but use it ONLY for specific order by
     // No need of the function if you do not have specific cases
@@ -294,7 +290,7 @@ function plugin_example_MassiveActions($type)
     switch ($type) {
         // New action for core and other plugin types : name = plugin_PLUGINNAME_actionname
         case 'Computer':
-            return [Example::class . MassiveAction::CLASS_ACTION_SEPARATOR . 'DoIt' => __('plugin_example_DoIt', 'example')];
+            return [Example::class . MassiveAction::CLASS_ACTION_SEPARATOR . 'DoIt' => __s('plugin_example_DoIt', 'example')];
 
             // Actions for types provided by the plugin are included inside the classes
     }
@@ -311,13 +307,12 @@ function plugin_example_MassiveActionsFieldsDisplay($options = [])
 
     $table     = $options['options']['table'];
     $field     = $options['options']['field'];
-    $linkfield = $options['options']['linkfield'];
 
     if ($table == getTableForItemType($options['itemtype'])) {
         // Table fields
         switch ($table . '.' . $field) {
             case 'glpi_plugin_example_examples.serial':
-                echo __('Not really specific - Just for example', 'example');
+                echo __s('Not really specific - Just for example', 'example');
 
                 // Dropdown::showYesNo($linkfield);
                 // Need to return true if specific display
@@ -327,7 +322,7 @@ function plugin_example_MassiveActionsFieldsDisplay($options = [])
         // Linked Fields
         switch ($table . '.' . $field) {
             case 'glpi_plugin_example_dropdowns.name':
-                echo __('Not really specific - Just for example', 'example');
+                echo __s('Not really specific - Just for example', 'example');
 
                 // Need to return true if specific display
                 return true;
@@ -349,7 +344,7 @@ function plugin_example_searchOptionsValues($options = [])
     // Table fields
     switch ($table . '.' . $field) {
         case 'glpi_plugin_example_examples.serial':
-            echo __('Not really specific - Use your own dropdown - Just for example', 'example');
+            echo __s('Not really specific - Use your own dropdown - Just for example', 'example');
             Dropdown::show(
                 getItemTypeForTable($options['searchoption']['table']),
                 ['value'       => $options['value'],
@@ -376,14 +371,14 @@ function plugin_pre_item_update_example($item)
     }
     $item->input['comment'] .= addslashes("\nUpdate: ".date('r'));
     */
-    Session::addMessageAfterRedirect(__('Pre Update Computer Hook', 'example'), true);
+    Session::addMessageAfterRedirect(__s('Pre Update Computer Hook', 'example'), true);
 }
 
 
 // Hook done on update item case
 function plugin_item_update_example($item)
 {
-    Session::addMessageAfterRedirect(sprintf(__('Update Computer Hook (%s)', 'example'), implode(',', $item->updates)), true);
+    Session::addMessageAfterRedirect(sprintf(__s('Update Computer Hook (%s)', 'example'), implode(',', $item->updates)), true);
 
     return true;
 }
@@ -393,7 +388,7 @@ function plugin_item_update_example($item)
 function plugin_item_empty_example($item)
 {
     if (empty($_SESSION['Already displayed "Empty Computer Hook"'])) {
-        Session::addMessageAfterRedirect(__('Empty Computer Hook', 'example'), true);
+        Session::addMessageAfterRedirect(__s('Empty Computer Hook', 'example'), true);
         $_SESSION['Already displayed "Empty Computer Hook"'] = true;
     }
 
@@ -405,14 +400,14 @@ function plugin_item_empty_example($item)
 function plugin_pre_item_delete_example($object)
 {
     // Manipulate data if needed
-    Session::addMessageAfterRedirect(__('Pre Delete Computer Hook', 'example'), true);
+    Session::addMessageAfterRedirect(__s('Pre Delete Computer Hook', 'example'), true);
 }
 
 
 // Hook done on delete item case
 function plugin_item_delete_example($object)
 {
-    Session::addMessageAfterRedirect(__('Delete Computer Hook', 'example'), true);
+    Session::addMessageAfterRedirect(__s('Delete Computer Hook', 'example'), true);
 
     return true;
 }
@@ -422,14 +417,14 @@ function plugin_item_delete_example($object)
 function plugin_pre_item_purge_example($object)
 {
     // Manipulate data if needed
-    Session::addMessageAfterRedirect(__('Pre Purge Computer Hook', 'example'), true);
+    Session::addMessageAfterRedirect(__s('Pre Purge Computer Hook', 'example'), true);
 }
 
 
 // Hook done on purge item case
 function plugin_item_purge_example($object)
 {
-    Session::addMessageAfterRedirect(__('Purge Computer Hook', 'example'), true);
+    Session::addMessageAfterRedirect(__s('Purge Computer Hook', 'example'), true);
 
     return true;
 }
@@ -439,7 +434,7 @@ function plugin_item_purge_example($object)
 function plugin_pre_item_restore_example($item)
 {
     // Manipulate data if needed
-    Session::addMessageAfterRedirect(__('Pre Restore Computer Hook', 'example'));
+    Session::addMessageAfterRedirect(__s('Pre Restore Computer Hook', 'example'));
 }
 
 
@@ -447,14 +442,14 @@ function plugin_pre_item_restore_example($item)
 function plugin_pre_item_restore_example2($item)
 {
     // Manipulate data if needed
-    Session::addMessageAfterRedirect(__('Pre Restore Phone Hook', 'example'));
+    Session::addMessageAfterRedirect(__s('Pre Restore Phone Hook', 'example'));
 }
 
 
 // Hook done on restore item case
 function plugin_item_restore_example($item)
 {
-    Session::addMessageAfterRedirect(__('Restore Computer Hook', 'example'));
+    Session::addMessageAfterRedirect(__s('Restore Computer Hook', 'example'));
 
     return true;
 }
@@ -465,7 +460,7 @@ function plugin_item_transfer_example($parm)
 {
     //TRANS: %1$s is the source type, %2$d is the source ID, %3$d is the destination ID
     Session::addMessageAfterRedirect(sprintf(
-        __('Transfer Computer Hook %1$s %2$d -> %3$d', 'example'),
+        __s('Transfer Computer Hook %1$s %2$d -> %3$d', 'example'),
         $parm['type'],
         $parm['id'],
         $parm['newID'],
@@ -676,13 +671,13 @@ function plugin_example_AssignToTicket($types)
 
 function plugin_example_get_events(NotificationTargetTicket $target)
 {
-    $target->events['plugin_example'] = __('Example event', 'example');
+    $target->events['plugin_example'] = __s('Example event', 'example');
 }
 
 
 function plugin_example_get_datas(NotificationTargetTicket $target)
 {
-    $target->data['##ticket.example##'] = __('Example datas', 'example');
+    $target->data['##ticket.example##'] = __s('Example datas', 'example');
 }
 
 
@@ -745,7 +740,7 @@ function plugin_example_display_central()
 {
     echo "<tr><th colspan='2'>";
     echo "<div style='text-align:center; font-size:2em'>";
-    echo __('Plugin example displays on central page', 'example');
+    echo __s('Plugin example displays on central page', 'example');
     echo '</div>';
     echo '</th></tr>';
 }
@@ -753,21 +748,20 @@ function plugin_example_display_central()
 function plugin_example_display_login()
 {
     echo "<div style='text-align:center; font-size:2em'>";
-    echo __('Plugin example displays on login page', 'example');
+    echo __s('Plugin example displays on login page', 'example');
     echo '</div>';
 }
 
 function plugin_example_infocom_hook($params)
 {
     echo "<tr><th colspan='4'>";
-    echo __('Plugin example displays on central page', 'example');
+    echo __s('Plugin example displays on central page', 'example');
     echo '</th></tr>';
 }
 
 function plugin_example_filter_actors(array $params = []): array
 {
     $itemtype = $params['params']['itemtype'];
-    $items_id = $params['params']['items_id'];
 
     // remove users_id = 1 for assignee list
     if ($itemtype == 'Ticket' && $params['params']['actortype'] == 'assign') {

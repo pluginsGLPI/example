@@ -37,7 +37,7 @@
 //header("Location:../../central.php");
 
 // Entry menu case
-include('../../../inc/includes.php');
+include(__DIR__ . '/../../../inc/includes.php');
 
 Session::checkRight('config', UPDATE);
 
@@ -45,5 +45,5 @@ Session::checkRight('config', UPDATE);
 Plugin::load('example');
 
 Html::header('TITRE', $_SERVER['PHP_SELF'], 'config', 'plugins');
-echo __('This is the plugin config page', 'example');
+echo __s('This is the plugin config page', 'example');
 Html::footer();

@@ -64,7 +64,7 @@ class RuleTest extends Rule
     {
         $criterias                  = [];
         $criterias['name']['field'] = 'name';
-        $criterias['name']['name']  = __('Software');
+        $criterias['name']['name']  = __s('Software');
         $criterias['name']['table'] = 'glpi_softwares';
 
         return $criterias;
@@ -73,7 +73,7 @@ class RuleTest extends Rule
     public function getActions()
     {
         $actions                                   = [];
-        $actions['softwarecategories_id']['name']  = __('Category (class)', 'example');
+        $actions['softwarecategories_id']['name']  = __s('Category (class)', 'example');
         $actions['softwarecategories_id']['type']  = 'dropdown';
         $actions['softwarecategories_id']['table'] = 'glpi_softwarecategories';
 

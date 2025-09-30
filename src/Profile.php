@@ -42,7 +42,7 @@ class Profile extends \Profile
             $item instanceof \Profile
             && $item->getField('id')
         ) {
-            return self::createTabEntry(__('Example plugin'));
+            return self::createTabEntry(__s('Example plugin'));
         }
 
         return '';

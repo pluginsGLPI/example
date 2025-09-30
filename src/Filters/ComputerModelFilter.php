@@ -38,7 +38,7 @@ class ComputerModelFilter extends AbstractFilter
 {
     public static function getName(): string
     {
-        return __('Computer model');
+        return __s('Computer model');
     }
 
     public static function getId(): string

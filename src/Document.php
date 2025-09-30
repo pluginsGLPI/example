@@ -58,9 +58,6 @@
 namespace GlpiPlugin\Example;
 
 use Document as GlpiDocument;
-use Exception;
-use Glpi\Exception\Http\NotFoundHttpException;
-use Sabre\DAV\Exception\BadRequest;
 
 class Document extends GlpiDocument
 {
@@ -74,9 +71,9 @@ class Document extends GlpiDocument
     public static function getTable($classname = null)
     {
         if ($classname === null) {
-            $classname = get_called_class();
+            $classname = static::class;
         }
-        if ($classname == get_called_class()) {
+        if ($classname == static::class) {
             return parent::getTable(Document::class);
         }
 
@@ -128,11 +125,9 @@ class Document extends GlpiDocument
     public function post_getFromDB()
     {
         // Check the user can view this itemtype and can view this item
-        if ($this->canView() && $this->canViewItem()) {
-            if (isset($_SERVER['HTTP_ACCEPT']) && $_SERVER['HTTP_ACCEPT'] == 'application/octet-stream'
-                  || isset($_GET['alt'])       && $_GET['alt']            == 'media') {
-                $this->sendFile(); // and terminate script
-            }
+        if ($this->canView() && $this->canViewItem() && (isset($_SERVER['HTTP_ACCEPT']) && $_SERVER['HTTP_ACCEPT'] == 'application/octet-stream' || isset($_GET['alt']) && $_GET['alt'] == 'media')) {
+            $this->sendFile();
+            // and terminate script
         }
     }
 
@@ -167,14 +162,12 @@ class Document extends GlpiDocument
         }
 
         // set range if specified by the client
-        if (isset($_SERVER['HTTP_RANGE'])) {
-            if (preg_match('/bytes=\h*(\d+)?-(\d*)[\D.*]?/i', $_SERVER['HTTP_RANGE'], $matches)) {
-                if (!empty($matches[1])) {
-                    $begin = intval($matches[1]);
-                }
-                if (!empty($matches[2])) {
-                    $end = min(intval($matches[2]), $end);
-                }
+        if (isset($_SERVER['HTTP_RANGE']) && preg_match('/bytes=\h*(\d+)?-(\d*)[\D.*]?/i', $_SERVER['HTTP_RANGE'], $matches)) {
+            if (!empty($matches[1])) {
+                $begin = intval($matches[1]);
+            }
+            if (!empty($matches[2])) {
+                $end = min(intval($matches[2]), $end);
             }
         }
 

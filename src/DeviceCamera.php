@@ -42,6 +42,6 @@ class DeviceCamera extends CommonDevice
 {
     public static function getTypeName($nb = 0)
     {
-        return _n('Camera', 'Cameras', $nb);
+        return _sn('Camera', 'Cameras', $nb);
     }
 }
