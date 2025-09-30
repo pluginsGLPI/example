@@ -39,7 +39,7 @@ use GlpiPlugin\Example\ItemForm;
 use GlpiPlugin\Example\RuleTestCollection;
 use GlpiPlugin\Example\Showtabitem;
 
-define('PLUGIN_EXAMPLE_VERSION', '0.0.1');
+define('PLUGIN_EXAMPLE_VERSION', '0.1.0');
 
 // Minimal GLPI version, inclusive
 define('PLUGIN_EXAMPLE_MIN_GLPI', '11.0.0');
