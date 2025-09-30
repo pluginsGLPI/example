@@ -68,14 +68,15 @@ class Showtabitem
     {
         switch ($params['item']->getType()) {
             case 'Ticket':
-                if ($params['options']['itemtype'] == 'TicketValidation' && $params['options']['tabnum'] == 2) {
-                    // if tasks are not all done
-                    // then prevent solution div to show
-                    // this is an example to prevent solving of ticket
-                    if (true) { // here you should test if some tasks are in todo status.
-                        $params['options']['prevent_solution'] = true; // this will be passed to the post_show hook
-                        echo "<div id='toHideSolution' style='display: none;'>"; // in order to hide the default solution div
-                    }
+                // if tasks are not all done
+                // then prevent solution div to show
+                // this is an example to prevent solving of ticket
+                if ($params['options']['itemtype'] == 'TicketValidation' && $params['options']['tabnum'] == 2 && true) {
+                    // here you should test if some tasks are in todo status.
+                    $params['options']['prevent_solution'] = true;
+                    // this will be passed to the post_show hook
+                    echo "<div id='toHideSolution' style='display: none;'>";
+                    // in order to hide the default solution div
                 }
         }
     }

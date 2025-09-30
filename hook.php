@@ -33,9 +33,7 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
-use GlpiPlugin\Example\Dropdown;
 use GlpiPlugin\Example\Example;
-use Dropdown as GlpiDropdown;
 
 function plugin_change_profile_example()
 {
@@ -54,7 +52,7 @@ function plugin_example_getDatabaseRelations()
 function plugin_example_getDropdown()
 {
     // Table => Name
-    return [Dropdown::class => __('Plugin Example Dropdown', 'example')];
+    return [Dropdown::class => __s('Plugin Example Dropdown', 'example')];
 }
 
 
@@ -70,9 +68,8 @@ function plugin_example_getAddSearchOptions($itemtype)
         $sopt[1001]['table']     = 'glpi_plugin_example_dropdowns';
         $sopt[1001]['field']     = 'name';
         $sopt[1001]['linkfield'] = 'plugin_example_dropdowns_id';
-        $sopt[1001]['name']      = __('Example plugin', 'example');
+        $sopt[1001]['name']      = __s('Example plugin', 'example');
     }
-
     return $sopt;
 }
 
@@ -86,10 +83,9 @@ function plugin_example_getAddSearchOptionsNew($itemtype)
             'table'     => 'glpi_plugin_example_dropdowns',
             'field'     => 'name',
             'linkfield' => 'plugin_example_dropdowns_id',
-            'name'      => __('Example plugin new', 'example'),
+            'name'      => __s('Example plugin new', 'example'),
         ];
     }
-
     return $options;
 }
 
@@ -201,7 +197,6 @@ function plugin_example_forceGroupBy($type)
             // Force add GROUP BY IN REQUEST
             return true;
     }
-
     return false;
 }
 
@@ -212,7 +207,7 @@ function plugin_example_addWhere($link, $nott, $type, $ID, $val, $searchtype)
     $table     = $searchopt[$ID]['table'];
     $field     = $searchopt[$ID]['field'];
 
-    $SEARCH = Search::makeTextSearch($val, $nott);
+    Search::makeTextSearch($val, $nott);
 
     // Example of standard Where clause but use it ONLY for specific Where
     // No need of the function if you do not have specific cases
@@ -250,7 +245,7 @@ function plugin_example_addHaving($link, $nott, $type, $ID, $val, $num)
                 $ADD = " OR ITEM_$num IS NULL";
             }
 
-            return " $LINK ( ITEM_" . $num . $SEARCH . " $ADD ) ";
+            return " $link ( ITEM_" . $num . $SEARCH . " $ADD ) ";
     }
 
     return '';
@@ -260,8 +255,6 @@ function plugin_example_addHaving($link, $nott, $type, $ID, $val, $num)
 function plugin_example_addSelect($type, $ID, $num)
 {
     $searchopt = &Search::getOptions($type);
-    $table     = $searchopt[$ID]['table'];
-    $field     = $searchopt[$ID]['field'];
 
     // Example of standard Select clause but use it ONLY for specific Select
     // No need of the function if you do not have specific cases
@@ -276,8 +269,6 @@ function plugin_example_addSelect($type, $ID, $num)
 function plugin_example_addOrderBy($type, $ID, $order, $key = 0)
 {
     $searchopt = &Search::getOptions($type);
-    $table     = $searchopt[$ID]['table'];
-    $field     = $searchopt[$ID]['field'];
 
     // Example of standard OrderBy clause but use it ONLY for specific order by
     // No need of the function if you do not have specific cases
@@ -299,7 +290,7 @@ function plugin_example_MassiveActions($type)
     switch ($type) {
         // New action for core and other plugin types : name = plugin_PLUGINNAME_actionname
         case 'Computer':
-            return [Example::class . MassiveAction::CLASS_ACTION_SEPARATOR . 'DoIt' => __('plugin_example_DoIt', 'example')];
+            return [Example::class . MassiveAction::CLASS_ACTION_SEPARATOR . 'DoIt' => __s('plugin_example_DoIt', 'example')];
 
             // Actions for types provided by the plugin are included inside the classes
     }
@@ -316,13 +307,12 @@ function plugin_example_MassiveActionsFieldsDisplay($options = [])
 
     $table     = $options['options']['table'];
     $field     = $options['options']['field'];
-    $linkfield = $options['options']['linkfield'];
 
     if ($table == getTableForItemType($options['itemtype'])) {
         // Table fields
         switch ($table . '.' . $field) {
             case 'glpi_plugin_example_examples.serial':
-                echo __('Not really specific - Just for example', 'example');
+                echo __s('Not really specific - Just for example', 'example');
 
                 // Dropdown::showYesNo($linkfield);
                 // Need to return true if specific display
@@ -332,13 +322,12 @@ function plugin_example_MassiveActionsFieldsDisplay($options = [])
         // Linked Fields
         switch ($table . '.' . $field) {
             case 'glpi_plugin_example_dropdowns.name':
-                echo __('Not really specific - Just for example', 'example');
+                echo __s('Not really specific - Just for example', 'example');
 
                 // Need to return true if specific display
                 return true;
         }
     }
-
     // Need to return false on non display item
     return false;
 }
@@ -355,8 +344,8 @@ function plugin_example_searchOptionsValues($options = [])
     // Table fields
     switch ($table . '.' . $field) {
         case 'glpi_plugin_example_examples.serial':
-            echo __('Not really specific - Use your own dropdown - Just for example', 'example');
-            GlpiDropdown::show(
+            echo __s('Not really specific - Use your own dropdown - Just for example', 'example');
+            Dropdown::show(
                 getItemTypeForTable($options['searchoption']['table']),
                 ['value'       => $options['value'],
                     'name'     => $options['name'],
@@ -382,14 +371,14 @@ function plugin_pre_item_update_example($item)
     }
     $item->input['comment'] .= addslashes("\nUpdate: ".date('r'));
     */
-    Session::addMessageAfterRedirect(__('Pre Update Computer Hook', 'example'), true);
+    Session::addMessageAfterRedirect(__s('Pre Update Computer Hook', 'example'), true);
 }
 
 
 // Hook done on update item case
 function plugin_item_update_example($item)
 {
-    Session::addMessageAfterRedirect(sprintf(__('Update Computer Hook (%s)', 'example'), implode(',', $item->updates)), true);
+    Session::addMessageAfterRedirect(sprintf(__s('Update Computer Hook (%s)', 'example'), implode(',', $item->updates)), true);
 
     return true;
 }
@@ -399,7 +388,7 @@ function plugin_item_update_example($item)
 function plugin_item_empty_example($item)
 {
     if (empty($_SESSION['Already displayed "Empty Computer Hook"'])) {
-        Session::addMessageAfterRedirect(__('Empty Computer Hook', 'example'), true);
+        Session::addMessageAfterRedirect(__s('Empty Computer Hook', 'example'), true);
         $_SESSION['Already displayed "Empty Computer Hook"'] = true;
     }
 
@@ -411,14 +400,14 @@ function plugin_item_empty_example($item)
 function plugin_pre_item_delete_example($object)
 {
     // Manipulate data if needed
-    Session::addMessageAfterRedirect(__('Pre Delete Computer Hook', 'example'), true);
+    Session::addMessageAfterRedirect(__s('Pre Delete Computer Hook', 'example'), true);
 }
 
 
 // Hook done on delete item case
 function plugin_item_delete_example($object)
 {
-    Session::addMessageAfterRedirect(__('Delete Computer Hook', 'example'), true);
+    Session::addMessageAfterRedirect(__s('Delete Computer Hook', 'example'), true);
 
     return true;
 }
@@ -428,14 +417,14 @@ function plugin_item_delete_example($object)
 function plugin_pre_item_purge_example($object)
 {
     // Manipulate data if needed
-    Session::addMessageAfterRedirect(__('Pre Purge Computer Hook', 'example'), true);
+    Session::addMessageAfterRedirect(__s('Pre Purge Computer Hook', 'example'), true);
 }
 
 
 // Hook done on purge item case
 function plugin_item_purge_example($object)
 {
-    Session::addMessageAfterRedirect(__('Purge Computer Hook', 'example'), true);
+    Session::addMessageAfterRedirect(__s('Purge Computer Hook', 'example'), true);
 
     return true;
 }
@@ -445,7 +434,7 @@ function plugin_item_purge_example($object)
 function plugin_pre_item_restore_example($item)
 {
     // Manipulate data if needed
-    Session::addMessageAfterRedirect(__('Pre Restore Computer Hook', 'example'));
+    Session::addMessageAfterRedirect(__s('Pre Restore Computer Hook', 'example'));
 }
 
 
@@ -453,14 +442,14 @@ function plugin_pre_item_restore_example($item)
 function plugin_pre_item_restore_example2($item)
 {
     // Manipulate data if needed
-    Session::addMessageAfterRedirect(__('Pre Restore Phone Hook', 'example'));
+    Session::addMessageAfterRedirect(__s('Pre Restore Phone Hook', 'example'));
 }
 
 
 // Hook done on restore item case
 function plugin_item_restore_example($item)
 {
-    Session::addMessageAfterRedirect(__('Restore Computer Hook', 'example'));
+    Session::addMessageAfterRedirect(__s('Restore Computer Hook', 'example'));
 
     return true;
 }
@@ -471,7 +460,7 @@ function plugin_item_transfer_example($parm)
 {
     //TRANS: %1$s is the source type, %2$d is the source ID, %3$d is the destination ID
     Session::addMessageAfterRedirect(sprintf(
-        __('Transfer Computer Hook %1$s %2$d -> %3$d', 'example'),
+        __s('Transfer Computer Hook %1$s %2$d -> %3$d', 'example'),
         $parm['type'],
         $parm['id'],
         $parm['newID'],
@@ -551,7 +540,7 @@ function plugin_example_install()
                 PRIMARY KEY (`id`)
                ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
 
-        $DB->query($query) or die('error creating glpi_plugin_example_examples ' . $DB->error());
+        $DB->doQuery($query);
 
         $query = "INSERT INTO `glpi_plugin_example_examples`
                        (`id`, `name`, `serial`, `plugin_example_dropdowns_id`, `is_deleted`,
@@ -559,7 +548,7 @@ function plugin_example_install()
                 VALUES (1, 'example 1', 'serial 1', 1, 0, 0, NULL),
                        (2, 'example 2', 'serial 2', 2, 0, 0, NULL),
                        (3, 'example 3', 'serial 3', 1, 0, 0, NULL)";
-        $DB->query($query) or die('error populate glpi_plugin_example ' . $DB->error());
+        $DB->doQuery($query);
     }
 
     if (!$DB->tableExists('glpi_plugin_example_dropdowns')) {
@@ -571,14 +560,14 @@ function plugin_example_install()
                 KEY `name` (`name`)
                ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
 
-        $DB->query($query) or die('error creating glpi_plugin_example_dropdowns' . $DB->error());
+        $DB->doQuery($query);
 
         $query = "INSERT INTO `glpi_plugin_example_dropdowns`
                        (`id`, `name`, `comment`)
                 VALUES (1, 'dp 1', 'comment 1'),
                        (2, 'dp2', 'comment 2')";
 
-        $DB->query($query) or die('error populate glpi_plugin_example_dropdowns' . $DB->error());
+        $DB->doQuery($query);
     }
 
     if (!$DB->tableExists('glpi_plugin_example_devicecameras')) {
@@ -592,7 +581,7 @@ function plugin_example_install()
                   KEY `manufacturers_id` (`manufacturers_id`)
                ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
 
-        $DB->query($query) or die('error creating glpi_plugin_example_examples ' . $DB->error());
+        $DB->doQuery($query);
     }
 
     if (!$DB->tableExists('glpi_plugin_example_items_devicecameras')) {
@@ -610,13 +599,12 @@ function plugin_example_install()
                   KEY `is_dynamic` (`is_dynamic`)
                ) ENGINE=InnoDB DEFAULT CHARSET={$default_charset} COLLATE={$default_collation} ROW_FORMAT=DYNAMIC;";
 
-        $DB->query($query) or die('error creating glpi_plugin_example_examples ' . $DB->error());
+        $DB->doQuery($query);
     }
 
     // To be called for each task the plugin manage
     // task in class
     CronTask::Register(Example::class, 'Sample', DAY_TIMESTAMP, ['param' => 50]);
-
     return true;
 }
 
@@ -645,28 +633,28 @@ function plugin_example_uninstall()
     // Old version tables
     if ($DB->tableExists('glpi_dropdown_plugin_example')) {
         $query = 'DROP TABLE `glpi_dropdown_plugin_example`';
-        $DB->query($query) or die('error deleting glpi_dropdown_plugin_example');
+        $DB->doQuery($query);
     }
     if ($DB->tableExists('glpi_plugin_example')) {
         $query = 'DROP TABLE `glpi_plugin_example`';
-        $DB->query($query) or die('error deleting glpi_plugin_example');
+        $DB->doQuery($query);
     }
     // Current version tables
     if ($DB->tableExists('glpi_plugin_example_example')) {
         $query = 'DROP TABLE `glpi_plugin_example_example`';
-        $DB->query($query) or die('error deleting glpi_plugin_example_example');
+        $DB->doQuery($query);
     }
     if ($DB->tableExists('glpi_plugin_example_dropdowns')) {
         $query = 'DROP TABLE `glpi_plugin_example_dropdowns`;';
-        $DB->query($query) or die('error deleting glpi_plugin_example_dropdowns');
+        $DB->doQuery($query);
     }
     if ($DB->tableExists('glpi_plugin_example_devicecameras')) {
         $query = 'DROP TABLE `glpi_plugin_example_devicecameras`;';
-        $DB->query($query) or die('error deleting glpi_plugin_example_devicecameras');
+        $DB->doQuery($query);
     }
     if ($DB->tableExists('glpi_plugin_example_items_devicecameras')) {
         $query = 'DROP TABLE `glpi_plugin_example_items_devicecameras`;';
-        $DB->query($query) or die('error deleting glpi_plugin_example_items_devicecameras');
+        $DB->doQuery($query);
     }
 
     return true;
@@ -683,13 +671,13 @@ function plugin_example_AssignToTicket($types)
 
 function plugin_example_get_events(NotificationTargetTicket $target)
 {
-    $target->events['plugin_example'] = __('Example event', 'example');
+    $target->events['plugin_example'] = __s('Example event', 'example');
 }
 
 
 function plugin_example_get_datas(NotificationTargetTicket $target)
 {
-    $target->data['##ticket.example##'] = __('Example datas', 'example');
+    $target->data['##ticket.example##'] = __s('Example datas', 'example');
 }
 
 
@@ -710,7 +698,7 @@ function plugin_example_postinit()
  *
  * @param $datas   array
  *
- * @return un tableau
+ * @return array
  **/
 function plugin_retrieve_more_data_from_ldap_example(array $datas)
 {
@@ -723,7 +711,7 @@ function plugin_retrieve_more_data_from_ldap_example(array $datas)
  *
  * @param $fields   array
  *
- * @return un tableau
+ * @return array
  **/
 function plugin_retrieve_more_field_from_ldap_example($fields)
 {
@@ -736,6 +724,7 @@ function plugin_example_Status($param)
     // Do checks (no check for example)
     $ok = true;
     echo 'example plugin: example';
+
     if ($ok) {
         echo '_OK';
     } else {
@@ -744,7 +733,6 @@ function plugin_example_Status($param)
         $param['ok'] = false;
     }
     echo "\n";
-
     return $param;
 }
 
@@ -752,7 +740,7 @@ function plugin_example_display_central()
 {
     echo "<tr><th colspan='2'>";
     echo "<div style='text-align:center; font-size:2em'>";
-    echo __('Plugin example displays on central page', 'example');
+    echo __s('Plugin example displays on central page', 'example');
     echo '</div>';
     echo '</th></tr>';
 }
@@ -760,21 +748,20 @@ function plugin_example_display_central()
 function plugin_example_display_login()
 {
     echo "<div style='text-align:center; font-size:2em'>";
-    echo __('Plugin example displays on login page', 'example');
+    echo __s('Plugin example displays on login page', 'example');
     echo '</div>';
 }
 
 function plugin_example_infocom_hook($params)
 {
     echo "<tr><th colspan='4'>";
-    echo __('Plugin example displays on central page', 'example');
+    echo __s('Plugin example displays on central page', 'example');
     echo '</th></tr>';
 }
 
 function plugin_example_filter_actors(array $params = []): array
 {
     $itemtype = $params['params']['itemtype'];
-    $items_id = $params['params']['items_id'];
 
     // remove users_id = 1 for assignee list
     if ($itemtype == 'Ticket' && $params['params']['actortype'] == 'assign') {
@@ -790,12 +777,15 @@ function plugin_example_filter_actors(array $params = []): array
 
 function plugin_example_set_impact_icon(array $params)
 {
+    /** @var array $CFG_GLPI */
+    global $CFG_GLPI;
+
     $itemtype = $params['itemtype'];
     $items_id = $params['items_id'];
 
     $item = getItemForItemtype($itemtype);
     if ($item instanceof Computer && $item->getFromDB($items_id)) {
-        return Plugin::getWebDir('example', true, false) . '/public/computer_icon.svg';
+        return $CFG_GLPI['root_doc'] . '/plugins/example/public/computer_icon.svg';
     }
 
     return null;

@@ -37,23 +37,17 @@ namespace GlpiPlugin\Example;
 
 use CommonDBTM;
 
-// Class of the defined type
-
-if (!defined('GLPI_ROOT')) {
-    die("Sorry. You can't access directly to this file");
-}
-
 class Computer extends CommonDBTM
 {
     public static function showInfo()
     {
         echo '<table class="tab_glpi" width="100%">';
         echo '<tr>';
-        echo '<th>' . __('More information') . '</th>';
+        echo '<th>' . __s('More information') . '</th>';
         echo '</tr>';
         echo '<tr class="tab_bg_1">';
         echo '<td>';
-        echo __('Test successful');
+        echo __s('Test successful');
         echo '</td>';
         echo '</tr>';
         echo '</table>';
@@ -71,7 +65,7 @@ class Computer extends CommonDBTM
 
     public static function add_default_where($in)
     {
-        list($itemtype, $condition) = $in;
+        [$itemtype, $condition] = $in;
         if ($itemtype == 'Computer') {
             $table = getTableForItemType($itemtype);
             $condition .= ' (' . $table . '.groups_id NOT IN (' . implode(',', $_SESSION['glpigroups']) . '))';

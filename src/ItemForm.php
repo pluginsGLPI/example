@@ -50,9 +50,6 @@ class ItemForm
      */
     public static function preSection($params)
     {
-        $item    = $params['item'];
-        $options = $params['options'];
-
         echo TemplateRenderer::getInstance()->renderFromStringTemplate(<<<TWIG
       <section class="accordion-item" aria-label="a label">
       <h2 class="accordion-header" id="example-heading" title="example-heading-id" data-bs-toggle="tooltip">
@@ -81,9 +78,6 @@ TWIG, []);
      */
     public static function postSection($params)
     {
-        $item    = $params['item'];
-        $options = $params['options'];
-
         echo TemplateRenderer::getInstance()->renderFromStringTemplate(<<<TWIG
       <section class="accordion-item" aria-label="a label">
       <h2 class="accordion-header" id="example-heading" title="example-heading-id" data-bs-toggle="tooltip">
@@ -119,25 +113,25 @@ TWIG, []);
 
         $out = '<tr><th colspan="' . (isset($options['colspan']) ? $options['colspan'] * 2 : '4') . '">';
         $out .= sprintf(
-            __('Start %1$s hook call for %2$s type'),
+            __s('Start %1$s hook call for %2$s type'),
             'pre_item_form',
             $item::getType(),
         );
         $out .= '</th></tr>';
 
         $out .= "<tr><$firstelt>";
-        $out .= '<label for="example_pre_form_hook">' . __('First pre form hook') . '</label>';
+        $out .= '<label for="example_pre_form_hook">' . __s('First pre form hook') . '</label>';
         $out .= "</$firstelt><td>";
         $out .= '<input type="text" name="example_pre_form_hook" id="example_pre_form_hook"/>';
         $out .= "</td><$firstelt>";
-        $out .= '<label for="example_pre_form_hook2">' . __('Second pre form hook') . '</label>';
+        $out .= '<label for="example_pre_form_hook2">' . __s('Second pre form hook') . '</label>';
         $out .= "</$firstelt><td>";
         $out .= '<input type="text" name="example_pre_form_hook2" id="example_pre_form_hook2"/>';
         $out .= '</td></tr>';
 
         $out .= '<tr><th colspan="' . (isset($options['colspan']) ? $options['colspan'] * 2 : '4') . '">';
         $out .= sprintf(
-            __('End %1$s hook call for %2$s type'),
+            __s('End %1$s hook call for %2$s type'),
             'pre_item_form',
             $item::getType(),
         );
@@ -162,25 +156,25 @@ TWIG, []);
 
         $out = '<tr><th colspan="' . (isset($options['colspan']) ? $options['colspan'] * 2 : '4') . '">';
         $out .= sprintf(
-            __('Start %1$s hook call for %2$s type'),
+            __s('Start %1$s hook call for %2$s type'),
             'post_item_form',
             $item::getType(),
         );
         $out .= '</th></tr>';
 
         $out .= "<tr><$firstelt>";
-        $out .= '<label for="example_post_form_hook">' . __('First post form hook') . '</label>';
+        $out .= '<label for="example_post_form_hook">' . __s('First post form hook') . '</label>';
         $out .= "</$firstelt><td>";
         $out .= '<input type="text" name="example_post_form_hook" id="example_post_form_hook"/>';
         $out .= "</td><$firstelt>";
-        $out .= '<label for="example_post_form_hook2">' . __('Second post form hook') . '</label>';
+        $out .= '<label for="example_post_form_hook2">' . __s('Second post form hook') . '</label>';
         $out .= "</$firstelt><td>";
         $out .= '<input type="text" name="example_post_form_hook2" id="example_post_form_hook2"/>';
         $out .= '</td></tr>';
 
         $out .= '<tr><th colspan="' . (isset($options['colspan']) ? $options['colspan'] * 2 : '4') . '">';
         $out .= sprintf(
-            __('End %1$s hook call for %2$s type'),
+            __s('End %1$s hook call for %2$s type'),
             'post_item_form',
             $item::getType(),
         );
@@ -209,7 +203,7 @@ JAVASCRIPT;
 
         echo "<li class='followup' id='email_transfer_$rand'>
             <i class='far fa-envelope'></i>" .
-              __('Send a notification') .
+              __s('Send a notification') .
               Html::scriptBlock($JS) . '
         </li>';
     }

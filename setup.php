@@ -27,24 +27,24 @@
  * @link      https://github.com/pluginsGLPI/example
  * -------------------------------------------------------------------------
  */
-
 use Glpi\Plugin\Hooks;
 use GlpiPlugin\Example\Computer;
 use GlpiPlugin\Example\Config;
-use GlpiPlugin\Example\Dropdown;
 use GlpiPlugin\Example\DeviceCamera;
+use GlpiPlugin\Example\Dropdown;
 use GlpiPlugin\Example\Example;
 use GlpiPlugin\Example\Filters\ComputerModelFilter;
 use GlpiPlugin\Example\ItemForm;
+use GlpiPlugin\Example\Profile;
 use GlpiPlugin\Example\RuleTestCollection;
 use GlpiPlugin\Example\Showtabitem;
 
-define('PLUGIN_EXAMPLE_VERSION', '0.0.1');
+define('PLUGIN_EXAMPLE_VERSION', '0.1.0');
 
 // Minimal GLPI version, inclusive
-define('PLUGIN_EXAMPLE_MIN_GLPI', '10.0.0');
+define('PLUGIN_EXAMPLE_MIN_GLPI', '11.0.0');
 // Maximum GLPI version, exclusive
-define('PLUGIN_EXAMPLE_MAX_GLPI', '10.0.99');
+define('PLUGIN_EXAMPLE_MAX_GLPI', '11.0.99');
 
 /**
  * Init hooks of the plugin.
@@ -86,13 +86,11 @@ function plugin_init_example()
         ['device_types' => true],
     );
 
-    if (version_compare(GLPI_VERSION, '9.1', 'ge')) {
-        if (class_exists(Example::class)) {
-            Link::registerTag(Example::$tags);
-        }
+    if (version_compare(GLPI_VERSION, '9.1', 'ge') && class_exists(Example::class)) {
+        Link::registerTag(Example::$tags);
     }
     // Display a menu entry ?
-    Plugin::registerClass(\GlpiPlugin\Example\Profile::class, ['addtabon' => ['Profile']]);
+    Plugin::registerClass(Profile::class, ['addtabon' => ['Profile']]);
     if (Example::canView()) { // Right set in change_profile hook
         $PLUGIN_HOOKS['menu_toadd']['example'] = ['plugins' => Example::class,
             'tools'                                         => Example::class];
@@ -250,9 +248,6 @@ function plugin_init_example()
 
     $PLUGIN_HOOKS['status']['example'] = 'plugin_example_Status';
 
-    // CSRF compliance : All actions must be done via POST and forms closed by Html::closeForm();
-    $PLUGIN_HOOKS[Hooks::CSRF_COMPLIANT]['example'] = true;
-
     $PLUGIN_HOOKS[Hooks::DISPLAY_CENTRAL]['example'] = 'plugin_example_display_central';
     $PLUGIN_HOOKS[Hooks::DISPLAY_LOGIN]['example']   = 'plugin_example_display_login';
     $PLUGIN_HOOKS[Hooks::INFOCOM]['example']         = 'plugin_example_infocom_hook';
@@ -267,11 +262,8 @@ function plugin_init_example()
     $PLUGIN_HOOKS[Hooks::PRE_ITEM_FORM]['example']  = [ItemForm::class, 'preItemForm'];
     $PLUGIN_HOOKS[Hooks::POST_ITEM_FORM]['example'] = [ItemForm::class, 'postItemForm'];
 
-    //TODO: remove check when GLPI 11.0.0 is released
-    if (version_compare(GLPI_VERSION, '11.0.0', 'ge')) {
-        $PLUGIN_HOOKS[Hooks::PRE_ITIL_INFO_SECTION]['example']  = [ItemForm::class, 'preSection'];
-        $PLUGIN_HOOKS[Hooks::POST_ITIL_INFO_SECTION]['example'] = [ItemForm::class, 'postSection'];
-    }
+    $PLUGIN_HOOKS[Hooks::PRE_ITIL_INFO_SECTION]['example']  = [ItemForm::class, 'preSection'];
+    $PLUGIN_HOOKS[Hooks::POST_ITIL_INFO_SECTION]['example'] = [ItemForm::class, 'postSection'];
 
     // Add new actions to timeline
     $PLUGIN_HOOKS[Hooks::TIMELINE_ACTIONS]['example'] = [
@@ -297,11 +289,8 @@ function plugin_init_example()
         ComputerModelFilter::class,
     ];
 
-    //TODO: remove check when GLPI 11.0.0 is released
-    if (version_compare(GLPI_VERSION, '11.0.0', 'ge')) {
-        // Icon in the impact analysis
-        $PLUGIN_HOOKS[Hooks::SET_ITEM_IMPACT_ICON]['example'] = 'plugin_example_set_impact_icon';
-    }
+    // Icon in the impact analysis
+    $PLUGIN_HOOKS[Hooks::SET_ITEM_IMPACT_ICON]['example'] = 'plugin_example_set_impact_icon';
 }
 
 
@@ -337,11 +326,7 @@ function plugin_version_example()
  */
 function plugin_example_check_prerequisites()
 {
-    if (false) {
-        return false;
-    }
-
-    return true;
+    return !false;
 }
 
 /**
@@ -358,8 +343,7 @@ function plugin_example_check_config($verbose = false)
     }
 
     if ($verbose) {
-        echo __('Installed / not configured', 'example');
+        echo __s('Installed / not configured', 'example');
     }
-
     return false;
 }

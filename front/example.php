@@ -35,7 +35,7 @@
 
 use GlpiPlugin\Example\Example;
 
-include('../../../inc/includes.php');
+include(__DIR__ . '/../../../inc/includes.php');
 Session::checkRight(Example::$rightname, READ);
 
 if ($_SESSION['glpiactiveprofile']['interface'] == 'central') {

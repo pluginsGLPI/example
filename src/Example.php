@@ -35,13 +35,19 @@
 
 namespace GlpiPlugin\Example;
 
+use Central;
 use CommonDBTM;
 use CommonGLPI;
 use Computer;
 use Html;
+use Item_Disk;
 use Log;
 use MassiveAction;
+use Notification;
+use Phone;
+use Preference;
 use Session;
+use Supplier;
 
 // Class of the defined type
 class Example extends CommonDBTM
@@ -57,7 +63,7 @@ class Example extends CommonDBTM
 
     public static function getMenuName()
     {
-        return __('Example plugin');
+        return __s('Example plugin');
     }
 
     public static function getAdditionalMenuLinks()
@@ -90,7 +96,7 @@ class Example extends CommonDBTM
 
         echo "<tr class='tab_bg_1'>";
 
-        echo '<td>' . __('ID') . '</td>';
+        echo '<td>' . __s('ID') . '</td>';
         echo '<td>';
         echo $ID;
         echo '</td>';
@@ -106,28 +112,28 @@ class Example extends CommonDBTM
 
         $tab[] = [
             'id'   => 'common',
-            'name' => __('Header Needed'),
+            'name' => __s('Header Needed'),
         ];
 
         $tab[] = [
             'id'    => '1',
             'table' => 'glpi_plugin_example_examples',
             'field' => 'name',
-            'name'  => __('Name'),
+            'name'  => __s('Name'),
         ];
 
         $tab[] = [
             'id'    => '2',
             'table' => 'glpi_plugin_example_dropdowns',
             'field' => 'name',
-            'name'  => __('Dropdown'),
+            'name'  => __s('Dropdown'),
         ];
 
         $tab[] = [
             'id'         => '3',
             'table'      => 'glpi_plugin_example_examples',
             'field'      => 'serial',
-            'name'       => __('Serial number'),
+            'name'       => __s('Serial number'),
             'usehaving'  => true,
             'searchtype' => 'equals',
         ];
@@ -136,7 +142,7 @@ class Example extends CommonDBTM
             'id'         => '30',
             'table'      => 'glpi_plugin_example_examples',
             'field'      => 'id',
-            'name'       => __('ID'),
+            'name'       => __s('ID'),
             'usehaving'  => true,
             'searchtype' => 'equals',
         ];
@@ -155,8 +161,8 @@ class Example extends CommonDBTM
     {
         switch ($name) {
             case 'Sample':
-                return ['description' => __('Cron description for example', 'example'),
-                    'parameter'       => __('Cron parameter for example', 'example')];
+                return ['description' => __s('Cron description for example', 'example'),
+                    'parameter'       => __s('Cron parameter for example', 'example')];
         }
 
         return [];
@@ -167,7 +173,7 @@ class Example extends CommonDBTM
      *
      * @param $task Object of CronTask class for log / stat
      *
-     * @return interger
+     * @return int
      *    >0 : done
      *    <0 : to be run again (not finished)
      *     0 : nothing to do
@@ -211,33 +217,34 @@ class Example extends CommonDBTM
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
         if (!$withtemplate) {
-            switch ($item->getType()) {
-                case 'Profile':
-                    if ($item->getField('central')) {
-                        return __('Example', 'example');
-                    }
-                    break;
+            if ($item instanceof Profile) {
+                if ($item->getField('central')) {
+                    return __s('Example', 'example');
+                }
 
-                case 'Phone':
-                    if ($_SESSION['glpishow_count_on_tabs']) {
-                        return self::createTabEntry(
-                            __('Example', 'example'),
-                            countElementsInTable($this->getTable()),
-                        );
-                    }
+            } elseif ($item instanceof Phone) {
+                if ($_SESSION['glpishow_count_on_tabs']) {
+                    return self::createTabEntry(
+                        __s('Example', 'example'),
+                        countElementsInTable($this->getTable()),
+                    );
+                }
 
-                    return __('Example', 'example');
+                return __s('Example', 'example');
 
-                case 'ComputerDisk':
-                case 'Supplier':
-                    return [1 => __('Test Plugin', 'example'),
-                        2     => __('Test Plugin 2', 'example')];
+            } elseif ($item instanceof Item_Disk || $item instanceof Supplier) {
+                return [
+                    1 => __s('Test Plugin', 'example'),
+                    2 => __s('Test Plugin 2', 'example'),
+                ];
 
-                case 'Computer':
-                case 'Central':
-                case 'Preference':
-                case 'Notification':
-                    return [1 => __('Test Plugin', 'example')];
+            } elseif ($item instanceof Computer
+                    || $item instanceof Central
+                    || $item instanceof Preference
+                    || $item instanceof Notification) {
+                return [
+                    1 => __s('Test Plugin', 'example'),
+                ];
             }
         }
 
@@ -246,52 +253,45 @@ class Example extends CommonDBTM
 
     public static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0)
     {
-        switch ($item->getType()) {
-            case 'Phone':
-                echo __('Plugin Example on Phone', 'example');
-                break;
+        if ($item instanceof Phone) {
+            echo __s('Plugin Example on Phone', 'example');
 
-            case 'Central':
-                echo __('Plugin central action', 'example');
-                break;
+        } elseif ($item instanceof Central) {
+            echo __s('Plugin central action', 'example');
 
-            case 'Preference':
-                // Complete form display
-                $data = plugin_version_example();
+        } elseif ($item instanceof Preference) {
+            // Complete form display
+            $data = plugin_version_example();
 
-                echo "<form action='Where to post form'>";
-                echo "<table class='tab_cadre_fixe'>";
-                echo "<tr><th colspan='3'>" . $data['name'] . ' - ' . $data['version'];
-                echo '</th></tr>';
+            echo "<form action='Where to post form'>";
+            echo "<table class='tab_cadre_fixe'>";
+            echo "<tr><th colspan='3'>" . $data['name'] . ' - ' . $data['version'];
+            echo '</th></tr>';
 
-                echo "<tr class='tab_bg_1'><td>Name of the pref</td>";
-                echo '<td>Input to set the pref</td>';
+            echo "<tr class='tab_bg_1'><td>Name of the pref</td>";
+            echo '<td>Input to set the pref</td>';
 
-                echo "<td><input class='submit' type='submit' name='submit' value='submit'></td>";
-                echo '</tr>';
+            echo "<td><input class='submit' type='submit' name='submit' value='submit'></td>";
+            echo '</tr>';
 
-                echo '</table>';
-                echo '</form>';
-                break;
+            echo '</table>';
+            echo '</form>';
 
-            case 'Notification':
-                echo __('Plugin mailing action', 'example');
-                break;
+        } elseif ($item instanceof Notification) {
+            echo __s('Plugin mailing action', 'example');
 
-            case 'ComputerDisk':
-            case 'Supplier':
-                if ($tabnum == 1) {
-                    echo __('First tab of Plugin example', 'example');
-                } else {
-                    echo __('Second tab of Plugin example', 'example');
-                }
-                break;
+        } elseif ($item instanceof Item_Disk || $item instanceof Supplier) {
+            if ($tabnum == 1) {
+                echo __s('First tab of Plugin example', 'example');
+            } else {
+                echo __s('Second tab of Plugin example', 'example');
+            }
 
-            default:
-                //TRANS: %1$s is a class name, %2$d is an item ID
-                printf(__('Plugin example CLASS=%1$s id=%2$d', 'example'), $item->getType(), $item->getField('id'));
-                break;
+        } else {
+            //TRANS: %1$s is a class name, %2$d is an item ID
+            printf(__s('Plugin example CLASS=%1$s', 'example'), get_class($item));
         }
+
 
         return true;
     }
@@ -320,7 +320,7 @@ class Example extends CommonDBTM
         $key                   = $parm['begin'] . '$$$' . 'plugin_example1';
         $output[$key]['begin'] = date('Y-m-d 17:00:00');
         $output[$key]['end']   = date('Y-m-d 18:00:00');
-        $output[$key]['name']  = __('test planning example 1', 'example');
+        $output[$key]['name']  = __s('test planning example 1', 'example');
         // Specify the itemtype to be able to use specific display system
         $output[$key]['itemtype'] = Example::class;
         // Set the ID using the ID of the item in the database to have unique ID
@@ -337,7 +337,7 @@ class Example extends CommonDBTM
      * @param $type position of the item in the time block (in, through, begin or end)
      * @param $complete complete display (more details)
      *
-     * @return Nothing (display function)
+     * @return void (display function)
      **/
     public static function displayPlanningItem(array $val, $who, $type = '', $complete = 0)
     {
@@ -347,7 +347,7 @@ class Example extends CommonDBTM
             case 'in':
                 //TRANS: %1$s is the start time of a planned item, %2$s is the end
                 printf(
-                    __('From %1$s to %2$s :'),
+                    __s('From %1$s to %2$s :'),
                     date('H:i', strtotime($val['begin'])),
                     date('H:i', strtotime($val['end'])),
                 );
@@ -359,12 +359,12 @@ class Example extends CommonDBTM
 
             case 'begin':
                 //TRANS: %s is the start time of a planned item
-                printf(__('Start at %s:'), date('H:i', strtotime($val['begin'])));
+                printf(__s('Start at %s:'), date('H:i', strtotime($val['begin'])));
                 break;
 
             case 'end':
                 //TRANS: %s is the end time of a planned item
-                printf(__('End at %s:'), date('H:i', strtotime($val['end'])));
+                printf(__s('End at %s:'), date('H:i', strtotime($val['end'])));
                 break;
         }
         echo '<br>';
@@ -384,7 +384,7 @@ class Example extends CommonDBTM
     {
         switch ($data['linked_action'] - Log::HISTORY_PLUGIN) {
             case 0:
-                return __('History from plugin example', 'example');
+                return __s('History from plugin example', 'example');
         }
 
         return '';
@@ -397,7 +397,7 @@ class Example extends CommonDBTM
         $actions = parent::getSpecificMassiveActions($checkitem);
 
         $actions['Document_Item' . MassiveAction::CLASS_ACTION_SEPARATOR . 'add']  = _x('button', 'Add a document');         // GLPI core one
-        $actions[__CLASS__ . MassiveAction::CLASS_ACTION_SEPARATOR . 'do_nothing'] = __('Do Nothing - just for fun', 'example');  // Specific one
+        $actions[self::class . MassiveAction::CLASS_ACTION_SEPARATOR . 'do_nothing'] = __s('Do Nothing - just for fun', 'example');  // Specific one
 
         return $actions;
     }
@@ -408,12 +408,12 @@ class Example extends CommonDBTM
             case 'DoIt':
                 echo "&nbsp;<input type='hidden' name='toto' value='1'>" .
                      Html::submit(_x('button', 'Post'), ['name' => 'massiveaction']) .
-                     ' ' . __('Write in item history', 'example');
+                     ' ' . __s('Write in item history', 'example');
 
                 return true;
             case 'do_nothing':
                 echo '&nbsp;' . Html::submit(_x('button', 'Post'), ['name' => 'massiveaction']) .
-                     ' ' . __('but do nothing :)', 'example');
+                     ' ' . __s('but do nothing :)', 'example');
 
                 return true;
         }
@@ -436,8 +436,8 @@ class Example extends CommonDBTM
         switch ($ma->getAction()) {
             case 'DoIt':
                 if ($item->getType() == 'Computer') {
-                    Session::addMessageAfterRedirect(__('Right it is the type I want...', 'example'));
-                    Session::addMessageAfterRedirect(__('Write in item history', 'example'));
+                    Session::addMessageAfterRedirect(__s('Right it is the type I want...', 'example'));
+                    Session::addMessageAfterRedirect(__s('Write in item history', 'example'));
                     $changes = [0, 'old value', 'new value'];
                     foreach ($ids as $id) {
                         if ($item->getFromDB($id)) {
@@ -464,8 +464,8 @@ class Example extends CommonDBTM
 
             case 'do_nothing':
                 if ($item->getType() == Example::class) {
-                    Session::addMessageAfterRedirect(__('Right it is the type I want...', 'example'));
-                    Session::addMessageAfterRedirect(__(
+                    Session::addMessageAfterRedirect(__s('Right it is the type I want...', 'example'));
+                    Session::addMessageAfterRedirect(__s(
                         'But... I say I will do nothing for:',
                         'example',
                     ));
@@ -487,27 +487,27 @@ class Example extends CommonDBTM
         parent::processMassiveActionsForOneItemtype($ma, $item, $ids);
     }
 
-    public static function generateLinkContents($link, CommonDBTM $item)
+    public static function generateLinkContents($link, CommonDBTM $item, bool $safe_url = true)
     {
         if (strstr($link, '[EXAMPLE_ID]')) {
-            $link = str_replace('[EXAMPLE_ID]', $item->getID(), $link);
+            $link = str_replace('[EXAMPLE_ID]', (string) $item->getID(), $link);
 
             return [$link];
         }
 
-        return parent::generateLinkContents($link, $item);
+        return parent::generateLinkContents($link, $item, $safe_url);
     }
 
     public static function dashboardTypes()
     {
         return [
             'example' => [
-                'label'    => __('Plugin Example', 'example'),
+                'label'    => __s('Plugin Example', 'example'),
                 'function' => Example::class . '::cardWidget',
                 'image'    => 'https://via.placeholder.com/100x86?text=example',
             ],
             'example_static' => [
-                'label'    => __('Plugin Example (static)', 'example'),
+                'label'    => __s('Plugin Example (static)', 'example'),
                 'function' => Example::class . '::cardWidgetWithoutProvider',
                 'image'    => 'https://via.placeholder.com/100x86?text=example+static',
             ],
@@ -522,16 +522,16 @@ class Example extends CommonDBTM
         $new_cards = [
             'plugin_example_card' => [
                 'widgettype' => ['example'],
-                'label'      => __('Plugin Example card'),
+                'label'      => __s('Plugin Example card'),
                 'provider'   => Example::class . '::cardDataProvider',
             ],
             'plugin_example_card_without_provider' => [
                 'widgettype' => ['example_static'],
-                'label'      => __('Plugin Example card without provider'),
+                'label'      => __s('Plugin Example card without provider'),
             ],
             'plugin_example_card_with_core_widget' => [
                 'widgettype' => ['bigNumber'],
-                'label'      => __('Plugin Example card with core provider'),
+                'label'      => __s('Plugin Example card with core provider'),
                 'provider'   => Example::class . '::cardBigNumberProvider',
             ],
         ];
@@ -605,14 +605,8 @@ class Example extends CommonDBTM
 
     public static function cardBigNumberProvider(array $params = [])
     {
-        $default_params = [
-            'label' => null,
-            'icon'  => null,
-        ];
-        $params = array_merge($default_params, $params);
-
         return [
-            'number' => rand(),
+            'number' => random_int(0, mt_getrandmax()),
             'url'    => 'https://www.linux.org/',
             'label'  => 'plugin example - some text',
             'icon'   => 'fab fa-linux', // font awesome icon
