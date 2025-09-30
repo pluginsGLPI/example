@@ -605,11 +605,6 @@ class Example extends CommonDBTM
 
     public static function cardBigNumberProvider(array $params = [])
     {
-        $default_params = [
-            'label' => null,
-            'icon'  => null,
-        ];
-
         return [
             'number' => random_int(0, mt_getrandmax()),
             'url'    => 'https://www.linux.org/',
