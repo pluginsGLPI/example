@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-30 01:40+0000\n"
+"POT-Creation-Date: 2025-10-01 01:50+0000\n"
 "PO-Revision-Date: 2015-09-18 12:02+0000\n"
 "Last-Translator: David Stepan <stepand@tiscali.cz>, 2016,2025\n"
 "Language-Team: Czech (Czech Republic) (http://app.transifex.com/teclib/glpi-plugin-example/language/cs_CZ/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: setup.php:361
+#: setup.php:346
 msgid "Installed / not configured"
 msgstr "Nainstalováno/nenastaveno"
 
@@ -27,89 +27,89 @@ msgstr "Nainstalováno/nenastaveno"
 msgid "This is the plugin config page"
 msgstr "Toto je stránka s nastaveními zásuvného modulu"
 
-#: hook.php:57
+#: hook.php:55
 msgid "Plugin Example Dropdown"
 msgstr "Rozbalovací nabídka zásuvného modulu pro ukázku"
 
-#: hook.php:73
+#: hook.php:71
 msgid "Example plugin"
 msgstr "Zásuvný modul pro ukázku"
 
-#: hook.php:89
+#: hook.php:86
 msgid "Example plugin new"
 msgstr "Zásuvný modul pro ukázku nové"
 
-#: hook.php:302
+#: hook.php:293
 msgid "plugin_example_DoIt"
 msgstr "plugin_example_DoIt"
 
-#: hook.php:325 hook.php:335
+#: hook.php:315 hook.php:325
 msgid "Not really specific - Just for example"
 msgstr "Ve skutečnosti nekonkrétní – jen pro ukázku"
 
-#: hook.php:358
+#: hook.php:347
 msgid "Not really specific - Use your own dropdown - Just for example"
 msgstr "Ve skutečnosti nekonkrétní – použijte vlastní rozbalovací nabídku – jen pro příklad"
 
-#: hook.php:385
+#: hook.php:374
 msgid "Pre Update Computer Hook"
 msgstr "Háček počítače před aktualizací"
 
-#: hook.php:392
+#: hook.php:381
 #, php-format
 msgid "Update Computer Hook (%s)"
 msgstr "Háček aktualizovat počítač (%s)"
 
-#: hook.php:402
+#: hook.php:391
 msgid "Empty Computer Hook"
 msgstr "Prázdný háček počítače"
 
-#: hook.php:414
+#: hook.php:403
 msgid "Pre Delete Computer Hook"
 msgstr "Háček před smazáním počítače"
 
-#: hook.php:421
+#: hook.php:410
 msgid "Delete Computer Hook"
 msgstr "Smazat háček počítače"
 
-#: hook.php:431
+#: hook.php:420
 msgid "Pre Purge Computer Hook"
 msgstr "Háček před odstraněním počítače"
 
-#: hook.php:438
+#: hook.php:427
 msgid "Purge Computer Hook"
 msgstr "Háček odstranění počítače"
 
-#: hook.php:448
+#: hook.php:437
 msgid "Pre Restore Computer Hook"
 msgstr "Háček před obnovením počítače"
 
-#: hook.php:456
+#: hook.php:445
 msgid "Pre Restore Phone Hook"
 msgstr "Háček před obnovením telefonu"
 
-#: hook.php:463
+#: hook.php:452
 msgid "Restore Computer Hook"
 msgstr "Háček obnovení počítače"
 
-#: hook.php:474
+#: hook.php:463
 #, php-format
 msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
 msgstr "Háček přenesení počítače %1$s%2$d -> %3$d"
 
-#: hook.php:686
+#: hook.php:674
 msgid "Example event"
 msgstr "Příklad události"
 
-#: hook.php:692
+#: hook.php:680
 msgid "Example datas"
 msgstr "Příklad dat"
 
-#: hook.php:755 hook.php:770
+#: hook.php:743 hook.php:758
 msgid "Plugin example displays on central page"
 msgstr "Zásuvný modul pro ukázku zobrazuje na centrální stránce"
 
-#: hook.php:763
+#: hook.php:751
 msgid "Plugin example displays on login page"
 msgstr "Zásuvný modul pro ukázku zobrazuje na přihlašovací stránce"
 
@@ -117,60 +117,60 @@ msgstr "Zásuvný modul pro ukázku zobrazuje na přihlašovací stránce"
 msgid "Plugin Example Dropdowns"
 msgstr "Rozbalovací nabídky zásuvného modulu pro ukázku"
 
-#: src/RuleTest.php:81
+#: src/RuleTest.php:76
 msgid "Category (class)"
 msgstr "Kategorie (třída)"
 
-#: src/NotificationTargetExample.php:51 src/Example.php:217
-#: src/Example.php:224 src/Example.php:229
+#: src/NotificationTargetExample.php:45 src/Example.php:222
+#: src/Example.php:228 src/Example.php:233
 msgid "Example"
 msgstr "Příklad"
 
-#: src/Example.php:70
+#: src/Example.php:76
 msgid "Test link"
 msgstr "Testovací odkaz"
 
-#: src/Example.php:158
+#: src/Example.php:164
 msgid "Cron description for example"
 msgstr "Popis naplánované úlohy (cron) pro ukázku"
 
-#: src/Example.php:159
+#: src/Example.php:165
 msgid "Cron parameter for example"
 msgstr "Parametr naplánované úlohy (cron) pro ukázku"
 
-#: src/Example.php:233 src/Example.php:240
+#: src/Example.php:237 src/Example.php:246
 msgid "Test Plugin"
 msgstr "Testovací zásuvný modul"
 
-#: src/Example.php:234
+#: src/Example.php:238
 msgid "Test Plugin 2"
 msgstr "Testovací zásuvný modul 2"
 
-#: src/Example.php:251
+#: src/Example.php:257
 msgid "Plugin Example on Phone"
 msgstr "Zásuvný modul pro ukázku na telefonu"
 
-#: src/Example.php:255
+#: src/Example.php:260
 msgid "Plugin central action"
 msgstr "Centrální akce zásuvného modulu"
 
-#: src/Example.php:278
+#: src/Example.php:281
 msgid "Plugin mailing action"
 msgstr "E-mailová akce zásuvného modulu"
 
-#: src/Example.php:284
+#: src/Example.php:285
 msgid "First tab of Plugin example"
 msgstr "První panel zásuvného modulu pro ukázku"
 
-#: src/Example.php:286
+#: src/Example.php:287
 msgid "Second tab of Plugin example"
 msgstr "Druhý panel zásuvného modulu pro ukázku"
 
 #. TRANS: %1$s is a class name, %2$d is an item ID
 #: src/Example.php:292
 #, php-format
-msgid "Plugin example CLASS=%1$s id=%2$d"
-msgstr "Zásuvný modul pro ukázku CLASS=%1$s id=%2$d"
+msgid "Plugin example CLASS=%1$s"
+msgstr ""
 
 #: src/Example.php:323
 msgid "test planning example 1"
