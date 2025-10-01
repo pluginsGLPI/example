@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-25 01:49+0000\n"
+"POT-Creation-Date: 2025-10-01 01:50+0000\n"
 "PO-Revision-Date: 2015-09-18 12:02+0000\n"
 "Last-Translator: 조성현 (jaymz9634) <jaymz9634@gmail.com>, 2020\n"
 "Language-Team: Korean (Korea) (http://app.transifex.com/teclib/glpi-plugin-example/language/ko_KR/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: ko_KR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: setup.php:361
+#: setup.php:346
 msgid "Installed / not configured"
 msgstr "설치됨 / 구성 안됨"
 
@@ -26,89 +26,89 @@ msgstr "설치됨 / 구성 안됨"
 msgid "This is the plugin config page"
 msgstr "이것은 플러그인 구성 페이지 입니다"
 
-#: hook.php:57
+#: hook.php:55
 msgid "Plugin Example Dropdown"
 msgstr "플러그인 예제 드롭다운"
 
-#: hook.php:73
+#: hook.php:71
 msgid "Example plugin"
 msgstr "예제 플러그인"
 
-#: hook.php:89
+#: hook.php:86
 msgid "Example plugin new"
 msgstr "플러그인 예제 신규"
 
-#: hook.php:302
+#: hook.php:293
 msgid "plugin_example_DoIt"
 msgstr "plugin_example_DoIt"
 
-#: hook.php:325 hook.php:335
+#: hook.php:315 hook.php:325
 msgid "Not really specific - Just for example"
 msgstr "실제로 지정 안됨 - 그냥 예제임"
 
-#: hook.php:358
+#: hook.php:347
 msgid "Not really specific - Use your own dropdown - Just for example"
 msgstr "실제 지정 안됨 - 당신만의 드롭다운을 사용 - 그냥 예제임"
 
-#: hook.php:385
+#: hook.php:374
 msgid "Pre Update Computer Hook"
 msgstr "컴퓨터 후크 사전 갱신"
 
-#: hook.php:392
+#: hook.php:381
 #, php-format
 msgid "Update Computer Hook (%s)"
 msgstr "컴퓨터 후크 갱신 (%s)"
 
-#: hook.php:402
+#: hook.php:391
 msgid "Empty Computer Hook"
 msgstr "컴퓨터 후크 비우기"
 
-#: hook.php:414
+#: hook.php:403
 msgid "Pre Delete Computer Hook"
 msgstr "컴퓨터 후크 사전 삭제"
 
-#: hook.php:421
+#: hook.php:410
 msgid "Delete Computer Hook"
 msgstr "컴퓨터 후크 삭제"
 
-#: hook.php:431
+#: hook.php:420
 msgid "Pre Purge Computer Hook"
 msgstr "컴퓨터 후크 사전 제거"
 
-#: hook.php:438
+#: hook.php:427
 msgid "Purge Computer Hook"
 msgstr "컴퓨터 후크 제거"
 
-#: hook.php:448
+#: hook.php:437
 msgid "Pre Restore Computer Hook"
 msgstr "컴퓨터 후크 사전 복원"
 
-#: hook.php:456
+#: hook.php:445
 msgid "Pre Restore Phone Hook"
 msgstr "전화 후크 사전 복원"
 
-#: hook.php:463
+#: hook.php:452
 msgid "Restore Computer Hook"
 msgstr "컴퓨터 후크 복원"
 
-#: hook.php:474
+#: hook.php:463
 #, php-format
 msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
 msgstr "컴퓨터 후크 %1$s %2$d -> %3$d 전송"
 
-#: hook.php:686
+#: hook.php:674
 msgid "Example event"
 msgstr "예제 이벤트"
 
-#: hook.php:692
+#: hook.php:680
 msgid "Example datas"
 msgstr "예제 자료"
 
-#: hook.php:755 hook.php:770
+#: hook.php:743 hook.php:758
 msgid "Plugin example displays on central page"
 msgstr "가운데 페이지에 플러그인 예제 표시"
 
-#: hook.php:763
+#: hook.php:751
 msgid "Plugin example displays on login page"
 msgstr "로그인 페이지에 플러그인 예제 표시"
 
@@ -116,60 +116,60 @@ msgstr "로그인 페이지에 플러그인 예제 표시"
 msgid "Plugin Example Dropdowns"
 msgstr "플러그인 예제 드롭다운"
 
-#: src/RuleTest.php:81
+#: src/RuleTest.php:76
 msgid "Category (class)"
 msgstr "분류 (class)"
 
-#: src/NotificationTargetExample.php:51 src/Example.php:217
-#: src/Example.php:224 src/Example.php:229
+#: src/NotificationTargetExample.php:45 src/Example.php:222
+#: src/Example.php:228 src/Example.php:233
 msgid "Example"
 msgstr "예제"
 
-#: src/Example.php:70
+#: src/Example.php:76
 msgid "Test link"
 msgstr "테스트 링크"
 
-#: src/Example.php:158
+#: src/Example.php:164
 msgid "Cron description for example"
 msgstr "예제용 작업 상세"
 
-#: src/Example.php:159
+#: src/Example.php:165
 msgid "Cron parameter for example"
 msgstr "예제용 작업 매개변수"
 
-#: src/Example.php:233 src/Example.php:240
+#: src/Example.php:237 src/Example.php:246
 msgid "Test Plugin"
 msgstr "테스트 플러그인"
 
-#: src/Example.php:234
+#: src/Example.php:238
 msgid "Test Plugin 2"
 msgstr "테스트 플러그인 2"
 
-#: src/Example.php:251
+#: src/Example.php:257
 msgid "Plugin Example on Phone"
 msgstr "전화 플러그인 예제"
 
-#: src/Example.php:255
+#: src/Example.php:260
 msgid "Plugin central action"
 msgstr "플러그인 중심 작업"
 
-#: src/Example.php:278
+#: src/Example.php:281
 msgid "Plugin mailing action"
 msgstr "플러그인 메일링 작업"
 
-#: src/Example.php:284
+#: src/Example.php:285
 msgid "First tab of Plugin example"
 msgstr "플러그인 예제의 첫번째 탭"
 
-#: src/Example.php:286
+#: src/Example.php:287
 msgid "Second tab of Plugin example"
 msgstr "플러그인 예제의 두번째 탭"
 
 #. TRANS: %1$s is a class name, %2$d is an item ID
 #: src/Example.php:292
 #, php-format
-msgid "Plugin example CLASS=%1$s id=%2$d"
-msgstr "플러그인 예제 CLASS=%1$s id=%2$d"
+msgid "Plugin example CLASS=%1$s"
+msgstr ""
 
 #: src/Example.php:323
 msgid "test planning example 1"
