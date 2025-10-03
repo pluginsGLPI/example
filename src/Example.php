@@ -49,6 +49,8 @@ use Preference;
 use Session;
 use Supplier;
 
+use function Safe\strtotime;
+
 // Class of the defined type
 class Example extends CommonDBTM
 {

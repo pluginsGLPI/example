@@ -624,12 +624,11 @@ function plugin_example_uninstall()
     ProfileRight::deleteProfileRights([Example::$rightname]);
 
     $notif   = new Notification();
-    $options = ['itemtype' => 'Ticket',
-        'event'            => 'plugin_example',
-        'FIELDS'           => 'id'];
-    foreach ($DB->request('glpi_notifications', $options) as $data) {
-        $notif->delete($data);
-    }
+    $notif->deleteByCriteria([
+        'itemtype' => 'Ticket',
+        'event'    => 'plugin_example',
+        'FIELDS'   => 'id',
+    ]);
     // Old version tables
     if ($DB->tableExists('glpi_dropdown_plugin_example')) {
         $query = 'DROP TABLE `glpi_dropdown_plugin_example`';
