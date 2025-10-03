@@ -57,7 +57,16 @@
 
 namespace GlpiPlugin\Example;
 
+use Glpi\Exception\Http\NotFoundHttpException;
+use Glpi\Exception\Http\HttpException;
 use Document as GlpiDocument;
+
+use function Safe\filemtime;
+use function Safe\filesize;
+use function Safe\fopen;
+use function Safe\fread;
+use function Safe\preg_match;
+use function Safe\set_time_limit;
 
 class Document extends GlpiDocument
 {
@@ -142,8 +151,7 @@ class Document extends GlpiDocument
 
         // Ensure the file exists
         if (!file_exists($streamSource) || !is_file($streamSource)) {
-            header('HTTP/1.0 404 Not Found');
-            exit(0);
+            throw new NotFoundHttpException();
         }
 
         // Download range defaults to the full file
@@ -157,8 +165,7 @@ class Document extends GlpiDocument
         // Open the file
         $fileHandle = @fopen($streamSource, 'rb');
         if (!$fileHandle) {
-            header('HTTP/1.0 500 Internal Server Error');
-            exit(0);
+            throw new HttpException(500, 'Internal Server Error');
         }
 
         // set range if specified by the client
@@ -174,8 +181,7 @@ class Document extends GlpiDocument
         // seek to the begining of the range
         $currentPosition = $begin;
         if (fseek($fileHandle, $begin, SEEK_SET) < 0) {
-            header('HTTP/1.0 500 Internal Server Error');
-            exit(0);
+            throw new HttpException(500, 'Internal Server Error');
         }
 
         // send headers to ensure the client is able to detect a corrupted download
@@ -206,9 +212,8 @@ class Document extends GlpiDocument
             // allow a few seconds to send a few KB.
             set_time_limit(10);
             $content = fread($fileHandle, min(1024 * 16, $end - $currentPosition + 1));
-            if ($content === false) {
-                header('HTTP/1.0 500 Internal Server Error', true); // Replace previously sent headers
-                exit(0);
+            if (empty($content)) {
+                throw new HttpException(500, 'Internal Server Error');
             } else {
                 print $content;
             }
@@ -217,6 +222,6 @@ class Document extends GlpiDocument
         }
 
         // End now to prevent any unwanted bytes
-        exit(0);
+        return;
     }
 }

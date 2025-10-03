@@ -39,6 +39,8 @@ use GlpiPlugin\Example\Profile;
 use GlpiPlugin\Example\RuleTestCollection;
 use GlpiPlugin\Example\Showtabitem;
 
+use function Safe\define;
+
 define('PLUGIN_EXAMPLE_VERSION', '0.1.0');
 
 // Minimal GLPI version, inclusive
