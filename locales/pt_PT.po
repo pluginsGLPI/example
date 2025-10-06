@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-01 01:50+0000\n"
+"POT-Creation-Date: 2025-10-06 01:42+0000\n"
 "PO-Revision-Date: 2015-09-18 12:02+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Portuguese (Portugal) (http://app.transifex.com/teclib/glpi-plugin-example/language/pt_PT/)\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Language: pt_PT\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: setup.php:346
+#: setup.php:348
 msgid "Installed / not configured"
 msgstr "Instalado / não configurado"
 
@@ -95,19 +95,19 @@ msgstr "Dependência do restauro do computador"
 msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
 msgstr "Dependência do Computador de Transferência %1$s %2$d -> %3$d"
 
-#: hook.php:674
+#: hook.php:673
 msgid "Example event"
 msgstr "Exemplo de evento"
 
-#: hook.php:680
+#: hook.php:679
 msgid "Example datas"
 msgstr "Exemplo de datas"
 
-#: hook.php:743 hook.php:758
+#: hook.php:742 hook.php:757
 msgid "Plugin example displays on central page"
 msgstr "Exemplo de plugin exibido na página central"
 
-#: hook.php:751
+#: hook.php:750
 msgid "Plugin example displays on login page"
 msgstr "Exemplo de plug-in exibido na página de login"
 
@@ -119,85 +119,85 @@ msgstr "Dropdowns exemplo plugin"
 msgid "Category (class)"
 msgstr "Categoria (classe)"
 
-#: src/NotificationTargetExample.php:45 src/Example.php:222
-#: src/Example.php:228 src/Example.php:233
+#: src/NotificationTargetExample.php:45 src/Example.php:224
+#: src/Example.php:230 src/Example.php:235
 msgid "Example"
 msgstr "Exemplo"
 
-#: src/Example.php:76
+#: src/Example.php:78
 msgid "Test link"
 msgstr "Ligação de teste"
 
-#: src/Example.php:164
+#: src/Example.php:166
 msgid "Cron description for example"
 msgstr "Descrição Cron por exemplo"
 
-#: src/Example.php:165
+#: src/Example.php:167
 msgid "Cron parameter for example"
 msgstr "Parâmetro Cron por exemplo"
 
-#: src/Example.php:237 src/Example.php:246
+#: src/Example.php:239 src/Example.php:248
 msgid "Test Plugin"
 msgstr "Plugin de teste"
 
-#: src/Example.php:238
+#: src/Example.php:240
 msgid "Test Plugin 2"
 msgstr "Plugin de teste 2"
 
-#: src/Example.php:257
+#: src/Example.php:259
 msgid "Plugin Example on Phone"
 msgstr "Exemplo de plugin no telefone"
 
-#: src/Example.php:260
+#: src/Example.php:262
 msgid "Plugin central action"
 msgstr "Ação central de plugins"
 
-#: src/Example.php:281
+#: src/Example.php:283
 msgid "Plugin mailing action"
 msgstr "Ação de envio de plugin"
 
-#: src/Example.php:285
+#: src/Example.php:287
 msgid "First tab of Plugin example"
 msgstr "Primeira guia do exemplo plugin"
 
-#: src/Example.php:287
+#: src/Example.php:289
 msgid "Second tab of Plugin example"
 msgstr "Segunda guia do exemplo plugin"
 
 #. TRANS: %1$s is a class name, %2$d is an item ID
-#: src/Example.php:292
+#: src/Example.php:294
 #, php-format
 msgid "Plugin example CLASS=%1$s"
 msgstr ""
 
-#: src/Example.php:323
+#: src/Example.php:325
 msgid "test planning example 1"
 msgstr "exemplo de planejamento de teste 1"
 
-#: src/Example.php:387
+#: src/Example.php:389
 msgid "History from plugin example"
 msgstr "Histórico do exemplo de plugin"
 
-#: src/Example.php:400
+#: src/Example.php:402
 msgid "Do Nothing - just for fun"
 msgstr "Não faça nada - só por diversão"
 
-#: src/Example.php:411 src/Example.php:440
+#: src/Example.php:413 src/Example.php:442
 msgid "Write in item history"
 msgstr "Escrever no histórico de itens"
 
-#: src/Example.php:416
+#: src/Example.php:418
 msgid "but do nothing :)"
 msgstr "mas não faça nada :)"
 
-#: src/Example.php:439 src/Example.php:467
+#: src/Example.php:441 src/Example.php:469
 msgid "Right it is the type I want..."
 msgstr "Certo, é o tipo que eu quero…"
 
-#: src/Example.php:505
+#: src/Example.php:507
 msgid "Plugin Example"
 msgstr ""
 
-#: src/Example.php:510
+#: src/Example.php:512
 msgid "Plugin Example (static)"
 msgstr ""
