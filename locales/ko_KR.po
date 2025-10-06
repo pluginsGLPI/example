@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-01 01:50+0000\n"
+"POT-Creation-Date: 2025-10-06 01:42+0000\n"
 "PO-Revision-Date: 2015-09-18 12:02+0000\n"
 "Last-Translator: 조성현 (jaymz9634) <jaymz9634@gmail.com>, 2020\n"
 "Language-Team: Korean (Korea) (http://app.transifex.com/teclib/glpi-plugin-example/language/ko_KR/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: ko_KR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: setup.php:346
+#: setup.php:348
 msgid "Installed / not configured"
 msgstr "설치됨 / 구성 안됨"
 
@@ -96,19 +96,19 @@ msgstr "컴퓨터 후크 복원"
 msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
 msgstr "컴퓨터 후크 %1$s %2$d -> %3$d 전송"
 
-#: hook.php:674
+#: hook.php:673
 msgid "Example event"
 msgstr "예제 이벤트"
 
-#: hook.php:680
+#: hook.php:679
 msgid "Example datas"
 msgstr "예제 자료"
 
-#: hook.php:743 hook.php:758
+#: hook.php:742 hook.php:757
 msgid "Plugin example displays on central page"
 msgstr "가운데 페이지에 플러그인 예제 표시"
 
-#: hook.php:751
+#: hook.php:750
 msgid "Plugin example displays on login page"
 msgstr "로그인 페이지에 플러그인 예제 표시"
 
@@ -120,85 +120,85 @@ msgstr "플러그인 예제 드롭다운"
 msgid "Category (class)"
 msgstr "분류 (class)"
 
-#: src/NotificationTargetExample.php:45 src/Example.php:222
-#: src/Example.php:228 src/Example.php:233
+#: src/NotificationTargetExample.php:45 src/Example.php:224
+#: src/Example.php:230 src/Example.php:235
 msgid "Example"
 msgstr "예제"
 
-#: src/Example.php:76
+#: src/Example.php:78
 msgid "Test link"
 msgstr "테스트 링크"
 
-#: src/Example.php:164
+#: src/Example.php:166
 msgid "Cron description for example"
 msgstr "예제용 작업 상세"
 
-#: src/Example.php:165
+#: src/Example.php:167
 msgid "Cron parameter for example"
 msgstr "예제용 작업 매개변수"
 
-#: src/Example.php:237 src/Example.php:246
+#: src/Example.php:239 src/Example.php:248
 msgid "Test Plugin"
 msgstr "테스트 플러그인"
 
-#: src/Example.php:238
+#: src/Example.php:240
 msgid "Test Plugin 2"
 msgstr "테스트 플러그인 2"
 
-#: src/Example.php:257
+#: src/Example.php:259
 msgid "Plugin Example on Phone"
 msgstr "전화 플러그인 예제"
 
-#: src/Example.php:260
+#: src/Example.php:262
 msgid "Plugin central action"
 msgstr "플러그인 중심 작업"
 
-#: src/Example.php:281
+#: src/Example.php:283
 msgid "Plugin mailing action"
 msgstr "플러그인 메일링 작업"
 
-#: src/Example.php:285
+#: src/Example.php:287
 msgid "First tab of Plugin example"
 msgstr "플러그인 예제의 첫번째 탭"
 
-#: src/Example.php:287
+#: src/Example.php:289
 msgid "Second tab of Plugin example"
 msgstr "플러그인 예제의 두번째 탭"
 
 #. TRANS: %1$s is a class name, %2$d is an item ID
-#: src/Example.php:292
+#: src/Example.php:294
 #, php-format
 msgid "Plugin example CLASS=%1$s"
 msgstr ""
 
-#: src/Example.php:323
+#: src/Example.php:325
 msgid "test planning example 1"
 msgstr "테스트 계획 예제 1"
 
-#: src/Example.php:387
+#: src/Example.php:389
 msgid "History from plugin example"
 msgstr "플러그인 예제 이력"
 
-#: src/Example.php:400
+#: src/Example.php:402
 msgid "Do Nothing - just for fun"
 msgstr "아무것도 하지 마세요 - 그냥 즐기세요"
 
-#: src/Example.php:411 src/Example.php:440
+#: src/Example.php:413 src/Example.php:442
 msgid "Write in item history"
 msgstr "품목 이력에 기록"
 
-#: src/Example.php:416
+#: src/Example.php:418
 msgid "but do nothing :)"
 msgstr "하지만 아무것도 하지마세요 :)"
 
-#: src/Example.php:439 src/Example.php:467
+#: src/Example.php:441 src/Example.php:469
 msgid "Right it is the type I want..."
 msgstr "바로 제가 원하는 유형입니다..."
 
-#: src/Example.php:505
+#: src/Example.php:507
 msgid "Plugin Example"
 msgstr ""
 
-#: src/Example.php:510
+#: src/Example.php:512
 msgid "Plugin Example (static)"
 msgstr ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-01 01:50+0000\n"
+"POT-Creation-Date: 2025-10-06 01:42+0000\n"
 "PO-Revision-Date: 2015-09-18 12:02+0000\n"
 "Last-Translator: JAVIER ANDREU <jandreugx@gmail.com>, 2018\n"
 "Language-Team: Spanish (Spain) (http://app.transifex.com/teclib/glpi-plugin-example/language/es_ES/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: es_ES\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: setup.php:346
+#: setup.php:348
 msgid "Installed / not configured"
 msgstr "Instalado / no configurado"
 
@@ -97,19 +97,19 @@ msgstr "Restaurar Gancho o Hook del Ordenador"
 msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
 msgstr "Transferir Gancho o Hook del Ordenador %1$s %2$d -> %3$d"
 
-#: hook.php:674
+#: hook.php:673
 msgid "Example event"
 msgstr "Evento ejemplo"
 
-#: hook.php:680
+#: hook.php:679
 msgid "Example datas"
 msgstr "Data ejemplo"
 
-#: hook.php:743 hook.php:758
+#: hook.php:742 hook.php:757
 msgid "Plugin example displays on central page"
 msgstr "El ejemplo del plugin se muestra en la página central"
 
-#: hook.php:751
+#: hook.php:750
 msgid "Plugin example displays on login page"
 msgstr "El ejemplo del plugin se muestra en la página de inicio de sesión"
 
@@ -121,85 +121,85 @@ msgstr "Menús desplegables del Plugin Ejemplo"
 msgid "Category (class)"
 msgstr "Categoría (clase)"
 
-#: src/NotificationTargetExample.php:45 src/Example.php:222
-#: src/Example.php:228 src/Example.php:233
+#: src/NotificationTargetExample.php:45 src/Example.php:224
+#: src/Example.php:230 src/Example.php:235
 msgid "Example"
 msgstr "Ejemplo"
 
-#: src/Example.php:76
+#: src/Example.php:78
 msgid "Test link"
 msgstr "Vinculo de prueba"
 
-#: src/Example.php:164
+#: src/Example.php:166
 msgid "Cron description for example"
 msgstr "Descripción del cron para ejemplo"
 
-#: src/Example.php:165
+#: src/Example.php:167
 msgid "Cron parameter for example"
 msgstr "Parametro cron para ejemplo"
 
-#: src/Example.php:237 src/Example.php:246
+#: src/Example.php:239 src/Example.php:248
 msgid "Test Plugin"
 msgstr "Test Plugin"
 
-#: src/Example.php:238
+#: src/Example.php:240
 msgid "Test Plugin 2"
 msgstr "Test Plugin 2"
 
-#: src/Example.php:257
+#: src/Example.php:259
 msgid "Plugin Example on Phone"
 msgstr "Plugin ejemplo en el teléfono"
 
-#: src/Example.php:260
+#: src/Example.php:262
 msgid "Plugin central action"
 msgstr "Acción del plugin central"
 
-#: src/Example.php:281
+#: src/Example.php:283
 msgid "Plugin mailing action"
 msgstr "Acción de correo del plugin"
 
-#: src/Example.php:285
+#: src/Example.php:287
 msgid "First tab of Plugin example"
 msgstr "Primera pestaña del Plugin ejemplo"
 
-#: src/Example.php:287
+#: src/Example.php:289
 msgid "Second tab of Plugin example"
 msgstr "Segunda pestaña del Plugin ejemplo"
 
 #. TRANS: %1$s is a class name, %2$d is an item ID
-#: src/Example.php:292
+#: src/Example.php:294
 #, php-format
 msgid "Plugin example CLASS=%1$s"
 msgstr ""
 
-#: src/Example.php:323
+#: src/Example.php:325
 msgid "test planning example 1"
 msgstr "prueba de planificación del ejemplo 1"
 
-#: src/Example.php:387
+#: src/Example.php:389
 msgid "History from plugin example"
 msgstr "Historial para el plugin ejemplo"
 
-#: src/Example.php:400
+#: src/Example.php:402
 msgid "Do Nothing - just for fun"
 msgstr "No hace nada - solo para diversión"
 
-#: src/Example.php:411 src/Example.php:440
+#: src/Example.php:413 src/Example.php:442
 msgid "Write in item history"
 msgstr "Escribir como item del historial"
 
-#: src/Example.php:416
+#: src/Example.php:418
 msgid "but do nothing :)"
 msgstr "pero no hace nada :)"
 
-#: src/Example.php:439 src/Example.php:467
+#: src/Example.php:441 src/Example.php:469
 msgid "Right it is the type I want..."
 msgstr "Correcto este es el tipo que yo quiero..."
 
-#: src/Example.php:505
+#: src/Example.php:507
 msgid "Plugin Example"
 msgstr ""
 
-#: src/Example.php:510
+#: src/Example.php:512
 msgid "Plugin Example (static)"
 msgstr ""

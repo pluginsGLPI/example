@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Kaya Zeren <kayazeren@gmail.com>, 2015-2016,2018-2019,2021,2023-2024
+# Kaya Zeren <kayazeren@gmail.com>, 2015-2016,2018-2019,2021,2023-2025
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-01 01:50+0000\n"
+"POT-Creation-Date: 2025-10-06 01:42+0000\n"
 "PO-Revision-Date: 2015-09-18 12:02+0000\n"
-"Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2015-2016,2018-2019,2021,2023-2024\n"
+"Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2015-2016,2018-2019,2021,2023-2025\n"
 "Language-Team: Turkish (Turkey) (http://app.transifex.com/teclib/glpi-plugin-example/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: setup.php:346
+#: setup.php:348
 msgid "Installed / not configured"
 msgstr "Kurulmuş / yapılandırılmamış"
 
@@ -96,19 +96,19 @@ msgstr "Bilgisayar kancasını geri yükle"
 msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
 msgstr "Bilgisayar kancasını aktar %1$s %2$d -> %3$d"
 
-#: hook.php:674
+#: hook.php:673
 msgid "Example event"
 msgstr "Örnek etkinlik"
 
-#: hook.php:680
+#: hook.php:679
 msgid "Example datas"
 msgstr "Örnek veriler"
 
-#: hook.php:743 hook.php:758
+#: hook.php:742 hook.php:757
 msgid "Plugin example displays on central page"
 msgstr "Örnek eklenti merkez sayfada görüntülenir"
 
-#: hook.php:751
+#: hook.php:750
 msgid "Plugin example displays on login page"
 msgstr "Örnek eklenti oturum açma sayfasında görüntülenir"
 
@@ -120,85 +120,85 @@ msgstr "Örnek eklenti açılan kutular"
 msgid "Category (class)"
 msgstr "Kategori (sınıf)"
 
-#: src/NotificationTargetExample.php:45 src/Example.php:222
-#: src/Example.php:228 src/Example.php:233
+#: src/NotificationTargetExample.php:45 src/Example.php:224
+#: src/Example.php:230 src/Example.php:235
 msgid "Example"
 msgstr "Örnek"
 
-#: src/Example.php:76
+#: src/Example.php:78
 msgid "Test link"
 msgstr "Deneme bağlantısı"
 
-#: src/Example.php:164
+#: src/Example.php:166
 msgid "Cron description for example"
 msgstr "Örnek zamanlanmış görev açıklaması"
 
-#: src/Example.php:165
+#: src/Example.php:167
 msgid "Cron parameter for example"
 msgstr "Örnek zamanlanmış görev parametresi"
 
-#: src/Example.php:237 src/Example.php:246
+#: src/Example.php:239 src/Example.php:248
 msgid "Test Plugin"
 msgstr "Deneme eklentisi"
 
-#: src/Example.php:238
+#: src/Example.php:240
 msgid "Test Plugin 2"
 msgstr "Deneme eklentisi 2"
 
-#: src/Example.php:257
+#: src/Example.php:259
 msgid "Plugin Example on Phone"
 msgstr "Telefon için örnek eklenti"
 
-#: src/Example.php:260
+#: src/Example.php:262
 msgid "Plugin central action"
 msgstr "Eklenti temel işlemi"
 
-#: src/Example.php:281
+#: src/Example.php:283
 msgid "Plugin mailing action"
 msgstr "Eklenti postalama işlemi"
 
-#: src/Example.php:285
+#: src/Example.php:287
 msgid "First tab of Plugin example"
 msgstr "Örnek eklentinin ilk sekmesi"
 
-#: src/Example.php:287
+#: src/Example.php:289
 msgid "Second tab of Plugin example"
 msgstr "Örnek eklentinin ikinci sekmesi"
 
 #. TRANS: %1$s is a class name, %2$d is an item ID
-#: src/Example.php:292
+#: src/Example.php:294
 #, php-format
 msgid "Plugin example CLASS=%1$s"
-msgstr ""
+msgstr "Örnek eklenti CLASS=%1$s"
 
-#: src/Example.php:323
+#: src/Example.php:325
 msgid "test planning example 1"
 msgstr "örnek deneme planı 1"
 
-#: src/Example.php:387
+#: src/Example.php:389
 msgid "History from plugin example"
 msgstr "Örnek eklenti geçmişi"
 
-#: src/Example.php:400
+#: src/Example.php:402
 msgid "Do Nothing - just for fun"
 msgstr "Hiç bir işlem yapmaz - Yalnız eğlence için"
 
-#: src/Example.php:411 src/Example.php:440
+#: src/Example.php:413 src/Example.php:442
 msgid "Write in item history"
 msgstr "Öge geçmişine yaz"
 
-#: src/Example.php:416
+#: src/Example.php:418
 msgid "but do nothing :)"
 msgstr "Ama hiç bir şey yapma :)"
 
-#: src/Example.php:439 src/Example.php:467
+#: src/Example.php:441 src/Example.php:469
 msgid "Right it is the type I want..."
 msgstr "Doğru bu benim istediğim tür..."
 
-#: src/Example.php:505
+#: src/Example.php:507
 msgid "Plugin Example"
 msgstr "Örnek eklenti"
 
-#: src/Example.php:510
+#: src/Example.php:512
 msgid "Plugin Example (static)"
 msgstr "Örnek eklenti (sabit)"
