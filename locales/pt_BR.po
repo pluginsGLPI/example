@@ -7,13 +7,14 @@
 # Andrei Bernardo Simoni <andrei_simoni@hotmail.com>, 2017
 # Arthur Schaefer <arthur.r.schaefer@gmail.com>, 2017
 # Arthur Schaefer <arthur.r.schaefer@gmail.com>, 2017
+# Diego Nobre <diego@koruma.com.br>, 2025
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-06 01:42+0000\n"
+"POT-Creation-Date: 2025-12-19 01:54+0000\n"
 "PO-Revision-Date: 2015-09-18 12:02+0000\n"
-"Last-Translator: Andrei Bernardo Simoni <andrei_simoni@hotmail.com>, 2020\n"
+"Last-Translator: Diego Nobre <diego@koruma.com.br>, 2025\n"
 "Language-Team: Portuguese (Brazil) (http://app.transifex.com/teclib/glpi-plugin-example/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -172,7 +173,7 @@ msgstr "Segunda guia do plugin de exemplo"
 #: src/Example.php:294
 #, php-format
 msgid "Plugin example CLASS=%1$s"
-msgstr ""
+msgstr "Plugin exemplo CLASS=%1$s"
 
 #: src/Example.php:325
 msgid "test planning example 1"
@@ -200,8 +201,8 @@ msgstr "Certo, este é o tipo que eu quero..."
 
 #: src/Example.php:507
 msgid "Plugin Example"
-msgstr ""
+msgstr "Plugin Exemplo"
 
 #: src/Example.php:512
 msgid "Plugin Example (static)"
-msgstr ""
+msgstr "Plugin Exemplo (estático)"
