@@ -619,7 +619,8 @@ function plugin_example_uninstall()
     global $DB;
 
     $config = new Config();
-    $config->deleteConfigurationValues('plugin:Example', ['configuration' => false]);
+    $my_config = array_keys(Config::getConfigurationValues('plugin:Example'));
+    $config->deleteConfigurationValues('plugin:Example', $my_config);
 
     ProfileRight::deleteProfileRights([Example::$rightname]);
 
@@ -653,6 +654,10 @@ function plugin_example_uninstall()
     }
     if ($DB->tableExists('glpi_plugin_example_items_devicecameras')) {
         $query = 'DROP TABLE `glpi_plugin_example_items_devicecameras`;';
+        $DB->doQuery($query);
+    }
+    if ($DB->tableExists('glpi_plugin_example_examples')) {
+        $query = 'DROP TABLE `glpi_plugin_example_examples`;';
         $DB->doQuery($query);
     }
 
