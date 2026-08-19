@@ -33,13 +33,15 @@
 // Purpose of file:
 // ----------------------------------------------------------------------
 
+use GlpiPlugin\Example\Config;
+
 // Non menu entry case
 //header("Location:../../central.php");
 
 // Entry menu case
 include(__DIR__ . '/../../../inc/includes.php');
 
-Session::checkRight('config', UPDATE);
+Session::checkRight(Config::$rightname, UPDATE);
 
 // To be available when plugin in not activated
 Plugin::load('example');
