@@ -36,6 +36,7 @@
 namespace GlpiPlugin\Example;
 
 use CommonDBChild;
+use FQDN;
 use Session;
 
 // Sample of class that inherit from CommonDBChild. The behaviour of CommonRelation is similar.
@@ -47,8 +48,8 @@ use Session;
 class Child extends CommonDBChild
 {
     // A child rely on an item. If $itemtype=='itemtype', then that is a variable item.
-    public static $itemtype = 'itemtype';
-    public static $items_id = 'items_id';
+    public static string $itemtype = 'itemtype';
+    public static string $items_id = 'items_id';
 
     // With 0.84, you have to specify each right (create, view, update and delete), because
     // CommonDBChild(s) and CommonDBRelation(s) mainly depend on the rights on the parent item
@@ -61,25 +62,25 @@ class Child extends CommonDBChild
     // * $mustBeAttached: some CommonDBChild can be free, without any parent.
     public static function canCreate(): bool
     {
-        return (Session::haveRight('internet', UPDATE)
+        return (Session::haveRight(FQDN::$rightname, UPDATE)
                 && parent::canCreate());
     }
 
     public static function canView(): bool
     {
-        return (Session::haveRight('internet', READ)
+        return (Session::haveRight(FQDN::$rightname, READ)
                 && parent::canView());
     }
 
     public static function canUpdate(): bool
     {
-        return (Session::haveRight('internet', UPDATE)
+        return (Session::haveRight(FQDN::$rightname, UPDATE)
                 && parent::canUpdate());
     }
 
     public static function canDelete(): bool
     {
-        return (Session::haveRight('internet', DELETE)
+        return (Session::haveRight(FQDN::$rightname, DELETE)
                 && parent::canDelete());
     }
 
