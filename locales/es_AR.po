@@ -3,202 +3,202 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# 조성현 (jaymz9634) <jaymz9634@gmail.com>, 2020
+# Alan Lehoux, 2026
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-14 02:08+0000\n"
+"POT-Creation-Date: 2026-08-28 10:18+0000\n"
 "PO-Revision-Date: 2015-09-18 12:02+0000\n"
-"Last-Translator: 조성현 (jaymz9634) <jaymz9634@gmail.com>, 2020\n"
-"Language-Team: Korean (Korea) (http://app.transifex.com/teclib/glpi-plugin-example/language/ko_KR/)\n"
+"Last-Translator: Alan Lehoux, 2026\n"
+"Language-Team: Spanish (Argentina) (http://app.transifex.com/teclib/glpi-plugin-example/language/es_AR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ko_KR\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: es_AR\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: front/config.php:48
 msgid "This is the plugin config page"
-msgstr "이것은 플러그인 구성 페이지 입니다"
+msgstr "Esta es la página de configuración del complemento"
 
 #: hook.php:55
 msgid "Plugin Example Dropdown"
-msgstr "플러그인 예제 드롭다운"
+msgstr "Desplegable de Ejemplo del Complemento"
 
 #: hook.php:71
 msgid "Example plugin"
-msgstr "예제 플러그인"
+msgstr "Complemento de ejemplo"
 
 #: hook.php:86
 msgid "Example plugin new"
-msgstr "플러그인 예제 신규"
+msgstr "Nuevo complemento de ejemplo"
 
 #: hook.php:293
 msgid "plugin_example_DoIt"
-msgstr "plugin_example_DoIt"
+msgstr "plugin_example_Dolt"
 
 #: hook.php:315 hook.php:325
 msgid "Not really specific - Just for example"
-msgstr "실제로 지정 안됨 - 그냥 예제임"
+msgstr "No es realmente específico - Solo para ejemplo"
 
 #: hook.php:347
 msgid "Not really specific - Use your own dropdown - Just for example"
-msgstr "실제 지정 안됨 - 당신만의 드롭다운을 사용 - 그냥 예제임"
+msgstr "No es realmente específico - Usá tu propia lista desplegable - Solo para ejemplo"
 
 #: hook.php:374
 msgid "Pre Update Computer Hook"
-msgstr "컴퓨터 후크 사전 갱신"
+msgstr "Hook de Preactualización de Computadora"
 
 #: hook.php:381
 #, php-format
 msgid "Update Computer Hook (%s)"
-msgstr "컴퓨터 후크 갱신 (%s)"
+msgstr "Hook de Actualización de Computadora (%s)"
 
 #: hook.php:391
 msgid "Empty Computer Hook"
-msgstr "컴퓨터 후크 비우기"
+msgstr "Hook de Computadora Vacía"
 
 #: hook.php:403
 msgid "Pre Delete Computer Hook"
-msgstr "컴퓨터 후크 사전 삭제"
+msgstr "Hook de Preeliminación de Computadora"
 
 #: hook.php:410
 msgid "Delete Computer Hook"
-msgstr "컴퓨터 후크 삭제"
+msgstr "Hook de Eliminación de Computadora"
 
 #: hook.php:420
 msgid "Pre Purge Computer Hook"
-msgstr "컴퓨터 후크 사전 제거"
+msgstr "Hook de Prepurga de Computadora"
 
 #: hook.php:427
 msgid "Purge Computer Hook"
-msgstr "컴퓨터 후크 제거"
+msgstr "Hook de Purga de Computadora"
 
 #: hook.php:437
 msgid "Pre Restore Computer Hook"
-msgstr "컴퓨터 후크 사전 복원"
+msgstr "Hook de Prerrestauración de Computadora"
 
 #: hook.php:445
 msgid "Pre Restore Phone Hook"
-msgstr "전화 후크 사전 복원"
+msgstr "Hook de Prerrestauración de Teléfono"
 
 #: hook.php:452
 msgid "Restore Computer Hook"
-msgstr "컴퓨터 후크 복원"
+msgstr "Hook de Restauración de Computadora"
 
 #: hook.php:463
 #, php-format
 msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
-msgstr "컴퓨터 후크 %1$s %2$d -> %3$d 전송"
+msgstr "Hook de Transferencia de Computadora %1$s %2$d -> %3$d"
 
 #: hook.php:678
 msgid "Example event"
-msgstr "예제 이벤트"
+msgstr "Evento de ejemplo"
 
 #: hook.php:684
 msgid "Example datas"
-msgstr "예제 자료"
+msgstr "Datos de ejemplo"
 
 #: hook.php:747 hook.php:762
 msgid "Plugin example displays on central page"
-msgstr "가운데 페이지에 플러그인 예제 표시"
+msgstr "El Complemento de ejemplo se muestra en la página central"
 
 #: hook.php:755
 msgid "Plugin example displays on login page"
-msgstr "로그인 페이지에 플러그인 예제 표시"
+msgstr "El Complemento de ejemplo se muestra en la página de inicio de sesión"
 
 #: src/RuleTest.php:76
 msgid "Category (class)"
-msgstr "분류 (class)"
+msgstr "Categoría (clase)"
 
 #: src/Example.php:78
 msgid "Test link"
-msgstr "테스트 링크"
+msgstr "Enlace de prueba"
 
 #: src/Example.php:166
 msgid "Cron description for example"
-msgstr "예제용 작업 상세"
+msgstr "Descripción de Cron para ejemplo"
 
 #: src/Example.php:167
 msgid "Cron parameter for example"
-msgstr "예제용 작업 매개변수"
+msgstr "Parámetro de Cron para ejemplo"
 
 #: src/Example.php:224 src/Example.php:230 src/Example.php:235
 #: src/NotificationTargetExample.php:45
 msgid "Example"
-msgstr "예제"
+msgstr "Ejemplo"
 
 #: src/Example.php:239 src/Example.php:248
 msgid "Test Plugin"
-msgstr "테스트 플러그인"
+msgstr "Complemento de Prueba"
 
 #: src/Example.php:240
 msgid "Test Plugin 2"
-msgstr "테스트 플러그인 2"
+msgstr "Complemento de Prueba 2"
 
 #: src/Example.php:259
 msgid "Plugin Example on Phone"
-msgstr "전화 플러그인 예제"
+msgstr "Ejemplo de Complemento en Teléfono"
 
 #: src/Example.php:262
 msgid "Plugin central action"
-msgstr "플러그인 중심 작업"
+msgstr "Acción central del Complemento"
 
 #: src/Example.php:283
 msgid "Plugin mailing action"
-msgstr "플러그인 메일링 작업"
+msgstr "Acción de envío de correo del Complemento"
 
 #: src/Example.php:287
 msgid "First tab of Plugin example"
-msgstr "플러그인 예제의 첫번째 탭"
+msgstr "Primera pestaña del Complemento de ejemplo"
 
 #: src/Example.php:289
 msgid "Second tab of Plugin example"
-msgstr "플러그인 예제의 두번째 탭"
+msgstr "Segunda pestaña del Complemento de ejemplo"
 
 #. TRANS: %1$s is a class name, %2$d is an item ID
 #: src/Example.php:294
 #, php-format
 msgid "Plugin example CLASS=%1$s"
-msgstr ""
+msgstr "Ejemplo de Complemento CLASE=%1$s"
 
 #: src/Example.php:325
 msgid "test planning example 1"
-msgstr "테스트 계획 예제 1"
+msgstr "ejemplo de planificación de prueba 1"
 
 #: src/Example.php:389
 msgid "History from plugin example"
-msgstr "플러그인 예제 이력"
+msgstr "Historial del complemento de ejemplo"
 
 #: src/Example.php:402
 msgid "Do Nothing - just for fun"
-msgstr "아무것도 하지 마세요 - 그냥 즐기세요"
+msgstr "No Hacer Nada - solo por diversión"
 
 #: src/Example.php:413 src/Example.php:442
 msgid "Write in item history"
-msgstr "품목 이력에 기록"
+msgstr "Escribir en el historial del elemento"
 
 #: src/Example.php:418
 msgid "but do nothing :)"
-msgstr "하지만 아무것도 하지마세요 :)"
+msgstr "pero no hacer nada :)"
 
 #: src/Example.php:441 src/Example.php:469
 msgid "Right it is the type I want..."
-msgstr "바로 제가 원하는 유형입니다..."
+msgstr "Correcto, es el tipo que quiero..."
 
 #: src/Example.php:507
 msgid "Plugin Example"
-msgstr ""
+msgstr "Ejemplo de Complemento"
 
 #: src/Example.php:512
 msgid "Plugin Example (static)"
-msgstr ""
+msgstr "Ejemplo de Complemento (estático)"
 
 #: src/Dropdown.php:46 src/Dropdown.php:49
 msgid "Plugin Example Dropdowns"
-msgstr "플러그인 예제 드롭다운"
+msgstr "Menús Desplegables del Complemento de Ejemplo"
 
 #: setup.php:348
 msgid "Installed / not configured"
-msgstr "설치됨 / 구성 안됨"
+msgstr "Instalado / no configurado"
