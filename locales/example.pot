@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-30 03:32+0000\n"
+"POT-Creation-Date: 2026-09-07 03:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,17 +17,111 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/RuleTest.php:76
-msgid "Category (class)"
+#: setup.php:348
+msgid "Installed / not configured"
+msgstr ""
+
+#: front/config.php:48
+msgid "This is the plugin config page"
+msgstr ""
+
+#: hook.php:55
+msgid "Plugin Example Dropdown"
+msgstr ""
+
+#: hook.php:71
+msgid "Example plugin"
+msgstr ""
+
+#: hook.php:86
+msgid "Example plugin new"
+msgstr ""
+
+#: hook.php:293
+msgid "plugin_example_DoIt"
+msgstr ""
+
+#: hook.php:315 hook.php:325
+msgid "Not really specific - Just for example"
+msgstr ""
+
+#: hook.php:347
+msgid "Not really specific - Use your own dropdown - Just for example"
+msgstr ""
+
+#: hook.php:374
+msgid "Pre Update Computer Hook"
+msgstr ""
+
+#: hook.php:381
+#, php-format
+msgid "Update Computer Hook (%s)"
+msgstr ""
+
+#: hook.php:391
+msgid "Empty Computer Hook"
+msgstr ""
+
+#: hook.php:403
+msgid "Pre Delete Computer Hook"
+msgstr ""
+
+#: hook.php:410
+msgid "Delete Computer Hook"
+msgstr ""
+
+#: hook.php:420
+msgid "Pre Purge Computer Hook"
+msgstr ""
+
+#: hook.php:427
+msgid "Purge Computer Hook"
+msgstr ""
+
+#: hook.php:437
+msgid "Pre Restore Computer Hook"
+msgstr ""
+
+#: hook.php:445
+msgid "Pre Restore Phone Hook"
+msgstr ""
+
+#: hook.php:452
+msgid "Restore Computer Hook"
+msgstr ""
+
+#: hook.php:463
+#, php-format
+msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
+msgstr ""
+
+#: hook.php:678
+msgid "Example event"
+msgstr ""
+
+#: hook.php:684
+msgid "Example datas"
+msgstr ""
+
+#: hook.php:747 hook.php:762
+msgid "Plugin example displays on central page"
+msgstr ""
+
+#: hook.php:755
+msgid "Plugin example displays on login page"
+msgstr ""
+
+#: src/NotificationTargetExample.php:45 src/Example.php:224 src/Example.php:230
+#: src/Example.php:235
+msgid "Example"
 msgstr ""
 
 #: src/Dropdown.php:46 src/Dropdown.php:49
 msgid "Plugin Example Dropdowns"
 msgstr ""
 
-#: src/NotificationTargetExample.php:45 src/Example.php:224 src/Example.php:230
-#: src/Example.php:235
-msgid "Example"
+#: src/RuleTest.php:76
+msgid "Category (class)"
 msgstr ""
 
 #: src/Example.php:78
@@ -106,98 +200,4 @@ msgstr ""
 
 #: src/Example.php:512
 msgid "Plugin Example (static)"
-msgstr ""
-
-#: setup.php:348
-msgid "Installed / not configured"
-msgstr ""
-
-#: hook.php:55
-msgid "Plugin Example Dropdown"
-msgstr ""
-
-#: hook.php:71
-msgid "Example plugin"
-msgstr ""
-
-#: hook.php:86
-msgid "Example plugin new"
-msgstr ""
-
-#: hook.php:293
-msgid "plugin_example_DoIt"
-msgstr ""
-
-#: hook.php:315 hook.php:325
-msgid "Not really specific - Just for example"
-msgstr ""
-
-#: hook.php:347
-msgid "Not really specific - Use your own dropdown - Just for example"
-msgstr ""
-
-#: hook.php:374
-msgid "Pre Update Computer Hook"
-msgstr ""
-
-#: hook.php:381
-#, php-format
-msgid "Update Computer Hook (%s)"
-msgstr ""
-
-#: hook.php:391
-msgid "Empty Computer Hook"
-msgstr ""
-
-#: hook.php:403
-msgid "Pre Delete Computer Hook"
-msgstr ""
-
-#: hook.php:410
-msgid "Delete Computer Hook"
-msgstr ""
-
-#: hook.php:420
-msgid "Pre Purge Computer Hook"
-msgstr ""
-
-#: hook.php:427
-msgid "Purge Computer Hook"
-msgstr ""
-
-#: hook.php:437
-msgid "Pre Restore Computer Hook"
-msgstr ""
-
-#: hook.php:445
-msgid "Pre Restore Phone Hook"
-msgstr ""
-
-#: hook.php:452
-msgid "Restore Computer Hook"
-msgstr ""
-
-#: hook.php:463
-#, php-format
-msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
-msgstr ""
-
-#: hook.php:673
-msgid "Example event"
-msgstr ""
-
-#: hook.php:679
-msgid "Example datas"
-msgstr ""
-
-#: hook.php:742 hook.php:757
-msgid "Plugin example displays on central page"
-msgstr ""
-
-#: hook.php:750
-msgid "Plugin example displays on login page"
-msgstr ""
-
-#: front/config.php:48
-msgid "This is the plugin config page"
 msgstr ""
