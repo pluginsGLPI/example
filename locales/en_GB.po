@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-30 03:32+0000\n"
-"PO-Revision-Date: 2026-04-30 03:32+0000\n"
+"POT-Creation-Date: 2026-09-10 03:46+0000\n"
+"PO-Revision-Date: 2026-09-10 03:46+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -17,18 +17,112 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/RuleTest.php:76
-msgid "Category (class)"
-msgstr "Category (class)"
+#: setup.php:348
+msgid "Installed / not configured"
+msgstr "Installed / not configured"
 
-#: src/Dropdown.php:46 src/Dropdown.php:49
-msgid "Plugin Example Dropdowns"
-msgstr "Plugin Example Dropdowns"
+#: front/config.php:48
+msgid "This is the plugin config page"
+msgstr "This is the plugin config page"
+
+#: hook.php:55
+msgid "Plugin Example Dropdown"
+msgstr "Plugin Example Dropdown"
+
+#: hook.php:71
+msgid "Example plugin"
+msgstr "Example plugin"
+
+#: hook.php:86
+msgid "Example plugin new"
+msgstr "Example plugin new"
+
+#: hook.php:293
+msgid "plugin_example_DoIt"
+msgstr "plugin_example_DoIt"
+
+#: hook.php:315 hook.php:325
+msgid "Not really specific - Just for example"
+msgstr "Not really specific - Just for example"
+
+#: hook.php:347
+msgid "Not really specific - Use your own dropdown - Just for example"
+msgstr "Not really specific - Use your own dropdown - Just for example"
+
+#: hook.php:374
+msgid "Pre Update Computer Hook"
+msgstr "Pre Update Computer Hook"
+
+#: hook.php:381
+#, php-format
+msgid "Update Computer Hook (%s)"
+msgstr "Update Computer Hook (%s)"
+
+#: hook.php:391
+msgid "Empty Computer Hook"
+msgstr "Empty Computer Hook"
+
+#: hook.php:403
+msgid "Pre Delete Computer Hook"
+msgstr "Pre Delete Computer Hook"
+
+#: hook.php:410
+msgid "Delete Computer Hook"
+msgstr "Delete Computer Hook"
+
+#: hook.php:420
+msgid "Pre Purge Computer Hook"
+msgstr "Pre Purge Computer Hook"
+
+#: hook.php:427
+msgid "Purge Computer Hook"
+msgstr "Purge Computer Hook"
+
+#: hook.php:437
+msgid "Pre Restore Computer Hook"
+msgstr "Pre Restore Computer Hook"
+
+#: hook.php:445
+msgid "Pre Restore Phone Hook"
+msgstr "Pre Restore Phone Hook"
+
+#: hook.php:452
+msgid "Restore Computer Hook"
+msgstr "Restore Computer Hook"
+
+#: hook.php:463
+#, php-format
+msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
+msgstr "Transfer Computer Hook %1$s %2$d -> %3$d"
+
+#: hook.php:678
+msgid "Example event"
+msgstr "Example event"
+
+#: hook.php:684
+msgid "Example datas"
+msgstr "Example datas"
+
+#: hook.php:747 hook.php:762
+msgid "Plugin example displays on central page"
+msgstr "Plugin example displays on central page"
+
+#: hook.php:755
+msgid "Plugin example displays on login page"
+msgstr "Plugin example displays on login page"
 
 #: src/NotificationTargetExample.php:45 src/Example.php:224 src/Example.php:230
 #: src/Example.php:235
 msgid "Example"
 msgstr "Example"
+
+#: src/Dropdown.php:46 src/Dropdown.php:49
+msgid "Plugin Example Dropdowns"
+msgstr "Plugin Example Dropdowns"
+
+#: src/RuleTest.php:76
+msgid "Category (class)"
+msgstr "Category (class)"
 
 #: src/Example.php:78
 msgid "Test link"
@@ -107,97 +201,3 @@ msgstr "Plugin Example"
 #: src/Example.php:512
 msgid "Plugin Example (static)"
 msgstr "Plugin Example (static)"
-
-#: setup.php:348
-msgid "Installed / not configured"
-msgstr "Installed / not configured"
-
-#: hook.php:55
-msgid "Plugin Example Dropdown"
-msgstr "Plugin Example Dropdown"
-
-#: hook.php:71
-msgid "Example plugin"
-msgstr "Example plugin"
-
-#: hook.php:86
-msgid "Example plugin new"
-msgstr "Example plugin new"
-
-#: hook.php:293
-msgid "plugin_example_DoIt"
-msgstr "plugin_example_DoIt"
-
-#: hook.php:315 hook.php:325
-msgid "Not really specific - Just for example"
-msgstr "Not really specific - Just for example"
-
-#: hook.php:347
-msgid "Not really specific - Use your own dropdown - Just for example"
-msgstr "Not really specific - Use your own dropdown - Just for example"
-
-#: hook.php:374
-msgid "Pre Update Computer Hook"
-msgstr "Pre Update Computer Hook"
-
-#: hook.php:381
-#, php-format
-msgid "Update Computer Hook (%s)"
-msgstr "Update Computer Hook (%s)"
-
-#: hook.php:391
-msgid "Empty Computer Hook"
-msgstr "Empty Computer Hook"
-
-#: hook.php:403
-msgid "Pre Delete Computer Hook"
-msgstr "Pre Delete Computer Hook"
-
-#: hook.php:410
-msgid "Delete Computer Hook"
-msgstr "Delete Computer Hook"
-
-#: hook.php:420
-msgid "Pre Purge Computer Hook"
-msgstr "Pre Purge Computer Hook"
-
-#: hook.php:427
-msgid "Purge Computer Hook"
-msgstr "Purge Computer Hook"
-
-#: hook.php:437
-msgid "Pre Restore Computer Hook"
-msgstr "Pre Restore Computer Hook"
-
-#: hook.php:445
-msgid "Pre Restore Phone Hook"
-msgstr "Pre Restore Phone Hook"
-
-#: hook.php:452
-msgid "Restore Computer Hook"
-msgstr "Restore Computer Hook"
-
-#: hook.php:463
-#, php-format
-msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
-msgstr "Transfer Computer Hook %1$s %2$d -> %3$d"
-
-#: hook.php:673
-msgid "Example event"
-msgstr "Example event"
-
-#: hook.php:679
-msgid "Example datas"
-msgstr "Example datas"
-
-#: hook.php:742 hook.php:757
-msgid "Plugin example displays on central page"
-msgstr "Plugin example displays on central page"
-
-#: hook.php:750
-msgid "Plugin example displays on login page"
-msgstr "Plugin example displays on login page"
-
-#: front/config.php:48
-msgid "This is the plugin config page"
-msgstr "This is the plugin config page"
