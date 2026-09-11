@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-30 03:32+0000\n"
+"POT-Creation-Date: 2026-09-07 03:37+0000\n"
 "PO-Revision-Date: 2015-09-18 12:02+0000\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2015-2016,2018-2019,2021,2023-2025\n"
 "Language-Team: Turkish (Turkey) (http://app.transifex.com/teclib/glpi-plugin-example/language/tr_TR/)\n"
@@ -18,18 +18,112 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/RuleTest.php:76
-msgid "Category (class)"
-msgstr "Kategori (sınıf)"
+#: setup.php:348
+msgid "Installed / not configured"
+msgstr "Kurulmuş / yapılandırılmamış"
 
-#: src/Dropdown.php:46 src/Dropdown.php:49
-msgid "Plugin Example Dropdowns"
-msgstr "Örnek eklenti açılan kutular"
+#: front/config.php:48
+msgid "This is the plugin config page"
+msgstr "Eklenti yapılandırması"
+
+#: hook.php:55
+msgid "Plugin Example Dropdown"
+msgstr "Örnek eklenti açılan kutu"
+
+#: hook.php:71
+msgid "Example plugin"
+msgstr "Örnek eklenti"
+
+#: hook.php:86
+msgid "Example plugin new"
+msgstr "Örnek eklenti yeni"
+
+#: hook.php:293
+msgid "plugin_example_DoIt"
+msgstr "eklenti_ornek_Yap"
+
+#: hook.php:315 hook.php:325
+msgid "Not really specific - Just for example"
+msgstr "Özel bir şey değil - Yalnız örnek olarak"
+
+#: hook.php:347
+msgid "Not really specific - Use your own dropdown - Just for example"
+msgstr "Özel bir şey değil - Kendi açılan kutunuzu kullanın - Yalnız örnek olarak"
+
+#: hook.php:374
+msgid "Pre Update Computer Hook"
+msgstr "Bilgisayar kancasını güncelleme öncesi"
+
+#: hook.php:381
+#, php-format
+msgid "Update Computer Hook (%s)"
+msgstr "Bilgisayar kancasını güncelle (%s)"
+
+#: hook.php:391
+msgid "Empty Computer Hook"
+msgstr "Bilgisayar kancasını boşalt"
+
+#: hook.php:403
+msgid "Pre Delete Computer Hook"
+msgstr "Bilgisayar kancasını silme öncesi"
+
+#: hook.php:410
+msgid "Delete Computer Hook"
+msgstr "Bilgisayar kancasını sil"
+
+#: hook.php:420
+msgid "Pre Purge Computer Hook"
+msgstr "Bilgisayar kancasını boşaltma öncesi"
+
+#: hook.php:427
+msgid "Purge Computer Hook"
+msgstr "Bilgisayar kancasını boşalt"
+
+#: hook.php:437
+msgid "Pre Restore Computer Hook"
+msgstr "Bilgisayar kancasını geri yükleme öncesi"
+
+#: hook.php:445
+msgid "Pre Restore Phone Hook"
+msgstr "Telefon kancasını geri yükleme öncesi"
+
+#: hook.php:452
+msgid "Restore Computer Hook"
+msgstr "Bilgisayar kancasını geri yükle"
+
+#: hook.php:463
+#, php-format
+msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
+msgstr "Bilgisayar kancasını aktar %1$s %2$d -> %3$d"
+
+#: hook.php:678
+msgid "Example event"
+msgstr "Örnek etkinlik"
+
+#: hook.php:684
+msgid "Example datas"
+msgstr "Örnek veriler"
+
+#: hook.php:747 hook.php:762
+msgid "Plugin example displays on central page"
+msgstr "Örnek eklenti merkez sayfada görüntülenir"
+
+#: hook.php:755
+msgid "Plugin example displays on login page"
+msgstr "Örnek eklenti oturum açma sayfasında görüntülenir"
 
 #: src/NotificationTargetExample.php:45 src/Example.php:224
 #: src/Example.php:230 src/Example.php:235
 msgid "Example"
 msgstr "Örnek"
+
+#: src/Dropdown.php:46 src/Dropdown.php:49
+msgid "Plugin Example Dropdowns"
+msgstr "Örnek eklenti açılan kutular"
+
+#: src/RuleTest.php:76
+msgid "Category (class)"
+msgstr "Kategori (sınıf)"
 
 #: src/Example.php:78
 msgid "Test link"
@@ -108,97 +202,3 @@ msgstr "Örnek eklenti"
 #: src/Example.php:512
 msgid "Plugin Example (static)"
 msgstr "Örnek eklenti (sabit)"
-
-#: setup.php:348
-msgid "Installed / not configured"
-msgstr "Kurulmuş / yapılandırılmamış"
-
-#: hook.php:55
-msgid "Plugin Example Dropdown"
-msgstr "Örnek eklenti açılan kutu"
-
-#: hook.php:71
-msgid "Example plugin"
-msgstr "Örnek eklenti"
-
-#: hook.php:86
-msgid "Example plugin new"
-msgstr "Örnek eklenti yeni"
-
-#: hook.php:293
-msgid "plugin_example_DoIt"
-msgstr "eklenti_ornek_Yap"
-
-#: hook.php:315 hook.php:325
-msgid "Not really specific - Just for example"
-msgstr "Özel bir şey değil - Yalnız örnek olarak"
-
-#: hook.php:347
-msgid "Not really specific - Use your own dropdown - Just for example"
-msgstr "Özel bir şey değil - Kendi açılan kutunuzu kullanın - Yalnız örnek olarak"
-
-#: hook.php:374
-msgid "Pre Update Computer Hook"
-msgstr "Bilgisayar kancasını güncelleme öncesi"
-
-#: hook.php:381
-#, php-format
-msgid "Update Computer Hook (%s)"
-msgstr "Bilgisayar kancasını güncelle (%s)"
-
-#: hook.php:391
-msgid "Empty Computer Hook"
-msgstr "Bilgisayar kancasını boşalt"
-
-#: hook.php:403
-msgid "Pre Delete Computer Hook"
-msgstr "Bilgisayar kancasını silme öncesi"
-
-#: hook.php:410
-msgid "Delete Computer Hook"
-msgstr "Bilgisayar kancasını sil"
-
-#: hook.php:420
-msgid "Pre Purge Computer Hook"
-msgstr "Bilgisayar kancasını boşaltma öncesi"
-
-#: hook.php:427
-msgid "Purge Computer Hook"
-msgstr "Bilgisayar kancasını boşalt"
-
-#: hook.php:437
-msgid "Pre Restore Computer Hook"
-msgstr "Bilgisayar kancasını geri yükleme öncesi"
-
-#: hook.php:445
-msgid "Pre Restore Phone Hook"
-msgstr "Telefon kancasını geri yükleme öncesi"
-
-#: hook.php:452
-msgid "Restore Computer Hook"
-msgstr "Bilgisayar kancasını geri yükle"
-
-#: hook.php:463
-#, php-format
-msgid "Transfer Computer Hook %1$s %2$d -> %3$d"
-msgstr "Bilgisayar kancasını aktar %1$s %2$d -> %3$d"
-
-#: hook.php:673
-msgid "Example event"
-msgstr "Örnek etkinlik"
-
-#: hook.php:679
-msgid "Example datas"
-msgstr "Örnek veriler"
-
-#: hook.php:742 hook.php:757
-msgid "Plugin example displays on central page"
-msgstr "Örnek eklenti merkez sayfada görüntülenir"
-
-#: hook.php:750
-msgid "Plugin example displays on login page"
-msgstr "Örnek eklenti oturum açma sayfasında görüntülenir"
-
-#: front/config.php:48
-msgid "This is the plugin config page"
-msgstr "Eklenti yapılandırması"
