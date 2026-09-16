@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Plugin - Example\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-07 03:37+0000\n"
+"POT-Creation-Date: 2026-09-16 03:59+0000\n"
 "PO-Revision-Date: 2015-09-18 12:02+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Portuguese (Portugal) (http://app.transifex.com/teclib/glpi-plugin-example/language/pt_PT/)\n"
@@ -168,7 +168,7 @@ msgstr "Segunda guia do exemplo plugin"
 #: src/Example.php:294
 #, php-format
 msgid "Plugin example CLASS=%1$s"
-msgstr ""
+msgstr "Plugin exemplo CLASS=%1$s"
 
 #: src/Example.php:325
 msgid "test planning example 1"
@@ -196,8 +196,8 @@ msgstr "Certo, é o tipo que eu quero…"
 
 #: src/Example.php:507
 msgid "Plugin Example"
-msgstr ""
+msgstr "Plugin Exemplo"
 
 #: src/Example.php:512
 msgid "Plugin Example (static)"
-msgstr ""
+msgstr "Plugin Exemplo (estático)"
