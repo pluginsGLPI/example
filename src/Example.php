@@ -55,7 +55,7 @@ use function Safe\strtotime;
 class Example extends CommonDBTM
 {
     public static $tags      = '[EXAMPLE_ID]';
-    public static $rightname = 'plugin_example';
+    public static string $rightname = 'plugin_example';
 
     // Should return the localized name of the type
     public static function getTypeName($nb = 0)

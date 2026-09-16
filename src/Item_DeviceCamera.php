@@ -45,8 +45,8 @@ use Item_Devices;
 **/
 class Item_DeviceCamera extends Item_Devices
 {
-    public static $itemtype_2 = DeviceCamera::class;
-    public static $items_id_2 = 'plugin_example_devicecameras_id';
+    public static ?string $itemtype_2 = DeviceCamera::class;
+    public static ?string $items_id_2 = 'plugin_example_devicecameras_id';
 
-    protected static $notable = false;
+    protected static bool $notable = false;
 }

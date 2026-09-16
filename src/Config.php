@@ -40,7 +40,9 @@ use Toolbox;
 
 class Config extends CommonDBTM
 {
-    protected static $notable = true;
+    public static string $rightname = 'config';
+
+    protected static bool $notable = true;
 
     public function getTabNameForItem(CommonGLPI $item, $withtemplate = 0)
     {
@@ -62,7 +64,7 @@ class Config extends CommonDBTM
     {
         global $CFG_GLPI;
 
-        if (!Session::haveRight('config', UPDATE)) {
+        if (!Session::haveRight(self::$rightname, UPDATE)) {
             return false;
         }
 
