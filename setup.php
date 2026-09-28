@@ -44,9 +44,9 @@ use function Safe\define;
 define('PLUGIN_EXAMPLE_VERSION', '0.1.0');
 
 // Minimal GLPI version, inclusive
-define('PLUGIN_EXAMPLE_MIN_GLPI', '11.0.0');
+define('PLUGIN_EXAMPLE_MIN_GLPI', '12.0.0');
 // Maximum GLPI version, exclusive
-define('PLUGIN_EXAMPLE_MAX_GLPI', '11.0.99');
+define('PLUGIN_EXAMPLE_MAX_GLPI', '12.0.99');
 
 /**
  * Init hooks of the plugin.
@@ -113,7 +113,7 @@ function plugin_init_example()
     }
 
     // Config page
-    if (Session::haveRight('config', UPDATE)) {
+    if (Session::haveRight(Config::$rightname, UPDATE)) {
         $PLUGIN_HOOKS['config_page']['example'] = 'front/config.php';
     }
 
