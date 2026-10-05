@@ -55,7 +55,7 @@ use function Safe\strtotime;
 class Example extends CommonDBTM
 {
     public static $tags      = '[EXAMPLE_ID]';
-    public static $rightname = 'plugin_example';
+    public static string $rightname = 'plugin_example';
 
     // Should return the localized name of the type
     public static function getTypeName($nb = 0)
@@ -518,9 +518,7 @@ class Example extends CommonDBTM
 
     public static function dashboardCards($cards = [])
     {
-        if (is_null($cards)) {
-            $cards = [];
-        }
+        $cards ??= [];
         $new_cards = [
             'plugin_example_card' => [
                 'widgettype' => ['example'],

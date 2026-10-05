@@ -79,9 +79,7 @@ class Document extends GlpiDocument
      **/
     public static function getTable($classname = null)
     {
-        if ($classname === null) {
-            $classname = static::class;
-        }
+        $classname ??= static::class;
         if ($classname == static::class) {
             return parent::getTable(Document::class);
         }
