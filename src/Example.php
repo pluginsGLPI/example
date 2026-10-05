@@ -518,9 +518,7 @@ class Example extends CommonDBTM
 
     public static function dashboardCards($cards = [])
     {
-        if (is_null($cards)) {
-            $cards = [];
-        }
+        $cards ??= [];
         $new_cards = [
             'plugin_example_card' => [
                 'widgettype' => ['example'],
